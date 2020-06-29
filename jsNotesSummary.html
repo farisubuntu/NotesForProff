@@ -1,0 +1,1836 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>jsNotes</title>
+ <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+ <article class="chapter">Chapter1: Getting started with JavaScript
+  .   <section class='section'>Section 1.1: Using console.log()
+        </section>
+  <section class='section'>Section 1.2: Using the DOM API
+   
+     </section>
+  <section class='section'>Section 1.3: Using window.alert()
+   
+     </section>
+  <section class='section'>Section 1.4: Using window.prompt()
+        </section>
+  <section class='section'>Section 1.5: Using window.confirm()
+   
+     </section>
+  <section class='section'>Section 1.6: Using the DOM API (with graphical text: Canvas, SVG, or image file)
+   .  </article>
+ <article class="chapter">Chapter2: JavaScript Variables
+    </section>
+  <section class='section'>Section 2.1: Defining a Variable
+      </section>
+  <section class='section'>Section 2.2: Using a Variable
+      </section>
+  <section class='section'>Section 2.3: Types of Variables
+   
+   </section>
+  <section class='section'>Section 2.4: Arrays and Objects
+   
+  </article>
+ <article class="chapter">Chapter3: Built-in Constants
+  
+  </section>
+  <section class='section'>Section 3.1: null
+      </section>
+  <section class='section'>Section 3.2: Testing for NaN using isNaN()
+    </section>
+  <section class='section'>Section 3.3: NaN
+   
+   </section>
+  <section class='section'>Section 3.4: undefined and null
+   
+   </section>
+  <section class='section'>Section 3.5: Infinity and -Infinity
+      </section>
+  <section class='section'>Section 3.6: Number constants
+   
+   </section>
+  <section class='section'>Section 3.7: Operations that return NaN
+      </section>
+  <section class='section'>Section 3.8: Math library functions that return NaN
+   </article>
+ <article class="chapter">Chapter4: Comments
+  
+  </section>
+  <section class='section'>Section 4.1: Using Comments
+      </section>
+  <section class='section'>Section 4.2: Using HTML comments in JavaScript (Bad practice)
+   </article>
+ <article class="chapter">Chapter5: Console
+    </section>
+  <section class='section'>Section 5.1: Measuring time - console.time()
+    </section>
+  <section class='section'>Section 5.2: Formatting console output
+   
+   </section>
+  <section class='section'>Section 5.3: Printing to a browser's debugging console
+   . </section>
+  <section class='section'>Section 5.4: Including a stack trace when logging - console.trace()
+   . </section>
+  <section class='section'>Section 5.5: Tabulating values - console.table()
+    </section>
+  <section class='section'>Section 5.6: Counting - console.count()
+   
+   </section>
+  <section class='section'>Section 5.7: Clearing the console - console.clear()
+    </section>
+  <section class='section'>Section 5.8: Displaying objects and XML interactively - console.dir(), console.dirxml()
+    </section>
+  <section class='section'>Section 5.9: Debugging with assertions - console.assert()
+   .</article>
+ <article class="chapter">Chapter6: Datatypes in JavaScript
+  . </section>
+  <section class='section'>Section 6.1: typeof
+      </section>
+  <section class='section'>Section 6.2: Finding an object's class
+   
+   </section>
+  <section class='section'>Section 6.3: Getting object type by constructor name
+   </article>
+ <article class="chapter">Chapter7: Strings
+    </section>
+  <section class='section'>Section 7.1: Basic Info and String Concatenation
+   . </section>
+  <section class='section'>Section 7.2: Reverse String
+      </section>
+  <section class='section'>Section 7.3: Comparing Strings Lexicographically
+   . </section>
+  <section class='section'>Section 7.4: Access character at index in string
+   . </section>
+  <section class='section'>Section 7.5: Escaping quotes
+   
+   </section>
+  <section class='section'>Section 7.6: Word Counter
+   
+   </section>
+  <section class='section'>Section 7.7: Trim whitespace
+   
+   </section>
+  <section class='section'>Section 7.8: Splitting a string into an array
+    </section>
+  <section class='section'>Section 7.9: Strings are unicode
+      </section>
+  <section class='section'>Section 7.10: Detecting a string
+   
+   </section>
+  <section class='section'>Section 7.11: Substrings with slice
+      </section>
+  <section class='section'>Section 7.12: Character code
+   
+   </section>
+  <section class='section'>Section 7.13: String Representations of Numbers
+    </section>
+  <section class='section'>Section 7.14: String Find and Replace Functions
+    </section>
+  <section class='section'>Section 7.15: Find the index of a substring inside a string
+   . </section>
+  <section class='section'>Section 7.16: String to Upper Case
+      </section>
+  <section class='section'>Section 7.17: String to Lower Case
+      </section>
+  <section class='section'>Section 7.18: Repeat a String
+   
+  </article>
+ <article class="chapter">Chapter8: Date
+    </section>
+  <section class='section'>Section 8.1: Create a new Date object
+      </section>
+  <section class='section'>Section 8.2: Convert to a string format
+   
+   </section>
+  <section class='section'>Section 8.3: Creating a Date from UTC
+      </section>
+  <section class='section'>Section 8.4: Formatting a JavaScript date
+   . </section>
+  <section class='section'>Section 8.5: Get the number of milliseconds elapsed sinceJanuary 1970 00:00:00 UTC
+   . </section>
+  <section class='section'>Section 8.6: Get the current time and date
+   . </section>
+  <section class='section'>Section 8.7: Increment a Date Object
+      </section>
+  <section class='section'>Section 8.8: Convert to JSON
+     </article>
+ <article class="chapter">Chapter9: Date Comparison
+  
+  </section>
+  <section class='section'>Section 9.1: Comparing Date values
+   
+   </section>
+  <section class='section'>Section 9.2: Date Dierence Calculation
+   </article>
+ <article class="chapter">Chapter10: Comparison Operations
+   </section>
+  <section class='section'>Section 10.1: Abstract equality / inequality and type conversion
+   . </section>
+  <section class='section'>Section 10.2: NaN Property of the Global Object
+   . </section>
+  <section class='section'>Section 10.3: Short-circuiting in boolean operators
+   . </section>
+  <section class='section'>Section 10.4: Null and Undefined
+      </section>
+  <section class='section'>Section 10.5: Abstract Equality (==)
+      </section>
+  <section class='section'>Section 10.6: Logic Operators with Booleans
+   . </section>
+  <section class='section'>Section 10.7: Automatic Type Conversions
+   . </section>
+  <section class='section'>Section 10.8: Logic Operators with Non-boolean values (boolean coercion)
+   . </section>
+  <section class='section'>Section 10.9: Empty Array
+      </section>
+  <section class='section'>Section 10.10: Equality comparison operations
+    </section>
+  <section class='section'>Section 10.11: Relational operators (<, <=,>, >=)
+     </section>
+  <section class='section'>Section 10.12: Inequality
+   
+   </section>
+  <section class='section'>Section 10.13: List of Comparison Operators
+    </section>
+  <section class='section'>Section 10.14: Grouping multiple logic statements
+   . </section>
+  <section class='section'>Section 10.15: Bit fields to optimise comparison of multi state data
+   </article>
+ <article class="chapter">Chapter11: Conditions
+  
+  </section>
+  <section class='section'>Section 11.1: Ternary operators
+   
+   </section>
+  <section class='section'>Section 11.2: Switch statement
+   
+   </section>
+  <section class='section'>Section 11.3: If / Else If / Else Control
+      </section>
+  <section class='section'>Section 11.4: Strategy
+      </section>
+  <section class='section'>Section 11.5: Using || and && short circuiting
+   .</article>
+ <article class="chapter">Chapter12: Arrays
+  
+  </section>
+  <section class='section'>Section 12.1: Converting Array-like Objects to Arrays
+   . </section>
+  <section class='section'>Section 12.2: Reducing values
+   
+   </section>
+  <section class='section'>Section 12.3: Mapping values
+      </section>
+  <section class='section'>Section 12.4: Filtering Object Arrays
+   
+   </section>
+  <section class='section'>Section 12.5: Sorting Arrays
+   
+   </section>
+  <section class='section'>Section 12.6: Iteration
+   
+   </section>
+  <section class='section'>Section 12.7: Destructuring an array
+      </section>
+  <section class='section'>Section 12.8: Removing duplicate elements
+   . </section>
+  <section class='section'>Section 12.9: Array comparison
+      </section>
+  <section class='section'>Section 12.10: Reversing arrays
+   
+   </section>
+  <section class='section'>Section 12.11: Shallow cloning an array
+      </section>
+  <section class='section'>Section 12.12: Concatenating Arrays
+      </section>
+  <section class='section'>Section 12.13: Merge two array as key value pair
+    </section>
+  <section class='section'>Section 12.14: Array spread / rest
+   
+   </section>
+  <section class='section'>Section 12.15: Filtering values
+      </section>
+  <section class='section'>Section 12.16: Searching an Array
+   
+   </section>
+  <section class='section'>Section 12.17: Convert a String to an Array
+   
+  </section>
+  <section class='section'>Section 12.18: Removing items from an array
+   
+  </section>
+  <section class='section'>Section 12.19: Removing all elements
+   
+   10  </section>
+  <section class='section'>Section 12.20: Finding the minimum or maximum element
+   
+  </section>
+  <section class='section'>Section 12.21: Standard array initialization
+   
+  </section>
+  <section class='section'>Section 12.22: Joining array elements in a string
+   
+  </section>
+  <section class='section'>Section 12.23: Removing/Adding elements using splice()
+   
+  </section>
+  <section class='section'>Section 12.24: The entries() method
+   
+   10  </section>
+  <section class='section'>Section 12.25: Remove value from array
+   
+  </section>
+  <section class='section'>Section 12.26: Flattening Arrays
+   
+   10  </section>
+  <section class='section'>Section 12.27: Append / Prepend items to Array
+   
+  </section>
+  <section class='section'>Section 12.28: Object keys and values to array
+   
+  </section>
+  <section class='section'>Section 12.29: Logical connective of values
+   
+  </section>
+  <section class='section'>Section 12.30: Checking if an object is an Array
+   
+  </section>
+  <section class='section'>Section 12.31: Insert an item into an array at a specific index
+   
+  </section>
+  <section class='section'>Section 12.32: Sorting multidimensional array
+   
+  </section>
+  <section class='section'>Section 12.33: Test all array items for equality
+   
+  </section>
+  <section class='section'>Section 12.34: Copy part of an Array
+   
+   11 </article>
+ <article class="chapter">Chapter13: Objects
+  
+  11  </section>
+  <section class='section'>Section 13.1: Shallow cloning
+      11  </section>
+  <section class='section'>Section 13.2: Object.freeze
+   
+   11  </section>
+  <section class='section'>Section 13.3: Object cloning
+   
+   11  </section>
+  <section class='section'>Section 13.4: Object properties iteration
+   
+  </section>
+  <section class='section'>Section 13.5: Object.assign
+   
+   11  </section>
+  <section class='section'>Section 13.6: Object rest/spread (.)
+   
+   11  </section>
+  <section class='section'>Section 13.7: Object.defineProperty
+      11  </section>
+  <section class='section'>Section 13.8: Accesor properties (get and set)
+   
+  </section>
+  <section class='section'>Section 13.9: Dynamic / variable property names
+   
+  </section>
+  <section class='section'>Section 13.10: Arrays are Objects
+      11  </section>
+  <section class='section'>Section 13.11: Object.seal
+      11  </section>
+  <section class='section'>Section 13.12: Convert object's values to array
+   
+  </section>
+  <section class='section'>Section 13.13: Retrieving properties from an object
+   
+  </section>
+  <section class='section'>Section 13.14: Read-Only property
+      12  </section>
+  <section class='section'>Section 13.15: Non enumerable property
+   
+  </section>
+  <section class='section'>Section 13.16: Lock property description
+   
+  </section>
+  <section class='section'>Section 13.17: Object.getOwnPropertyDescriptor
+   
+  </section>
+  <section class='section'>Section 13.18: Descriptors and Named Properties
+   
+  </section>
+  <section class='section'>Section 13.19: Object.keys
+      12  </section>
+  <section class='section'>Section 13.20: Properties with special characters or reserved words
+   
+  </section>
+  <section class='section'>Section 13.21: Creating an Iterable object
+   
+  </section>
+  <section class='section'>Section 13.22: Iterating over Object entries - Object.entries()
+   
+  </section>
+  <section class='section'>Section 13.23: Object.values()
+      12 </article>
+ <article class="chapter">Chapter14: Arithmetic (Math)
+    12  </section>
+  <section class='section'>Section 14.1: Constants
+   
+   12  </section>
+  <section class='section'>Section 14.2: Remainder / Modulus (%)
+   
+   12  </section>
+  <section class='section'>Section 14.3: Rounding
+   
+   13  </section>
+  <section class='section'>Section 14.4: Trigonometry
+      13  </section>
+  <section class='section'>Section 14.5: Bitwise operators
+   
+   13  </section>
+  <section class='section'>Section 14.6: Incrementing (++)
+   
+   13  </section>
+  <section class='section'>Section 14.7: Exponentiation (Math.pow() or **)
+   
+  </section>
+  <section class='section'>Section 14.8: Random Integers and Floats
+   
+  </section>
+  <section class='section'>Section 14.9: Addition (+)
+   
+   13  </section>
+  <section class='section'>Section 14.10: Little / Big endian for typed arrays when using bitwise operators
+   
+  </section>
+  <section class='section'>Section 14.11: Get Random Between Two Numbers
+   
+  </section>
+  <section class='section'>Section 14.12: Simulating events with dierent probabilities
+   
+  </section>
+  <section class='section'>Section 14.13: Subtraction (-)
+   
+   14  </section>
+  <section class='section'>Section 14.14: Multiplication (*)
+      14  </section>
+  <section class='section'>Section 14.15: Getting maximum and minimum
+   
+  </section>
+  <section class='section'>Section 14.16: Restrict Number to Min/Max Range
+   
+  </section>
+  <section class='section'>Section 14.17: Ceiling and Floor
+   
+   14  </section>
+  <section class='section'>Section 14.18: Getting roots of a number
+   
+  </section>
+  <section class='section'>Section 14.19: Random with gaussian distribution
+   
+  </section>
+  <section class='section'>Section 14.20: Math.atan2 to find direction
+   
+  </section>
+  <section class='section'>Section 14.21: Sin & Cos to create a vector given direction & distance
+   
+  </section>
+  <section class='section'>Section 14.22: Math.hypot
+      14  </section>
+  <section class='section'>Section 14.23: Periodic functions using Math.sin
+   
+  </section>
+  <section class='section'>Section 14.24: Division (/)
+      14  </section>
+  <section class='section'>Section 14.25: Decrementing (--)
+      14 </article>
+ <article class="chapter">Chapter15: Bitwise operators
+  
+  14  </section>
+  <section class='section'>Section 15.1: Bitwise operators
+      14  </section>
+  <section class='section'>Section 15.2: Shift Operators
+   
+   15 </article>
+ <article class="chapter">Chapter16: Constructor functions
+    15  </section>
+  <section class='section'>Section 16.1: Declaring a constructor function
+   
+ </article>
+ <article class="chapter">Chapter17: Declarations and Assignments
+  
+  </section>
+  <section class='section'>Section 17.1: Modifying constants
+   
+   15  </section>
+  <section class='section'>Section 17.2: Declaring and initializing constants
+   
+  </section>
+  <section class='section'>Section 17.3: Declaration
+      15  </section>
+  <section class='section'>Section 17.4: Undefined
+      15  </section>
+  <section class='section'>Section 17.5: Data Types
+      15  </section>
+  <section class='section'>Section 17.6: Mathematic operations and assignment
+   
+  </section>
+  <section class='section'>Section 17.7: Assignment
+      15 </article>
+ <article class="chapter">Chapter18: Loops
+    15  </section>
+  <section class='section'>Section 18.1: Standard "for" loops
+   
+   15  </section>
+  <section class='section'>Section 18.2: "for . of" loop
+   
+   15  </section>
+  <section class='section'>Section 18.3: "for . in" loop
+      15  </section>
+  <section class='section'>Section 18.4: "while" Loops
+      15  </section>
+  <section class='section'>Section 18.5: "continue" a loop
+      16  </section>
+  <section class='section'>Section 18.6: Break specific nested loops
+   
+  </section>
+  <section class='section'>Section 18.7: "do . while" loop
+   
+   16  </section>
+  <section class='section'>Section 18.8: Break and continue labels
+   
+ </article>
+ <article class="chapter">Chapter19: Functions
+    16  </section>
+  <section class='section'>Section 19.1: Function Scoping
+   
+   16  </section>
+  <section class='section'>Section 19.2: Currying
+   
+   16  </section>
+  <section class='section'>Section 19.3: Immediately Invoked Function Expressions
+   
+  </section>
+  <section class='section'>Section 19.4: Named Functions
+   
+   16  </section>
+  <section class='section'>Section 19.5: Binding `this` and arguments
+   
+  </section>
+  <section class='section'>Section 19.6: Functions with an Unknown Number of Arguments (variadic functions)
+   
+  </section>
+  <section class='section'>Section 19.7: Anonymous Function
+   
+   17  </section>
+  <section class='section'>Section 19.8: Default parameters
+   
+   17  </section>
+  <section class='section'>Section 19.9: Call and apply
+   
+   17  </section>
+  <section class='section'>Section 19.10: Partial Application
+   
+   17  </section>
+  <section class='section'>Section 19.11: Passing arguments by reference or value
+   
+  </section>
+  <section class='section'>Section 19.12: Function Arguments, "arguments" object, rest and spread parameters
+   
+  </section>
+  <section class='section'>Section 19.13: Function Composition
+   
+   17  </section>
+  <section class='section'>Section 19.14: Get the name of a function object
+   
+  </section>
+  <section class='section'>Section 19.15: Recursive Function
+      18  </section>
+  <section class='section'>Section 19.16: Using the Return Statement
+   
+  </section>
+  <section class='section'>Section 19.17: Functions as a variable
+      18 </article>
+ <article class="chapter">Chapter20: Functional JavaScript
+  
+  </section>
+  <section class='section'>Section 20.1: Higher-Order Functions
+   
+   18  </section>
+  <section class='section'>Section 20.2: Identity Monad
+      18  </section>
+  <section class='section'>Section 20.3: Pure Functions
+   
+   18  </section>
+  <section class='section'>Section 20.4: Accepting Functions as Arguments
+   
+ </article>
+ <article class="chapter">Chapter21: Prototypes, objects
+  
+  19  </section>
+  <section class='section'>Section 21.1: Creation and initialising Prototype
+   
+ </article>
+ <article class="chapter">Chapter22: Classes
+    19  </section>
+  <section class='section'>Section 22.1: Class Constructor
+   
+   19  </section>
+  <section class='section'>Section 22.2: Class Inheritance
+   
+   19  </section>
+  <section class='section'>Section 22.3: Static Methods
+   
+   19  </section>
+  <section class='section'>Section 22.4: Getters and Setters
+   
+   19  </section>
+  <section class='section'>Section 22.5: Private Members
+   
+   19  </section>
+  <section class='section'>Section 22.6: Methods
+      19  </section>
+  <section class='section'>Section 22.7: Dynamic Method Names
+      19  </section>
+  <section class='section'>Section 22.8: Managing Private Data with Classes
+   
+  </section>
+  <section class='section'>Section 22.9: Class Name binding
+      19 </article>
+ <article class="chapter">Chapter23: Namespacing
+  
+  19  </section>
+  <section class='section'>Section 23.1: Namespace by direct assignment
+   
+  </section>
+  <section class='section'>Section 23.2: Nested Namespaces
+   
+   19 </article>
+ <article class="chapter">Chapter24: Context (this)
+  
+  20  </section>
+  <section class='section'>Section 24.1: this with simple objects
+      20  </section>
+  <section class='section'>Section 24.2: Saving this for use in nested functions / objects
+   
+  </section>
+  <section class='section'>Section 24.3: Binding function context
+   
+   20  </section>
+  <section class='section'>Section 24.4: this in constructor functions
+   
+ </article>
+ <article class="chapter">Chapter25: Setters and Getters
+  
+  20  </section>
+  <section class='section'>Section 25.1: Defining a Setter/Getter Using Object.defineProperty
+   
+  </section>
+  <section class='section'>Section 25.2: Defining an Setter/Getter in a Newly Created Object
+   
+  </section>
+  <section class='section'>Section 25.3: Defining getters and setters in ES6 class
+   
+ </article>
+ <article class="chapter">Chapter26: Events
+    20  </section>
+  <section class='section'>Section 26.1: Page, DOM and Browser loading
+   
+ </article>
+ <article class="chapter">Chapter27: Inheritance
+    20  </section>
+  <section class='section'>Section 27.1: Standard function prototype
+   
+  </section>
+  <section class='section'>Section 27.2: Dierence between Object.key and Object.prototype.key
+   
+  </section>
+  <section class='section'>Section 27.3: Prototypal inheritance
+      20  </section>
+  <section class='section'>Section 27.4: Pseudo-classical inheritance
+   
+  </section>
+  <section class='section'>Section 27.5: Setting an Object's prototype
+   
+ </article>
+ <article class="chapter">Chapter28: Method Chaining
+    21  </section>
+  <section class='section'>Section 28.1: Chainable object design and chaining
+   
+  </section>
+  <section class='section'>Section 28.2: Method Chaining
+   
+   21 </article>
+ <article class="chapter">Chapter29: Callbacks
+    21  </section>
+  <section class='section'>Section 29.1: Simple Callback Usage Examples
+   
+  </section>
+  <section class='section'>Section 29.2: Continuation (synchronous and asynchronous)
+   
+  </section>
+  <section class='section'>Section 29.3: What is a callback?
+   
+   21  </section>
+  <section class='section'>Section 29.4: Callbacks and `this`
+   
+   21  </section>
+  <section class='section'>Section 29.5: Callback using Arrow function
+   
+  </section>
+  <section class='section'>Section 29.6: Error handling and control-flow branching
+   
+ </article>
+ <article class="chapter">Chapter30: Intervals and Timeouts
+  
+  </section>
+  <section class='section'>Section 30.1: Recursive setTimeout
+      21  </section>
+  <section class='section'>Section 30.2: Intervals
+      21  </section>
+  <section class='section'>Section 30.3: Intervals
+      21  </section>
+  <section class='section'>Section 30.4: Removing intervals
+   
+   22  </section>
+  <section class='section'>Section 30.5: Removing timeouts
+   
+   22  </section>
+  <section class='section'>Section 30.6: setTimeout, order of operations, clearTimeout
+   
+ </article>
+ <article class="chapter">Chapter31: Regular expressions
+    22  </section>
+  <section class='section'>Section 31.1: Creating a RegExp Object
+      22  </section>
+  <section class='section'>Section 31.2: RegExp Flags
+      22  </section>
+  <section class='section'>Section 31.3: Check if string contains pattern using .test()
+   
+  </section>
+  <section class='section'>Section 31.4: Matching With .exec()
+      22  </section>
+  <section class='section'>Section 31.5: Using RegExp With Strings
+   
+  </section>
+  <section class='section'>Section 31.6: RegExp Groups
+   
+   22  </section>
+  <section class='section'>Section 31.7: Replacing string match with a callback function
+   
+  </section>
+  <section class='section'>Section 31.8: Using Regex.exec() with parentheses regex to extract matches of a string
+   
+ </article>
+ <article class="chapter">Chapter32: Cookies
+    22  </section>
+  <section class='section'>Section 32.1: Test if cookies are enabled
+   
+  </section>
+  <section class='section'>Section 32.2: Adding and Setting Cookies
+   
+  </section>
+  <section class='section'>Section 32.3: Reading cookies
+      22  </section>
+  <section class='section'>Section 32.4: Removing cookies
+   
+   22 </article>
+ <article class="chapter">Chapter33: Web Storage
+    22  </section>
+  <section class='section'>Section 33.1: Using localStorage
+   
+   22  </section>
+  <section class='section'>Section 33.2: Simpler way of handling Storage
+   
+  </section>
+  <section class='section'>Section 33.3: Storage events
+   
+   23  </section>
+  <section class='section'>Section 33.4: sessionStorage
+   
+   23  </section>
+  <section class='section'>Section 33.5: localStorage length
+   
+   23  </section>
+  <section class='section'>Section 33.6: Error conditions
+      23  </section>
+  <section class='section'>Section 33.7: Clearing storage
+      23  </section>
+  <section class='section'>Section 33.8: Remove Storage Item
+   
+   23 </article>
+ <article class="chapter">Chapter34: Data attributes
+    23  </section>
+  <section class='section'>Section 34.1: Accessing data attributes
+      23 </article>
+ <article class="chapter">Chapter35: JSON
+    23  </section>
+  <section class='section'>Section 35.1: JSON versus JavaScript literals
+   
+  </section>
+  <section class='section'>Section 35.2: Parsing with a reviver function
+   
+  </section>
+  <section class='section'>Section 35.3: Serializing a value
+      23  </section>
+  <section class='section'>Section 35.4: Serializing and restoring class instances
+   
+  </section>
+  <section class='section'>Section 35.5: Serializing with a replacer function
+   
+  </section>
+  <section class='section'>Section 35.6: Parsing a simple JSON string
+   
+  </section>
+  <section class='section'>Section 35.7: Cyclic object values
+   
+   23 </article>
+ <article class="chapter">Chapter36: AJAX
+  
+  24  </section>
+  <section class='section'>Section 36.1: Sending and Receiving JSON Data via POST
+   
+  </section>
+  <section class='section'>Section 36.2: Add an AJAX preloader
+      24  </section>
+  <section class='section'>Section 36.3: Displaying the top JavaScript questions of the month from Stack Overflow's API
+   
+  </section>
+  <section class='section'>Section 36.4: Using GET with parameters
+   
+  </section>
+  <section class='section'>Section 36.5: Check if a file exists via a HEAD request
+   
+  </section>
+  <section class='section'>Section 36.6: Using GET and no parameters
+   
+  </section>
+  <section class='section'>Section 36.7: Listening to AJAX events at a global level
+   
+ </article>
+ <article class="chapter">Chapter37: Enumerations
+    24  </section>
+  <section class='section'>Section 37.1: Enum definition using Object.freeze()
+   
+  </section>
+  <section class='section'>Section 37.2: Alternate definition
+      24  </section>
+  <section class='section'>Section 37.3: Printing an enum variable
+   
+  </section>
+  <section class='section'>Section 37.4: Implementing Enums Using Symbols
+   
+  </section>
+  <section class='section'>Section 37.5: Automatic Enumeration Value
+   
+ </article>
+ <article class="chapter">Chapter38: Map
+  
+  24  </section>
+  <section class='section'>Section 38.1: Creating a Map
+   
+   24  </section>
+  <section class='section'>Section 38.2: Clearing a Map
+      24  </section>
+  <section class='section'>Section 38.3: Removing an element from a Map
+   
+  </section>
+  <section class='section'>Section 38.4: Checking if a key exists in a Map
+   
+  </section>
+  <section class='section'>Section 38.5: Iterating Maps
+      24  </section>
+  <section class='section'>Section 38.6: Getting and setting elements
+   
+  </section>
+  <section class='section'>Section 38.7: Getting the number of elements of a Map
+   
+ </article>
+ <article class="chapter">Chapter39: Timestamps
+    25  </section>
+  <section class='section'>Section 39.1: High-resolution timestamps
+   
+  </section>
+  <section class='section'>Section 39.2: Get Timestamp in Seconds
+   
+  </section>
+  <section class='section'>Section 39.3: Low-resolution timestamps
+   
+  </section>
+  <section class='section'>Section 39.4: Support for legacy browsers
+   
+ </article>
+ <article class="chapter">Chapter40: Unary Operators
+    25  </section>
+  <section class='section'>Section 40.1: Overview
+   
+   25  </section>
+  <section class='section'>Section 40.2: The typeof operator
+   
+   25  </section>
+  <section class='section'>Section 40.3: The delete operator
+      25  </section>
+  <section class='section'>Section 40.4: The unary plus operator (+)
+   
+  </section>
+  <section class='section'>Section 40.5: The void operator
+   
+   25  </section>
+  <section class='section'>Section 40.6: The unary negation operator (-)
+   
+  </section>
+  <section class='section'>Section 40.7: The bitwise NOT operator (~)
+   
+  </section>
+  <section class='section'>Section 40.8: The logical NOT operator (!)
+   
+ </article>
+ <article class="chapter">Chapter41: Generators
+    25  </section>
+  <section class='section'>Section 41.1: Generator Functions
+   
+   25  </section>
+  <section class='section'>Section 41.2: Sending Values to Generator
+   
+  </section>
+  <section class='section'>Section 41.3: Delegating to other Generator
+   
+  </section>
+  <section class='section'>Section 41.4: Iteration
+   
+   25  </section>
+  <section class='section'>Section 41.5: Async flow with generators
+   
+  </section>
+  <section class='section'>Section 41.6: Iterator-Observer interface
+   
+ </article>
+ <article class="chapter">Chapter42: Promises
+    26  </section>
+  <section class='section'>Section 42.1: Introduction
+   
+   26  </section>
+  <section class='section'>Section 42.2: Promise chaining
+   
+   26  </section>
+  <section class='section'>Section 42.3: Waiting for multiple concurrent promises
+   
+  </section>
+  <section class='section'>Section 42.4: Reduce an array to chained promises
+   
+  </section>
+  <section class='section'>Section 42.5: Waiting for the first of multiple concurrent promises
+   
+  </section>
+  <section class='section'>Section 42.6: "Promisifying" functions with callbacks
+   
+  </section>
+  <section class='section'>Section 42.7: Error Handling
+   
+   26  </section>
+  <section class='section'>Section 42.8: Reconciling synchronous and asynchronous operations
+   
+  </section>
+  <section class='section'>Section 42.9: Delay function call
+   
+   27  </section>
+  <section class='section'>Section 42.10: "Promisifying" values
+   
+   27  </section>
+  <section class='section'>Section 42.11: Using ES2017 async/await
+   
+  </section>
+  <section class='section'>Section 42.12: Performing cleanup with finally()
+   
+  </section>
+  <section class='section'>Section 42.13: forEach with promises
+   
+   27  </section>
+  <section class='section'>Section 42.14: Asynchronous API request
+   
+ </article>
+ <article class="chapter">Chapter43: Set
+  
+  27  </section>
+  <section class='section'>Section 43.1: Creating a Set
+   
+   27  </section>
+  <section class='section'>Section 43.2: Adding a value to a Set
+      27  </section>
+  <section class='section'>Section 43.3: Removing value from a set
+   
+  </section>
+  <section class='section'>Section 43.4: Checking if a value exist in a set
+   
+  </section>
+  <section class='section'>Section 43.5: Clearing a Set
+   
+   27  </section>
+  <section class='section'>Section 43.6: Getting set length
+      27  </section>
+  <section class='section'>Section 43.7: Converting Sets to arrays
+   
+   27  </section>
+  <section class='section'>Section 43.8: Inter</section>
+  <section class='section'>Section and dierence in Sets
+   
+  </section>
+  <section class='section'>Section 43.9: Iterating Sets
+      27 </article>
+ <article class="chapter">Chapter44: Modals - Prompts
+  
+  28  </section>
+  <section class='section'>Section 44.1: About User Prompts
+      28  </section>
+  <section class='section'>Section 44.2: Persistent Prompt Modal
+      28  </section>
+  <section class='section'>Section 44.3: Confirm to Delete element
+   
+  </section>
+  <section class='section'>Section 44.4: Usage of alert()
+   
+   28  </section>
+  <section class='section'>Section 44.5: Usage of prompt()
+      28 </article>
+ <article class="chapter">Chapter45: execCommand and contenteditable
+  
+  </section>
+  <section class='section'>Section 45.1: Listening to Changes of contenteditable
+   
+  </section>
+  <section class='section'>Section 45.2: Getting started
+   
+   28  </section>
+  <section class='section'>Section 45.3: Copy to clipboard from textarea using execCommand("copy")
+   
+  </section>
+  <section class='section'>Section 45.4: Formatting
+   
+   28 </article>
+ <article class="chapter">Chapter46: History
+    28  </section>
+  <section class='section'>Section 46.1: history.pushState()
+   
+   28  </section>
+  <section class='section'>Section 46.2: history.replaceState()
+   
+   28  </section>
+  <section class='section'>Section 46.3: Load a specific URL from the history list
+   
+ </article>
+ <article class="chapter">Chapter47: Navigator Object
+    28  </section>
+  <section class='section'>Section 47.1: Get some basic browser data and return it as a JSON object
+   
+ </article>
+ <article class="chapter">Chapter48: BOM (Browser Object Model)
+  
+  </section>
+  <section class='section'>Section 48.1: Introduction
+   
+   29  </section>
+  <section class='section'>Section 48.2: Window Object Properties
+   
+  </section>
+  <section class='section'>Section 48.3: Window Object Methods
+   
+   29 </article>
+ <article class="chapter">Chapter49: The Event Loop
+    29  </section>
+  <section class='section'>Section 49.1: The event loop in a web browser
+   
+  </section>
+  <section class='section'>Section 49.2: Asynchronous operations and the event loop
+   
+ </article>
+ <article class="chapter">Chapter50: Strict mode
+    29  </section>
+  <section class='section'>Section 50.1: For entire scripts
+      29  </section>
+  <section class='section'>Section 50.2: For functions
+      29  </section>
+  <section class='section'>Section 50.3: Changes to properties
+      29  </section>
+  <section class='section'>Section 50.4: Changes to global properties
+   
+  </section>
+  <section class='section'>Section 50.5: Duplicate Parameters
+   
+   29  </section>
+  <section class='section'>Section 50.6: Function scoping in strict mode
+   
+  </section>
+  <section class='section'>Section 50.7: Behaviour of a function's arguments list
+   
+  </section>
+  <section class='section'>Section 50.8: Non-Simple parameter lists
+   
+ </article>
+ <article class="chapter">Chapter51: Custom Elements
+  
+  29  </section>
+  <section class='section'>Section 51.1: Extending Native Elements
+   
+  </section>
+  <section class='section'>Section 51.2: Registering New Elements
+   
+ </article>
+ <article class="chapter">Chapter52: Data Manipulation
+    30  </section>
+  <section class='section'>Section 52.1: Format numbers as money
+   
+  </section>
+  <section class='section'>Section 52.2: Extract extension from file name
+   
+  </section>
+  <section class='section'>Section 52.3: Set object property given its string name
+   
+ </article>
+ <article class="chapter">Chapter53: Binary Data
+    30  </section>
+  <section class='section'>Section 53.1: Getting binary representation of an image file
+   
+  </section>
+  <section class='section'>Section 53.2: Converting between Blobs and ArrayBuers
+   
+  </section>
+  <section class='section'>Section 53.3: Manipulating ArrayBuers with DataViews
+   
+  </section>
+  <section class='section'>Section 53.4: Creating a TypedArray from a Base64 string
+   
+  </section>
+  <section class='section'>Section 53.5: Using TypedArrays
+      30  </section>
+  <section class='section'>Section 53.6: Iterating through an arrayBuer
+   
+ </article>
+ <article class="chapter">Chapter54: Template Literals
+  
+  30  </section>
+  <section class='section'>Section 54.1: Basic interpolation and multiline strings
+   
+  </section>
+  <section class='section'>Section 54.2: Tagged strings
+      30  </section>
+  <section class='section'>Section 54.3: Raw strings
+   
+   30  </section>
+  <section class='section'>Section 54.4: Templating HTML With Template Strings
+   
+  </section>
+  <section class='section'>Section 54.5: Introduction
+      30 </article>
+ <article class="chapter">Chapter55: Fetch
+    30  </section>
+  <section class='section'>Section 55.1: Getting JSON data
+   
+   30  </section>
+  <section class='section'>Section 55.2: Set Request Headers
+      30  </section>
+  <section class='section'>Section 55.3: POST Data
+      30  </section>
+  <section class='section'>Section 55.4: Send cookies
+      31  </section>
+  <section class='section'>Section 55.5: GlobalFetch
+      31  </section>
+  <section class='section'>Section 55.6: Using Fetch to Display Questions from the Stack Overflow API
+   
+ </article>
+ <article class="chapter">Chapter56: Scope
+  
+  31  </section>
+  <section class='section'>Section 56.1: Closures
+   
+   31  </section>
+  <section class='section'>Section 56.2: Hoisting
+   
+   31  </section>
+  <section class='section'>Section 56.3: Dierence between var and let
+   
+  </section>
+  <section class='section'>Section 56.4: Apply and Call syntax and invocation
+   
+  </section>
+  <section class='section'>Section 56.5: Arrow function invocation
+   
+  </section>
+  <section class='section'>Section 56.6: Bound invocation
+   
+   31  </section>
+  <section class='section'>Section 56.7: Method invocation
+   
+   31  </section>
+  <section class='section'>Section 56.8: Anonymous invocation
+   
+   32  </section>
+  <section class='section'>Section 56.9: Constructor invocation
+   
+   32  </section>
+  <section class='section'>Section 56.10: Using let in loops instead of var (click handlers example)
+   
+ </article>
+ <article class="chapter">Chapter57: Modules
+    32  </section>
+  <section class='section'>Section 57.1: Defining a module
+      32  </section>
+  <section class='section'>Section 57.2: Default exports
+      32  </section>
+  <section class='section'>Section 57.3: Importing named members from another module
+   
+  </section>
+  <section class='section'>Section 57.4: Importing an entire module
+   
+  </section>
+  <section class='section'>Section 57.5: Importing named members with aliases
+   
+  </section>
+  <section class='section'>Section 57.6: Importing with side eects
+   
+  </section>
+  <section class='section'>Section 57.7: Exporting multiple named members
+   
+ </article>
+ <article class="chapter">Chapter58: Screen
+  
+  32  </section>
+  <section class='section'>Section 58.1: Getting the screen resolution
+   
+  </section>
+  <section class='section'>Section 58.2: Getting the “available” area of the screen
+   
+  </section>
+  <section class='section'>Section 58.3: Page width and height
+      32  </section>
+  <section class='section'>Section 58.4: Window innerWidth and innerHeight Properties
+   
+  </section>
+  <section class='section'>Section 58.5: Getting color information about the screen
+   
+ </article>
+ <article class="chapter">Chapter59: Variable coercion/conversion
+  
+  </section>
+  <section class='section'>Section 59.1: Double Negation (!!x)
+   
+   32  </section>
+  <section class='section'>Section 59.2: Implicit conversion
+      32  </section>
+  <section class='section'>Section 59.3: Converting to boolean
+      32  </section>
+  <section class='section'>Section 59.4: Converting a string to a number
+   
+  </section>
+  <section class='section'>Section 59.5: Converting a number to a string
+   
+  </section>
+  <section class='section'>Section 59.6: Primitive to Primitive conversion table
+   
+  </section>
+  <section class='section'>Section 59.7: Convert an array to a string
+   
+  </section>
+  <section class='section'>Section 59.8: Array to String using array methods
+   
+  </section>
+  <section class='section'>Section 59.9: Converting a number to a boolean
+   
+  </section>
+  <section class='section'>Section 59.10: Converting a string to a boolean
+   
+  </section>
+  <section class='section'>Section 59.11: Integer to Float
+      32  </section>
+  <section class='section'>Section 59.12: Float to Integer
+   
+   33  </section>
+  <section class='section'>Section 59.13: Convert string to float
+      33 </article>
+ <article class="chapter">Chapter60: Destructuring assignment
+  
+  </section>
+  <section class='section'>Section 60.1: Destructuring Objects
+      33  </section>
+  <section class='section'>Section 60.2: Destructuring function arguments
+   
+  </section>
+  <section class='section'>Section 60.3: Nested Destructuring
+      33  </section>
+  <section class='section'>Section 60.4: Destructuring Arrays
+   
+   33  </section>
+  <section class='section'>Section 60.5: Destructuring inside variables
+   
+  </section>
+  <section class='section'>Section 60.6: Default Value While Destructuring
+   
+  </section>
+  <section class='section'>Section 60.7: Renaming Variables While Destructuring
+   
+ </article>
+ <article class="chapter">Chapter61: WebSockets
+    33  </section>
+  <section class='section'>Section 61.1: Working with string messages
+   
+  </section>
+  <section class='section'>Section 61.2: Establish a web socket connection
+   
+  </section>
+  <section class='section'>Section 61.3: Working with binary messages
+   
+  </section>
+  <section class='section'>Section 61.4: Making a secure web socket connection
+   
+ </article>
+ <article class="chapter">Chapter62: Arrow Functions
+  
+  33  </section>
+  <section class='section'>Section 62.1: Introduction
+   
+   33  </section>
+  <section class='section'>Section 62.2: Lexical Scoping & Binding (Value of "this")
+   
+  </section>
+  <section class='section'>Section 62.3: Arguments Object
+   
+   33  </section>
+  <section class='section'>Section 62.4: Implicit Return
+      33  </section>
+  <section class='section'>Section 62.5: Arrow functions as a constructor
+   
+  </section>
+  <section class='section'>Section 62.6: Explicit Return
+      33 </article>
+ <article class="chapter">Chapter63: Workers
+    34  </section>
+  <section class='section'>Section 63.1: Web Worker
+      34  </section>
+  <section class='section'>Section 63.2: A simple service worker
+      34  </section>
+  <section class='section'>Section 63.3: Register a service worker
+   
+   34  </section>
+  <section class='section'>Section 63.4: Communicating with a Web Worker
+   
+  </section>
+  <section class='section'>Section 63.5: Terminate a worker
+   
+   34  </section>
+  <section class='section'>Section 63.6: Populating your cache
+      34  </section>
+  <section class='section'>Section 63.7: Dedicated Workers and Shared Workers
+   
+ </article>
+ <article class="chapter">Chapter64: requestAnimationFrame
+  
+  </section>
+  <section class='section'>Section 64.1: Use requestAnimationFrame to fade in element
+   
+  </section>
+  <section class='section'>Section 64.2: Keeping Compatibility
+      34  </section>
+  <section class='section'>Section 64.3: Cancelling an Animation
+   
+   34 </article>
+ <article class="chapter">Chapter65: Creational Design Patterns
+  
+  </section>
+  <section class='section'>Section 65.1: Factory Functions
+   
+   34  </section>
+  <section class='section'>Section 65.2: Factory with Composition
+   
+   34  </section>
+  <section class='section'>Section 65.3: Module and Revealing Module Patterns
+   
+  </section>
+  <section class='section'>Section 65.4: Prototype Pattern
+      35  </section>
+  <section class='section'>Section 65.5: Singleton Pattern
+   
+   35  </section>
+  <section class='section'>Section 65.6: Abstract Factory Pattern
+      35 </article>
+ <article class="chapter">Chapter66: Detecting browser
+    35  </section>
+  <section class='section'>Section 66.1: Feature Detection Method
+   
+  </section>
+  <section class='section'>Section 66.2: User Agent Detection
+      35  </section>
+  <section class='section'>Section 66.3: Library Method
+      35 </article>
+ <article class="chapter">Chapter67: Symbols
+    35  </section>
+  <section class='section'>Section 67.1: Basics of symbol primitive type
+   
+  </section>
+  <section class='section'>Section 67.2: Using Symbol.for() to create global, shared symbols
+   
+  </section>
+  <section class='section'>Section 67.3: Converting a symbol into a string
+   
+ </article>
+ <article class="chapter">Chapter68: Transpiling
+    35  </section>
+  <section class='section'>Section 68.1: Introduction to Transpiling
+   
+  </section>
+  <section class='section'>Section 68.2: Start using ES6/7 with Babel
+   
+ </article>
+ <article class="chapter">Chapter69: Automatic Semicolon Insertion - ASI
+  
+  </section>
+  <section class='section'>Section 69.1: Avoid semicolon insertion on return statements
+   
+  </section>
+  <section class='section'>Section 69.2: Rules of Automatic Semicolon Insertion
+   
+  </section>
+  <section class='section'>Section 69.3: Statements aected by automatic semicolon insertion
+   
+ </article>
+ <article class="chapter">Chapter70: Localization
+    36  </section>
+  <section class='section'>Section 70.1: Number formatting
+      36  </section>
+  <section class='section'>Section 70.2: Currency formatting
+   
+   36  </section>
+  <section class='section'>Section 70.3: Date and time formatting
+   
+   36 </article>
+ <article class="chapter">Chapter71: Geolocation
+  
+  36  </section>
+  <section class='section'>Section 71.1: Get updates when a user's location changes
+   
+  </section>
+  <section class='section'>Section 71.2: Get a user's latitude and longitude
+   
+  </section>
+  <section class='section'>Section 71.3: More descriptive error codes
+   
+ </article>
+ <article class="chapter">Chapter72: IndexedDB
+  
+  36  </section>
+  <section class='section'>Section 72.1: Opening a database
+      36  </section>
+  <section class='section'>Section 72.2: Adding objects
+   
+   36  </section>
+  <section class='section'>Section 72.3: Retrieving data
+      36  </section>
+  <section class='section'>Section 72.4: Testing for IndexedDB availability
+   
+ </article>
+ <article class="chapter">Chapter73: Modularization Techniques
+  
+  </section>
+  <section class='section'>Section 73.1: ES6 Modules
+      37  </section>
+  <section class='section'>Section 73.2: Universal Module Definition (UMD)
+   
+  </section>
+  <section class='section'>Section 73.3: Immediately invoked function expressions (IIFE)
+   
+  </section>
+  <section class='section'>Section 73.4: Asynchronous Module Definition (AMD)
+   
+  </section>
+  <section class='section'>Section 73.5: CommonJS - Node.js
+   
+   37 </article>
+ <article class="chapter">Chapter74: Proxy
+  
+  37  </section>
+  <section class='section'>Section 74.1: Proxying property lookup
+   
+   37  </section>
+  <section class='section'>Section 74.2: Very simple proxy (using the set trap)
+   
+ </article>
+ <article class="chapter">Chapter75: .postMessage() and MessageEvent
+  
+  </section>
+  <section class='section'>Section 75.1: Getting Started
+   
+   37 </article>
+ <article class="chapter">Chapter76: WeakMap
+  
+  37  </section>
+  <section class='section'>Section 76.1: Creating a WeakMap object
+   
+  </section>
+  <section class='section'>Section 76.2: Getting a value associated to the key
+   
+  </section>
+  <section class='section'>Section 76.3: Assigning a value to the key
+   
+  </section>
+  <section class='section'>Section 76.4: Checking if an element with the key exists
+   
+  </section>
+  <section class='section'>Section 76.5: Removing an element with the key
+   
+  </section>
+  <section class='section'>Section 76.6: Weak reference demo
+      38 </article>
+ <article class="chapter">Chapter77: WeakSet
+  
+  38  </section>
+  <section class='section'>Section 77.1: Creating a WeakSet object
+   
+  </section>
+  <section class='section'>Section 77.2: Adding a value
+   
+   38  </section>
+  <section class='section'>Section 77.3: Checking if a value exists
+      38  </section>
+  <section class='section'>Section 77.4: Removing a value
+      38 </article>
+ <article class="chapter">Chapter78: Escape Sequences
+    38  </section>
+  <section class='section'>Section 78.1: Entering special characters in strings and regular expressions
+   
+  </section>
+  <section class='section'>Section 78.2: Escape sequence types
+      38 </article>
+ <article class="chapter">Chapter79: Behavioral Design Patterns
+  
+  </section>
+  <section class='section'>Section 79.1: Observer pattern
+      38  </section>
+  <section class='section'>Section 79.2: Mediator Pattern
+   
+   38  </section>
+  <section class='section'>Section 79.3: Command
+   
+   38  </section>
+  <section class='section'>Section 79.4: Iterator
+      38 </article>
+ <article class="chapter">Chapter80: Server-sent events
+  
+  39  </section>
+  <section class='section'>Section 80.1: Setting up a basic event stream to the server
+   
+  </section>
+  <section class='section'>Section 80.2: Closing an event stream
+      39  </section>
+  <section class='section'>Section 80.3: Binding event listeners to EventSource
+   
+ </article>
+ <article class="chapter">Chapter81: Async functions (async/await)
+  
+  </section>
+  <section class='section'>Section 81.1: Introduction
+   
+   39  </section>
+  <section class='section'>Section 81.2: Await and operator precedence
+   
+  </section>
+  <section class='section'>Section 81.3: Async functions compared to Promises
+   
+  </section>
+  <section class='section'>Section 81.4: Looping with async await
+      39  </section>
+  <section class='section'>Section 81.5: Less indentation
+   
+   39  </section>
+  <section class='section'>Section 81.6: Simultaneous async (parallel) operations
+   
+ </article>
+ <article class="chapter">Chapter82: Async Iterators
+  
+  39  </section>
+  <section class='section'>Section 82.1: Basics
+      39 </article>
+ <article class="chapter">Chapter83: How to make iterator usable inside async callback function
+  
+  </section>
+  <section class='section'>Section 83.1: Erroneous code, can you spot why this usage of key will lead to bugs?
+   
+  </section>
+  <section class='section'>Section 83.2: Correct Writing
+      39 </article>
+ <article class="chapter">Chapter84: Tail Call Optimization
+  
+  </section>
+  <section class='section'>Section 84.1: What is Tail Call Optimization (TCO)
+   
+  </section>
+  <section class='section'>Section 84.2: Recursive loops
+   
+   40 </article>
+ <article class="chapter">Chapter85: Bitwise Operators - Real World Examples (snippets)
+  
+  </section>
+  <section class='section'>Section 85.1: Swapping Two Integers with Bitwise XOR (without additional memory allocation)
+   
+  </section>
+  <section class='section'>Section 85.2: Faster multiplication or division by powers of    
+  </section>
+  <section class='section'>Section 85.3: Number's Parity Detection with Bitwise AND
+   
+ </article>
+ <article class="chapter">Chapter86: Tilde ~
+    40  </section>
+  <section class='section'>Section 86.1: ~ Integer
+      40  </section>
+  <section class='section'>Section 86.2: ~~ Operator
+      40  </section>
+  <section class='section'>Section 86.3: Converting Non-numeric values to Numbers
+   
+  </section>
+  <section class='section'>Section 86.4: Shorthands
+   
+   40  </section>
+  <section class='section'>Section 86.5: ~ Decimal
+      40 </article>
+ <article class="chapter">Chapter87: Using JavaScript to get/set CSS custom variables
+  
+  </section>
+  <section class='section'>Section 87.1: How to get and set CSS variable property values
+   
+ </article>
+ <article class="chapter">Chapter88: Selection API
+    40  </section>
+  <section class='section'>Section 88.1: Get the text of the selection
+   
+  </section>
+  <section class='section'>Section 88.2: Deselect everything that is selected
+   
+  </section>
+  <section class='section'>Section 88.3: Select the contents of an element
+   
+ </article>
+ <article class="chapter">Chapter89: File API, Blobs and FileReaders
+  
+  </section>
+  <section class='section'>Section 89.1: Read file as string
+      40  </section>
+  <section class='section'>Section 89.2: Read file as dataURL
+      40  </section>
+  <section class='section'>Section 89.3: Slice a file
+      40  </section>
+  <section class='section'>Section 89.4: Get the properties of the file
+   
+  </section>
+  <section class='section'>Section 89.5: Selecting multiple files and restricting file types
+   
+  </section>
+  <section class='section'>Section 89.6: Client side csv download using Blob
+   
+ </article>
+ <article class="chapter">Chapter90: Notifications API
+    41  </section>
+  <section class='section'>Section 90.1: Requesting Permission to send notifications
+   
+  </section>
+  <section class='section'>Section 90.2: Sending Notifications
+      41  </section>
+  <section class='section'>Section 90.3: Closing a notification
+      41  </section>
+  <section class='section'>Section 90.4: Notification events
+      41 </article>
+ <article class="chapter">Chapter91: Vibration API
+  
+  41  </section>
+  <section class='section'>Section 91.1: Single vibration
+      41  </section>
+  <section class='section'>Section 91.2: Check for support
+      41  </section>
+  <section class='section'>Section 91.3: Vibration patterns
+      41 </article>
+ <article class="chapter">Chapter92: Battery Status API
+    41  </section>
+  <section class='section'>Section 92.1: Battery Events
+      41  </section>
+  <section class='section'>Section 92.2: Getting current battery level
+   
+  </section>
+  <section class='section'>Section 92.3: Is battery charging?
+      41  </section>
+  <section class='section'>Section 92.4: Get time left until battery is empty
+   
+  </section>
+  <section class='section'>Section 92.5: Get time left until battery is fully charged
+   
+ </article>
+ <article class="chapter">Chapter93: Fluent API
+  
+  41  </section>
+  <section class='section'>Section 93.1: Fluent API capturing construction of HTML articles with JS
+   
+ </article>
+ <article class="chapter">Chapter94: Web Cryptography API
+  
+  </section>
+  <section class='section'>Section 94.1: Creating digests (e.g. SHA-256)
+   
+  </section>
+  <section class='section'>Section 94.2: Cryptographically random data
+   
+  </section>
+  <section class='section'>Section 94.3: Generating RSA key pair and converting to PEM format
+   
+  </section>
+  <section class='section'>Section 94.4: Converting PEM key pair to CryptoKey
+   
+ </article>
+ <article class="chapter">Chapter95: Security issues
+    42  </section>
+  <section class='section'>Section 95.1: Reflected Cross-site scripting (XSS)
+   
+  </section>
+  <section class='section'>Section 95.2: Persistent Cross-site scripting (XSS)
+   
+  </section>
+  <section class='section'>Section 95.3: Persistent Cross-site scripting from JavaScript string literals
+   
+  </section>
+  <section class='section'>Section 95.4: Why scripts from other people can harm your website and its visitors
+   
+  </section>
+  <section class='section'>Section 95.5: Evaled JSON injection
+   
+   42 </article>
+ <article class="chapter">Chapter96: Same Origin Policy & Cross-Origin Communication
+  
+  </section>
+  <section class='section'>Section 96.1: Safe cross-origin communication with messages
+   
+  </section>
+  <section class='section'>Section 96.2: Ways to circumvent Same-Origin Policy
+   
+ </article>
+ <article class="chapter">Chapter97: Error Handling
+    42  </section>
+  <section class='section'>Section 97.1: Error objects
+   
+   42  </section>
+  <section class='section'>Section 97.2: Interaction with Promises
+   
+   42  </section>
+  <section class='section'>Section 97.3: Error types
+      43  </section>
+  <section class='section'>Section 97.4: Order of operations plus advanced thoughts
+   
+ </article>
+ <article class="chapter">Chapter98: Global error handling in browsers
+  
+  </section>
+  <section class='section'>Section 98.1: Handling window.onerror to report all errors back to the server-side
+   
+ </article>
+ <article class="chapter">Chapter99: Debugging
+  
+  43  </section>
+  <section class='section'>Section 99.1: Interactive interpreter variables
+   
+  </section>
+  <section class='section'>Section 99.2: Breakpoints
+      43  </section>
+  <section class='section'>Section 99.3: Using setters and getters to find what changed a property
+   
+  </section>
+  <section class='section'>Section 99.4: Using the console
+      43  </section>
+  <section class='section'>Section 99.5: Automatically pausing execution
+   
+  </section>
+  <section class='section'>Section 99.6: Elements inspector
+      43  </section>
+  <section class='section'>Section 99.7: Break when a function is called
+   
+  </section>
+  <section class='section'>Section 99.8: Stepping through code
+   
+   43 </article>
+ <article class="chapter">Chapter100: Unit Testing JavaScript
+  
+  </section>
+  <section class='section'>Section 100.1: Unit Testing Promises with Mocha, Sinon, Chai and Proxyquire
+   
+  </section>
+  <section class='section'>Section 100.2: Basic Assertion
+   
+   44 </article>
+ <article class="chapter">Chapter101: Evaluating JavaScript
+  
+  </section>
+  <section class='section'>Section 101.1: Evaluate a string of JavaScript statements
+   
+  </section>
+  <section class='section'>Section 101.2: Introduction
+   
+   44  </section>
+  <section class='section'>Section 101.3: Evaluation and Math
+   
+   44 </article>
+ <article class="chapter">Chapter102: Linters - Ensuring code quality
+  
+  </section>
+  <section class='section'>Section 102.1: JSHint
+   
+   44  </section>
+  <section class='section'>Section 102.2: ESLint / JSCS
+      44  </section>
+  <section class='section'>Section 102.3: JSLint
+   
+   44 </article>
+ <article class="chapter">Chapter103: Anti-patterns
+  
+  44  </section>
+  <section class='section'>Section 103.1: Chaining assignments in var declarations
+   
+ </article>
+ <article class="chapter">Chapter104: Performance Tips
+  
+  44  </section>
+  <section class='section'>Section 104.1: Avoid try/catch in performance-critical functions
+   
+  </section>
+  <section class='section'>Section 104.2: Limit DOM Updates
+      44  </section>
+  <section class='section'>Section 104.3: Benchmarking your code - measuring execution time
+   
+  </section>
+  <section class='section'>Section 104.4: Use a memoizer for heavy-computing functions
+   
+  </section>
+  <section class='section'>Section 104.5: Initializing object properties with null
+   
+  </section>
+  <section class='section'>Section 104.6: Reuse objects rather than recreate
+   
+  </section>
+  <section class='section'>Section 104.7: Prefer local variables to globals, attributes, and indexed values
+   
+  </section>
+  <section class='section'>Section 104.8: Be consistent in use of Numbers
+   
+ </article>
+ <article class="chapter">Chapter105: Memory eciency
+    45  </section>
+  <section class='section'>Section 105.1: Drawback of creating true private method
+   
+   Appendix A: Reserved Keywords
+   
+   45  </section>
+  <section class='section'>Section A.1: Reserved Keywords
+   
+   45  </section>
+  <section class='section'>Section A.2: Identifiers & Identifier Names
+   
+
+</body>
+
+</html>
