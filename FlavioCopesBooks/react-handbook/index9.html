@@ -1,0 +1,120 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>Classes</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="description" content="In 2015 the ECMAScript 6 (ES6) standard introduced classes. Learn all about them"/>
+    <meta name="generator" content="GitBook 3.2.3"/>
+    <meta name="author" content="Flavio Copes"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link href="stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="page_styles.css" rel="stylesheet" type="text/css"/>
+</head>
+  <body class="calibre">
+        
+<div class="page">
+    
+        <h1 class="book-chapter" id="calibre_toc_10">Classes</h1>
+        <h1 class="page-title">Classes</h1>
+        <h3 class="calibre7">In 2015 the ECMAScript 6 (ES6) standard introduced classes. Learn all about them</h3>
+
+        <div class="section">
+            <p class="calibre8">In 2015 the ECMAScript 6 (ES6) standard introduced classes.</p>
+<p class="calibre8">JavaScript has a quite uncommon way to implement inheritance: prototypical inheritance. <a href="https://flaviocopes.com/javascript-prototypal-inheritance/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">Prototypal inheritance</a>, while in my opinion great, is unlike most other popular programming language's implementation of inheritance,  which is class-based.</p>
+<p class="calibre8">People coming from Java or Python or other languages had a hard time understanding the intricacies of prototypal inheritance, so the ECMAScript committee decided to sprinkle syntactic sugar on top of prototypical inheritance so that it resembles how class-based inheritance works in other popular implementations.</p>
+<p class="calibre8">This is important: JavaScript under the hood is still the same, and you can access an object prototype in the usual way.</p>
+<h2 id="a-class-definition" class="calibre13">A class definition</h2>
+<p class="calibre8">This is how a class looks.</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-name"><span class="hljs-keyword">class</span> <span class="hljs-comment">Person</span> </span>{
+  <span class="hljs-keyword">constructor</span>(name) {
+    <span class="hljs-keyword">this</span>.name = name
+  }
+
+  hello() {
+    <span class="hljs-keyword">return</span> <span class="hljs-string">'Hello, I am '</span> + <span class="hljs-keyword">this</span>.name + <span class="hljs-string">'.'</span>
+  }
+}
+</code></pre>
+<p class="calibre8">A class has an identifier, which we can use to create new objects using <code class="calibre10 pcalibre4 pcalibre3">new ClassIdentifier()</code>.</p>
+<p class="calibre8">When the object is initialized, the <code class="calibre10 pcalibre4 pcalibre3">constructor</code> method is called, with any parameters passed.</p>
+<p class="calibre8">A class also has as many methods as it needs. In this case <code class="calibre10 pcalibre4 pcalibre3">hello</code> is a method and can be called on all objects derived from this class:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> flavio = <span class="hljs-keyword">new</span> Person(<span class="hljs-string">'Flavio'</span>)
+flavio.hello()
+</code></pre>
+<h2 id="class-inheritance" class="calibre13">Class inheritance</h2>
+<p class="calibre8">A class can extend another class, and objects initialized using that class inherit all the methods of both classes.</p>
+<p class="calibre8">If the inherited class has a method with the same name as one of the classes higher in the hierarchy, the closest method takes precedence:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-name"><span class="hljs-keyword">class</span> <span class="hljs-comment">Programmer</span> <span class="hljs-keyword">extends</span> <span class="hljs-comment">Person</span> </span>{
+  hello() {
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">super</span>.hello() + <span class="hljs-string">' I am a programmer.'</span>
+  }
+}
+
+<span class="hljs-keyword">const</span> flavio = <span class="hljs-keyword">new</span> Programmer(<span class="hljs-string">'Flavio'</span>)
+flavio.hello()
+</code></pre>
+<p class="calibre8">(the above program prints "<em class="calibre17">Hello, I am Flavio. I am a programmer.</em>")</p>
+<p class="calibre8">Classes do not have explicit class variable declarations, but you must initialize any variable in the constructor.</p>
+<p class="calibre8">Inside a class, you can reference the parent class calling <code class="calibre10 pcalibre4 pcalibre3">super()</code>.</p>
+<h2 id="static-methods" class="calibre13">Static methods</h2>
+<p class="calibre8">Normally methods are defined on the instance, not on the class.</p>
+<p class="calibre8">Static methods are executed on the class instead:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-name"><span class="hljs-keyword">class</span> <span class="hljs-comment">Person</span> </span>{
+  <span class="hljs-keyword">static</span> genericHello() {
+    <span class="hljs-keyword">return</span> <span class="hljs-string">'Hello'</span>
+  }
+}
+
+Person.genericHello() <span class="hljs-comment">//Hello</span>
+</code></pre>
+<h2 id="private-methods" class="calibre13">Private methods</h2>
+<p class="calibre8">JavaScript does not have a built-in way to define private or protected methods.</p>
+<p class="calibre8">There are workarounds, but I won't describe them here.</p>
+<h2 id="getters-and-setters" class="calibre13">Getters and setters</h2>
+<p class="calibre8">You can add methods prefixed with <code class="calibre10 pcalibre4 pcalibre3">get</code> or <code class="calibre10 pcalibre4 pcalibre3">set</code> to create a getter and setter, which are two different pieces of code that are executed based on what you are doing: accessing the variable, or modifying its value.</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-name"><span class="hljs-keyword">class</span> <span class="hljs-comment">Person</span> </span>{
+  <span class="hljs-keyword">constructor</span>(name) {
+    <span class="hljs-keyword">this</span>.name = name
+  }
+
+  set name(value) {
+    <span class="hljs-keyword">this</span>.name = value
+  }
+
+  get name() {
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.name
+  }
+}
+</code></pre>
+<p class="calibre8">If you only have a getter, the property cannot be set, and any attempt at doing so will be ignored:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-name"><span class="hljs-keyword">class</span> <span class="hljs-comment">Person</span> </span>{
+  <span class="hljs-keyword">constructor</span>(name) {
+    <span class="hljs-keyword">this</span>.name = name
+  }
+
+  get name() {
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.name
+  }
+}
+</code></pre>
+<p class="calibre8">If you only have a setter, you can change the value but not access it from the outside:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-name"><span class="hljs-keyword">class</span> <span class="hljs-comment">Person</span> </span>{
+  <span class="hljs-keyword">constructor</span>(name) {
+    <span class="hljs-keyword">this</span>.name = name
+  }
+
+  set name(value) {
+    <span class="hljs-keyword">this</span>.name = value
+  }
+}
+</code></pre>
+
+        </div>
+    
+</div>
+
+        
+    
+
+
+</body></html>

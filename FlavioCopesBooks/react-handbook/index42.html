@@ -1,0 +1,379 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>Webpack</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="description" content="Webpack is a tool that has got a lot of attention in the last few years, and it is now seen used in almost every project. Learn about it."/>
+    <meta name="generator" content="GitBook 3.2.3"/>
+    <meta name="author" content="Flavio Copes"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link href="stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="page_styles.css" rel="stylesheet" type="text/css"/>
+</head>
+  <body class="calibre">
+        
+<div class="page">
+    
+        <h1 class="book-chapter" id="calibre_toc_43">Webpack</h1>
+        <h1 class="page-title">Webpack</h1>
+        <h3 class="calibre7">Webpack is a tool that has got a lot of attention in the last few years, and it is now seen used in almost every project. Learn about it.</h3>
+
+        <div class="section">
+            <p class="calibre8"><img src="banner2.jpg" alt="Webpack" class="calibre9"/></p>
+<h2 id="what-is-webpack" class="calibre13">What is webpack?</h2>
+<p class="calibre8">Webpack is a tool that lets you compile JavaScript modules, also known as <strong class="calibre11">module bundler</strong>.</p>
+<p class="calibre8">Given a large number of files, it generates a single file (or a few files) that run your app.</p>
+<p class="calibre8">It can perform many operations:</p>
+<ul class="calibre15">
+<li class="calibre16">helps you bundle your resources.</li>
+<li class="calibre16">watches for changes and re-runs the tasks.</li>
+<li class="calibre16">can run Babel transpilation to ES5, allowing you to use the latest <a href="https://flaviocopes.com/javascript/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">JavaScript</a> features without worrying about browser support.</li>
+<li class="calibre16">can transpile CoffeeScript to JavaScript</li>
+<li class="calibre16">can convert inline images to data URIs.</li>
+<li class="calibre16">allows you to use require() for CSS files.</li>
+<li class="calibre16">can run a development webserver.</li>
+<li class="calibre16">can handle hot module replacement.</li>
+<li class="calibre16">can split the output files into multiple files, to avoid having a huge js file to load in the first page hit.</li>
+<li class="calibre16">can perform <a href="https://flaviocopes.com/javascript-glossary/#tree-shaking" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">tree shaking</a>.</li>
+</ul>
+<p class="calibre8">Webpack is not limited to be use on the frontend, it's also useful in backend Node.js development as well.</p>
+<p class="calibre8">Predecessors of webpack, and still widely used tools, include:</p>
+<ul class="calibre15">
+<li class="calibre16">Grunt</li>
+<li class="calibre16">Broccoli</li>
+<li class="calibre16">Gulp</li>
+</ul>
+<p class="calibre8">There are lots of similarities in what those and Webpack can do, but the main difference is that those are known as <strong class="calibre11">task runners</strong>, while webpack was born as a module bundler.</p>
+<p class="calibre8">It's a more focused tool: you specify an entry point to your app (it could even be an HTML file with script tags) and webpack analyzes the files and bundles all you need to run the app in a single JavaScript output file (or in more files if you use code splitting).</p>
+<h2 id="installing-webpack" class="calibre13">Installing webpack</h2>
+<p class="calibre8">Webpack can be installed globally or locally for each project.</p>
+<h3 id="global-install" class="calibre14">Global install</h3>
+<p class="calibre8">Here's how to install it globally with <a href="https://flaviocopes.com/yarn/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">Yarn</a>:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">yarn global add webpack webpack-cli
+</code></pre><p class="calibre8">with <a href="https://flaviocopes.com/npm/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">npm</a>:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">npm i -g webpack webpack-cli
+</code></pre><p class="calibre8">once this is done, you should be able to run</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">webpack-cli
+</code></pre>
+<p class="calibre8"><img src="running-webpack-cli.png" alt="Running webpack-cli" class="calibre9"/></p>
+<h3 id="local-install" class="calibre14">Local install</h3>
+<p class="calibre8">Webpack can be installed locally as well. It's the recommended setup, because webpack can be updated per-project, and you have less resistance to using the latest features just for a small project rather than updating all the projects you have that use webpack.</p>
+<p class="calibre8">With <a href="https://flaviocopes.com/yarn/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">Yarn</a>:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">yarn add webpack webpack-cli -D
+</code></pre><p class="calibre8">with <a href="https://flaviocopes.com/npm/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">npm</a>:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">npm i webpack webpack-cli --save-dev
+</code></pre><p class="calibre8">Once this is done, add this to your <code class="calibre10 pcalibre4 pcalibre3">package.json</code> file:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">{
+  <span class="hljs-comment">//...</span>
+  <span class="hljs-string">"scripts"</span>: {
+    <span class="hljs-string">"build"</span>: <span class="hljs-string">"webpack"</span>
+  }
+}
+</code></pre>
+<p class="calibre8">once this is done, you can run webpack by typing</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">yarn build
+</code></pre>
+<p class="calibre8">in the project root.</p>
+<h2 id="webpack-configuration" class="calibre13">Webpack configuration</h2>
+<p class="calibre8">By default, webpack (starting from version 4) does not require any config if you respect these conventions:</p>
+<ul class="calibre15">
+<li class="calibre16">the <strong class="calibre11">entry point</strong> of your app is <code class="calibre10 pcalibre4 pcalibre3">./src/index.js</code></li>
+<li class="calibre16">the output is put in <code class="calibre10 pcalibre4 pcalibre3">./dist/main.js</code>.</li>
+<li class="calibre16">Webpack works in production mode</li>
+</ul>
+<p class="calibre8">You can customize every little bit of webpack of course, when you need. The webpack configuration is stored in the <code class="calibre10 pcalibre4 pcalibre3">webpack.config.js</code> file, in the project root folder.</p>
+<h2 id="the-entry-point" class="calibre13">The entry point</h2>
+<p class="calibre8">By default the entry point is <code class="calibre10 pcalibre4 pcalibre3">./src/index.js</code>
+This simple example uses the <code class="calibre10 pcalibre4 pcalibre3">./index.js</code> file as a starting point:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-number">module</span>.exports = {
+  <span class="hljs-comment">/*...*/</span>
+  entry: <span class="hljs-string">'./index.js'</span>
+  <span class="hljs-comment">/*...*/</span>
+}
+</code></pre>
+<h2 id="the-output" class="calibre13">The output</h2>
+<p class="calibre8">By default the output is generated in <code class="calibre10 pcalibre4 pcalibre3">./dist/main.js</code>. This example puts the output bundle into <code class="calibre10 pcalibre4 pcalibre3">app.js</code>:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-number">module</span>.exports = {
+  <span class="hljs-comment">/*...*/</span>
+  output: {
+    path: path.resolve(__dirname, <span class="hljs-string">'dist'</span>),
+    filename: <span class="hljs-string">'app.js'</span>
+  }
+  <span class="hljs-comment">/*...*/</span>
+}
+</code></pre>
+<h2 id="loaders" class="calibre13">Loaders</h2>
+<p class="calibre8">Using webpack allows you to use <code class="calibre10 pcalibre4 pcalibre3">import</code> or <code class="calibre10 pcalibre4 pcalibre3">require</code> statements in your JavaScript code to not just include other JavaScript, but any kind of file, for example CSS.</p>
+<p class="calibre8">Webpack aims to handle all our dependencies, not just JavaScript, and loaders are one way to do that.</p>
+<p class="calibre8">For example, in your code you can use:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">import</span> <span class="hljs-string">'style.css'</span>
+</code></pre>
+<p class="calibre8">by using this loader configuration:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-number">module</span>.exports = {
+  <span class="hljs-comment">/*...*/</span>
+  <span class="hljs-number">module</span>: {
+    rules: [
+      { test: <span class="hljs-tag">/\.css$/</span>, use: <span class="hljs-string">'css-loader'</span> },
+    }]
+  }
+  <span class="hljs-comment">/*...*/</span>
+}
+</code></pre>
+<p class="calibre8">The <a href="https://flaviocopes.com/javascript-regular-expressions/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">regular expression</a> targets any CSS file.</p>
+<p class="calibre8">A loader can have options:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-number">module</span>.exports = {
+  <span class="hljs-comment">/*...*/</span>
+  <span class="hljs-number">module</span>: {
+    rules: [
+      {
+        test: <span class="hljs-tag">/\.css$/</span>,
+        use: [
+          {
+            loader: <span class="hljs-string">'css-loader'</span>,
+            options: {
+              modules: <span class="hljs-number">true</span>
+            }
+          }
+        ]
+      }
+    ]
+  }
+  <span class="hljs-comment">/*...*/</span>
+}
+</code></pre>
+<p class="calibre8">You can require multiple loaders for each rule:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-number">module</span>.exports = {
+  <span class="hljs-comment">/*...*/</span>
+  <span class="hljs-number">module</span>: {
+    rules: [
+      {
+        test: <span class="hljs-tag">/\.css$/</span>,
+        use:
+          [
+            <span class="hljs-string">'style-loader'</span>,
+            <span class="hljs-string">'css-loader'</span>,
+          ]
+      }
+    ]
+  }
+  <span class="hljs-comment">/*...*/</span>
+}
+</code></pre>
+<p class="calibre8">In this example, <code class="calibre10 pcalibre4 pcalibre3">css-loader</code>  interprets the <code class="calibre10 pcalibre4 pcalibre3">import 'style.css'</code> directive in the CSS. <code class="calibre10 pcalibre4 pcalibre3">style-loader</code> is then responsible for injecting that CSS in the DOM, using a <code class="calibre10 pcalibre4 pcalibre3">&lt;style&gt;</code> tag.</p>
+<p class="calibre8">The order matters, and it's reversed (the last is executed first).</p>
+<p class="calibre8">What kind of loaders are there? Many! <a href="https://webpack.js.org/loaders/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">You can find the full list here</a>.</p>
+<p class="calibre8">A commonly used loader is <a href="https://flaviocopes.com/babel/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">Babel</a>, which is used to transpile modern JavaScript to ES5 code:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-number">module</span>.exports = {
+  <span class="hljs-comment">/*...*/</span>
+  <span class="hljs-number">module</span>: {
+    rules: [
+      {
+        test: <span class="hljs-tag">/\.js$/</span>,
+        exclude: <span class="hljs-tag">/(node_modules|bower_components)/</span>,
+        use: {
+          loader: <span class="hljs-string">'babel-loader'</span>,
+          options: {
+            presets: [<span class="hljs-string">'@babel/preset-env'</span>]
+          }
+        }
+      }
+    ]
+  }
+  <span class="hljs-comment">/*...*/</span>
+}
+</code></pre>
+<p class="calibre8">This example makes Babel preprocess all our React/JSX files:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-number">module</span>.exports = {
+  <span class="hljs-comment">/*...*/</span>
+  <span class="hljs-number">module</span>: {
+    rules: [
+      {
+        test: <span class="hljs-tag">/\.(js|jsx)$/</span>,
+        exclude: <span class="hljs-tag">/node_modules/</span>,
+        use: <span class="hljs-string">'babel-loader'</span>
+      }
+    ]
+  },
+  resolve: {
+    extensions: [
+      <span class="hljs-string">'.js'</span>,
+      <span class="hljs-string">'.jsx'</span>
+    ]
+  }
+  <span class="hljs-comment">/*...*/</span>
+}
+</code></pre>
+<p class="calibre8"><a href="https://webpack.js.org/loaders/babel-loader/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">See the <code class="calibre10 pcalibre4 pcalibre3">babel-loader</code> options here</a>.</p>
+<h2 id="plugins" class="calibre13">Plugins</h2>
+<p class="calibre8">Plugins are like loaders, but on steroids. They can do things that loaders can't do, and they are the main building block of webpack.</p>
+<p class="calibre8">Take this example:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-number">module</span>.exports = {
+  <span class="hljs-comment">/*...*/</span>
+  plugins: [
+    <span class="hljs-keyword">new</span> HTMLWebpackPlugin()
+  ]
+  <span class="hljs-comment">/*...*/</span>
+}
+</code></pre>
+<p class="calibre8">The <code class="calibre10 pcalibre4 pcalibre3">HTMLWebpackPlugin</code> plugin has the job of automatically creating an HTML file, adding the output JS bundle path, so the JavaScript is ready to be served.</p>
+<p class="calibre8">There are <a href="https://webpack.js.org/plugins/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">lots of plugins available</a>.</p>
+<p class="calibre8">One useful plugin, <code class="calibre10 pcalibre4 pcalibre3">CleanWebpackPlugin</code>, can be used to clear the <code class="calibre10 pcalibre4 pcalibre3">dist/</code> folder before creating any output, so you don't leave files around when you change the name of the output file:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-number">module</span>.exports = {
+  <span class="hljs-comment">/*...*/</span>
+  plugins: [
+    <span class="hljs-keyword">new</span> CleanWebpackPlugin([<span class="hljs-string">'dist'</span>]),
+  ]
+  <span class="hljs-comment">/*...*/</span>
+}
+</code></pre>
+<h2 id="the-webpack-mode" class="calibre13">The webpack mode</h2>
+<p class="calibre8">This mode (introduced in webpack 4) sets the environment on which webpack works. It can be set to <code class="calibre10 pcalibre4 pcalibre3">development</code> or <code class="calibre10 pcalibre4 pcalibre3">production</code> (defaults to production, so you only set it when moving to development)</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-number">module</span>.exports = {
+  entry: <span class="hljs-string">'./index.js'</span>,
+  mode: <span class="hljs-string">'development'</span>,
+  output: {
+    path: path.resolve(__dirname, <span class="hljs-string">'dist'</span>),
+    filename: <span class="hljs-string">'app.js'</span>
+  }
+}
+</code></pre>
+<p class="calibre8">Development mode:</p>
+<ul class="calibre15">
+<li class="calibre16">builds very fast</li>
+<li class="calibre16">is less optimized than production</li>
+<li class="calibre16">does not remove comments</li>
+<li class="calibre16">provides more detailed error messages and suggestions</li>
+<li class="calibre16">provides a better debugging experience</li>
+</ul>
+<p class="calibre8">Production mode is slower to build, since it needs to generate a more optimized bundle. The resulting JavaScript file is smaller in size, as it removes many things that are not needed in production.</p>
+<p class="calibre8">I made a sample app that just prints a <code class="calibre10 pcalibre4 pcalibre3">console.log</code> statement.</p>
+<p class="calibre8">Here's the production bundle:</p>
+<p class="calibre8"><img src="production-bundle.png" alt="Production bundle" class="calibre9"/></p>
+<p class="calibre8">Here's the development bundle:</p>
+<p class="calibre8"><img src="development-bundle.png" alt="Development bundle" class="calibre9"/></p>
+<h2 id="running-webpack" class="calibre13">Running webpack</h2>
+<p class="calibre8">Webpack can be run from the command line manually if installed globally, but generally you write a script inside the <code class="calibre10 pcalibre4 pcalibre3">package.json</code> file, which is then run using <code class="calibre10 pcalibre4 pcalibre3">npm</code> or <code class="calibre10 pcalibre4 pcalibre3">yarn</code>.</p>
+<p class="calibre8">For example this <code class="calibre10 pcalibre4 pcalibre3">package.json</code> scripts definition we used before:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-string">"scripts"</span>: {
+  <span class="hljs-string">"build"</span>: <span class="hljs-string">"webpack"</span>
+}
+</code></pre>
+<p class="calibre8">allows us to run <code class="calibre10 pcalibre4 pcalibre3">webpack</code> by running</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">npm run build
+</code></pre>
+<p class="calibre8">or</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">yarn run build
+</code></pre>
+<p class="calibre8">or simply</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">yarn build
+</code></pre>
+<h2 id="watching-changes" class="calibre13">Watching changes</h2>
+<p class="calibre8">Webpack can automatically rebuild the bundle when a change in your app happens, and keep listening for the next change.</p>
+<p class="calibre8">Just add this script:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-string">"scripts"</span>: {
+  <span class="hljs-string">"watch"</span>: <span class="hljs-string">"webpack --watch"</span>
+}
+</code></pre>
+<p class="calibre8">and run</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">npm run watch
+</code></pre>
+<p class="calibre8">or</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">yarn run watch
+</code></pre>
+<p class="calibre8">or simply</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">yarn watch
+</code></pre>
+<p class="calibre8">One nice feature of the watch mode is that the bundle is only changed if the build has no errors. If there are errors, <code class="calibre10 pcalibre4 pcalibre3">watch</code> will keep listening for changes, and try to rebuild the bundle, but the current, working bundle is not affected by those problematic builds.</p>
+<h2 id="handling-images" class="calibre13">Handling images</h2>
+<p class="calibre8">Webpack allows us to use images in a very convenient way, using the <a href="https://webpack.js.org/loaders/file-loader/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12"><code class="calibre10 pcalibre4 pcalibre3">file-loader</code></a> loader.</p>
+<p class="calibre8">This simple configuration:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-number">module</span>.exports = {
+  <span class="hljs-comment">/*...*/</span>
+  <span class="hljs-number">module</span>: {
+    rules: [
+      {
+        test: <span class="hljs-tag">/\.(png|svg|jpg|gif)$/</span>,
+        use: [
+          <span class="hljs-string">'file-loader'</span>
+        ]
+      }
+    ]
+  }
+  <span class="hljs-comment">/*...*/</span>
+}
+</code></pre>
+<p class="calibre8">Allows you to import images in your JavaScript:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">import</span> Icon <span class="hljs-keyword">from</span> <span class="hljs-string">'./icon.png'</span>
+
+<span class="hljs-keyword">const</span> img = <span class="hljs-keyword">new</span> Image()
+img.src = Icon
+element.appendChild(img)
+</code></pre>
+<p class="calibre8">(<code class="calibre10 pcalibre4 pcalibre3">img</code> is an HTMLImageElement. Check the <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/Image" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">Image docs</a>)</p>
+<p class="calibre8"><code class="calibre10 pcalibre4 pcalibre3">file-loader</code> can handle other asset types as well, like fonts, CSV files, xml, and more.</p>
+<p class="calibre8">Another nice tool to work with images is the <code class="calibre10 pcalibre4 pcalibre3">url-loader</code> loader.</p>
+<p class="calibre8">This example loads any PNG file smaller than 8KB as a <a href="https://flaviocopes.com/data-urls/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">data URL</a>.</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-number">module</span>.exports = {
+  <span class="hljs-comment">/*...*/</span>
+  <span class="hljs-number">module</span>: {
+    rules: [
+      {
+        test: <span class="hljs-tag">/\.png$/</span>,
+        use: [
+          {
+            loader: <span class="hljs-string">'url-loader'</span>,
+            options: {
+              limit: <span class="hljs-number">8192</span>
+            }
+          }
+        ]
+      }
+    ]
+  }
+  <span class="hljs-comment">/*...*/</span>
+}
+</code></pre>
+<h2 id="process-your-sass-code-and-transform-it-to-css" class="calibre13">Process your SASS code and transform it to CSS</h2>
+<p class="calibre8">Using <code class="calibre10 pcalibre4 pcalibre3">sass-loader</code>, <code class="calibre10 pcalibre4 pcalibre3">css-loader</code> and <code class="calibre10 pcalibre4 pcalibre3">style-loader</code>:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-number">module</span>.exports = {
+  <span class="hljs-comment">/*...*/</span>
+  <span class="hljs-number">module</span>: {
+    rules: [
+      {
+        test: <span class="hljs-tag">/\.scss$/</span>,
+        use: [
+          <span class="hljs-string">'style-loader'</span>,
+          <span class="hljs-string">'css-loader'</span>,
+          <span class="hljs-string">'sass-loader'</span>
+        ]
+      }
+    ]
+  }
+  <span class="hljs-comment">/*...*/</span>
+}
+</code></pre>
+<h2 id="generate-source-maps" class="calibre13">Generate Source Maps</h2>
+<p class="calibre8">Since webpack bundles the code, Source Maps are mandatory to get a reference to the original file that raised an error, for example.</p>
+<p class="calibre8">You tell webpack to generate source maps using the <code class="calibre10 pcalibre4 pcalibre3">devtool</code> property of the configuration:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-number">module</span>.exports = {
+  <span class="hljs-comment">/*...*/</span>
+  devtool: <span class="hljs-string">'inline-source-map'</span>,
+  <span class="hljs-comment">/*...*/</span>
+}
+</code></pre>
+<p class="calibre8"><code class="calibre10 pcalibre4 pcalibre3">devtool</code> has <a href="https://webpack.js.org/configuration/devtool/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">many possible values</a>, the most used probably are:</p>
+<ul class="calibre15">
+<li class="calibre16"><code class="calibre10 pcalibre4 pcalibre3">none</code>: adds no source maps</li>
+<li class="calibre16"><code class="calibre10 pcalibre4 pcalibre3">source-map</code>: ideal for production, provides a separate source map that can be minimized, and adds a reference into the bundle, so development tools know that the source map is available. Of course you should configure the server to avoid shipping this, and just use it for debugging purposes</li>
+<li class="calibre16"><code class="calibre10 pcalibre4 pcalibre3">inline-source-map</code>: ideal for development, inlines the source map as a Data URL</li>
+</ul>
+
+        </div>
+    
+</div>
+
+        
+    
+
+
+</body></html>

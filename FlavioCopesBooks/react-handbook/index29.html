@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>Lifecycle events</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="description" content="Find out the React Lifecycle events and how you can use them"/>
+    <meta name="generator" content="GitBook 3.2.3"/>
+    <meta name="author" content="Flavio Copes"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link href="stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="page_styles.css" rel="stylesheet" type="text/css"/>
+</head>
+  <body class="calibre">
+        
+<div class="page">
+    
+        <h1 class="book-chapter" id="calibre_toc_30">Lifecycle events</h1>
+        <h1 class="page-title">Lifecycle events</h1>
+        <h3 class="calibre7">Find out the React Lifecycle events and how you can use them</h3>
+
+        <div class="section">
+            <p class="calibre8">React class components can have hooks for several lifecycle events.</p>
+<blockquote class="calibre19">
+<p class="calibre8">Hooks allow function components to access them too, in a different way.</p>
+</blockquote>
+<p class="calibre8">During the lifetime of a component, there's a series of events that gets called, and to each event you can hook and provide custom functionality.</p>
+<p class="calibre8">What hook is best for what functionality is something we're going to see here.</p>
+<p class="calibre8">First, there are 3 phases in a React component lifecycle:</p>
+<ul class="calibre15">
+<li class="calibre16">Mounting</li>
+<li class="calibre16">Updating</li>
+<li class="calibre16">Unmounting</li>
+</ul>
+<p class="calibre8">Let's see those 3 phases in detail and the methods that get called for each.</p>
+<h2 id="mounting" class="calibre13">Mounting</h2>
+<p class="calibre8">When mounting you have 4 lifecycle methods before the component is mounted in the DOM: the <code class="calibre10 pcalibre4 pcalibre3">constructor</code>, <code class="calibre10 pcalibre4 pcalibre3">getDerivedStateFromProps</code>, <code class="calibre10 pcalibre4 pcalibre3">render</code> and <code class="calibre10 pcalibre4 pcalibre3">componentDidMount</code>.</p>
+<h3 id="constructor" class="calibre14">Constructor</h3>
+<p class="calibre8">The constructor is the first method that is called when mounting a component.</p>
+<p class="calibre8">You usually use the constructor to set up the initial state using <code class="calibre10 pcalibre4 pcalibre3">this.state = ...</code>.</p>
+<h3 id="getderivedstatefromprops" class="calibre14">getDerivedStateFromProps()</h3>
+<p class="calibre8">When the state depends on props, <code class="calibre10 pcalibre4 pcalibre3">getDerivedStateFromProps</code> can be used to update the state based on the props value.</p>
+<p class="calibre8">It was added in React 16.3, aiming to replace the <code class="calibre10 pcalibre4 pcalibre3">componentWillReceiveProps</code> deprecated method.</p>
+<p class="calibre8">In this method you haven't access to <code class="calibre10 pcalibre4 pcalibre3">this</code> as it's a static method.</p>
+<p class="calibre8">It's a pure method, so it should not cause side effects and should return the same output when called multiple times with the same input.</p>
+<p class="calibre8">Returns an object with the updated elements of the state (or null if the state does not change)</p>
+<h3 id="render" class="calibre14">render()</h3>
+<p class="calibre8">From the render() method you return the JSX that builds the component interface.</p>
+<p class="calibre8">It's a pure method, so it should not cause side effects and should return the same output when called multiple times with the same input.</p>
+<h3 id="componentdidmount" class="calibre14">componentDidMount()</h3>
+<p class="calibre8">This method is the one that you will use to perform API calls, or process operations on the DOM.</p>
+<h2 id="updating" class="calibre13">Updating</h2>
+<p class="calibre8">When updating you have 5 lifecycle methods before the component is mounted in the DOM: the <code class="calibre10 pcalibre4 pcalibre3">getDerivedStateFromProps</code>, <code class="calibre10 pcalibre4 pcalibre3">shouldComponentUpdate</code>, <code class="calibre10 pcalibre4 pcalibre3">render</code>, <code class="calibre10 pcalibre4 pcalibre3">getSnapshotBeforeUpdate</code> and <code class="calibre10 pcalibre4 pcalibre3">componentDidUpdate</code>.</p>
+<h3 class="calibre14">getDerivedStateFromProps()</h3>
+<p class="calibre8">See the above description for this method.</p>
+<h3 id="shouldcomponentupdate" class="calibre14">shouldComponentUpdate()</h3>
+<p class="calibre8">This method returns a boolean, <code class="calibre10 pcalibre4 pcalibre3">true</code> or <code class="calibre10 pcalibre4 pcalibre3">false</code>. You use this method to tell React if it should go on with the rerendering, and defaults to <code class="calibre10 pcalibre4 pcalibre3">true</code>. You will return <code class="calibre10 pcalibre4 pcalibre3">false</code> when rerendering is expensive and you want to have more control on when this happens.</p>
+<h3 class="calibre14">render()</h3>
+<p class="calibre8">See the above description for this method.</p>
+<h3 id="getsnapshotbeforeupdate" class="calibre14">getSnapshotBeforeUpdate()</h3>
+<p class="calibre8">In this method you have access to the props and state of the previous render, and of the current render.</p>
+<p class="calibre8">Its use cases are very niche, and it's probably the one that you will use less.</p>
+<h3 id="componentdidupdate" class="calibre14">componentDidUpdate()</h3>
+<p class="calibre8">This method is called when the component has been updated in the DOM. Use this to run any 3rd party DOM API or call APIs that must be updated when the DOM changes.</p>
+<p class="calibre8">It corresponds to the <code class="calibre10 pcalibre4 pcalibre3">componentDidMount()</code> method from the mounting phase.</p>
+<h2 id="unmounting" class="calibre13">Unmounting</h2>
+<p class="calibre8">In this phase we only have one method, <code class="calibre10 pcalibre4 pcalibre3">componentWillUnmount</code>.</p>
+<h3 id="componentwillunmount" class="calibre14">componentWillUnmount()</h3>
+<p class="calibre8">The method is called when the component is removed from the DOM. Use this to do any sort of cleanup you need to perform.</p>
+<h2 id="legacy" class="calibre13">Legacy</h2>
+<p class="calibre8">If you are working on an app that uses <code class="calibre10 pcalibre4 pcalibre3">componentWillMount</code>, <code class="calibre10 pcalibre4 pcalibre3">componentWillReceiveProps</code> or <code class="calibre10 pcalibre4 pcalibre3">componentWillUpdate</code>, those were deprecated in React 16.3 and you should migrate to other lifecycle methods.</p>
+
+        </div>
+    
+</div>
+
+        
+    
+
+
+</body></html>

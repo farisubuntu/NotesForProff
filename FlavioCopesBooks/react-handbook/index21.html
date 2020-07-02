@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>Components</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="description" content="A brief introduction to React Components"/>
+    <meta name="generator" content="GitBook 3.2.3"/>
+    <meta name="author" content="Flavio Copes"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link href="stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="page_styles.css" rel="stylesheet" type="text/css"/>
+</head>
+  <body class="calibre">
+        
+<div class="page">
+    
+        <h1 class="book-chapter" id="calibre_toc_22">Components</h1>
+        <h1 class="page-title">Components</h1>
+        <h3 class="calibre7">A brief introduction to React Components</h3>
+
+        <div class="section">
+            <p class="calibre8">A component is one isolated piece of interface. For example in a typical blog homepage you might find the Sidebar component, and the Blog Posts List component. They are in turn composed of components themselves, so you could have a list of Blog post components, each for every blog post, and each with its own peculiar properties.</p>
+<p class="calibre8"><img src="1.png" alt="A react component" class="calibre9"/></p>
+<p class="calibre8">React makes it very simple: everything is a component.</p>
+<p class="calibre8">Even plain HTML tags are component on their own, and they are added by default.</p>
+<p class="calibre8">The next 2 lines are equivalent, they do the same thing. One with <strong class="calibre11">JSX</strong>, one without, by injecting <code class="calibre10 pcalibre4 pcalibre3">&lt;h1&gt;Hello World!&lt;/h1&gt;</code> into an element with id <code class="calibre10 pcalibre4 pcalibre3">app</code>.</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>
+<span class="hljs-keyword">import</span> ReactDOM <span class="hljs-keyword">from</span> <span class="hljs-string">'react-dom'</span>
+
+ReactDOM.render(<span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Hello World!<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span>, <span class="hljs-number">document</span>.getElementById(<span class="hljs-string">'app'</span>))
+
+ReactDOM.render(
+  React.DOM.h1(<span class="hljs-number">null</span>, <span class="hljs-string">'Hello World!'</span>),
+  <span class="hljs-number">document</span>.getElementById(<span class="hljs-string">'app'</span>)
+)
+</code></pre>
+<p class="calibre8">See, <code class="calibre10 pcalibre4 pcalibre3">React.DOM</code> exposed us an <code class="calibre10 pcalibre4 pcalibre3">h1</code> component. Which other HTML tags are available? All of them! You can inspect what <code class="calibre10 pcalibre4 pcalibre3">React.DOM</code> offers by typing it in the Browser Console:</p>
+<p class="calibre8"><img src="2.png" alt="Browser console inspecting React.DOM" class="calibre9"/></p>
+<p class="calibre8">(the list is longer)</p>
+<p class="calibre8">The built-in components are nice, but you'll quickly outgrow them. What React excels in is letting us compose a UI by composing custom components.</p>
+<h2 id="custom-components" class="calibre13">Custom components</h2>
+<p class="calibre8">There are 2 ways to define a component in React.</p>
+<p class="calibre8">A function component:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> BlogPostExcerpt = () =&gt; {
+  <span class="hljs-keyword">return</span> (
+    <span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Title<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Description<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+  )
+}
+</code></pre>
+<p class="calibre8">A class component:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">import</span> React, { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>
+
+<span class="hljs-name"><span class="hljs-keyword">class</span> <span class="hljs-comment">BlogPostExcerpt</span> <span class="hljs-keyword">extends</span> <span class="hljs-comment">Component</span> </span>{
+  render() {
+    <span class="hljs-keyword">return</span> (
+      <span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Title<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Description<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+    )
+  }
+}
+</code></pre>
+<p class="calibre8">Up until recently, class components were the only way to define a component that had its own state, and could access the lifecycle methods so you could do things when the component was first rendered, updated or removed.</p>
+<p class="calibre8">React Hooks changed this, so our function components are now much more powerful than ever and I believe we'll see fewer and fewer class components in the future, although it will still be perfectly valid way to create components.</p>
+<p class="calibre8">There is also a third syntax which uses the <code class="calibre10 pcalibre4 pcalibre3">ES5</code> syntax, without the classes:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>
+
+React.createClass({
+  render() {
+    <span class="hljs-keyword">return</span> (
+      <span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Title<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Description<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+    )
+  }
+})
+</code></pre>
+<p class="calibre8">You'll rarely see this in modern, <code class="calibre10 pcalibre4 pcalibre3">&gt; ES6</code> codebases.</p>
+
+        </div>
+    
+</div>
+
+        
+    
+
+
+</body></html>

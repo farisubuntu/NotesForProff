@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>Props</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="description" content="How to use props to pass data around your React components"/>
+    <meta name="generator" content="GitBook 3.2.3"/>
+    <meta name="author" content="Flavio Copes"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link href="stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="page_styles.css" rel="stylesheet" type="text/css"/>
+</head>
+  <body class="calibre">
+        
+<div class="page">
+    
+        <h1 class="book-chapter" id="calibre_toc_24">Props</h1>
+        <h1 class="page-title">Props</h1>
+        <h3 class="calibre7">How to use props to pass data around your React components</h3>
+
+        <div class="section">
+            <p class="calibre8">Props is how Components get their properties. Starting from the top component, every child component gets its props from the parent. In a function component, props is all it gets passed, and they are available by adding <code class="calibre10 pcalibre4 pcalibre3">props</code> as the function argument:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> BlogPostExcerpt = props =&gt; {
+  <span class="hljs-keyword">return</span> (
+    <span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>{props.title}<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>{props.description}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+  )
+}
+</code></pre>
+<p class="calibre8">In a class component, props are passed by default. There is no need to add anything special, and they are accessible as <code class="calibre10 pcalibre4 pcalibre3">this.props</code> in a Component instance.</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">import</span> React, { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>
+
+<span class="hljs-name"><span class="hljs-keyword">class</span> <span class="hljs-comment">BlogPostExcerpt</span> <span class="hljs-keyword">extends</span> <span class="hljs-comment">Component</span> </span>{
+  render() {
+    <span class="hljs-keyword">return</span> (
+      <span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>{this.props.title}<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>{this.props.description}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+    )
+  }
+}
+</code></pre>
+<p class="calibre8">Passing props down to child components is a great way to pass values around in your application. A component either holds data (has state) or receives data through its props.</p>
+<p class="calibre8">It gets complicated when:</p>
+<ul class="calibre15">
+<li class="calibre16">you need to access the state of a component from a child that's several levels down (all the previous children need to act as a pass-through, even if they do not need to know the state, complicating things)</li>
+<li class="calibre16">you need to access the state of a component from a completely unrelated component.</li>
+</ul>
+<h2 id="default-values-for-props" class="calibre13">Default values for props</h2>
+<p class="calibre8">If any value is not required we need to specify a default value for it if it's missing when the Component is initialized.</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">BlogPostExcerpt.propTypes = {
+  title: PropTypes.string,
+  description: PropTypes.string
+}
+
+BlogPostExcerpt.defaultProps = {
+  title: <span class="hljs-string">''</span>,
+  description: <span class="hljs-string">''</span>
+}
+</code></pre>
+<p class="calibre8">Some tooling like <a href="https://flaviocopes.com/eslint/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">ESLint</a> have the ability to enforce defining the defaultProps for a Component with some propTypes not explicitly required.</p>
+<h2 id="how-props-are-passed" class="calibre13">How props are passed</h2>
+<p class="calibre8">When initializing a component, pass the props in a way similar to HTML attributes:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> desc = <span class="hljs-string">'A description'</span>
+<span class="hljs-comment">//...</span>
+&lt;BlogPostExcerpt title=<span class="hljs-string">"A blog post"</span> description={desc} /&gt;
+</code></pre>
+<p class="calibre8">We passed the title as a plain string (something we can <em class="calibre17">only</em> do with strings!), and description as a variable.</p>
+<h2 id="children" class="calibre13">Children</h2>
+<p class="calibre8">A special prop is <code class="calibre10 pcalibre4 pcalibre3">children</code>. That contains the value of anything that is passed in the <code class="calibre10 pcalibre4 pcalibre3">body</code> of the component, for example:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-tag">&lt;<span class="hljs-name">BlogPostExcerpt</span> <span class="hljs-name">title</span>=<span class="hljs-string">"A blog post"</span> <span class="hljs-name">description</span>=<span class="hljs-string">"{desc}"</span>&gt;</span>
+  Something
+<span class="hljs-tag">&lt;/<span class="hljs-name">BlogPostExcerpt</span>&gt;</span>
+</code></pre>
+<p class="calibre8">In this case, inside <code class="calibre10 pcalibre4 pcalibre3">BlogPostExcerpt</code> we could access "Something" by looking up <code class="calibre10 pcalibre4 pcalibre3">this.props.children</code>.</p>
+<p class="calibre8">While Props allow a Component to receive properties from its parent, to be "instructed" to print some data for example, state allows a component to take on life itself, and be independent of the surrounding environment.</p>
+
+        </div>
+    
+</div>
+
+        
+    
+
+
+</body></html>

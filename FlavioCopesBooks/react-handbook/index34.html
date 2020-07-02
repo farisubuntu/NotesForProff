@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>Higher-order components</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="description" content="Find out what Higher Order Components are and how they are useful when programming a React application"/>
+    <meta name="generator" content="GitBook 3.2.3"/>
+    <meta name="author" content="Flavio Copes"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link href="stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="page_styles.css" rel="stylesheet" type="text/css"/>
+</head>
+  <body class="calibre">
+        
+<div class="page">
+    
+        <h1 class="book-chapter" id="calibre_toc_35">Higher-order components</h1>
+        <h1 class="page-title">Higher-order components</h1>
+        <h3 class="calibre7">Find out what Higher Order Components are and how they are useful when programming a React application</h3>
+
+        <div class="section">
+            <p class="calibre8">You might be familiar with Higher Order Functions in JavaScript. Those are functions that accept functions as arguments, and/or return functions.</p>
+<p class="calibre8">Two examples of those functions are <code class="calibre10 pcalibre4 pcalibre3">Array.map()</code> or <code class="calibre10 pcalibre4 pcalibre3">Array.filter()</code>.</p>
+<p class="calibre8">In React, we extend this concept to components, and so we have a <strong class="calibre11">Higher Order Component (HOC)</strong> when the component accepts a component as input and returns a component as its output.</p>
+<p class="calibre8">In general, higher order components allow you to create code that's composable and reusable, and also more encapsulated.</p>
+<p class="calibre8">We can use a HOC to add methods or properties to the state of a component, or a Redux store for example.</p>
+<p class="calibre8">You might want to use Higher Order Components when you want to enhance an existing component, operate on the state or props, or its rendered markup.</p>
+<p class="calibre8">There is a convention of prepending a Higher Order Component with the <code class="calibre10 pcalibre4 pcalibre3">with</code> string (it's a convention, so it's not mandatory), so if you have a <code class="calibre10 pcalibre4 pcalibre3">Button</code> component, its HOC counterpart should be called <code class="calibre10 pcalibre4 pcalibre3">withButton</code>.</p>
+<p class="calibre8">Let's create one.</p>
+<p class="calibre8">The simplest example ever of a HOC is one that simply returns the component unaltered:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> withButton = Button =&gt; () =&gt; <span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">Button</span> /&gt;</span>
+</span></code></pre>
+<p class="calibre8">Let's make this a little bit more useful and add a property to that button, in addition to all the props it already came with, the color:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> withButton = Element =&gt; props =&gt; <span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">Button</span> {<span class="hljs-name">...props</span>} <span class="hljs-name">color</span>=<span class="hljs-string">"red"</span> /&gt;</span>
+</span></code></pre>
+<p class="calibre8">We use this HOC in a component JSX:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> Button = () =&gt; {
+  <span class="hljs-keyword">return</span> <span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>test<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span>
+}
+
+<span class="hljs-keyword">const</span> WrappedButton = withButton(Button)
+</code></pre>
+<p class="calibre8">and we can finally render the WrappedButton component in our app JSX:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-comment">App</span>(<span class="hljs-number"></span>) </span>{
+  <span class="hljs-keyword">return</span> (
+    <span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-name">className</span>=<span class="hljs-string">"App"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Hello<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">WrappedButton</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  )
+}
+</span></code></pre>
+<p class="calibre8">This is a very simple example but hopefully you can get the gist of HOCs before applying those concepts to more complex scenarios.</p>
+
+        </div>
+    
+</div>
+
+        
+    
+
+
+</body></html>

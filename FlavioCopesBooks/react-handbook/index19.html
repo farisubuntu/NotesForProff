@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>Unidirectional Data Flow</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="description" content="Working with React you might encounter the term Unidirectional Data Flow. What does it mean?"/>
+    <meta name="generator" content="GitBook 3.2.3"/>
+    <meta name="author" content="Flavio Copes"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link href="stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="page_styles.css" rel="stylesheet" type="text/css"/>
+</head>
+  <body class="calibre">
+        
+<div class="page">
+    
+        <h1 class="book-chapter" id="calibre_toc_20">Unidirectional Data Flow</h1>
+        <h1 class="page-title">Unidirectional Data Flow</h1>
+        <h3 class="calibre7">Working with React you might encounter the term Unidirectional Data Flow. What does it mean?</h3>
+
+        <div class="section">
+            <p class="calibre8">Unidirectional Data Flow is not a concept unique to React, but as a JavaScript developer this might be the first time you hear it.</p>
+<p class="calibre8">In general this concept means that data has one, and only one, way to be transferred to other parts of the application.</p>
+<p class="calibre8">In React this means that:</p>
+<ul class="calibre15">
+<li class="calibre16">state is passed to the view and to child components</li>
+<li class="calibre16">actions are triggered by the view</li>
+<li class="calibre16">actions can update the state</li>
+<li class="calibre16">the state change is passed to the view and to child components</li>
+</ul>
+<p class="calibre8"><img src="view-actions-state.png" alt="View-actions-state" class="calibre9"/></p>
+<p class="calibre8">The view is a result of the application state. State can only change when actions happen. When actions happen, the state is updated.</p>
+<p class="calibre8">Thanks to one-way bindings, data cannot flow in the opposite way (as would happen with two-way bindings, for example), and this has some key advantages:</p>
+<ul class="calibre15">
+<li class="calibre16">it's less error prone, as you have more control over your data</li>
+<li class="calibre16">it's easier to debug, as you know <em class="calibre17">what</em> is coming from <em class="calibre17">where</em></li>
+<li class="calibre16">it's more efficient, as the library already knows what the boundaries are of each part of the system</li>
+</ul>
+<p class="calibre8">A state is always owned by one Component. Any data that's affected by this state can only affect Components below it: its children.</p>
+<p class="calibre8">Changing state on a Component will never affect its parent, or its siblings, or any other Component in the application: just its children.</p>
+<p class="calibre8">This is the reason that the state is often moved up in the Component tree, so that it can be shared between components that need to access it.</p>
+
+        </div>
+    
+</div>
+
+        
+    
+
+
+</body></html>

@@ -1,0 +1,147 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>Gatsby</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="description" content="Gatsby is a platform for building apps and websites using React"/>
+    <meta name="generator" content="GitBook 3.2.3"/>
+    <meta name="author" content="Flavio Copes"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link href="stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="page_styles.css" rel="stylesheet" type="text/css"/>
+</head>
+  <body class="calibre">
+        
+<div class="page">
+    
+        <h1 class="book-chapter" id="calibre_toc_50">Gatsby</h1>
+        <h1 class="page-title">Gatsby</h1>
+        <h3 class="calibre7">Gatsby is a platform for building apps and websites using React</h3>
+
+        <div class="section">
+            <p class="calibre8"><img src="banner3.png" alt="Gatsby" class="calibre9"/></p>
+<p class="calibre8">Gatsby is a platform for building apps and websites using React.</p>
+<p class="calibre8">It is one of the tools that allow you to build on a set of technologies and practices collectively known as <a href="https://flaviocopes.com/jamstack/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">JAMstack</a>.</p>
+<p class="calibre8">Gatsby is one of the cool kids in the Frontend Development space right now. Why? I think the reasons are:</p>
+<ul class="calibre15">
+<li class="calibre16">the explosion of the JAMstack approach to building Web Apps and Web Sites</li>
+<li class="calibre16">the rapid adoption of the <a href="https://flaviocopes.com/progressive-web-apps/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">Progressive Web Apps</a> technology in the industry, which is one of the key features of Gatsby</li>
+<li class="calibre16">it's built in <a href="https://flaviocopes.com/react/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">React</a> and <a href="https://flaviocopes.com/graphql/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">GraphQL</a>, which are two very popular and rising technologies</li>
+<li class="calibre16">it's really powerful</li>
+<li class="calibre16">it's fast</li>
+<li class="calibre16">the documentation is great</li>
+<li class="calibre16">the network effect (people use it, create sites, make tutorials, people know more about it, creating a cycle)</li>
+<li class="calibre16">everything is JavaScript (no need to learn a new templating language)</li>
+<li class="calibre16">it hides the complexity, in the beginning, but allows us access into every step to customize</li>
+</ul>
+<p class="calibre8">All those are great points, and Gatsby is definitely worth a look.</p>
+<h2 id="how-does-it-work" class="calibre13">How does it work?</h2>
+<p class="calibre8">With Gatsby, your applications are built using React components.</p>
+<p class="calibre8">The content you'll render in a site is generally written using Markdown, but you can use any kind of data source, like an headless CMS or a web service like Contentful.</p>
+<p class="calibre8">Gatsby builds the site, and it's compiled to static HTML which can be deployed on any Web Server you want, like <a href="https://flaviocopes.com/netlify/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">Netlify</a>, AWS S3, GitHub Pages, regular hosting providers, PAAS and more. All you need is a place that serves plain HTTP pages and your assets to the client.</p>
+<p class="calibre8">I mentioned Progressive Web Apps in the list. Gatsby automatically generates your site as a PWA, with a service worker that speeds up page loading and resource caching.</p>
+<p class="calibre8">You can enhance the functionality of Gatsby via plugins.</p>
+<h2 id="installation" class="calibre13">Installation</h2>
+<p class="calibre8">You can install Gatsby by simply running this in your <a href="https://flaviocopes.com/macos-terminal/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">terminal</a>:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">npm install -g gatsby-cli
+</code></pre>
+<p class="calibre8">This installs the <code class="calibre10 pcalibre4 pcalibre3">gatsby</code> CLI utility.</p>
+<p class="calibre8">(when a new version is out, update it by calling this command again)</p>
+<p class="calibre8">You create a new "Hello World" site by running</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">gatsby new mysite https://github.com/gatsbyjs/gatsby-starter-hello-world
+</code></pre>
+<p class="calibre8">This command creates a brand new Gatsby site in the <code class="calibre10 pcalibre4 pcalibre3">mysite</code> folder, using the <em class="calibre17">starter</em> available at <a href="https://github.com/gatsbyjs/gatsby-starter-hello-world" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">https://github.com/gatsbyjs/gatsby-starter-hello-world</a>.</p>
+<p class="calibre8"><img src="11.png" alt="" class="calibre9"/></p>
+<p class="calibre8">A <em class="calibre17">starter</em> is a sample site that you can build upon. Another common starter is <code class="calibre10 pcalibre4 pcalibre3">default</code>, available at <a href="https://github.com/gatsbyjs/gatsby-starter-default" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">https://github.com/gatsbyjs/gatsby-starter-default</a>.</p>
+<blockquote class="calibre19">
+<p class="calibre8"><a href="https://www.gatsbyjs.org/docs/gatsby-starters/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">Here you can find a list of all the starters you can use</a></p>
+</blockquote>
+<h2 id="running-the-gatsby-site" class="calibre13">Running the Gatsby site</h2>
+<p class="calibre8">After the terminal has finished installing the starter, you can run the website by calling</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-number">cd</span> mysite
+gatsby develop
+</code></pre>
+<p class="calibre8">which will start up a new Web Server and serve the site on port 8000 on localhost.</p>
+<p class="calibre8"><img src="21.png" alt="" class="calibre9"/></p>
+<p class="calibre8">And here is our Hello World starter in action:</p>
+<p class="calibre8"><img src="3.png" alt="" class="calibre9"/></p>
+<h2 id="inspecting-the-site" class="calibre13">Inspecting the site</h2>
+<p class="calibre8">If you open the site you created with your favorite code editor (I use <a href="https://flaviocopes.com/vscode/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">VS Code</a>), you'll find there are 3 folders:</p>
+<ul class="calibre15">
+<li class="calibre16"><code class="calibre10 pcalibre4 pcalibre3">.cache</code>, an hidden folder that contains the Gatsby internals, nothing you should change right now</li>
+<li class="calibre16"><code class="calibre10 pcalibre4 pcalibre3">public</code>, which contains the resulting website once you build it</li>
+<li class="calibre16"><code class="calibre10 pcalibre4 pcalibre3">src</code> contains the React components, in this case just the <code class="calibre10 pcalibre4 pcalibre3">index</code> component</li>
+<li class="calibre16"><code class="calibre10 pcalibre4 pcalibre3">static</code> which will contain the static resources like CSS and images</li>
+</ul>
+<p class="calibre8"><img src="4.png" alt="" class="calibre9"/></p>
+<p class="calibre8">Now, making a simple change to the default page is easy, just open <code class="calibre10 pcalibre4 pcalibre3">src/pages/index.js</code> and change "Hello world!" to something else, and save. The browser should instantly <strong class="calibre11">hot reload</strong> the component (which means the page does not actually refresh, but the content changes - a trick made possible by the underlying technology).</p>
+<p class="calibre8">To add a second page, just create another .js file in this folder, with the same content of <code class="calibre10 pcalibre4 pcalibre3">index.js</code> (tweak the content) and save it.</p>
+<p class="calibre8">For example I created a <code class="calibre10 pcalibre4 pcalibre3">second.js</code> file with this content:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> () =&gt; <span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>Second page!<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+</code></pre>
+<p class="calibre8">and I opened the browser to <a href="http://localhost:8000/second" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">http://localhost:8000/second</a>:</p>
+<p class="calibre8"><img src="5.png" alt="" class="calibre9"/></p>
+<h2 id="linking-pages" class="calibre13">Linking pages</h2>
+<p class="calibre8">You can link those pages by importing a Gatsby-provided React component called <code class="calibre10 pcalibre4 pcalibre3">Link</code>:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">import</span> { Link } <span class="hljs-keyword">from</span> <span class="hljs-string">"gatsby"</span>
+</code></pre>
+<p class="calibre8">and using it in your component <a href="https://flaviocopes.com/jsx/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">JSX</a>:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">&lt;Link to="/second/"&gt;Second&lt;/Link&gt;
+</code></pre>
+<h2 id="adding-css" class="calibre13">Adding CSS</h2>
+<p class="calibre8">You can import any CSS file using a JavaScript import:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">import</span> <span class="hljs-string">'./index.css'</span>
+</code></pre>
+<p class="calibre8">You can use React styling:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">&lt;p style={{
+    margin: '0 auto',
+    padding: '20px'
+  }}&gt;Hello world&lt;/p&gt;
+</code></pre>
+<h2 id="using-plugins" class="calibre13">Using plugins</h2>
+<p class="calibre8">Gatsby provides lots of things out of the box, but many other functionalities are provided by <a href="https://www.gatsbyjs.org/plugins/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">plugins</a>.</p>
+<p class="calibre8">There are 3 kind of plugins:</p>
+<ul class="calibre15">
+<li class="calibre16"><strong class="calibre11">source plugins</strong> fetch data from a source. Create nodes that can be then filtered by transformer plugins</li>
+<li class="calibre16"><strong class="calibre11">transformer plugins</strong> transform the data provided by source plugins into something Gatsby can use</li>
+<li class="calibre16"><strong class="calibre11">functional plugins</strong> implement some kind of functionality, like adding sitemap support or more</li>
+</ul>
+<p class="calibre8">Some commonly used plugins are:</p>
+<ul class="calibre15">
+<li class="calibre16"><a href="https://www.gatsbyjs.org/packages/gatsby-plugin-react-helmet/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">gatsby-plugin-react-helmet</a> which allows to edit the <code class="calibre10 pcalibre4 pcalibre3">head</code> tag content</li>
+<li class="calibre16"><a href="https://www.gatsbyjs.org/packages/gatsby-plugin-catch-links/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">gatsby-plugin-catch-links</a> which uses the <a href="https://flaviocopes.com/history-api/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">History API</a> to prevent the browser reloading the page when a link is clicked, loading the new content using AJAX instead</li>
+</ul>
+<p class="calibre8">A Gatsby plugin is installed in 2 steps. First you install it using <code class="calibre10 pcalibre4 pcalibre3">npm</code>, then you add it to the Gatsby configuration in <code class="calibre10 pcalibre4 pcalibre3">gatsby-config.js</code>.</p>
+<p class="calibre8">For example you can install the Catch Links plugin:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">npm install gatsby-plugin-<span class="hljs-keyword">catch</span>-links
+</code></pre>
+<p class="calibre8">In <code class="calibre10 pcalibre4 pcalibre3">gatsby-config.js</code> (create it if you don't have it, in the website root folder), add the plugin to the <code class="calibre10 pcalibre4 pcalibre3">plugins</code> exported array:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-number">module</span>.exports = {
+  plugins: [<span class="hljs-string">'gatsby-plugin-catch-links'</span>]
+}
+</code></pre>
+<p class="calibre8">That's it, the plugin will now do its job.</p>
+<h2 id="building-the-static-website" class="calibre13">Building the static website</h2>
+<p class="calibre8">Once you are done tweaking the site and you want to generate the production static site, you will call</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">gatsby build
+</code></pre>
+<p class="calibre8">At this point you can check that it all works as you expect by starting a local Web Server using</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">gatsby serve
+</code></pre>
+<p class="calibre8">which will render the site as close as possible to how you will see it in production.</p>
+<h2 id="deployment" class="calibre13">Deployment</h2>
+<p class="calibre8">Once you build the site using <code class="calibre10 pcalibre4 pcalibre3">gatsby build</code>, all you need to do is to deploy the result  contained in the <code class="calibre10 pcalibre4 pcalibre3">public</code> folder.</p>
+<p class="calibre8">Depending on the solution you choose, you'll need different steps here, but generally you'll push to a Git repository and let the Git post-commit hooks do the job of deploying.</p>
+<p class="calibre8"><a href="https://www.gatsbyjs.org/docs/deploying-and-hosting/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">Here are some great guides for some popular hosting platforms</a>.</p>
+
+        </div>
+    
+</div>
+
+        
+    
+
+
+</body></html>

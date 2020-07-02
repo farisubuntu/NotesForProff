@@ -1,0 +1,125 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>Styled Components</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="description" content="Styled Components are one of the new ways to use CSS in modern JavaScript. It is the meant to be a successor of CSS Modules, a way to write CSS that's scoped to a single component, and not leak to any other element in the page"/>
+    <meta name="generator" content="GitBook 3.2.3"/>
+    <meta name="author" content="Flavio Copes"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link href="stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="page_styles.css" rel="stylesheet" type="text/css"/>
+</head>
+  <body class="calibre">
+        
+<div class="page">
+    
+        <h1 class="book-chapter" id="calibre_toc_41">Styled Components</h1>
+        <h1 class="page-title">Styled Components</h1>
+        <h3 class="calibre7">Styled Components are one of the new ways to use CSS in modern JavaScript. It is the meant to be a successor of CSS Modules, a way to write CSS that's scoped to a single component, and not leak to any other element in the page</h3>
+
+        <div class="section">
+            <h2 id="a-brief-history" class="calibre13">A brief history</h2>
+<p class="calibre8">Once upon a time, the Web was really simple and CSS didn't even exist. We laid out pages using <strong class="calibre11">tables</strong> and frames. Good times.</p>
+<p class="calibre8">Then <strong class="calibre11">CSS</strong> came to life, and after some time it became clear that frameworks could greatly help especially in building grids and layouts, Bootstrap and Foundation playing a big part in this.</p>
+<p class="calibre8">Preprocessors like <strong class="calibre11">SASS</strong> and others helped a lot to slow down the adoption of frameworks, and to better organize the code, conventions like <strong class="calibre11">BEM</strong> and <strong class="calibre11">SMACSS</strong> grew in use, especially within teams.</p>
+<p class="calibre8">Conventions are not a solution to everything, and they are complex to remember, so in the last few years with the increasing adoption of <a href="https://flaviocopes.com/javascript/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">JavaScript</a> and build processes in every frontend project, CSS found its way into JavaScript (<strong class="calibre11">CSS-in-JS</strong>).</p>
+<p class="calibre8">New tools explored new ways of doing CSS-in-JS and a few succeeded with increasing popularity:</p>
+<ul class="calibre15">
+<li class="calibre16">React Style</li>
+<li class="calibre16">jsxstyle</li>
+<li class="calibre16">Radium</li>
+</ul>
+<p class="calibre8">and more.</p>
+<h2 id="introducing-styled-components" class="calibre13">Introducing Styled Components</h2>
+<p class="calibre8">One of the most popular of these tools is <strong class="calibre11">Styled Components</strong>.</p>
+<p class="calibre8">It is the meant to be a successor to <strong class="calibre11">CSS Modules</strong>, a way to write CSS that's scoped to a single component, and not leak to any other element in the page.</p>
+<p class="calibre8">(more on CSS modules <a href="https://css-tricks.com/css-modules-part-1-need/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">here</a> and <a href="https://glenmaddern.com/articles/css-modules" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">here</a>)</p>
+<p class="calibre8">Styled Components allow you to write plain CSS in your components without worrying about class name collisions.</p>
+<h2 id="installation" class="calibre13">Installation</h2>
+<p class="calibre8">Simply install styled-components using <a href="https://flaviocopes.com/npm/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">npm</a> or <a href="https://flaviocopes.com/yarn/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">yarn</a>:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">npm install styled-components
+yarn add styled-components
+</code></pre>
+<p class="calibre8">That's it! Now all you have to do is to add this import:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">import</span> styled <span class="hljs-keyword">from</span> <span class="hljs-string">'styled-components'</span>
+</code></pre>
+<h2 id="your-first-styled-component" class="calibre13">Your first styled component</h2>
+<p class="calibre8">With the <code class="calibre10 pcalibre4 pcalibre3">styled</code> object imported, you can now start creating Styled Components. Here's the first one:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> Button = styled.button<span class="hljs-string">`
+  font-size: 1.5em;
+  background-color: black;
+  color: white;
+`</span>
+</code></pre>
+<p class="calibre8"><code class="calibre10 pcalibre4 pcalibre3">Button</code> is now a <a href="https://flaviocopes.com/react/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">React</a> Component in all its greatness.</p>
+<p class="calibre8">We created it using a function of the styled object, called <code class="calibre10 pcalibre4 pcalibre3">button</code> in this case, and passing some CSS properties in a <a href="https://flaviocopes.com/ecmascript/#template-literals" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">template literal</a>.</p>
+<p class="calibre8">Now this component can be rendered in our container using the normal React syntax:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">render(<span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">Button</span> /&gt;</span>)
+</span></code></pre>
+<p class="calibre8">Styled Components offer other functions you can use to create other components, not just <code class="calibre10 pcalibre4 pcalibre3">button</code>, like <code class="calibre10 pcalibre4 pcalibre3">section</code>, <code class="calibre10 pcalibre4 pcalibre3">h1</code>, <code class="calibre10 pcalibre4 pcalibre3">input</code> and many others.</p>
+<p class="calibre8">The syntax used, with the backtick, might be weird at first, but it's called <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">Tagged Templates</a>, it's plain JavaScript and it's a way to pass an argument to the function.</p>
+<h2 id="using-props-to-customize-components" class="calibre13">Using props to customize components</h2>
+<p class="calibre8">When you pass some props to a Styled Component, it will pass them down to the <a href="https://flaviocopes.com/dom/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">DOM</a> node mounted.</p>
+<p class="calibre8">For example here's how we pass the <code class="calibre10 pcalibre4 pcalibre3">placeholder</code> and <code class="calibre10 pcalibre4 pcalibre3">type</code> props to an <code class="calibre10 pcalibre4 pcalibre3">input</code> component:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> Input = styled.input<span class="hljs-string">`
+  //...
+`</span>
+
+render(
+  <span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">Input</span> <span class="hljs-name">placeholder</span>=<span class="hljs-string">"..."</span> <span class="hljs-name">type</span>=<span class="hljs-string">"text"</span> /&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+)
+</span></code></pre>
+<p class="calibre8">This will do just what you think, inserting those props as HTML attributes.</p>
+<p class="calibre8">Props instead of just being blindly passed down to the <a href="https://flaviocopes.com/dom/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">DOM</a> can also be used to customize a component based on the prop value. Here's an example:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> Button = styled.button<span class="hljs-string">`
+  background: <span class="hljs-name">${props =&gt; (props.primary ? 'black' : 'white')}</span>;
+  color: <span class="hljs-name">${props =&gt; (props.primary ? 'white' : 'black')}</span>;
+`</span>
+
+render(
+  <span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">Button</span>&gt;</span>A normal button<span class="hljs-tag">&lt;/<span class="hljs-name">Button</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">Button</span>&gt;</span>A normal button<span class="hljs-tag">&lt;/<span class="hljs-name">Button</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">Button</span> <span class="hljs-name">primary</span>&gt;</span>The primary button<span class="hljs-tag">&lt;/<span class="hljs-name">Button</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+)
+</code></pre>
+<p class="calibre8">Setting the <code class="calibre10 pcalibre4 pcalibre3">primary</code> prop changes the color of the button.</p>
+<h2 id="extending-an-existing-styled-component" class="calibre13">Extending an existing Styled Component</h2>
+<p class="calibre8">If you have one component and you want to create a similar one, just styled slightly differently, you can use <code class="calibre10 pcalibre4 pcalibre3">extend</code>:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> Button = styled.button<span class="hljs-string">`
+  color: black;
+  //...
+`</span>
+
+<span class="hljs-keyword">const</span> WhiteButton = Button.extend<span class="hljs-string">`
+  color: white;
+`</span>
+
+render(
+  <span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">Button</span>&gt;</span>A black button, like all buttons<span class="hljs-tag">&lt;/<span class="hljs-name">Button</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">WhiteButton</span>&gt;</span>A white button<span class="hljs-tag">&lt;/<span class="hljs-name">WhiteButton</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+)
+</code></pre>
+<h2 id="its-regular-css" class="calibre13">It's Regular CSS</h2>
+<p class="calibre8">In Styled Components, you can use the CSS you already know and love. It's just plain CSS. It is not pseudo CSS nor inline CSS with its limitations.</p>
+<p class="calibre8">You can use media queries, <a href="https://tabatkins.github.io/specs/css-nesting/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">nesting</a> and anything else you might need.</p>
+<h2 id="using-vendor-prefixes" class="calibre13">Using Vendor Prefixes</h2>
+<p class="calibre8">Styled Components automatically add all the vendor prefixes needed, so you don't need to worry about this problem.</p>
+<h2 id="conclusion" class="calibre13">Conclusion</h2>
+<p class="calibre8">That's it for this Styled Components introduction! These concepts will help you get an understanding of the concept and help you get up and running with this way of using CSS in JavaScript.</p>
+
+        </div>
+    
+</div>
+
+        
+    
+
+
+</body></html>

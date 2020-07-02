@@ -1,0 +1,173 @@
+<?xml version='1.0' encoding='utf-8'?>
+<package xmlns="http://www.idpf.org/2007/opf" unique-identifier="uuid_id" version="2.0">
+  <metadata xmlns:calibre="http://calibre.kovidgoyal.net/2009/metadata" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:opf="http://www.idpf.org/2007/opf" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <meta name="calibre:timestamp" content="2019-01-15T22:04:18.408298+00:00"/>
+    <dc:creator opf:file-as="Unknown" opf:role="aut">Flavio Copes</dc:creator>
+    <dc:identifier id="uuid_id" opf:scheme="uuid">30aa4e9c-d918-414e-93e9-599415f4b026</dc:identifier>
+    <dc:language>en</dc:language>
+    <dc:contributor opf:role="bkp">GitBook</dc:contributor>
+    <dc:title>The React Handbook</dc:title>
+    <meta name="cover" content="cover"/>
+    <dc:publisher>GitBook</dc:publisher>
+  </metadata>
+  <manifest>
+    <item href="cover.jpg" id="cover" media-type="image/jpeg"/>
+    <item href="1.png" id="added13" media-type="image/png"/>
+    <item href="11.png" id="added40" media-type="image/png"/>
+    <item href="2.png" id="added14" media-type="image/png"/>
+    <item href="21.png" id="added41" media-type="image/png"/>
+    <item href="3.png" id="added42" media-type="image/png"/>
+    <item href="4.png" id="added43" media-type="image/png"/>
+    <item href="404-nextjs.png" id="added36" media-type="image/png"/>
+    <item href="5.png" id="added44" media-type="image/png"/>
+    <item href="SUMMARY.html" id="html" media-type="application/xhtml+xml"/>
+    <item href="banner.jpg" id="added9" media-type="image/jpeg"/>
+    <item href="banner.png" id="added12" media-type="image/png"/>
+    <item href="banner1.jpg" id="added15" media-type="image/jpeg"/>
+    <item href="banner1.png" id="added34" media-type="image/png"/>
+    <item href="banner2.jpg" id="added17" media-type="image/jpeg"/>
+    <item href="banner2.png" id="added35" media-type="image/png"/>
+    <item href="banner3.jpg" id="added21" media-type="image/jpeg"/>
+    <item href="banner3.png" id="added39" media-type="image/png"/>
+    <item href="banner4.jpg" id="added23" media-type="image/jpeg"/>
+    <item href="browser-support.png" id="added10" media-type="image/png"/>
+    <item href="bye.png" id="added45" media-type="image/png"/>
+    <item href="codesandbox.png" id="added8" media-type="image/png"/>
+    <item href="cra-browser.png" id="added7" media-type="image/png"/>
+    <item href="cra-console.png" id="added6" media-type="image/png"/>
+    <item href="create-react-app-finished.png" id="added5" media-type="image/png"/>
+    <item href="create-react-app-running.png" id="added4" media-type="image/png"/>
+    <item href="css-modules.png" id="added16" media-type="image/png"/>
+    <item href="development-bundle.png" id="added20" media-type="image/png"/>
+    <item href="error-with-snapshot.png" id="added31" media-type="image/png"/>
+    <item href="first-test.png" id="added32" media-type="image/png"/>
+    <item href="index.html" id="html1" media-type="application/xhtml+xml"/>
+    <item href="index1.html" id="html2" media-type="application/xhtml+xml"/>
+    <item href="index10.html" id="html11" media-type="application/xhtml+xml"/>
+    <item href="index11.html" id="html12" media-type="application/xhtml+xml"/>
+    <item href="index12.html" id="html13" media-type="application/xhtml+xml"/>
+    <item href="index13.html" id="html14" media-type="application/xhtml+xml"/>
+    <item href="index14.html" id="html15" media-type="application/xhtml+xml"/>
+    <item href="index15.html" id="html16" media-type="application/xhtml+xml"/>
+    <item href="index16.html" id="html17" media-type="application/xhtml+xml"/>
+    <item href="index17.html" id="html18" media-type="application/xhtml+xml"/>
+    <item href="index18.html" id="html19" media-type="application/xhtml+xml"/>
+    <item href="index19.html" id="html20" media-type="application/xhtml+xml"/>
+    <item href="index2.html" id="html3" media-type="application/xhtml+xml"/>
+    <item href="index20.html" id="html21" media-type="application/xhtml+xml"/>
+    <item href="index21.html" id="html22" media-type="application/xhtml+xml"/>
+    <item href="index22.html" id="html23" media-type="application/xhtml+xml"/>
+    <item href="index23.html" id="html24" media-type="application/xhtml+xml"/>
+    <item href="index24.html" id="html25" media-type="application/xhtml+xml"/>
+    <item href="index25.html" id="html26" media-type="application/xhtml+xml"/>
+    <item href="index26.html" id="html27" media-type="application/xhtml+xml"/>
+    <item href="index27.html" id="html28" media-type="application/xhtml+xml"/>
+    <item href="index28.html" id="html29" media-type="application/xhtml+xml"/>
+    <item href="index29.html" id="html30" media-type="application/xhtml+xml"/>
+    <item href="index3.html" id="html4" media-type="application/xhtml+xml"/>
+    <item href="index30.html" id="html31" media-type="application/xhtml+xml"/>
+    <item href="index31.html" id="html32" media-type="application/xhtml+xml"/>
+    <item href="index32.html" id="html33" media-type="application/xhtml+xml"/>
+    <item href="index33.html" id="html34" media-type="application/xhtml+xml"/>
+    <item href="index34.html" id="html35" media-type="application/xhtml+xml"/>
+    <item href="index35.html" id="html36" media-type="application/xhtml+xml"/>
+    <item href="index36.html" id="html37" media-type="application/xhtml+xml"/>
+    <item href="index37.html" id="html38" media-type="application/xhtml+xml"/>
+    <item href="index38.html" id="html39" media-type="application/xhtml+xml"/>
+    <item href="index39.html" id="html40" media-type="application/xhtml+xml"/>
+    <item href="index4.html" id="html5" media-type="application/xhtml+xml"/>
+    <item href="index40.html" id="html41" media-type="application/xhtml+xml"/>
+    <item href="index41.html" id="html42" media-type="application/xhtml+xml"/>
+    <item href="index42.html" id="html43" media-type="application/xhtml+xml"/>
+    <item href="index43.html" id="html44" media-type="application/xhtml+xml"/>
+    <item href="index44.html" id="html45" media-type="application/xhtml+xml"/>
+    <item href="index45.html" id="html46" media-type="application/xhtml+xml"/>
+    <item href="index46.html" id="html47" media-type="application/xhtml+xml"/>
+    <item href="index47.html" id="html48" media-type="application/xhtml+xml"/>
+    <item href="index48.html" id="html49" media-type="application/xhtml+xml"/>
+    <item href="index49.html" id="html50" media-type="application/xhtml+xml"/>
+    <item href="index5.html" id="html6" media-type="application/xhtml+xml"/>
+    <item href="index50.html" id="html51" media-type="application/xhtml+xml"/>
+    <item href="index6.html" id="html7" media-type="application/xhtml+xml"/>
+    <item href="index7.html" id="html8" media-type="application/xhtml+xml"/>
+    <item href="index8.html" id="html9" media-type="application/xhtml+xml"/>
+    <item href="index9.html" id="html10" media-type="application/xhtml+xml"/>
+    <item href="jest-async-test-await-async.png" id="added30" media-type="image/png"/>
+    <item href="jest-async-test-callback.png" id="added27" media-type="image/png"/>
+    <item href="jest-async-test-catch.png" id="added29" media-type="image/png"/>
+    <item href="jest-async-test-promises.png" id="added28" media-type="image/png"/>
+    <item href="logo.png" id="added22" media-type="image/png"/>
+    <item href="page_styles.css" id="page_css" media-type="text/css"/>
+    <item href="passing-tests.png" id="added25" media-type="image/png"/>
+    <item href="posts-list.png" id="added37" media-type="image/png"/>
+    <item href="production-bundle.png" id="added19" media-type="image/png"/>
+    <item href="react-handbook.jpg" id="added3" media-type="image/jpeg"/>
+    <item href="running-webpack-cli.png" id="added18" media-type="image/png"/>
+    <item href="simple-test-running-vs-code.png" id="added26" media-type="image/png"/>
+    <item href="single-post.png" id="added38" media-type="image/png"/>
+    <item href="stylesheet.css" id="css" media-type="text/css"/>
+    <item href="test-details.png" id="added33" media-type="image/png"/>
+    <item href="testing-with-yarn.png" id="added24" media-type="image/png"/>
+    <item href="titlepage.xhtml" id="titlepage" media-type="application/xhtml+xml"/>
+    <item href="view-actions-state.png" id="added11" media-type="image/png"/>
+    <item href="toc.ncx" id="ncx" media-type="application/x-dtbncx+xml"/>
+  </manifest>
+  <spine toc="ncx">
+    <itemref idref="titlepage"/>
+    <itemref idref="html"/>
+    <itemref idref="html1"/>
+    <itemref idref="html2"/>
+    <itemref idref="html3"/>
+    <itemref idref="html4"/>
+    <itemref idref="html5"/>
+    <itemref idref="html6"/>
+    <itemref idref="html7"/>
+    <itemref idref="html8"/>
+    <itemref idref="html9"/>
+    <itemref idref="html10"/>
+    <itemref idref="html11"/>
+    <itemref idref="html12"/>
+    <itemref idref="html13"/>
+    <itemref idref="html14"/>
+    <itemref idref="html15"/>
+    <itemref idref="html16"/>
+    <itemref idref="html17"/>
+    <itemref idref="html18"/>
+    <itemref idref="html19"/>
+    <itemref idref="html20"/>
+    <itemref idref="html21"/>
+    <itemref idref="html22"/>
+    <itemref idref="html23"/>
+    <itemref idref="html24"/>
+    <itemref idref="html25"/>
+    <itemref idref="html26"/>
+    <itemref idref="html27"/>
+    <itemref idref="html28"/>
+    <itemref idref="html29"/>
+    <itemref idref="html30"/>
+    <itemref idref="html31"/>
+    <itemref idref="html32"/>
+    <itemref idref="html33"/>
+    <itemref idref="html34"/>
+    <itemref idref="html35"/>
+    <itemref idref="html36"/>
+    <itemref idref="html37"/>
+    <itemref idref="html38"/>
+    <itemref idref="html39"/>
+    <itemref idref="html40"/>
+    <itemref idref="html41"/>
+    <itemref idref="html42"/>
+    <itemref idref="html43"/>
+    <itemref idref="html44"/>
+    <itemref idref="html45"/>
+    <itemref idref="html46"/>
+    <itemref idref="html47"/>
+    <itemref idref="html48"/>
+    <itemref idref="html49"/>
+    <itemref idref="html50"/>
+    <itemref idref="html51"/>
+  </spine>
+  <guide>
+    <reference href="titlepage.xhtml" title="Cover" type="cover"/>
+  </guide>
+</package>

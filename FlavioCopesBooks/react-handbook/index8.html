@@ -1,0 +1,149 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>Template literals</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="description" content="Introduced in ES2015, aka ES6, Template Literals offer a new way to declare strings, but also some new interesting constructs which are already widely popular."/>
+    <meta name="generator" content="GitBook 3.2.3"/>
+    <meta name="author" content="Flavio Copes"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link href="stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="page_styles.css" rel="stylesheet" type="text/css"/>
+</head>
+  <body class="calibre">
+        
+<div class="page">
+    
+        <h1 class="book-chapter" id="calibre_toc_9">Template literals</h1>
+        <h1 class="page-title">Template literals</h1>
+        <h3 class="calibre7">Introduced in ES2015, aka ES6, Template Literals offer a new way to declare strings, but also some new interesting constructs which are already widely popular.</h3>
+
+        <div class="section">
+            <h2 id="introduction-to-template-literals" class="calibre13">Introduction to Template Literals</h2>
+<p class="calibre8">Template Literals are a new ES2015 / ES6 feature that allows you to work with strings in a novel way compared to ES5 and below.</p>
+<p class="calibre8">The syntax at a first glance is very simple, just use backticks instead of single or double quotes:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> a_string = <span class="hljs-string">`something`</span>
+</code></pre>
+<p class="calibre8">They are unique because they provide a lot of features that normal strings built with quotes do not, in particular:</p>
+<ul class="calibre15">
+<li class="calibre16">they offer a great syntax to define multiline strings</li>
+<li class="calibre16">they provide an easy way to interpolate variables and expressions in strings</li>
+<li class="calibre16">they allow you to create DSLs with template tags (DSL means domain specific language, and it's for example used in React by Styled Components, to define CSS for a component)</li>
+</ul>
+<p class="calibre8">Let's dive into each of these in detail.</p>
+<h2 id="multiline-strings" class="calibre13">Multiline strings</h2>
+<p class="calibre8">Pre-ES6, to create a string spanning over two lines you had to use the <code class="calibre10 pcalibre4 pcalibre3">\</code> character at the end of a line:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> string =
+  <span class="hljs-string">'first part \
+second part'</span>
+</code></pre>
+<p class="calibre8">This allows to create a string on 2 lines, but it's rendered on just one line:</p>
+<p class="calibre8"><code class="calibre10 pcalibre4 pcalibre3">first part second part</code></p>
+<p class="calibre8">To render the string on multiple lines as well, you explicitly need to add <code class="calibre10 pcalibre4 pcalibre3">\n</code> at the end of each line, like this:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> string =
+  <span class="hljs-string">'first line\n \
+second line'</span>
+</code></pre>
+<p class="calibre8">or</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> string = <span class="hljs-string">'first line\n'</span> + <span class="hljs-string">'second line'</span>
+</code></pre>
+<p class="calibre8">Template literals make multiline strings much simpler.</p>
+<p class="calibre8">Once a template literal is opened with the backtick, you just press enter to create a new line, with no special characters, and it's rendered as-is:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> string = <span class="hljs-string">`Hey
+this
+
+string
+is awesome!`</span>
+</code></pre>
+<p class="calibre8">Keep in mind that space is meaningful, so doing this:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> string = <span class="hljs-string">`First
+                Second`</span>
+</code></pre>
+<p class="calibre8">is going to create a string like this:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">First
+                Second
+</code></pre><p class="calibre8">an easy way to fix this problem is by having an empty first line, and appending the trim() method right after the closing backtick, which will eliminate any space before the first character:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> string = <span class="hljs-string">`
+First
+Second`</span>.trim()
+</code></pre>
+<h2 id="interpolation" class="calibre13">Interpolation</h2>
+<p class="calibre8">Template literals provide an easy way to interpolate variables and expressions into strings.</p>
+<p class="calibre8">You do so by using the <code class="calibre10 pcalibre4 pcalibre3">${...}</code> syntax:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> <span class="hljs-keyword">var</span> = <span class="hljs-string">'test'</span>
+<span class="hljs-keyword">const</span> string = <span class="hljs-string">`something <span class="hljs-name">${var}</span>`</span> <span class="hljs-comment">//something test</span>
+</code></pre>
+<p class="calibre8">inside the <code class="calibre10 pcalibre4 pcalibre3">${}</code> you can add anything, even expressions:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> string = <span class="hljs-string">`something <span class="hljs-name">${1 + 2 + 3}</span>`</span>
+<span class="hljs-keyword">const</span> string2 = <span class="hljs-string">`something <span class="hljs-name">${foo() ? 'x' : 'y'}</span>`</span>
+</code></pre>
+<h2 id="template-tags" class="calibre13">Template tags</h2>
+<p class="calibre8">Tagged templates is one feature that might sound less useful at first for you, but it's actually used by lots of popular libraries around, like <a href="https://flaviocopes.com/styled-components/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">Styled Components</a> or <a href="https://flaviocopes.com/apollo/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">Apollo</a>, the <a href="https://flaviocopes.com/graphql/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">GraphQL</a> client/server lib, so it's essential to understand how it works.</p>
+<p class="calibre8">In Styled Components template tags are used to define CSS strings:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> Button = styled.button<span class="hljs-string">`
+  font-size: 1.5em;
+  background-color: black;
+  color: white;
+`</span>
+</code></pre>
+<p class="calibre8">In Apollo template tags are used to define a GraphQL query schema:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> query = gql<span class="hljs-string">`
+  query {
+    ...
+  }
+`</span>
+</code></pre>
+<p class="calibre8">The <code class="calibre10 pcalibre4 pcalibre3">styled.button</code> and <code class="calibre10 pcalibre4 pcalibre3">gql</code> template tags highlighted in those examples are just <strong class="calibre11">functions</strong>:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-comment">gql</span>(<span class="hljs-number">literals, ...expressions</span>) </span>{}
+</code></pre>
+<p class="calibre8">this function returns a string, which can be the result of <em class="calibre17">any</em> kind of computation.</p>
+<p class="calibre8"><code class="calibre10 pcalibre4 pcalibre3">literals</code> is an array containing the template literal content tokenized by the expressions interpolations.</p>
+<p class="calibre8"><code class="calibre10 pcalibre4 pcalibre3">expressions</code> contains all the interpolations.</p>
+<p class="calibre8">If we take an example above:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> string = <span class="hljs-string">`something <span class="hljs-name">${1 + 2 + 3}</span>`</span>
+</code></pre>
+<p class="calibre8"><code class="calibre10 pcalibre4 pcalibre3">literals</code> is an array with two items. The first is <code class="calibre10 pcalibre4 pcalibre3">something</code>, the string until the first interpolation, and the second is an empty string, the space between the end of the first interpolation (we only have one) and the end of the string.</p>
+<p class="calibre8"><code class="calibre10 pcalibre4 pcalibre3">expressions</code> in this case is an array with a single item, <code class="calibre10 pcalibre4 pcalibre3">6</code>.</p>
+<p class="calibre8">A more complex example is:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> string = <span class="hljs-string">`something
+another <span class="hljs-name">${'x'}</span>
+new line <span class="hljs-name">${1 + 2 + 3}</span>
+test`</span>
+</code></pre>
+<p class="calibre8">in this case <code class="calibre10 pcalibre4 pcalibre3">literals</code> is an array where the first item is:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">;<span class="hljs-string">`something
+another `</span>
+</code></pre>
+<p class="calibre8">the second is:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">;<span class="hljs-string">`
+new line `</span>
+</code></pre>
+<p class="calibre8">and the third is:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">;<span class="hljs-string">`
+test`</span>
+</code></pre>
+<p class="calibre8"><code class="calibre10 pcalibre4 pcalibre3">expressions</code> in this case is an array with two items, <code class="calibre10 pcalibre4 pcalibre3">x</code> and <code class="calibre10 pcalibre4 pcalibre3">6</code>.</p>
+<p class="calibre8">The function that is passed those values can do anything with them, and this is the power of this kind feature.</p>
+<p class="calibre8">The most simple example is replicating what the string interpolation does, by simply joining <code class="calibre10 pcalibre4 pcalibre3">literals</code> and <code class="calibre10 pcalibre4 pcalibre3">expressions</code>:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> interpolated = interpolate<span class="hljs-string">`I paid <span class="hljs-name">${10}</span>€`</span>
+</code></pre>
+<p class="calibre8">and this is how <code class="calibre10 pcalibre4 pcalibre3">interpolate</code> works:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-comment">interpolate</span>(<span class="hljs-number">literals, ...expressions</span>) </span>{
+  <span class="hljs-keyword">let</span> string = <span class="hljs-string">``</span>
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> [i, val] <span class="hljs-keyword">of</span> expressions) {
+    string += literals[i] + val
+  }
+  string += literals[literals.length - <span class="hljs-number">1</span>]
+  <span class="hljs-keyword">return</span> string
+}
+</code></pre>
+
+        </div>
+    
+</div>
+
+        
+    
+
+
+</body></html>

@@ -1,0 +1,143 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>Async/Await</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="description" content="Discover the modern approach to asynchronous functions in JavaScript. JavaScript evolved in a very short time from callbacks to Promises, and since ES2017 asynchronous JavaScript is even simpler with the async/await syntax"/>
+    <meta name="generator" content="GitBook 3.2.3"/>
+    <meta name="author" content="Flavio Copes"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link href="stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="page_styles.css" rel="stylesheet" type="text/css"/>
+</head>
+  <body class="calibre">
+        
+<div class="page">
+    
+        <h1 class="book-chapter" id="calibre_toc_12">Async/Await</h1>
+        <h1 class="page-title">Async/Await</h1>
+        <h3 class="calibre7">Discover the modern approach to asynchronous functions in JavaScript. JavaScript evolved in a very short time from callbacks to Promises, and since ES2017 asynchronous JavaScript is even simpler with the async/await syntax</h3>
+
+        <div class="section">
+            <h2 id="introduction" class="calibre13">Introduction</h2>
+<p class="calibre8"><a href="https://flaviocopes.com/javascript/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">JavaScript</a> evolved in a very short time from callbacks to <a href="https://flaviocopes.com/javascript-promises/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">promises</a> (ES2015), and since <a href="https://flaviocopes.com/ecmascript/#es2017-aka-es8" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">ES2017</a> asynchronous JavaScript is even simpler with the async/await syntax.</p>
+<p class="calibre8">Async functions are a combination of promises and <a href="https://flaviocopes.com/ecmascript/#generators" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">generators</a>, and basically, they are a higher level abstraction over promises. Let me repeat: <strong class="calibre11">async/await is built on promises</strong>.</p>
+<h2 id="why-were-asyncawait-introduced" class="calibre13">Why were async/await introduced?</h2>
+<p class="calibre8">They reduce the boilerplate around promises, and the "don't break the chain" limitation of chaining promises.</p>
+<p class="calibre8">When Promises were introduced in ES2015, they were meant to solve a problem with asynchronous code, and they did, but over the 2 years that separated ES2015 and ES2017, it was clear that <em class="calibre17">promises could not be the final solution</em>.</p>
+<p class="calibre8">Promises were introduced to solve the famous <em class="calibre17">callback hell</em> problem, but they introduced complexity on their own, and syntax complexity.</p>
+<p class="calibre8">They were good primitives around which a better syntax could be exposed to developers, so when the time was right we got <strong class="calibre11">async functions</strong>.</p>
+<p class="calibre8">They make the code look like it's synchronous, but it's asynchronous and non-blocking behind the scenes.</p>
+<h2 id="how-it-works" class="calibre13">How it works</h2>
+<p class="calibre8">An async function returns a promise, like in this example:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> doSomethingAsync = () =&gt; {
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-number">Promise</span>(resolve =&gt; {
+    setTimeout(() =&gt; resolve(<span class="hljs-string">'I did something'</span>), <span class="hljs-number">3000</span>)
+  })
+}
+</code></pre>
+<p class="calibre8">When you want to <strong class="calibre11">call</strong> this function you prepend <code class="calibre10 pcalibre4 pcalibre3">await</code>, and <strong class="calibre11">the calling code will stop until the promise is resolved or rejected</strong>. One caveat: the client function must be defined as <code class="calibre10 pcalibre4 pcalibre3">async</code>. Here's an example:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> doSomething = <span class="hljs-keyword">async</span> () =&gt; {
+  <span class="hljs-number">console</span>.log(<span class="hljs-keyword">await</span> doSomethingAsync())
+}
+</code></pre>
+<h2 id="a-quick-example" class="calibre13">A quick example</h2>
+<p class="calibre8">This is a simple example of async/await used to run a function asynchronously:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> doSomethingAsync = () =&gt; {
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-number">Promise</span>(resolve =&gt; {
+    setTimeout(() =&gt; resolve(<span class="hljs-string">'I did something'</span>), <span class="hljs-number">3000</span>)
+  })
+}
+
+<span class="hljs-keyword">const</span> doSomething = <span class="hljs-keyword">async</span> () =&gt; {
+  <span class="hljs-number">console</span>.log(<span class="hljs-keyword">await</span> doSomethingAsync())
+}
+
+<span class="hljs-number">console</span>.log(<span class="hljs-string">'Before'</span>)
+doSomething()
+<span class="hljs-number">console</span>.log(<span class="hljs-string">'After'</span>)
+</code></pre>
+<p class="calibre8">The above code will print the following to the browser console:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">Before
+After
+I did something //after 3s
+</code></pre><h2 id="promise-all-the-things" class="calibre13">Promise all the things</h2>
+<p class="calibre8">Prepending the <code class="calibre10 pcalibre4 pcalibre3">async</code> keyword to any function means that the function will return a promise.</p>
+<p class="calibre8">Even if it's not doing so explicitly, it will internally make it return a promise.</p>
+<p class="calibre8">This is why this code is valid:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> aFunction = <span class="hljs-keyword">async</span> () =&gt; {
+  <span class="hljs-keyword">return</span> <span class="hljs-string">'test'</span>
+}
+
+aFunction().then(alert) <span class="hljs-comment">// This will alert 'test'</span>
+</code></pre>
+<p class="calibre8">and it's the same as:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> aFunction = <span class="hljs-keyword">async</span> () =&gt; {
+  <span class="hljs-keyword">return</span> <span class="hljs-number">Promise</span>.resolve(<span class="hljs-string">'test'</span>)
+}
+
+aFunction().then(alert) <span class="hljs-comment">// This will alert 'test'</span>
+</code></pre>
+<h2 id="the-code-is-much-simpler-to-read" class="calibre13">The code is much simpler to read</h2>
+<p class="calibre8">As you can see in the example above, our code looks very simple. Compare it to code using plain promises, with chaining and callback functions.</p>
+<p class="calibre8">And this is a very simple example, the major benefits will arise when the code is much more complex.</p>
+<p class="calibre8">For example here's how you would get a JSON resource, and parse it, using promises:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> getFirstUserData = () =&gt; {
+  <span class="hljs-keyword">return</span> fetch(<span class="hljs-string">'/users.json'</span>) <span class="hljs-comment">// get users list</span>
+    .then(response =&gt; response.json()) <span class="hljs-comment">// parse JSON</span>
+    .then(users =&gt; users[<span class="hljs-number">0</span>]) <span class="hljs-comment">// pick first user</span>
+    .then(user =&gt; fetch(<span class="hljs-string">`/users/<span class="hljs-name">${user.name}</span>`</span>)) <span class="hljs-comment">// get user data</span>
+    .then(userResponse =&gt; response.json()) <span class="hljs-comment">// parse JSON</span>
+}
+
+getFirstUserData()
+</code></pre>
+<p class="calibre8">And here is the same functionality provided using await/async:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> getFirstUserData = <span class="hljs-keyword">async</span> () =&gt; {
+  <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> fetch(<span class="hljs-string">'/users.json'</span>) <span class="hljs-comment">// get users list</span>
+  <span class="hljs-keyword">const</span> users = <span class="hljs-keyword">await</span> response.json() <span class="hljs-comment">// parse JSON</span>
+  <span class="hljs-keyword">const</span> user = users[<span class="hljs-number">0</span>] <span class="hljs-comment">// pick first user</span>
+  <span class="hljs-keyword">const</span> userResponse = <span class="hljs-keyword">await</span> fetch(<span class="hljs-string">`/users/<span class="hljs-name">${user.name}</span>`</span>) <span class="hljs-comment">// get user data</span>
+  <span class="hljs-keyword">const</span> userData = <span class="hljs-keyword">await</span> user.json() <span class="hljs-comment">// parse JSON</span>
+  <span class="hljs-keyword">return</span> userData
+}
+
+getFirstUserData()
+</code></pre>
+<h2 id="multiple-async-functions-in-series" class="calibre13">Multiple async functions in series</h2>
+<p class="calibre8">Async functions can be chained very easily, and the syntax is much more readable than with plain promises:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> promiseToDoSomething = () =&gt; {
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-number">Promise</span>(resolve =&gt; {
+    setTimeout(() =&gt; resolve(<span class="hljs-string">'I did something'</span>), <span class="hljs-number">10000</span>)
+  })
+}
+
+<span class="hljs-keyword">const</span> watchOverSomeoneDoingSomething = <span class="hljs-keyword">async</span> () =&gt; {
+  <span class="hljs-keyword">const</span> something = <span class="hljs-keyword">await</span> promiseToDoSomething()
+  <span class="hljs-keyword">return</span> something + <span class="hljs-string">' and I watched'</span>
+}
+
+<span class="hljs-keyword">const</span> watchOverSomeoneWatchingSomeoneDoingSomething = <span class="hljs-keyword">async</span> () =&gt; {
+  <span class="hljs-keyword">const</span> something = <span class="hljs-keyword">await</span> watchOverSomeoneDoingSomething()
+  <span class="hljs-keyword">return</span> something + <span class="hljs-string">' and I watched as well'</span>
+}
+
+watchOverSomeoneWatchingSomeoneDoingSomething().then(res =&gt; {
+  <span class="hljs-number">console</span>.log(res)
+})
+</code></pre>
+<p class="calibre8">Will print:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">I did something and I watched and I watched as well
+</code></pre><h2 id="easier-debugging" class="calibre13">Easier debugging</h2>
+<p class="calibre8">Debugging promises is hard because the debugger will not step over asynchronous code.</p>
+<p class="calibre8">Async/await makes this very easy because to the compiler it's just like synchronous code.</p>
+
+        </div>
+    
+</div>
+
+        
+    
+
+
+</body></html>

@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>Composition</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="description" content="What is composition and why is it a key concept in your React apps"/>
+    <meta name="generator" content="GitBook 3.2.3"/>
+    <meta name="author" content="Flavio Copes"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link href="stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="page_styles.css" rel="stylesheet" type="text/css"/>
+</head>
+  <body class="calibre">
+        
+<div class="page">
+    
+        <h1 class="book-chapter" id="calibre_toc_18">Composition</h1>
+        <h1 class="page-title">Composition</h1>
+        <h3 class="calibre7">What is composition and why is it a key concept in your React apps</h3>
+
+        <div class="section">
+            <p class="calibre8">In programming, composition allows you to build more complex functionality by combining small and focused functions.</p>
+<p class="calibre8">For example, think about using <code class="calibre10 pcalibre4 pcalibre3">map()</code> to create a new array from an initial set, and then filtering the result using <code class="calibre10 pcalibre4 pcalibre3">filter()</code>:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> list = [<span class="hljs-string">'Apple'</span>, <span class="hljs-string">'Orange'</span>, <span class="hljs-string">'Egg'</span>]
+list.map(item =&gt; item[<span class="hljs-number">0</span>]).filter(item =&gt; item === <span class="hljs-string">'A'</span>) <span class="hljs-comment">//'A'</span>
+</code></pre>
+<p class="calibre8">In React, composition allows you to have some pretty cool advantages.</p>
+<p class="calibre8">You create small and lean components and use them to <em class="calibre17">compose</em> more functionality on top of them. How?</p>
+<h2 id="create-specialized-version-of-a-component" class="calibre13">Create specialized version of a component</h2>
+<p class="calibre8">Use an outer component to expand and specialize a more generic component:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> Button = props =&gt; {
+  <span class="hljs-keyword">return</span> <span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>{props.text}<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span>
+}
+
+<span class="hljs-keyword">const</span> SubmitButton = () =&gt; {
+  <span class="hljs-keyword">return</span> &lt;Button text="Submit" /&gt;
+}
+
+const LoginButton = () =&gt; {
+  return &lt;Button text="Login" /&gt;
+}
+</code></pre>
+<h2 id="pass-methods-as-props" class="calibre13">Pass methods as props</h2>
+<p class="calibre8">A component can focus on tracking a click event, for example, and what actually happens when the click event happens is up to the container component:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> Button = props =&gt; {
+  <span class="hljs-keyword">return</span> <span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-name">onClick</span>=<span class="hljs-string">{props.onClickHandler}</span>&gt;</span>{props.text}<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span>
+}
+
+<span class="hljs-keyword">const</span> LoginButton = props =&gt; {
+  <span class="hljs-keyword">return</span> &lt;Button text="Login" onClickHandler={props.onClickHandler} /&gt;
+}
+
+const Container = () =&gt; {
+  const onClickHandler = () =&gt; {
+    alert('clicked')
+  }
+
+  return &lt;LoginButton onClickHandler={onClickHandler} /&gt;
+}
+</code></pre>
+<h2 id="using-children" class="calibre13">Using children</h2>
+<p class="calibre8">The <code class="calibre10 pcalibre4 pcalibre3">props.children</code> property allows you to inject components inside other components.</p>
+<p class="calibre8">The component needs to output <code class="calibre10 pcalibre4 pcalibre3">props.children</code> in its JSX:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> Sidebar = props =&gt; {
+  <span class="hljs-keyword">return</span> <span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">aside</span>&gt;</span>{props.children}<span class="hljs-tag">&lt;/<span class="hljs-name">aside</span>&gt;</span></span>
+}
+</code></pre>
+<p class="calibre8">and you embed more components into it in a transparent way:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">&lt;Sidebar&gt;
+  <span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">Link</span> <span class="hljs-name">title</span>=<span class="hljs-string">"First link"</span> /&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">Link</span> <span class="hljs-name">title</span>=<span class="hljs-string">"Second link"</span> /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">Sidebar</span>&gt;</span>
+</span></code></pre>
+<h2 id="higher-order-components" class="calibre13">Higher order components</h2>
+<p class="calibre8">When a component receives a component as a prop and returns a component, it's called higher order component.</p>
+<p class="calibre8">We'll see them in a little while.</p>
+
+        </div>
+    
+</div>
+
+        
+    
+
+
+</body></html>

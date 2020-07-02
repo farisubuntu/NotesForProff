@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>Fragment</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="description" content="How to use React.Fragment to create invisible HTML tags"/>
+    <meta name="generator" content="GitBook 3.2.3"/>
+    <meta name="author" content="Flavio Copes"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link href="stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="page_styles.css" rel="stylesheet" type="text/css"/>
+</head>
+  <body class="calibre">
+        
+<div class="page">
+    
+        <h1 class="book-chapter" id="calibre_toc_28">Fragment</h1>
+        <h1 class="page-title">Fragment</h1>
+        <h3 class="calibre7">How to use React.Fragment to create invisible HTML tags</h3>
+
+        <div class="section">
+            <p class="calibre8">Notice how I wrap return values in a <code class="calibre10 pcalibre4 pcalibre3">div</code>. This is because a component can only return one single element, and if you want more than one, you need to wrap it with another container tag.</p>
+<p class="calibre8">This however causes an unnecessary <code class="calibre10 pcalibre4 pcalibre3">div</code> in the output. You can avoid this by using <code class="calibre10 pcalibre4 pcalibre3">React.Fragment</code>:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">import</span> React, { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>
+
+<span class="hljs-name"><span class="hljs-keyword">class</span> <span class="hljs-comment">BlogPostExcerpt</span> <span class="hljs-keyword">extends</span> <span class="hljs-comment">Component</span> </span>{
+  render() {
+    <span class="hljs-keyword">return</span> (
+      <span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">React.Fragment</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>{this.props.title}<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>{this.props.description}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">React.Fragment</span>&gt;</span>
+    )
+  }
+}
+</span></code></pre>
+<p class="calibre8">which also has a very nice shorthand syntax <code class="calibre10 pcalibre4 pcalibre3">&lt;&gt;&lt;/&gt;</code> that is supported only in recent releases (and Babel 7+):</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">import</span> React, { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>
+
+<span class="hljs-name"><span class="hljs-keyword">class</span> <span class="hljs-comment">BlogPostExcerpt</span> <span class="hljs-keyword">extends</span> <span class="hljs-comment">Component</span> </span>{
+  render() {
+    <span class="hljs-keyword">return</span> (
+      <span class="hljs-name"><span class="hljs-tag">&lt;&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>{this.props.title}<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>{this.props.description}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+      <span class="hljs-tag">&lt;/&gt;</span>
+    )
+  }
+}
+</span></code></pre>
+
+        </div>
+    
+</div>
+
+        
+    
+
+
+</body></html>

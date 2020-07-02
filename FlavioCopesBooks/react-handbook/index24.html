@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>Presentational vs container components</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="description" content="The difference between Presentational and Container Components in React"/>
+    <meta name="generator" content="GitBook 3.2.3"/>
+    <meta name="author" content="Flavio Copes"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link href="stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="page_styles.css" rel="stylesheet" type="text/css"/>
+</head>
+  <body class="calibre">
+        
+<div class="page">
+    
+        <h1 class="book-chapter" id="calibre_toc_25">Presentational vs container components</h1>
+        <h1 class="page-title">Presentational vs container components</h1>
+        <h3 class="calibre7">The difference between Presentational and Container Components in React</h3>
+
+        <div class="section">
+            <p class="calibre8">In React components are often divided into 2 big buckets: <strong class="calibre11">presentational components</strong> and <strong class="calibre11">container components</strong>.</p>
+<p class="calibre8">Each of those have their unique characteristics.</p>
+<p class="calibre8">Presentational components are mostly concerned with generating some markup to be outputted.</p>
+<p class="calibre8">They don't manage any kind of state, except for state related the the presentation</p>
+<p class="calibre8">Container components are mostly concerned with the "backend" operations.</p>
+<p class="calibre8">They might handle the state of various sub-components.
+They might wrap several presentational components.
+They might interface with Redux.</p>
+<p class="calibre8">As a way to simplify the distinction, we can say <strong class="calibre11">presentational components are concerned with the look</strong>, <strong class="calibre11">container components are concerned with making things work</strong>.</p>
+<p class="calibre8">For example, this is a presentational component. It gets data from its props, and just focuses on showing an element:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> Users = props =&gt; (
+  <span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+    {props.users.map(user =&gt; (
+      <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>{user}<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    ))}
+  <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span></span>
+)
+</code></pre>
+<p class="calibre8">On the other hand this is a container component. It manages and stores its own data, and uses the presentational component to display it.</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-name"><span class="hljs-keyword">class</span> <span class="hljs-comment">UsersContainer</span> <span class="hljs-keyword">extends</span> <span class="hljs-comment">React</span>.<span class="hljs-comment">Component</span> </span>{
+  <span class="hljs-keyword">constructor</span>() {
+    <span class="hljs-keyword">this</span>.state = {
+      users: []
+    }
+  }
+
+  componentDidMount() {
+    axios.get(<span class="hljs-string">'/users'</span>).then(users =&gt;
+      <span class="hljs-keyword">this</span>.setState({ users: users }))
+    )
+  }
+
+  render() {
+    <span class="hljs-keyword">return</span> <span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">Users</span> <span class="hljs-name">users</span>=<span class="hljs-string">{this.state.users}</span> /&gt;</span>
+  }
+}
+</span></code></pre>
+
+        </div>
+    
+</div>
+
+        
+    
+
+
+</body></html>

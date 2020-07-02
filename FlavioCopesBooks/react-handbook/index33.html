@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>Context API</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="description" content="The Context API is a neat way to pass state across the app without having to use props"/>
+    <meta name="generator" content="GitBook 3.2.3"/>
+    <meta name="author" content="Flavio Copes"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link href="stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="page_styles.css" rel="stylesheet" type="text/css"/>
+</head>
+  <body class="calibre">
+        
+<div class="page">
+    
+        <h1 class="book-chapter" id="calibre_toc_34">Context API</h1>
+        <h1 class="page-title">Context API</h1>
+        <h3 class="calibre7">The Context API is a neat way to pass state across the app without having to use props</h3>
+
+        <div class="section">
+            <p class="calibre8">The <strong class="calibre11">Context API</strong> was introduced to allow you to pass state (and enable the state to update) across the app, without having to use props for it.</p>
+<p class="calibre8">The React team suggests to stick to props if you have just a few levels of children to pass, because it's still a much less complicated API than the Context API.</p>
+<p class="calibre8">In many cases, it enables us to avoid using Redux, simplifying our apps a lot, and also learning how to use React.</p>
+<p class="calibre8">How does it work?</p>
+<p class="calibre8">You create a context using <code class="calibre10 pcalibre4 pcalibre3">React.createContext()</code>, which returns a Context object.:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> { Provider, Consumer } = React.createContext()
+</code></pre>
+<p class="calibre8">Then you create a wrapper component that returns a <strong class="calibre11">Provider</strong> component, and you add as children all the components from which you want to access the context:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-name"><span class="hljs-keyword">class</span> <span class="hljs-comment">Container</span> <span class="hljs-keyword">extends</span> <span class="hljs-comment">React</span>.<span class="hljs-comment">Component</span> </span>{
+  <span class="hljs-keyword">constructor</span>(props) {
+    <span class="hljs-keyword">super</span>(props)
+    <span class="hljs-keyword">this</span>.state = {
+      something: <span class="hljs-string">'hey'</span>
+    }
+  }
+
+  render() {
+    <span class="hljs-keyword">return</span> (
+      <span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">Provider</span> <span class="hljs-name">value</span>=<span class="hljs-string">{{</span> <span class="hljs-name">state:</span> <span class="hljs-name">this.state</span> }}&gt;</span>{this.props.children}<span class="hljs-tag">&lt;/<span class="hljs-name">Provider</span>&gt;</span></span>
+    )
+  }
+}
+
+<span class="hljs-name"><span class="hljs-keyword">class</span> <span class="hljs-comment">HelloWorld</span> <span class="hljs-keyword">extends</span> <span class="hljs-comment">React</span>.<span class="hljs-comment">Component</span> </span>{
+  render() {
+    <span class="hljs-keyword">return</span> (
+      <span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">Container</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">Button</span> /&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">Container</span>&gt;</span>
+    )
+  }
+}
+</span></code></pre>
+<p class="calibre8">I used Container as the name of this component because this will be a global provider. You can also create smaller contexts.</p>
+<p class="calibre8">Inside a component that's wrapped in a Provider, you use a <strong class="calibre11">Consumer</strong> component to make use of the context:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-name"><span class="hljs-keyword">class</span> <span class="hljs-comment">Button</span> <span class="hljs-keyword">extends</span> <span class="hljs-comment">React</span>.<span class="hljs-comment">Component</span> </span>{
+  render() {
+    <span class="hljs-keyword">return</span> (
+      <span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">Consumer</span>&gt;</span>
+        {context =&gt; <span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>{context.state.something}<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>}
+      <span class="hljs-tag">&lt;/<span class="hljs-name">Consumer</span>&gt;</span></span>
+    )
+  }
+}
+</code></pre>
+<p class="calibre8">You can also pass functions into a Provider value, and those functions will be used by the Consumer to update the context state:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">&lt;Provider value={{
+  state: this.state,
+  updateSomething: () =&gt; this.setState({something: 'ho!'})
+  {this.props.children}
+&lt;/Provider&gt;
+
+/* ... */
+&lt;Consumer&gt;
+  {(context) =&gt; (
+    &lt;button onClick={context.updateSomething}&gt;{context.state.something}&lt;/button&gt;
+  )}
+&lt;/Consumer&gt;
+</code></pre>
+<p class="calibre8">You can see this in action <a href="https://glitch.com/edit/#!/flavio-react-context-api-example?path=app/components/HelloWorld.jsx" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">in this Glitch</a>.</p>
+<p class="calibre8">You can create multiple contexts, to make your state distributed across components, yet expose it and make it reachable by any component you want.</p>
+<p class="calibre8">When using multiple files, you create the content in one file, and import it in all the places you use it:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-comment">//context.js</span>
+<span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> React.createContext()
+
+<span class="hljs-comment">//component1.js</span>
+<span class="hljs-keyword">import</span> Context <span class="hljs-keyword">from</span> <span class="hljs-string">'./context'</span>
+<span class="hljs-comment">//... use Context.Provider</span>
+
+<span class="hljs-comment">//component2.js</span>
+<span class="hljs-keyword">import</span> Context <span class="hljs-keyword">from</span> <span class="hljs-string">'./context'</span>
+<span class="hljs-comment">//... use Context.Consumer</span>
+</code></pre>
+
+        </div>
+    
+</div>
+
+        
+    
+
+
+</body></html>

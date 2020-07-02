@@ -1,0 +1,163 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>Hooks</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="description" content="Learn how Hooks can help you build a React application"/>
+    <meta name="generator" content="GitBook 3.2.3"/>
+    <meta name="author" content="Flavio Copes"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link href="stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="page_styles.css" rel="stylesheet" type="text/css"/>
+</head>
+  <body class="calibre">
+        
+<div class="page">
+    
+        <h1 class="book-chapter" id="calibre_toc_37">Hooks</h1>
+        <h1 class="page-title">Hooks</h1>
+        <h3 class="calibre7">Learn how Hooks can help you build a React application</h3>
+
+        <div class="section">
+            <p class="calibre8">Hooks is a feature that will be introduced in React 16.7, and is going to change how we write React apps in the future.</p>
+<p class="calibre8">Before Hooks appeared, some key things in components were only possible using class components: having their own state, and using lifecycle events. Function components, lighter and more flexible, were limited in functionality.</p>
+<p class="calibre8"><strong class="calibre11">Hooks allow function components to have state and to respond to lifecycle events</strong> too, and kind of make class components obsolete. They also allow function components to have a good way to handle events.</p>
+<h2 id="access-state" class="calibre13">Access state</h2>
+<p class="calibre8">Using the <code class="calibre10 pcalibre4 pcalibre3">useState()</code> API, you can create a new state variable, and have a way to alter it. <code class="calibre10 pcalibre4 pcalibre3">useState()</code> accepts the initial value of the state item and returns an array containing the state variable, and the function you call to alter the state. Since it returns an array we use <a href="https://flaviocopes.com/es6/#destructuring-assignments" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">array destructuring</a> to access each individual item, like this: <code class="calibre10 pcalibre4 pcalibre3">const [count, setCount] = useState(0)</code></p>
+<p class="calibre8">Here's a practical example:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">import</span> { useState } <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>
+
+<span class="hljs-keyword">const</span> Counter = () =&gt; {
+  <span class="hljs-keyword">const</span> [count, setCount] = useState(<span class="hljs-number">0</span>)
+
+  <span class="hljs-keyword">return</span> (
+    <span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>You clicked {count} times<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-name">onClick</span>=<span class="hljs-string">{()</span> =&gt;</span> setCount(count + 1)}&gt;Click me<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+  )
+}
+
+ReactDOM.render(<span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">Counter</span> /&gt;</span>, document.getElementById('app'))
+</span></code></pre>
+<p class="calibre8">You can add as many <code class="calibre10 pcalibre4 pcalibre3">useState()</code> calls you want, to create as many state variables as you want. Just make sure you call it in the top level of a component (not in an <code class="calibre10 pcalibre4 pcalibre3">if</code> or in any other block).</p>
+<p class="calibre8">Example on Codepen:</p>
+<p class="calibre8"></p><p data-height="446" data-theme-id="0" data-slug-hash="maVPKa" data-default-tab="js,result" data-user="flaviocopes" data-pen-title="React Hooks example #1 counter" class="calibre8">See the Pen <a href="https://codepen.io/flaviocopes/pen/maVPKa/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">React Hooks example #1 counter</a> by Flavio Copes (<a href="https://codepen.io/flaviocopes" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">@flaviocopes</a>) on <a href="https://codepen.io" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">CodePen</a>.</p><p class="calibre8"></p>
+<h2 id="access-lifecycle-hooks" class="calibre13">Access lifecycle hooks</h2>
+<p class="calibre8">Another very important feature of Hooks is allowing function components to have access to the lifecycle hooks.</p>
+<p class="calibre8">Using class components you can register a function on the <code class="calibre10 pcalibre4 pcalibre3">componentDidMount</code>, <code class="calibre10 pcalibre4 pcalibre3">componentWillUnmount</code> and <code class="calibre10 pcalibre4 pcalibre3">componentDidUpdate</code> events, and those will serve many use cases, from variables initialization to API calls to cleanup.</p>
+<p class="calibre8">Hooks provide the <code class="calibre10 pcalibre4 pcalibre3">useEffect()</code> API. The call accepts a function as argument.</p>
+<p class="calibre8">The function runs when the component is first rendered, and on every subsequent re-render/update. React first updates the DOM, then calls any function passed to <code class="calibre10 pcalibre4 pcalibre3">useEffect()</code>. All without blocking the UI rendering even on blocking code, unlike the old <code class="calibre10 pcalibre4 pcalibre3">componentDidMount</code> and <code class="calibre10 pcalibre4 pcalibre3">componentDidUpdate</code>, which makes our apps feel faster.</p>
+<p class="calibre8">Example:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> { useEffect, useState } = React
+
+<span class="hljs-keyword">const</span> CounterWithNameAndSideEffect = () =&gt; {
+  <span class="hljs-keyword">const</span> [count, setCount] = useState(<span class="hljs-number">0</span>)
+  <span class="hljs-keyword">const</span> [name, setName] = useState(<span class="hljs-string">'Flavio'</span>)
+
+  useEffect(() =&gt; {
+    <span class="hljs-number">console</span>.log(<span class="hljs-string">`Hi <span class="hljs-name">${name}</span> you clicked <span class="hljs-name">${count}</span> times`</span>)
+  })
+
+  <span class="hljs-keyword">return</span> (
+    <span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>
+        Hi {name} you clicked {count} times
+      <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-name">onClick</span>=<span class="hljs-string">{()</span> =&gt;</span> setCount(count + 1)}&gt;Click me<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-name">onClick</span>=<span class="hljs-string">{()</span> =&gt;</span> setName(name === 'Flavio' ? 'Roger' : 'Flavio')}&gt;
+        Change name
+      <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+  )
+}
+
+ReactDOM.render(
+  <span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">CounterWithNameAndSideEffect</span> /&gt;</span>,
+  document.getElementById('app')
+)
+</span></code></pre>
+<p class="calibre8">The same <code class="calibre10 pcalibre4 pcalibre3">componentWillUnmount</code> job can be achieved by optionally <strong class="calibre11">returning</strong> a function from our <code class="calibre10 pcalibre4 pcalibre3">useEffect()</code> parameter:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">useEffect(() =&gt; {
+  <span class="hljs-number">console</span>.log(<span class="hljs-string">`Hi <span class="hljs-name">${name}</span> you clicked <span class="hljs-name">${count}</span> times`</span>)
+  <span class="hljs-keyword">return</span> () =&gt; {
+    <span class="hljs-number">console</span>.log(<span class="hljs-string">`Unmounted`</span>)
+  }
+})
+</code></pre>
+<p class="calibre8"><code class="calibre10 pcalibre4 pcalibre3">useEffect()</code> can be called multiple times, which is nice to separate unrelated logic (something that plagues the class component lifecycle events).</p>
+<p class="calibre8">Since the <code class="calibre10 pcalibre4 pcalibre3">useEffect()</code> functions are run on every subsequent re-render/update, we can tell React to skip a run, for performance purposes, by adding a second parameter which is an array that contains a list of state variables to watch for.
+React will only re-run the side effect if one of the items in this array changes.</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">useEffect(
+  () =&gt; {
+    <span class="hljs-number">console</span>.log(<span class="hljs-string">`Hi <span class="hljs-name">${name}</span> you clicked <span class="hljs-name">${count}</span> times`</span>)
+  },
+  [name, count]
+)
+</code></pre>
+<p class="calibre8">Similarly you can tell React to only execute the side effect once (at mount time), by passing an empty array:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">useEffect(() =&gt; {
+  <span class="hljs-number">console</span>.log(<span class="hljs-string">`Component mounted`</span>)
+}, [])
+</code></pre>
+<p class="calibre8"><code class="calibre10 pcalibre4 pcalibre3">useEffect()</code> is great for adding logs, accessing 3rd party APIs and much more.</p>
+<p class="calibre8">Example on Codepen:</p>
+<p class="calibre8"></p><p data-height="627" data-theme-id="0" data-slug-hash="WLrxXp" data-default-tab="js,result" data-user="flaviocopes" data-pen-title="React Hooks example #3 side effects" class="calibre8">See the Pen <a href="https://codepen.io/flaviocopes/pen/WLrxXp/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">React Hooks example #3 side effects</a> by Flavio Copes (<a href="https://codepen.io/flaviocopes" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">@flaviocopes</a>) on <a href="https://codepen.io" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">CodePen</a>.</p><p class="calibre8"></p>
+<h2 id="handle-events-in-function-components" class="calibre13">Handle events in function components</h2>
+<p class="calibre8">Before hooks, you either used class components, or you passed an event handler using props.</p>
+<p class="calibre8">Now we can use the <code class="calibre10 pcalibre4 pcalibre3">useCallback()</code> built-in API:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> Button = () =&gt; {
+  <span class="hljs-keyword">const</span> handleClick = useCallback(() =&gt; {
+    <span class="hljs-comment">//...do something</span>
+  })
+  <span class="hljs-keyword">return</span> <span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-name">onClick</span>=<span class="hljs-string">{handleClick}</span> /&gt;</span>
+}
+</span></code></pre>
+<p class="calibre8">Any parameter used inside the function must be passed through a second parameter to <code class="calibre10 pcalibre4 pcalibre3">useCallback()</code>, in an array:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> Button = () =&gt; {
+  <span class="hljs-keyword">let</span> name = <span class="hljs-string">''</span> <span class="hljs-comment">//... add logic</span>
+  <span class="hljs-keyword">const</span> handleClick = useCallback(
+    () =&gt; {
+      <span class="hljs-comment">//...do something</span>
+    },
+    [name]
+  )
+  <span class="hljs-keyword">return</span> <span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-name">onClick</span>=<span class="hljs-string">{handleClick}</span> /&gt;</span>
+}
+</span></code></pre>
+<h2 id="enable-cross-component-communication-using-custom-hooks" class="calibre13">Enable cross-component communication using custom hooks</h2>
+<p class="calibre8">The ability to write your own hooks is the feature that is going to significantly alter how you write React apps in the future.</p>
+<p class="calibre8">Using custom hooks you have one more way to share state and logic between components, adding a significant improvement to the patterns of render props and higher order components. Which are still great, but now with custom hooks have less relevance in many use cases.</p>
+<p class="calibre8">How do you create a custom hook?</p>
+<p class="calibre8">A hook is just a function that conventionally starts with <code class="calibre10 pcalibre4 pcalibre3">use</code>. It can accept an arbitrary number of arguments, and return anything it wants.</p>
+<p class="calibre8">Examples:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> useGetData() {
+  <span class="hljs-comment">//...</span>
+  <span class="hljs-keyword">return</span> data
+}
+</code></pre>
+<p class="calibre8">or</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> useGetUser(username) {
+  <span class="hljs-comment">//...const user = fetch(...)</span>
+  <span class="hljs-comment">//...const userData = ...</span>
+  <span class="hljs-keyword">return</span> [user, userData]
+}
+</code></pre>
+<p class="calibre8">In your own components, you can use the hook like this:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> MyComponent = () =&gt; {
+  <span class="hljs-keyword">const</span> data = useGetData()
+  <span class="hljs-keyword">const</span> [user, userData] = useGetUser(<span class="hljs-string">'flavio'</span>)
+  <span class="hljs-comment">//...</span>
+}
+</code></pre>
+<p class="calibre8">When exactly to add hooks instead of regular functions should be determined on a use case basis, and only experience will tell.</p>
+
+        </div>
+    
+</div>
+
+        
+    
+
+
+</body></html>

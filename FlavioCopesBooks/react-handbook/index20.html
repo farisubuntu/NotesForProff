@@ -1,0 +1,304 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>JSX</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="description" content="JSX is a technology that was introduced by React. Let's dive into it"/>
+    <meta name="generator" content="GitBook 3.2.3"/>
+    <meta name="author" content="Flavio Copes"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link href="stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="page_styles.css" rel="stylesheet" type="text/css"/>
+</head>
+  <body class="calibre">
+        
+<div class="page">
+    
+        <h1 class="book-chapter" id="calibre_toc_21">JSX</h1>
+        <h1 class="page-title">JSX</h1>
+        <h3 class="calibre7">JSX is a technology that was introduced by React. Let's dive into it</h3>
+
+        <div class="section">
+            <p class="calibre8"><img src="banner.png" alt="jsx" class="calibre9"/></p>
+<h2 id="introduction-to-jsx" class="calibre13">Introduction to JSX</h2>
+<p class="calibre8">JSX is a technology that was introduced by React.</p>
+<p class="calibre8">Although React can work completely fine without using JSX, it's an ideal technology to work with components, so React benefits a lot from JSX.</p>
+<p class="calibre8">At first, you might think that using JSX is like mixing HTML and <a href="https://flaviocopes.com/javascript/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">JavaScript</a> (and as you'll see CSS).</p>
+<p class="calibre8">But this is not true, because what you are really doing when using JSX syntax is writing a declarative syntax of what a component UI should be.</p>
+<p class="calibre8">And you're describing that UI not using strings, but instead using JavaScript, which allows you to do many nice things.</p>
+<h2 id="a-jsx-primer" class="calibre13">A JSX primer</h2>
+<p class="calibre8">Here is how you define a h1 tag containing a string:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> element = <span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Hello, world!<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span>
+</code></pre>
+<p class="calibre8">It looks like a strange mix of JavaScript and HTML, but in reality it's all JavaScript.</p>
+<p class="calibre8">What looks like HTML, is actually  syntactic sugar for defining components and their positioning inside the markup.</p>
+<p class="calibre8">Inside a JSX expression, attributes can be inserted very easily:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> myId = <span class="hljs-string">'test'</span>
+<span class="hljs-keyword">const</span> element = <span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-name">id</span>=<span class="hljs-string">{myId}</span>&gt;</span>Hello, world!<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span>
+</code></pre>
+<p class="calibre8">You just need to pay attention when an attribute has a dash (<code class="calibre10 pcalibre4 pcalibre3">-</code>) which is converted to camelCase syntax instead, and these 2 special cases:</p>
+<ul class="calibre15">
+<li class="calibre16"><code class="calibre10 pcalibre4 pcalibre3">class</code> becomes <code class="calibre10 pcalibre4 pcalibre3">className</code></li>
+<li class="calibre16"><code class="calibre10 pcalibre4 pcalibre3">for</code> becomes <code class="calibre10 pcalibre4 pcalibre3">htmlFor</code></li>
+</ul>
+<p class="calibre8">because they are reserved words in JavaScript.</p>
+<p class="calibre8">Here's a JSX snippet that wraps two components into a <code class="calibre10 pcalibre4 pcalibre3">div</code> tag:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">&lt;div&gt;
+  <span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">BlogPostsList</span> /&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">Sidebar</span> /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</span></code></pre>
+<p class="calibre8">A tag always needs to be closed, because this is more XML than HTML (if you remember the XHTML days, this will be familiar, but since then the HTML5 loose syntax won). In this case a self-closing tag is used.</p>
+<p class="calibre8">Notice how I wrapped the 2 components into a <code class="calibre10 pcalibre4 pcalibre3">div</code>. Why? Because <strong class="calibre11">the render() function can only return a single node</strong>, so in case you want to return 2 siblings, just add a parent. It can be any tag, not just <code class="calibre10 pcalibre4 pcalibre3">div</code>.</p>
+<h2 id="transpiling-jsx" class="calibre13">Transpiling JSX</h2>
+<p class="calibre8">A browser cannot execute JavaScript files containing JSX code. They must be first transformed to regular JS.</p>
+<p class="calibre8">How? By doing a process called <strong class="calibre11">transpiling</strong>.</p>
+<p class="calibre8">We already said that JSX is optional, because to every JSX line, a corresponding plain JavaScript alternative is available, and that's what JSX is transpiled to.</p>
+<p class="calibre8">For example the following two constructs are equivalent:</p>
+<blockquote class="calibre19">
+<p class="calibre8">Plain JS</p>
+</blockquote>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">ReactDOM.render(
+  React.DOM.div(
+    { id: <span class="hljs-string">'test'</span> },
+    React.DOM.h1(<span class="hljs-number">null</span>, <span class="hljs-string">'A title'</span>),
+    React.DOM.p(<span class="hljs-number">null</span>, <span class="hljs-string">'A paragraph'</span>)
+  ),
+  <span class="hljs-number">document</span>.getElementById(<span class="hljs-string">'myapp'</span>)
+)
+</code></pre>
+<blockquote class="calibre19">
+<p class="calibre8">JSX</p>
+</blockquote>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">ReactDOM.render(
+  <span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-name">id</span>=<span class="hljs-string">"test"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>A title<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>A paragraph<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>,
+  <span class="hljs-number">document</span>.getElementById(<span class="hljs-string">'myapp'</span>)
+)
+</code></pre>
+<p class="calibre8">This very basic example is just the starting point, but you can already see how more complicated the plain JS syntax is compared to using JSX.</p>
+<p class="calibre8">At the time of writing the most popular way to perform the <strong class="calibre11">transpilation</strong> is to use <strong class="calibre11">Babel</strong>, which is the default option when running <code class="calibre10 pcalibre4 pcalibre3">create-react-app</code>, so if you use it you don't have to worry, everything happens under the hood for you.</p>
+<p class="calibre8">If you don't use <code class="calibre10 pcalibre4 pcalibre3">create-react-app</code> you need to setup Babel yourself.</p>
+<h2 id="js-in-jsx" class="calibre13">JS in JSX</h2>
+<p class="calibre8">JSX accepts any kind of JavaScript mixed into it.</p>
+<p class="calibre8">Whenever you need to add some JS, just put it inside curly braces <code class="calibre10 pcalibre4 pcalibre3">{}</code>. For example here's how to use a constant value defined elsewhere:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> paragraph = <span class="hljs-string">'A paragraph'</span>
+ReactDOM.render(
+  <span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-name">id</span>=<span class="hljs-string">"test"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>A title<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>{paragraph}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>,
+  <span class="hljs-number">document</span>.getElementById(<span class="hljs-string">'myapp'</span>)
+)
+</code></pre>
+<p class="calibre8">This is a basic example. Curly braces accept <em class="calibre17">any</em> JS code:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> paragraph = <span class="hljs-string">'A paragraph'</span>
+ReactDOM.render(
+  <span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">table</span>&gt;</span>
+    {rows.map((row, i) =&gt; {
+      return <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>{row.text}<span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+    })}
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>,
+  <span class="hljs-number">document</span>.getElementById(<span class="hljs-string">'myapp'</span>)
+)
+</code></pre>
+<p class="calibre8">As you can see <em class="calibre17">we nested JavaScript inside JSX defined inside JavaScript nested in JSX</em>. You can go as deep as you need.</p>
+<h2 id="html-in-jsx" class="calibre13">HTML in JSX</h2>
+<p class="calibre8">JSX resembles HTML a lot, but it's actually XML syntax.</p>
+<p class="calibre8">In the end you render HTML, so you need to know a few differences between how you would define some things in HTML, and how you define them in JSX.</p>
+<h3 id="you-need-to-close-all-tags" class="calibre14">You need to close all tags</h3>
+<p class="calibre8">Just like in XHTML, if you have ever used it, you need to close all tags: no more <code class="calibre10 pcalibre4 pcalibre3">&lt;br&gt;</code> but instead use the self-closing tag: <code class="calibre10 pcalibre4 pcalibre3">&lt;br /&gt;</code> (the same goes for other tags)</p>
+<h3 id="camelcase-is-the-new-standard" class="calibre14">camelCase is the new standard</h3>
+<p class="calibre8">In HTML you'll find attributes without any case (e.g. <code class="calibre10 pcalibre4 pcalibre3">onchange</code>). In JSX, they are renamed to their camelCase equivalent:</p>
+<ul class="calibre15">
+<li class="calibre16"><code class="calibre10 pcalibre4 pcalibre3">onchange</code> =&gt; <code class="calibre10 pcalibre4 pcalibre3">onChange</code></li>
+<li class="calibre16"><code class="calibre10 pcalibre4 pcalibre3">onclick</code> =&gt; <code class="calibre10 pcalibre4 pcalibre3">onClick</code></li>
+<li class="calibre16"><code class="calibre10 pcalibre4 pcalibre3">onsubmit</code> =&gt; <code class="calibre10 pcalibre4 pcalibre3">onSubmit</code></li>
+</ul>
+<h3 id="class-becomes-classname" class="calibre14"><code class="pcalibre3 calibre23 pcalibre4">class</code> becomes <code class="pcalibre3 calibre23 pcalibre4">className</code></h3>
+<p class="calibre8">Due to the fact that JSX is JavaScript, and <code class="calibre10 pcalibre4 pcalibre3">class</code> is a reserved word, you can't write</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">&lt;p <span class="hljs-name"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">"description"</span>&gt;
+</code></pre>
+<p class="calibre8">but you need to use</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">&lt;p className=<span class="hljs-string">"description"</span>&gt;
+</code></pre>
+<p class="calibre8"><strong class="calibre11">The same applies to <code class="calibre10 pcalibre4 pcalibre3">for</code></strong> which is translated to <code class="calibre10 pcalibre4 pcalibre3">htmlFor</code>.</p>
+<h3 id="the-style-attribute-changes-its-semantics" class="calibre14">The style attribute changes its semantics</h3>
+<p class="calibre8">The <code class="calibre10 pcalibre4 pcalibre3">style</code> attribute in HTML allows to specify inline style. In JSX it no longer accepts a string, and in <a href="#css-in-react" class="pcalibre2 pcalibre pcalibre1 calibre12">CSS in React</a> you'll see why it's a very convenient change.</p>
+<h3 id="forms" class="calibre14">Forms</h3>
+<p class="calibre8">Form fields definition and events are changed in JSX to provide more consistency and utility.</p>
+<p class="calibre8"><a href="#forms-in-jsx" class="pcalibre2 pcalibre pcalibre1 calibre12">Forms in JSX</a> goes into more details on forms.</p>
+<h2 id="css-in-react" class="calibre13">CSS in React</h2>
+<p class="calibre8">JSX provides a cool way to define CSS.</p>
+<p class="calibre8">If you have a little experience with HTML inline styles, at first glance you'll find yourself pushed back 10 or 15 years, to a world where inline CSS was completely normal (nowadays it's demonized and usually just a "quick fix" go-to solution).</p>
+<p class="calibre8">JSX style is not the same thing: first of all, instead of accepting a string containing CSS properties, the JSX <code class="calibre10 pcalibre4 pcalibre3">style</code> attribute only accepts an object. This means you define properties in an object:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">var</span> divStyle = {
+  color: <span class="hljs-string">'white'</span>
+}
+
+ReactDOM.render(<span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-name">style</span>=<span class="hljs-string">{divStyle}</span>&gt;</span>Hello World!<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>, mountNode)
+</code></pre>
+<p class="calibre8">or</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">ReactDOM.render(<span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-name">style</span>=<span class="hljs-string">{{</span> <span class="hljs-name">color:</span> '<span class="hljs-name">white</span>' }}&gt;</span>Hello World!<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>, mountNode)
+</code></pre>
+<p class="calibre8">The CSS values you write in JSX are slightly different from plain CSS:</p>
+<ul class="calibre15">
+<li class="calibre16">the keys property names are camelCased</li>
+<li class="calibre16">values are just strings</li>
+<li class="calibre16">you separate each tuple with a comma</li>
+</ul>
+<h3 id="why-is-this-preferred-over-plain-css--sass--less" class="calibre14">Why is this preferred over plain CSS / SASS / LESS?</h3>
+<p class="calibre8">CSS is an <strong class="calibre11">unsolved problem</strong>. Since its inception, dozens of tools around it rose and then fell. The main problem with JS is that there is no scoping and it's easy to write CSS that is not enforced in any way, thus a "quick fix" can impact elements that should not be touched.</p>
+<p class="calibre8">JSX allows components (defined in React for example) to completely encapsulate their style.</p>
+<h3 id="is-this-the-go-to-solution" class="calibre14">Is this the go-to solution?</h3>
+<p class="calibre8">Inline styles in JSX are good until you need to</p>
+<ol class="calibre2">
+<li class="calibre16">write media queries</li>
+<li class="calibre16">style animations</li>
+<li class="calibre16">reference pseudo classes (e.g. <code class="calibre10 pcalibre4 pcalibre3">:hover</code>)</li>
+<li class="calibre16">reference pseudo elements (e.g. <code class="calibre10 pcalibre4 pcalibre3">::first-letter</code>)</li>
+</ol>
+<p class="calibre8">In short, they cover the basics, but it's not the final solution.</p>
+<h2 id="forms-in-jsx" class="calibre13">Forms in JSX</h2>
+<p class="calibre8">JSX adds some changes to how HTML forms work, with the goal of making things easier for the developer.</p>
+<h3 id="value-and-defaultvalue" class="calibre14"><code class="pcalibre3 calibre23 pcalibre4">value</code> and <code class="pcalibre3 calibre23 pcalibre4">defaultValue</code></h3>
+<p class="calibre8">The <code class="calibre10 pcalibre4 pcalibre3">value</code> attribute always holds the current value of the field.</p>
+<p class="calibre8">The <code class="calibre10 pcalibre4 pcalibre3">defaultValue</code> attribute holds the default value that was set when the field was created.</p>
+<p class="calibre8"><em class="calibre17">This helps solve some weird behavior of regular <a href="https://flaviocopes.com/dom/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">DOM</a> interaction when inspecting <code class="calibre10 pcalibre4 pcalibre3">input.value</code> and <code class="calibre10 pcalibre4 pcalibre3">input.getAttribute('value')</code> returning one the current value and one the original default value.</em></p>
+<p class="calibre8">This also applies to the <code class="calibre10 pcalibre4 pcalibre3">textarea</code> field, e.g.</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-tag">&lt;<span class="hljs-name">textarea</span>&gt;</span>Some text<span class="hljs-tag">&lt;/<span class="hljs-name">textarea</span>&gt;</span>
+</code></pre>
+<p class="calibre8">but instead</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">&lt;textarea defaultValue={<span class="hljs-string">'Some text'</span>} /&gt;
+</code></pre>
+<p class="calibre8">For <code class="calibre10 pcalibre4 pcalibre3">select</code> fields, instead of using</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">&lt;select&gt;
+  &lt;option value="x" selected&gt;
+    ...
+  &lt;/option&gt;
+&lt;/select&gt;
+</code></pre>
+<p class="calibre8">use</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">&lt;select defaultValue="x"&gt;
+  &lt;option value="x"&gt;...&lt;/option&gt;
+&lt;/select&gt;
+</code></pre>
+<h3 id="a-more-consistent-onchange" class="calibre14">A more consistent onChange</h3>
+<p class="calibre8">Passing a function to the <code class="calibre10 pcalibre4 pcalibre3">onChange</code> attribute you can subscribe to events on form fields.</p>
+<p class="calibre8">It works consistently across fields, even <code class="calibre10 pcalibre4 pcalibre3">radio</code>, <code class="calibre10 pcalibre4 pcalibre3">select</code> and <code class="calibre10 pcalibre4 pcalibre3">checkbox</code> input fields fire a <code class="calibre10 pcalibre4 pcalibre3">onChange</code> event.</p>
+<p class="calibre8"><code class="calibre10 pcalibre4 pcalibre3">onChange</code> also fires when typing a character into an <code class="calibre10 pcalibre4 pcalibre3">input</code> or <code class="calibre10 pcalibre4 pcalibre3">textarea</code> field.</p>
+<h2 id="jsx-auto-escapes" class="calibre13">JSX auto escapes</h2>
+<p class="calibre8">To mitigate the ever present risk of XSS exploits, JSX forces automatic escaping in expressions.</p>
+<p class="calibre8">This means that you might run into issues when using an HTML entity in a string expression.</p>
+<p class="calibre8">You expect the following to print <code class="calibre10 pcalibre4 pcalibre3">© 2017</code>:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">&lt;p&gt;{'&amp;copy; 2017'}&lt;/p&gt;
+</code></pre>
+<p class="calibre8">But it's not, it's printing <code class="calibre10 pcalibre4 pcalibre3">&amp;copy; 2017</code> because the string is escaped.</p>
+<p class="calibre8">To fix this you can either move the entities outside the expression:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&amp;copy; 2017<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+</code></pre>
+<p class="calibre8">or by using a constant that prints the Unicode representation corresponding to the HTML entity you need to print:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">&lt;p&gt;{'\u00A9 2017'}&lt;/p&gt;
+</code></pre>
+<h2 id="white-space-in-jsx" class="calibre13">White space in JSX</h2>
+<p class="calibre8">To add white space in JSX there are 2 rules:</p>
+<h3 id="horizontal-white-space-is-trimmed-to-1" class="calibre14">Horizontal white space is trimmed to 1</h3>
+<p class="calibre8">If you have white space between elements in the same line, it's all trimmed to 1 white space.</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Something       becomes               this<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+</code></pre>
+<p class="calibre8">becomes</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Something becomes this<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+</code></pre>
+<h3 id="vertical-white-space-is-eliminated" class="calibre14">Vertical white space is eliminated</h3>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>
+  Something
+  becomes
+  this
+<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+</code></pre>
+<p class="calibre8">becomes</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Somethingbecomesthis<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+</code></pre>
+<p class="calibre8">To fix this problem you need to explicitly add white space, by adding a space expression like this:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>
+  Something
+  {' '}becomes
+  {' '}this
+<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+</code></pre>
+<p class="calibre8">or by embedding the string in a space expression:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>
+  Something
+  {' becomes '}
+  this
+<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+</code></pre>
+<h2 id="adding-comments-in-jsx" class="calibre13">Adding comments in JSX</h2>
+<p class="calibre8">You can add comments to JSX by using the normal JavaScript comments inside an expression:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">&lt;p&gt;
+  {/* a comment */}
+  {
+    //another comment
+  }
+&lt;/p&gt;
+</code></pre>
+<h2 id="spread-attributes" class="calibre13">Spread attributes</h2>
+<p class="calibre8">In JSX a common operation is assigning values to attributes.</p>
+<p class="calibre8">Instead of doing it manually, e.g.</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">&lt;div&gt;
+  <span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">BlogPost</span> <span class="hljs-name">title</span>=<span class="hljs-string">{data.title}</span> <span class="hljs-name">date</span>=<span class="hljs-string">{data.date}</span> /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+</code></pre>
+<p class="calibre8">you can pass</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">&lt;div&gt;
+  <span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">BlogPost</span> {<span class="hljs-name">...data</span>} /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+</code></pre>
+<p class="calibre8">and the properties of the <code class="calibre10 pcalibre4 pcalibre3">data</code> object will be used as attributes automatically, thanks to the <em class="calibre17">ES6 spread operator</em></p>
+<h2 id="how-to-loop-in-jsx" class="calibre13">How to loop in JSX</h2>
+<p class="calibre8">If you have a set of elements you need to loop upon to generate a JSX partial, you can create a loop, and then add JSX to an array:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> elements = [] <span class="hljs-comment">//..some array</span>
+
+<span class="hljs-keyword">const</span> items = []
+
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> [index, value] <span class="hljs-keyword">of</span> elements.entries() {
+  items.push(<span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">Element</span> <span class="hljs-name">key</span>=<span class="hljs-string">{index}</span> /&gt;</span>)
+}
+</span></code></pre>
+<p class="calibre8">Now when rendering the JSX you can embed the <code class="calibre10 pcalibre4 pcalibre3">items</code> array simply by wrapping it in curly braces:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> elements = [<span class="hljs-string">'one'</span>, <span class="hljs-string">'two'</span>, <span class="hljs-string">'three'</span>];
+
+<span class="hljs-keyword">const</span> items = []
+
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> [index, value] <span class="hljs-keyword">of</span> elements.entries() {
+  items.push(<span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-name">key</span>=<span class="hljs-string">{index}</span>&gt;</span>{value}<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span>)
+}
+
+<span class="hljs-keyword">return</span> (
+  <span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+    {items}
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+)
+</code></pre>
+<p class="calibre8">You can do the same directly in the JSX, using <code class="calibre10 pcalibre4 pcalibre3">map</code> instead of a for-of loop:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> elements = [<span class="hljs-string">'one'</span>, <span class="hljs-string">'two'</span>, <span class="hljs-string">'three'</span>];
+<span class="hljs-keyword">return</span> (
+  <span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+    {elements.map((value, index) =&gt; {
+      return <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-name">key</span>=<span class="hljs-string">{index}</span>&gt;</span>{value}<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    })}
+  <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span></span>
+)
+</code></pre>
+
+        </div>
+    
+</div>
+
+        
+    
+
+
+</body></html>

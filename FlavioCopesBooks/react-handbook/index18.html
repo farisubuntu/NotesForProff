@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>The Virtual DOM</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="description" content="The Virtual DOM is a technique that React uses to optimize interacting with the browser"/>
+    <meta name="generator" content="GitBook 3.2.3"/>
+    <meta name="author" content="Flavio Copes"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link href="stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="page_styles.css" rel="stylesheet" type="text/css"/>
+</head>
+  <body class="calibre">
+        
+<div class="page">
+    
+        <h1 class="book-chapter" id="calibre_toc_19">The Virtual DOM</h1>
+        <h1 class="page-title">The Virtual DOM</h1>
+        <h3 class="calibre7">The Virtual DOM is a technique that React uses to optimize interacting with the browser</h3>
+
+        <div class="section">
+            <p class="calibre8">Many existing frameworks, before React came on the scene, were directly manipulating the DOM on every change.</p>
+<p class="calibre8">First, what is the DOM?</p>
+<p class="calibre8">The DOM (<em class="calibre17">Document Object Model</em>) is a Tree representation of the page, starting from the <code class="calibre10 pcalibre4 pcalibre3">&lt;html&gt;</code> tag, going down into every child, which are called nodes.</p>
+<p class="calibre8">It's kept in the browser memory, and directly linked to what you see in a page.
+The DOM has an API that you can use to traverse it, access every single node, filter them, modify them.</p>
+<p class="calibre8">The API is the familiar syntax you have likely seen many times, if you were not using the abstract API provided by jQuery and friends:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-number">document</span>.getElementById(id)
+<span class="hljs-number">document</span>.getElementsByTagName(name)
+<span class="hljs-number">document</span>.createElement(name)
+parentNode.appendChild(node)
+element.innerHTML
+element.style.left
+element.setAttribute()
+element.getAttribute()
+element.addEventListener()
+<span class="hljs-number">window</span>.content
+<span class="hljs-number">window</span>.onload
+<span class="hljs-number">window</span>.dump()
+<span class="hljs-number">window</span>.scrollTo()
+</code></pre>
+<p class="calibre8">React keeps a copy of the DOM representation, for what concerns the React rendering: the Virtual DOM</p>
+<h3 id="the-virtual-dom-explained" class="calibre14">The Virtual DOM Explained</h3>
+<p class="calibre8">Every time the DOM changes, the browser has to do two intensive operations: repaint (visual or content changes to an element that do not affect the layout and positioning relative to other elements) and reflow (recalculate the layout of a portion of the page - or the whole page layout).</p>
+<p class="calibre8">React uses a Virtual DOM to help the browser use less resources when changes need to be done on a page.</p>
+<p class="calibre8">When you call <code class="calibre10 pcalibre4 pcalibre3">setState()</code> on a Component, specifying a state different than the previous one, React marks that Component as <strong class="calibre11">dirty</strong>. This is key: React only updates when a Component changes the state explicitly.</p>
+<p class="calibre8">What happens next is:</p>
+<ul class="calibre15">
+<li class="calibre16">React updates the Virtual DOM relative to the components marked as dirty (with some additional checks, like triggering <code class="calibre10 pcalibre4 pcalibre3">shouldComponentUpdate()</code>)</li>
+<li class="calibre16">Runs the diffing algorithm to reconcile the changes</li>
+<li class="calibre16">Updates the real DOM</li>
+</ul>
+<h3 id="why-is-the-virtual-dom-helpful-batching" class="calibre14">Why is the Virtual DOM helpful: batching</h3>
+<p class="calibre8">The key thing is that React batches much of the changes and performs a unique update to the real DOM, by changing all the elements that need to be changed at the same time, so the repaint and reflow the browser must perform to render the changes are executed just once.</p>
+
+        </div>
+    
+</div>
+
+        
+    
+
+
+</body></html>

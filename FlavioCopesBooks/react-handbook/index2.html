@@ -1,0 +1,125 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>How to install React</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="description" content="How to install React on your development computer"/>
+    <meta name="generator" content="GitBook 3.2.3"/>
+    <meta name="author" content="Flavio Copes"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link href="stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="page_styles.css" rel="stylesheet" type="text/css"/>
+</head>
+  <body class="calibre">
+        
+<div class="page">
+    
+        <h1 class="book-chapter" id="calibre_toc_3">How to install React</h1>
+        <h1 class="page-title">How to install React</h1>
+        <h3 class="calibre7">How to install React on your development computer</h3>
+
+        <div class="section">
+            <p class="calibre8">How do you install React?</p>
+<p class="calibre8">React is a library, so saying <em class="calibre17">install</em> might sound a bit weird. Maybe <em class="calibre17">setup</em> is a better word, but you get the concept.</p>
+<p class="calibre8">There are various ways to setup React so that it can be used on your app or site.</p>
+<h2 id="load-react-directly-in-the-web-page" class="calibre13">Load React directly in the web page</h2>
+<p class="calibre8">The simplest one is to add the React JavaScript file into the page directly. This is best when your React app will interact with the elements present on a single page, and not actually controls the whole navigation aspect.</p>
+<p class="calibre8">In this case, you add 2 script tags to the end of the <code class="calibre10 pcalibre4 pcalibre3">body</code> tag:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+  ...
+  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    ...
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span>
+      <span class="hljs-name">src</span>=<span class="hljs-string">"https://cdnjs.cloudflare.com/ajax/libs/react/16.7.0-alpha.2/umd/react.development.js"</span>
+      <span class="hljs-name">crossorigin</span>
+    &gt;</span><span class="hljs-name"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span>
+      <span class="hljs-name">src</span>=<span class="hljs-string">"https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.7.0-alpha.2/umd/react-dom.production.min.js"</span>
+      <span class="hljs-name">crossorigin</span>
+    &gt;</span><span class="hljs-name"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</code></pre>
+<blockquote class="calibre19">
+<p class="calibre8">The <code class="calibre10 pcalibre4 pcalibre3">16.7.0-alpha.2</code> version in the links points to the latest Alpha of 16.7 (at the time of writing), which has Hooks available. Please change it to the latest version of React that is available.</p>
+</blockquote>
+<p class="calibre8">Here we loaded both React and React DOM. Why 2 libraries? Because React is 100% independent from the browser and can be used outside it (for example on Mobile devices with React Native). Hence the need for React DOM, to add the wrappers for the browser.</p>
+<p class="calibre8">After those tags you can load your JavaScript files that use React, or even inline JavaScript in a <code class="calibre10 pcalibre4 pcalibre3">script</code> tag:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-name">src</span>=<span class="hljs-string">"app.js"</span>&gt;</span><span class="hljs-name"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-comment">&lt;!-- or --&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="hljs-name">
+  <span class="hljs-comment">//my app</span>
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</code></pre>
+<p class="calibre8">To use <a href="https://flaviocopes.com/jsx/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">JSX</a> you need an extra step: load <a href="https://flaviocopes.com/babel/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">Babel</a></p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-name">src</span>=<span class="hljs-string">"https://unpkg.com/babel-standalone@6/babel.min.js"</span>&gt;</span><span class="hljs-name"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</code></pre>
+<p class="calibre8">and load your scripts with the special <code class="calibre10 pcalibre4 pcalibre3">text/babel</code> MIME type:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-name">src</span>=<span class="hljs-string">"app.js"</span> <span class="hljs-name">type</span>=<span class="hljs-string">"text/babel"</span>&gt;</span><span class="hljs-name"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</code></pre>
+<p class="calibre8">Now you can add JSX in your app.js file:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> Button = () =&gt; {
+  <span class="hljs-keyword">return</span> <span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>Click me!<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span>
+}
+
+ReactDOM.render(<span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">Button</span> /&gt;</span>, document.getElementById('root'))
+</span></code></pre>
+<p class="calibre8">Check out this simple Glitch example: <a href="https://glitch.com/edit/#!/react-example-inline-jsx?path=script.js" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">https://glitch.com/edit/#!/react-example-inline-jsx?path=script.js</a></p>
+<p class="calibre8">Starting in this way with script tags is good for building prototypes and enables a quick start without having to set up a complex workflow.</p>
+<h2 id="use-create-react-app" class="calibre13">Use create-react-app</h2>
+<p class="calibre8"><code class="calibre10 pcalibre4 pcalibre3">create-react-app</code> is a project aimed at getting you up to speed with React in no time, and any React app that needs to outgrow a single page will find that <code class="calibre10 pcalibre4 pcalibre3">create-react-app</code> meets that need.</p>
+<p class="calibre8">You start by using <a href="https://flaviocopes.com/npx/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12"><code class="calibre10 pcalibre4 pcalibre3">npx</code></a>, which is an easy way to download and execute Node.js commands without installing them. <code class="calibre10 pcalibre4 pcalibre3">npx</code> comes with <code class="calibre10 pcalibre4 pcalibre3">npm</code> (since version 5.2) and if you don't have npm installed already, do it now from <a href="https://nodejs.org" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">https://nodejs.org</a> (npm is installed with Node).</p>
+<p class="calibre8">If you are unsure which version of npm you have, run <code class="calibre10 pcalibre4 pcalibre3">npm -v</code> to check if you need to update.</p>
+<blockquote class="calibre19">
+<p class="calibre8">Tip: check out my OSX terminal tutorial at <a href="https://flaviocopes.com/macos-terminal/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">https://flaviocopes.com/macos-terminal/</a> if you're unfamiliar with using the terminal, applies to Linux as well - I'm sorry but I don't have a tutorial for Windows at the moment, but Google is your friend.</p>
+</blockquote>
+<p class="calibre8">When you run <code class="calibre10 pcalibre4 pcalibre3">npx create-react-app &lt;app-name&gt;</code>, <code class="calibre10 pcalibre4 pcalibre3">npx</code> is going to <em class="calibre17">download</em> the most recent <code class="calibre10 pcalibre4 pcalibre3">create-react-app</code> release, run it, and then remove it from your system. This is great because you will never have an outdated version on your system, and every time you run it, you're getting the latest and greatest code available.</p>
+<p class="calibre8">Let's start then:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">npx create-react-app todolist
+</code></pre>
+<p class="calibre8"><img src="create-react-app-running.png" alt="" class="calibre9"/></p>
+<p class="calibre8">This is when it finished running:</p>
+<p class="calibre8"><img src="create-react-app-finished.png" alt="" class="calibre9"/></p>
+<p class="calibre8"><code class="calibre10 pcalibre4 pcalibre3">create-react-app</code> created a files structure in the folder you told (<code class="calibre10 pcalibre4 pcalibre3">todolist</code> in this case), and initialized a <a href="https://flaviocopes.com/git/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">Git</a> repository.</p>
+<p class="calibre8">It also added a few commands in the <code class="calibre10 pcalibre4 pcalibre3">package.json</code> file, so you can immediately start the app by going into the folder and run <code class="calibre10 pcalibre4 pcalibre3">npm start</code>.</p>
+<p class="calibre8"><img src="cra-console.png" alt="" class="calibre9"/></p>
+<p class="calibre8"><img src="cra-browser.png" alt="" class="calibre9"/></p>
+<p class="calibre8">In addition to <code class="calibre10 pcalibre4 pcalibre3">npm start</code>, <code class="calibre10 pcalibre4 pcalibre3">create-react-app</code> added a few other commands:</p>
+<ul class="calibre15">
+<li class="calibre16"><code class="calibre10 pcalibre4 pcalibre3">npm run build</code>: to build the React application files in the <code class="calibre10 pcalibre4 pcalibre3">build</code> folder, ready to be deployed to a server</li>
+<li class="calibre16"><code class="calibre10 pcalibre4 pcalibre3">npm test</code>: to run the testing suite using <a href="https://flaviocopes.com/jest/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">Jest</a></li>
+<li class="calibre16"><code class="calibre10 pcalibre4 pcalibre3">npm eject</code>: to eject from <code class="calibre10 pcalibre4 pcalibre3">create-react-app</code></li>
+</ul>
+<p class="calibre8">Ejecting is the act of deciding that <code class="calibre10 pcalibre4 pcalibre3">create-react-app</code> has done enough for you, but you want to do more than what it allows.</p>
+<p class="calibre8">Since <code class="calibre10 pcalibre4 pcalibre3">create-react-app</code> is a set of common denominator conventions and a limited amount of options, it's probable that at some point your needs will demand something unique that outgrows the capabilities of <code class="calibre10 pcalibre4 pcalibre3">create-react-app</code>.</p>
+<p class="calibre8">When you eject, you lose the ability of automatic updates but you gain more flexibility in the <a href="https://flaviocopes.com/babel/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">Babel</a> and <a href="https://flaviocopes.com/webpack/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">Webpack</a> configuration.</p>
+<p class="calibre8">When you eject the action is irreversible. You will get 2 new folders in your application directory, <code class="calibre10 pcalibre4 pcalibre3">config</code> and <code class="calibre10 pcalibre4 pcalibre3">scripts</code>. Those contain the configurations - and now you can start editing them.</p>
+<blockquote class="calibre19">
+<p class="calibre8">If you already have a React app installed using an older version of React, first check the version by adding <code class="calibre10 pcalibre4 pcalibre3">console.log(React.version)</code> in your app, then you can update by running <code class="calibre10 pcalibre4 pcalibre3">yarn add react@16.7</code>, and yarn will prompt you to update (choose the latest version available). Repeat for <code class="calibre10 pcalibre4 pcalibre3">yarn add react-dom@16.7</code> (change "16.7" with whatever is the newest version of React at the moment)</p>
+</blockquote>
+<h2 id="codesandbox" class="calibre13">CodeSandbox</h2>
+<p class="calibre8">An easy way to have the <code class="calibre10 pcalibre4 pcalibre3">create-react-app</code> structure, without installing it, is to go to <a href="https://codesandbox.io/s" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">https://codesandbox.io/s</a> and choose "React".</p>
+<p class="calibre8"><img src="codesandbox.png" alt="" class="calibre9"/></p>
+<p class="calibre8">CodeSandbox is a great way to start a React project without having to install it locally.</p>
+<h2 id="codepen" class="calibre13">Codepen</h2>
+<p class="calibre8">Another great solution is <a href="https://codepen.io" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">Codepen</a>.</p>
+<p class="calibre8">You can use this Codepen starter project which already comes pre-configured with React, with support for Hooks: <a href="https://codepen.io/flaviocopes/pen/VqeaxB" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">https://codepen.io/flaviocopes/pen/VqeaxB</a></p>
+<p class="calibre8">Codepen "pens" are great for quick projects with one JavaScript file, while "projects" are great for projects with multiple files, like the ones we'll use the most when building React apps.</p>
+<p class="calibre8">One thing to note is that in Codepen, due to how it works internally, you don't use the regular ES Modules <code class="calibre10 pcalibre4 pcalibre3">import</code> syntax, but rather to import for example <code class="calibre10 pcalibre4 pcalibre3">useState</code>, you use</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> { useState } = React
+</code></pre>
+<p class="calibre8">and not</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">import</span> { useState } <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>
+</code></pre>
+
+        </div>
+    
+</div>
+
+        
+    
+
+
+</body></html>

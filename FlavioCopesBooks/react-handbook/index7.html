@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>Object and array destructuring</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="description" content="Learn how to use the destructuring syntax to work with arrays and objects in JavaScript"/>
+    <meta name="generator" content="GitBook 3.2.3"/>
+    <meta name="author" content="Flavio Copes"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link href="stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="page_styles.css" rel="stylesheet" type="text/css"/>
+</head>
+  <body class="calibre">
+        
+<div class="page">
+    
+        <h1 class="book-chapter" id="calibre_toc_8">Object and array destructuring</h1>
+        <h1 class="page-title">Object and array destructuring</h1>
+        <h3 class="calibre7">Learn how to use the destructuring syntax to work with arrays and objects in JavaScript</h3>
+
+        <div class="section">
+            <p class="calibre8">Given an object, using the destructuring syntax you can extract just some values and put them into named variables:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> person = {
+  firstName: <span class="hljs-string">'Tom'</span>,
+  lastName: <span class="hljs-string">'Cruise'</span>,
+  actor: <span class="hljs-number">true</span>,
+  age: <span class="hljs-number">54</span> <span class="hljs-comment">//made up</span>
+}
+
+<span class="hljs-keyword">const</span> { firstName: name, age } = person <span class="hljs-comment">//name: Tom, age: 54</span>
+</code></pre>
+<p class="calibre8"><code class="calibre10 pcalibre4 pcalibre3">name</code> and <code class="calibre10 pcalibre4 pcalibre3">age</code> contain the desired values.</p>
+<p class="calibre8">The syntax also works on arrays:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> a = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>]
+<span class="hljs-keyword">const</span> [first, second] = a
+</code></pre>
+<p class="calibre8">This statement creates 3 new variables by getting the items with index 0, 1, 4 from the array <code class="calibre10 pcalibre4 pcalibre3">a</code>:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> [first, second, , , fifth] = a
+</code></pre>
+
+        </div>
+    
+</div>
+
+        
+    
+
+
+</body></html>

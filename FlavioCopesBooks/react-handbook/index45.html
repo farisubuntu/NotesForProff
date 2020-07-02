@@ -1,0 +1,169 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>Testing React Components</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="description" content="Test your first React component using Jest and `react-testing-library`"/>
+    <meta name="generator" content="GitBook 3.2.3"/>
+    <meta name="author" content="Flavio Copes"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link href="stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="page_styles.css" rel="stylesheet" type="text/css"/>
+</head>
+  <body class="calibre">
+        
+<div class="page">
+    
+        <h1 class="book-chapter" id="calibre_toc_46">Testing React Components</h1>
+        <h1 class="page-title">Testing React Components</h1>
+        <h3 class="calibre7">Test your first React component using Jest and `react-testing-library`</h3>
+
+        <div class="section">
+            <p class="calibre8">The easiest way to start with testing React components is doing snapshot testing, a testing technique that lets you test components in isolation.</p>
+<p class="calibre8">If you are familiar with testing software, it's just like unit testing you do for classes: you test each component functionality.</p>
+<p class="calibre8">I assume you created a React app with <code class="calibre10 pcalibre4 pcalibre3">create-react-app</code>, which already comes with <strong class="calibre11">Jest</strong> installed, the testing package we'll need.</p>
+<p class="calibre8">Let's start with a simple test. CodeSandbox is a great environment to try this out. Start with a React sandbox, and create an <code class="calibre10 pcalibre4 pcalibre3">App.js</code> component in a <code class="calibre10 pcalibre4 pcalibre3">components</code> folder, and add an <code class="calibre10 pcalibre4 pcalibre3">App.test.js</code> file.</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-comment">App</span>(<span class="hljs-number"></span>) </span>{
+  <span class="hljs-keyword">return</span> (
+    <span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-name">className</span>=<span class="hljs-string">"App"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Hello CodeSandbox<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>Start editing to see some magic happen!<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+  )
+}
+</code></pre>
+<p class="calibre8">Our first test is dumb:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">test(<span class="hljs-string">'First test'</span>, () =&gt; {
+  expect(<span class="hljs-number">true</span>).toBeTruthy()
+})
+</code></pre>
+<p class="calibre8">When CodeSandbox detects test files, it automatically runs them for you, and you can click the Tests button in the bottom of the view to show your test results:</p>
+<p class="calibre8"><img src="first-test.png" alt="" class="calibre9"/></p>
+<p class="calibre8">A test file can contain multiple tests:</p>
+<p class="calibre8"><img src="test-details.png" alt="" class="calibre9"/></p>
+<p class="calibre8">Let's do something a bit more useful now, to actually test a React component. We only have App now, which is not doing anything really useful, so let's first set up the environment with a little application with more functionality: the counter app we built previously. If you skipped it, you can go back and read how we built it, but for easier reference I add it here again.</p>
+<p class="calibre8">It's just 2 components: App and Button. Create the <code class="calibre10 pcalibre4 pcalibre3">App.js</code> file:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">import</span> React, { useState } <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>
+<span class="hljs-keyword">import</span> Button <span class="hljs-keyword">from</span> <span class="hljs-string">'./Button'</span>
+
+<span class="hljs-keyword">const</span> App = () =&gt; {
+  <span class="hljs-keyword">const</span> [count, setCount] = useState(<span class="hljs-number">0</span>)
+
+  <span class="hljs-keyword">const</span> incrementCount = increment =&gt; {
+    setCount(count + increment)
+  }
+
+  <span class="hljs-keyword">return</span> (
+    &lt;div&gt;
+      &lt;Button increment={1} onClickFunction={incrementCount} /&gt;
+      &lt;Button increment={10} onClickFunction={incrementCount} /&gt;
+      &lt;Button increment={100} onClickFunction={incrementCount} /&gt;
+      &lt;Button increment={1000} onClickFunction={incrementCount} /&gt;
+      &lt;span&gt;{count}&lt;/span&gt;
+    &lt;/div&gt;
+  )
+}
+
+export default App
+</code></pre>
+<p class="calibre8">and the <code class="calibre10 pcalibre4 pcalibre3">Button.js</code> file:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>
+
+<span class="hljs-keyword">const</span> Button = ({ increment, onClickFunction }) =&gt; {
+  <span class="hljs-keyword">const</span> handleClick = () =&gt; {
+    onClickFunction(increment)
+  }
+  <span class="hljs-keyword">return</span> <span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-name">onClick</span>=<span class="hljs-string">{handleClick}</span>&gt;</span>+{increment}<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span>
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> Button
+</code></pre>
+<p class="calibre8">We are going to use the <code class="calibre10 pcalibre4 pcalibre3">react-testing-library</code>, which is a great help as it allows us to inspect the output of every component and to apply events on them. You can read more about it on <a href="https://github.com/kentcdodds/react-testing-library" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">https://github.com/kentcdodds/react-testing-library</a> or by watching <a href="https://www.youtube.com/watch?v=JKOwJUM4_RM" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">this video</a>.</p>
+<p class="calibre8">Let's test the Button component first.</p>
+<p class="calibre8">We start by importing <code class="calibre10 pcalibre4 pcalibre3">render</code> and <code class="calibre10 pcalibre4 pcalibre3">fireEvent</code> from <code class="calibre10 pcalibre4 pcalibre3">react-testing-library</code>, two helpers. The first lets us render JSX. The second lets us emit events on a component.</p>
+<p class="calibre8">Create a <code class="calibre10 pcalibre4 pcalibre3">Button.test.js</code> and put it in the same folder as <code class="calibre10 pcalibre4 pcalibre3">Button.js</code>.</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>
+<span class="hljs-keyword">import</span> { render, fireEvent } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-testing-library'</span>
+<span class="hljs-keyword">import</span> Button <span class="hljs-keyword">from</span> <span class="hljs-string">'./Button'</span>
+</code></pre>
+<p class="calibre8">Buttons are used in the app to accept a click event and then they call a function passed to the <code class="calibre10 pcalibre4 pcalibre3">onClickFunction</code> prop. We add a <code class="calibre10 pcalibre4 pcalibre3">count</code> variable and we create a function that increments it:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">let</span> count
+
+<span class="hljs-keyword">const</span> incrementCount = increment =&gt; {
+  count += increment
+}
+</code></pre>
+<p class="calibre8">Now off to the actual tests. We first initialize count to 0, and we render a <code class="calibre10 pcalibre4 pcalibre3">+1</code> <code class="calibre10 pcalibre4 pcalibre3">Button</code> component passing a <code class="calibre10 pcalibre4 pcalibre3">1</code> to <code class="calibre10 pcalibre4 pcalibre3">increment</code> and our <code class="calibre10 pcalibre4 pcalibre3">incrementCount</code> function to <code class="calibre10 pcalibre4 pcalibre3">onClickFunction</code>.</p>
+<p class="calibre8">Then we get the content of the first child of the component, and we check it outputs <code class="calibre10 pcalibre4 pcalibre3">+1</code>.</p>
+<p class="calibre8">We then proceed to clicking the button, and we check that the count got from 0 to 1:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">test(<span class="hljs-string">'+1 Button works'</span>, () =&gt; {
+  count = <span class="hljs-number">0</span>
+  <span class="hljs-keyword">const</span> { container } = render(
+    <span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">Button</span> <span class="hljs-name">increment</span>=<span class="hljs-string">{1}</span> <span class="hljs-name">onClickFunction</span>=<span class="hljs-string">{incrementCount}</span> /&gt;</span>
+  )
+  const button = container.firstChild
+  expect(button.textContent).toBe('+1')
+  expect(count).toBe(0)
+  fireEvent.click(button)
+  expect(count).toBe(1)
+})
+</span></code></pre>
+<p class="calibre8">Similarly we test a +100 button, this time checking the output is <code class="calibre10 pcalibre4 pcalibre3">+100</code> and the button click increments the count of 100.</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">test(<span class="hljs-string">'+100 Button works'</span>, () =&gt; {
+  count = <span class="hljs-number">0</span>
+  <span class="hljs-keyword">const</span> { container } = render(
+    <span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">Button</span> <span class="hljs-name">increment</span>=<span class="hljs-string">{100}</span> <span class="hljs-name">onClickFunction</span>=<span class="hljs-string">{incrementCount}</span> /&gt;</span>
+  )
+  const button = container.firstChild
+  expect(button.textContent).toBe('+100')
+  expect(count).toBe(0)
+  fireEvent.click(button)
+  expect(count).toBe(100)
+})
+</span></code></pre>
+<p class="calibre8">Let's test the App component now. It shows 4 buttons and the result in the page. We can inspect each button and see if the result increases when we click them, clicking multiple times as well:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>
+<span class="hljs-keyword">import</span> { render, fireEvent } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-testing-library'</span>
+<span class="hljs-keyword">import</span> App <span class="hljs-keyword">from</span> <span class="hljs-string">'./App'</span>
+
+test(<span class="hljs-string">'App works'</span>, () =&gt; {
+  <span class="hljs-keyword">const</span> { container } = render(<span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">App</span> /&gt;</span>)
+  console.log(container)
+  const buttons = container.querySelectorAll('button')
+
+  expect(buttons[0].textContent).toBe('+1')
+  expect(buttons[1].textContent).toBe('+10')
+  expect(buttons[2].textContent).toBe('+100')
+  expect(buttons[3].textContent).toBe('+1000')
+
+  const result = container.querySelector('span')
+  expect(result.textContent).toBe('0')
+  fireEvent.click(buttons[0])
+  expect(result.textContent).toBe('1')
+  fireEvent.click(buttons[1])
+  expect(result.textContent).toBe('11')
+  fireEvent.click(buttons[2])
+  expect(result.textContent).toBe('111')
+  fireEvent.click(buttons[3])
+  expect(result.textContent).toBe('1111')
+  fireEvent.click(buttons[2])
+  expect(result.textContent).toBe('1211')
+  fireEvent.click(buttons[1])
+  expect(result.textContent).toBe('1221')
+  fireEvent.click(buttons[0])
+  expect(result.textContent).toBe('1222')
+})
+</span></code></pre>
+<p class="calibre8">Check the code working on this CodeSandbox: <a href="https://codesandbox.io/s/pprl4y0wq" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">https://codesandbox.io/s/pprl4y0wq</a></p>
+
+        </div>
+    
+</div>
+
+        
+    
+
+
+</body></html>

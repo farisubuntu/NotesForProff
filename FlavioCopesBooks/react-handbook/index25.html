@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>State vs Props</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="description" content="What's the difference between state and props in React?"/>
+    <meta name="generator" content="GitBook 3.2.3"/>
+    <meta name="author" content="Flavio Copes"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link href="stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="page_styles.css" rel="stylesheet" type="text/css"/>
+</head>
+  <body class="calibre">
+        
+<div class="page">
+    
+        <h1 class="book-chapter" id="calibre_toc_26">State vs Props</h1>
+        <h1 class="page-title">State vs Props</h1>
+        <h3 class="calibre7">What's the difference between state and props in React?</h3>
+
+        <div class="section">
+            <p class="calibre8">In a React component, <strong class="calibre11">props</strong> are variables passed to it by its parent component.
+<strong class="calibre11">State</strong> on the other hand is still variables, but directly initialized and managed by the component.</p>
+<p class="calibre8">The state can be initialized by props.</p>
+<p class="calibre8">For example, a parent component might include a child component by calling</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">&lt;ChildComponent /&gt;
+</code></pre>
+<p class="calibre8">The parent can pass a prop by using this syntax:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">&lt;ChildComponent color=green /&gt;
+</code></pre>
+<p class="calibre8">Inside the ChildComponent constructor we could access the prop:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-name"><span class="hljs-keyword">class</span> <span class="hljs-comment">ChildComponent</span> <span class="hljs-keyword">extends</span> <span class="hljs-comment">React</span>.<span class="hljs-comment">Component</span> </span>{
+  <span class="hljs-keyword">constructor</span>(props) {
+    <span class="hljs-keyword">super</span>(props)
+    <span class="hljs-number">console</span>.log(props.color)
+  }
+}
+</code></pre>
+<p class="calibre8">and any other method in this class can reference the props using <code class="calibre10 pcalibre4 pcalibre3">this.props</code>.</p>
+<p class="calibre8">Props can be used to set the internal state based on a prop value in the constructor, like this:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-name"><span class="hljs-keyword">class</span> <span class="hljs-comment">ChildComponent</span> <span class="hljs-keyword">extends</span> <span class="hljs-comment">React</span>.<span class="hljs-comment">Component</span> </span>{
+  <span class="hljs-keyword">constructor</span>(props) {
+    <span class="hljs-keyword">super</span>(props)
+    <span class="hljs-keyword">this</span>.state.colorName = props.color
+  }
+}
+</code></pre>
+<p class="calibre8">Of course a component can also initialize the state without looking at props.</p>
+<p class="calibre8">In this case there's nothing useful going on, but imagine doing something different based on the prop value, probably setting a state value is best.</p>
+<p class="calibre8">Props should never be changed in a child component, so if there's something going on that alters some variable, that variable should belong to the component state.</p>
+<p class="calibre8">Props are also used to allow child components to access methods defined in the parent component. This is a good way to centralize managing the state in the parent component, and avoid children to have the need to have their own state.</p>
+<p class="calibre8">Most of your components will just display some kind of information based on the props they received, and stay <strong class="calibre11">stateless</strong>.</p>
+
+        </div>
+    
+</div>
+
+        
+    
+
+
+</body></html>

@@ -1,0 +1,321 @@
+<?xml version='1.0' encoding='utf-8'?>
+<ncx xmlns="http://www.daisy.org/z3986/2005/ncx/" version="2005-1" xml:lang="en-GB">
+  <head>
+    <meta content="30aa4e9c-d918-414e-93e9-599415f4b026" name="dtb:uid"/>
+    <meta content="3" name="dtb:depth"/>
+    <meta content="calibre (3.20.0)" name="dtb:generator"/>
+    <meta content="0" name="dtb:totalPageCount"/>
+    <meta content="0" name="dtb:maxPageNumber"/>
+  </head>
+  <docTitle>
+    <text>The React Handbook</text>
+  </docTitle>
+  <navMap>
+    <navPoint id="uKc2bcBvAcDvnlXvTkVjkZ5" playOrder="1">
+      <navLabel>
+        <text>Introduction</text>
+      </navLabel>
+      <content src="index.html"/>
+      <navPoint id="usEJGkC3MTyfYSLtiu6LtJF" playOrder="2">
+        <navLabel>
+          <text>Introduction to React</text>
+        </navLabel>
+        <content src="index1.html"/>
+      </navPoint>
+      <navPoint id="uoStUUBwugFDduy7ABdsB84" playOrder="3">
+        <navLabel>
+          <text>How to install React</text>
+        </navLabel>
+        <content src="index2.html"/>
+      </navPoint>
+      <navPoint id="uYNEGfARnuB2snWS8eLzbl3" playOrder="4">
+        <navLabel>
+          <text>How much JS you need to use React</text>
+        </navLabel>
+        <content src="index3.html"/>
+      </navPoint>
+      <navPoint id="us7FdWooDFzgzBXneF2iwPD" playOrder="5">
+        <navLabel>
+          <text>Variables</text>
+        </navLabel>
+        <content src="index4.html"/>
+      </navPoint>
+      <navPoint id="udCYOlVPeklLhZBsEK2omQ3" playOrder="6">
+        <navLabel>
+          <text>Arrow functions</text>
+        </navLabel>
+        <content src="index5.html"/>
+      </navPoint>
+      <navPoint id="u9OJmkJT4fiGiE4mWcXXrm8" playOrder="7">
+        <navLabel>
+          <text>Work with objects and arrays using Rest and Spread</text>
+        </navLabel>
+        <content src="index6.html"/>
+      </navPoint>
+      <navPoint id="uTXxbyH7Zuz3QWANSFUQF9D" playOrder="8">
+        <navLabel>
+          <text>Object and array destructuring</text>
+        </navLabel>
+        <content src="index7.html"/>
+      </navPoint>
+      <navPoint id="uJMvYauyTaSxNbwqYxShHJ7" playOrder="9">
+        <navLabel>
+          <text>Template literals</text>
+        </navLabel>
+        <content src="index8.html"/>
+      </navPoint>
+      <navPoint id="uHNPGsIDtgwbS9IhnaG8YvE" playOrder="10">
+        <navLabel>
+          <text>Classes</text>
+        </navLabel>
+        <content src="index9.html"/>
+      </navPoint>
+      <navPoint id="uAdGded6RHjftgETwXZ7HSE" playOrder="11">
+        <navLabel>
+          <text>Promises</text>
+        </navLabel>
+        <content src="index10.html"/>
+      </navPoint>
+      <navPoint id="ufNwdu7tkCOtakbSoL7xJfC" playOrder="12">
+        <navLabel>
+          <text>Async/Await</text>
+        </navLabel>
+        <content src="index11.html"/>
+      </navPoint>
+      <navPoint id="uzcLhHmN5yMmgjJrrxBIpP8" playOrder="13">
+        <navLabel>
+          <text>ES Modules</text>
+        </navLabel>
+        <content src="index12.html"/>
+      </navPoint>
+      <navPoint id="ukCPHJRqCYJkMoQZnWjdTV5" playOrder="14">
+        <navLabel>
+          <text>Single Page Apps</text>
+        </navLabel>
+        <content src="index13.html"/>
+      </navPoint>
+      <navPoint id="uImpvBIjwu5WgXH8CqsKaF5" playOrder="15">
+        <navLabel>
+          <text>Declarative</text>
+        </navLabel>
+        <content src="index14.html"/>
+      </navPoint>
+      <navPoint id="utJUOCUphSLo8pcjTXoRkQ3" playOrder="16">
+        <navLabel>
+          <text>Immutability</text>
+        </navLabel>
+        <content src="index15.html"/>
+      </navPoint>
+      <navPoint id="u7WoopBV83FnTbwYaTbAuu9" playOrder="17">
+        <navLabel>
+          <text>Purity</text>
+        </navLabel>
+        <content src="index16.html"/>
+      </navPoint>
+      <navPoint id="ueamMtD4JqEl9pkkwPNTgz5" playOrder="18">
+        <navLabel>
+          <text>Composition</text>
+        </navLabel>
+        <content src="index17.html"/>
+      </navPoint>
+      <navPoint id="ua93itGBP6qUirLmKQqHxME" playOrder="19">
+        <navLabel>
+          <text>The Virtual DOM</text>
+        </navLabel>
+        <content src="index18.html"/>
+      </navPoint>
+      <navPoint id="uf7lQNmheWdfFG4GDvpQIfG" playOrder="20">
+        <navLabel>
+          <text>Unidirectional Data Flow</text>
+        </navLabel>
+        <content src="index19.html"/>
+      </navPoint>
+      <navPoint id="ucOlZv73w3lEvGYQCVSgd98" playOrder="21">
+        <navLabel>
+          <text>JSX</text>
+        </navLabel>
+        <content src="index20.html"/>
+      </navPoint>
+      <navPoint id="u6GwJUlOFhWU8m9rKAQlY3C" playOrder="22">
+        <navLabel>
+          <text>Components</text>
+        </navLabel>
+        <content src="index21.html"/>
+      </navPoint>
+      <navPoint id="uIE5eWOhObEa2LvbSFfYp4B" playOrder="23">
+        <navLabel>
+          <text>State</text>
+        </navLabel>
+        <content src="index22.html"/>
+      </navPoint>
+      <navPoint id="uCRbRhMsQFxuWKUvagZfSXG" playOrder="24">
+        <navLabel>
+          <text>Props</text>
+        </navLabel>
+        <content src="index23.html"/>
+      </navPoint>
+      <navPoint id="uTtntFEyscpbrLcf899UvCH" playOrder="25">
+        <navLabel>
+          <text>Presentational vs container components</text>
+        </navLabel>
+        <content src="index24.html"/>
+      </navPoint>
+      <navPoint id="uR23NEu6doeeyqOug9F5V3A" playOrder="26">
+        <navLabel>
+          <text>State vs Props</text>
+        </navLabel>
+        <content src="index25.html"/>
+      </navPoint>
+      <navPoint id="u8eZGXXQfMRUD9pSlmY2Zr4" playOrder="27">
+        <navLabel>
+          <text>PropTypes</text>
+        </navLabel>
+        <content src="index26.html"/>
+      </navPoint>
+      <navPoint id="uRp7KCu8iqV9j7xhMI7Fz7A" playOrder="28">
+        <navLabel>
+          <text>Fragment</text>
+        </navLabel>
+        <content src="index27.html"/>
+      </navPoint>
+      <navPoint id="uFhSChP7NXLI7syVFvW3Km4" playOrder="29">
+        <navLabel>
+          <text>Events</text>
+        </navLabel>
+        <content src="index28.html"/>
+      </navPoint>
+      <navPoint id="unflAgW3czdOVgHBTKugTM4" playOrder="30">
+        <navLabel>
+          <text>Lifecycle events</text>
+        </navLabel>
+        <content src="index29.html"/>
+      </navPoint>
+      <navPoint id="uRCclDRRvka9ByKQhuiBpfB" playOrder="31">
+        <navLabel>
+          <text>Handling forms</text>
+        </navLabel>
+        <content src="index30.html"/>
+      </navPoint>
+      <navPoint id="uJvtTzJZKHwbzM6Yzh8UyfC" playOrder="32">
+        <navLabel>
+          <text>Reference a DOM element</text>
+        </navLabel>
+        <content src="index31.html"/>
+      </navPoint>
+      <navPoint id="uRM4DMGptZnbLoMiR4PIboG" playOrder="33">
+        <navLabel>
+          <text>Server side rendering</text>
+        </navLabel>
+        <content src="index32.html"/>
+      </navPoint>
+      <navPoint id="uuELAIlNgPVAAECZujIVTrC" playOrder="34">
+        <navLabel>
+          <text>Context API</text>
+        </navLabel>
+        <content src="index33.html"/>
+      </navPoint>
+      <navPoint id="uCTz64taCvnKLOO9QnxdBb6" playOrder="35">
+        <navLabel>
+          <text>Higher-order components</text>
+        </navLabel>
+        <content src="index34.html"/>
+      </navPoint>
+      <navPoint id="uECwP8sNDuMSrpdypUiEfl6" playOrder="36">
+        <navLabel>
+          <text>Render Props</text>
+        </navLabel>
+        <content src="index35.html"/>
+      </navPoint>
+      <navPoint id="uuRNbezSXtLfy45VxZ4tni7" playOrder="37">
+        <navLabel>
+          <text>Hooks</text>
+        </navLabel>
+        <content src="index36.html"/>
+      </navPoint>
+      <navPoint id="uoeSmG8EsLqvQtAkZQmafO6" playOrder="38">
+        <navLabel>
+          <text>Code splitting</text>
+        </navLabel>
+        <content src="index37.html"/>
+      </navPoint>
+      <navPoint id="uQRMgwQTDNFcrS7rKdYlDW9" playOrder="39">
+        <navLabel>
+          <text>CSS in React</text>
+        </navLabel>
+        <content src="index38.html"/>
+      </navPoint>
+      <navPoint id="uupu3Pah8EqP6dotuW7cp3D" playOrder="40">
+        <navLabel>
+          <text>SASS with React</text>
+        </navLabel>
+        <content src="index39.html"/>
+      </navPoint>
+      <navPoint id="u4nelOFRT6oxjH8fomh32j9" playOrder="41">
+        <navLabel>
+          <text>Styled Components</text>
+        </navLabel>
+        <content src="index40.html"/>
+      </navPoint>
+      <navPoint id="uQT8G4MpABhE9D3doXIeAR6" playOrder="42">
+        <navLabel>
+          <text>Babel</text>
+        </navLabel>
+        <content src="index41.html"/>
+      </navPoint>
+      <navPoint id="uehcrur3W2W8WFvRHzZywJD" playOrder="43">
+        <navLabel>
+          <text>Webpack</text>
+        </navLabel>
+        <content src="index42.html"/>
+      </navPoint>
+      <navPoint id="u2jnnUPK5mrAVafFSvke3OH" playOrder="44">
+        <navLabel>
+          <text>Prettier</text>
+        </navLabel>
+        <content src="index43.html"/>
+      </navPoint>
+      <navPoint id="utqCLrbANn2uX8QHodY5DQC" playOrder="45">
+        <navLabel>
+          <text>Introduction to Jest</text>
+        </navLabel>
+        <content src="index44.html"/>
+      </navPoint>
+      <navPoint id="u5W6KkvL8BOfCy6nw5WMVs4" playOrder="46">
+        <navLabel>
+          <text>Testing React Components</text>
+        </navLabel>
+        <content src="index45.html"/>
+      </navPoint>
+      <navPoint id="uYgZpEMGYwqCAVnmJYa8XSA" playOrder="47">
+        <navLabel>
+          <text>React Router</text>
+        </navLabel>
+        <content src="index46.html"/>
+      </navPoint>
+      <navPoint id="ut5A67CHLOnEvnB4uUN6M59" playOrder="48">
+        <navLabel>
+          <text>Redux</text>
+        </navLabel>
+        <content src="index47.html"/>
+      </navPoint>
+      <navPoint id="uwucebrS77AdEkfstIi9ShC" playOrder="49">
+        <navLabel>
+          <text>Next.js</text>
+        </navLabel>
+        <content src="index48.html"/>
+      </navPoint>
+      <navPoint id="usXyrdqKtq5kkH4wEPalv7E" playOrder="50">
+        <navLabel>
+          <text>Gatsby</text>
+        </navLabel>
+        <content src="index49.html"/>
+      </navPoint>
+    </navPoint>
+    <navPoint id="uEu2NIwR4AJSoIz768HPpM6" playOrder="51">
+      <navLabel>
+        <text>Wrapping up</text>
+      </navLabel>
+      <content src="index50.html"/>
+    </navPoint>
+  </navMap>
+</ncx>

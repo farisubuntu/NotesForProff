@@ -1,0 +1,139 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>State</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="description" content="How to interact with the state of your components"/>
+    <meta name="generator" content="GitBook 3.2.3"/>
+    <meta name="author" content="Flavio Copes"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link href="stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="page_styles.css" rel="stylesheet" type="text/css"/>
+</head>
+  <body class="calibre">
+        
+<div class="page">
+    
+        <h1 class="book-chapter" id="calibre_toc_23">State</h1>
+        <h1 class="page-title">State</h1>
+        <h3 class="calibre7">How to interact with the state of your components</h3>
+
+        <div class="section">
+            <h3 id="setting-the-default-state" class="calibre14">Setting the default state</h3>
+<p class="calibre8">In the Component constructor, initialize <code class="calibre10 pcalibre4 pcalibre3">this.state</code>. For example the BlogPostExcerpt component might have a <code class="calibre10 pcalibre4 pcalibre3">clicked</code> state:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-name"><span class="hljs-keyword">class</span> <span class="hljs-comment">BlogPostExcerpt</span> <span class="hljs-keyword">extends</span> <span class="hljs-comment">Component</span> </span>{
+  <span class="hljs-keyword">constructor</span>(props) {
+    <span class="hljs-keyword">super</span>(props)
+    <span class="hljs-keyword">this</span>.state = { clicked: <span class="hljs-number">false</span> }
+  }
+
+  render() {
+    <span class="hljs-keyword">return</span> (
+      <span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Title<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Description<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+    )
+  }
+}
+</code></pre>
+<h3 id="accessing-the-state" class="calibre14">Accessing the state</h3>
+<p class="calibre8">The <em class="calibre17">clicked</em> state can be accessed by referencing <code class="calibre10 pcalibre4 pcalibre3">this.state.clicked</code>:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-name"><span class="hljs-keyword">class</span> <span class="hljs-comment">BlogPostExcerpt</span> <span class="hljs-keyword">extends</span> <span class="hljs-comment">Component</span> </span>{
+  <span class="hljs-keyword">constructor</span>(props) {
+    <span class="hljs-keyword">super</span>(props)
+    <span class="hljs-keyword">this</span>.state = { clicked: <span class="hljs-number">false</span> }
+  }
+
+  render() {
+    <span class="hljs-keyword">return</span> (
+      <span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Title<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Description<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Clicked: {this.state.clicked}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+    )
+  }
+}
+</code></pre>
+<h3 id="mutating-the-state" class="calibre14">Mutating the state</h3>
+<p class="calibre8">A state should never be mutated by using</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">this</span>.state.clicked = <span class="hljs-number">true</span>
+</code></pre>
+<p class="calibre8">Instead, you should always use <code class="calibre10 pcalibre4 pcalibre3">setState()</code> instead, passing it an object:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">this</span>.setState({ clicked: <span class="hljs-number">true</span> })
+</code></pre>
+<p class="calibre8">The object can contain a subset, or a superset, of the state. Only the properties you pass will be mutated, the ones omitted will be left in their current state.</p>
+<h4 id="why-you-should-always-use-setstate" class="calibre14">Why you should always use <code class="pcalibre3 calibre24 pcalibre4">setState()</code></h4>
+<p class="calibre8">The reason is that using this method, React knows that the state has changed. It will then start the series of events that will lead to the Component being re-rendered, along with any <a href="https://flaviocopes.com/dom/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">DOM</a> update.</p>
+<h3 id="unidirectional-data-flow" class="calibre14">Unidirectional Data Flow</h3>
+<p class="calibre8">A state is always owned by one Component. Any data that's affected by this state can only affect Components below it: its children.</p>
+<p class="calibre8">Changing the state on a Component will never affect its parent, or its siblings, or any other Component in the application: just its children.</p>
+<p class="calibre8">This is the reason the state is often moved up in the Component tree.</p>
+<h3 id="moving-the-state-up-in-the-tree" class="calibre14">Moving the State Up in the Tree</h3>
+<p class="calibre8">Because of the Unidirectional Data Flow rule, if two components need to share state, the state needs to be moved up to a common ancestor.</p>
+<p class="calibre8">Many times the closest ancestor is the best place to manage the state, but it's not a mandatory rule.</p>
+<p class="calibre8">The state is passed down to the components that need that value via props:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-name"><span class="hljs-keyword">class</span> <span class="hljs-comment">Converter</span> <span class="hljs-keyword">extends</span> <span class="hljs-comment">React</span>.<span class="hljs-comment">Component</span> </span>{
+  <span class="hljs-keyword">constructor</span>(props) {
+    <span class="hljs-keyword">super</span>(props)
+    <span class="hljs-keyword">this</span>.state = { currency: <span class="hljs-string">'€'</span> }
+  }
+
+  render() {
+    <span class="hljs-keyword">return</span> (
+      &lt;div&gt;
+        &lt;Display currency={this.state.currency} /&gt;
+        &lt;CurrencySwitcher currency={this.state.currency} /&gt;
+      &lt;/div&gt;
+    )
+  }
+}
+</code></pre>
+<p class="calibre8">The state can be mutated by a child component by passing a mutating function down as a prop:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-name"><span class="hljs-keyword">class</span> <span class="hljs-comment">Converter</span> <span class="hljs-keyword">extends</span> <span class="hljs-comment">React</span>.<span class="hljs-comment">Component</span> </span>{
+  <span class="hljs-keyword">constructor</span>(props) {
+    <span class="hljs-keyword">super</span>(props)
+    <span class="hljs-keyword">this</span>.state = { currency: <span class="hljs-string">'€'</span> }
+  }
+
+  handleChangeCurrency = event =&gt; {
+    <span class="hljs-keyword">this</span>.setState({ currency: <span class="hljs-keyword">this</span>.state.currency === <span class="hljs-string">'€'</span> ? <span class="hljs-string">'$'</span> : <span class="hljs-string">'€'</span> })
+  }
+
+  render() {
+    <span class="hljs-keyword">return</span> (
+      &lt;div&gt;
+        &lt;Display currency={this.state.currency} /&gt;
+        &lt;CurrencySwitcher
+          currency={this.state.currency}
+          handleChangeCurrency={this.handleChangeCurrency}
+        /&gt;
+      &lt;/div&gt;
+    )
+  }
+}
+
+const CurrencySwitcher = props =&gt; {
+  return (
+    &lt;button onClick={props.handleChangeCurrency}&gt;
+      Current currency is {props.currency}. Change it!
+    &lt;/button&gt;
+  )
+}
+
+const Display = props =&gt; {
+  return &lt;p&gt;Current currency is {props.currency}.&lt;/p&gt;
+}
+</code></pre>
+<p class="calibre8"><img src="1.gif" alt="The result" class="calibre9"/></p>
+
+        </div>
+    
+</div>
+
+        
+    
+
+
+</body></html>

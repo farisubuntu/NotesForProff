@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>CSS in React</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="description" content="How to use CSS to style a React application"/>
+    <meta name="generator" content="GitBook 3.2.3"/>
+    <meta name="author" content="Flavio Copes"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link href="stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="page_styles.css" rel="stylesheet" type="text/css"/>
+</head>
+  <body class="calibre">
+        
+<div class="page">
+    
+        <h1 class="book-chapter" id="calibre_toc_39">CSS in React</h1>
+        <h1 class="page-title">CSS in React</h1>
+        <h3 class="calibre7">How to use CSS to style a React application</h3>
+
+        <div class="section">
+            <p class="calibre8">Using React you have various ways to add styling to your components.</p>
+<h2 id="using-classes-and-css" class="calibre13">Using classes and CSS</h2>
+<p class="calibre8">The first and most simple is to use classes, and use a normal CSS file to target those classes:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> Button = () =&gt; {
+  <span class="hljs-keyword">return</span> <span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-name">className</span>=<span class="hljs-string">"button"</span>&gt;</span>A button<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span>
+}
+</code></pre>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-name">.button</span> {
+  <span class="hljs-tag">background-color</span>: yellow;
+}
+</code></pre>
+<p class="calibre8">You can import the stylesheet using an import statement, like this:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">import</span> <span class="hljs-string">'./style.css'</span>
+</code></pre>
+<p class="calibre8">and <a href="https://flaviocopes.com/webpack/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">Webpack</a> will take care of adding the CSS property to the bundle.</p>
+<h2 id="using-the-style-attribute" class="calibre13">Using the style attribute</h2>
+<p class="calibre8">A second method is to use the <code class="calibre10 pcalibre4 pcalibre3">style</code> attribute attached to a JSX element. Using this approach you don't need a separate CSS file.</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> Button = () =&gt; {
+  <span class="hljs-keyword">return</span> <span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-name">style</span>=<span class="hljs-string">{{</span> <span class="hljs-name">backgroundColor:</span> '<span class="hljs-name">yellow</span>' }}&gt;</span>A button<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span>
+}
+</code></pre>
+<p class="calibre8">CSS is defined in a slightly different way now. First, notice the double curly brackets: it's because <code class="calibre10 pcalibre4 pcalibre3">style</code> accepts an object. We pass in a JavaScript object, which is defined in curly braces. We could also do this:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> buttonStyle = { backgroundColor: <span class="hljs-string">'yellow'</span> }
+<span class="hljs-keyword">const</span> Button = () =&gt; {
+  <span class="hljs-keyword">return</span> <span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-name">style</span>=<span class="hljs-string">{buttonStyle}</span>&gt;</span>A button<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span>
+}
+</code></pre>
+<p class="calibre8">When using <code class="calibre10 pcalibre4 pcalibre3">create-react-app</code>, those styles are autoprefixed by default thanks to its use of <a href="https://github.com/postcss/autoprefixer" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">Autoprefixer</a>.</p>
+<p class="calibre8">Also, the style now is camelCased instead of using dashes. Every time a CSS property has a dash, remove it and start the next word capitalized.</p>
+<p class="calibre8">Styles have the benefit of being local to the component, and they cannot leak to other components in other parts of the app, something that using classes and an external CSS file can't provide.</p>
+<h2 id="using-css-modules" class="calibre13">Using CSS Modules</h2>
+<p class="calibre8"><strong class="calibre11">CSS Modules</strong> seem to be a perfect spot in the middle: you use classes, but CSS is scoped to the component, which means that any styling you add cannot be applied to other components without your permission. And yet your styles are defined in a separate CSS file, which is easier to maintain than CSS in JavaScript (and you can use your good old CSS property names).</p>
+<p class="calibre8">Start by creating a CSS file that ends with <code class="calibre10 pcalibre4 pcalibre3">.module.css</code>, for example <code class="calibre10 pcalibre4 pcalibre3">Button.module.css</code>. A great choice is to give it the same name as the component you are going to style</p>
+<p class="calibre8">Add your CSS here, then import it inside the component file you want to style:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">import</span> style <span class="hljs-keyword">from</span> <span class="hljs-string">'./Button.module.css'</span>
+</code></pre>
+<p class="calibre8">now you can use it in your JSX:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> Button = () =&gt; {
+  <span class="hljs-keyword">return</span> <span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-name">className</span>=<span class="hljs-string">{style.content}</span>&gt;</span>A button<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span>
+}
+</code></pre>
+<p class="calibre8">That's it! In the resulting markup, React will generate a specific, unique class for each rendered component, and assign the CSS to that class, so that the CSS is not affecting other markup.</p>
+<p class="calibre8"><img src="css-modules.png" alt="CSS Modules in React" class="calibre9"/></p>
+
+        </div>
+    
+</div>
+
+        
+    
+
+
+</body></html>

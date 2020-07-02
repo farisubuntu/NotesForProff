@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>Variables</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="description" content="A variable is a literal assigned to an identifier, so you can reference and use it later in the program. Learn how to declare one with JavaScript"/>
+    <meta name="generator" content="GitBook 3.2.3"/>
+    <meta name="author" content="Flavio Copes"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link href="stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="page_styles.css" rel="stylesheet" type="text/css"/>
+</head>
+  <body class="calibre">
+        
+<div class="page">
+    
+        <h1 class="book-chapter" id="calibre_toc_5">Variables</h1>
+        <h1 class="page-title">Variables</h1>
+        <h3 class="calibre7">A variable is a literal assigned to an identifier, so you can reference and use it later in the program. Learn how to declare one with JavaScript</h3>
+
+        <div class="section">
+            <p class="calibre8">A variable is a literal assigned to an identifier, so you can reference and use it later in the program.</p>
+<p class="calibre8">Variables in <a href="https://flaviocopes.com/javascript/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">JavaScript</a> do not have any type attached. Once you assign a specific literal type to a variable, you can later reassign the variable to host any other type, without type errors or any issue.</p>
+<p class="calibre8">This is why JavaScript is sometimes referred to as "untyped".</p>
+<p class="calibre8">A variable must be declared before you can use it. There are 3 ways to do this, using <code class="calibre10 pcalibre4 pcalibre3">var</code>, <code class="calibre10 pcalibre4 pcalibre3">let</code> or <code class="calibre10 pcalibre4 pcalibre3">const</code>, and those 3 ways differ in how you can interact with the variable later on.</p>
+<h2 id="using-var" class="calibre13">Using <code class="calibre20 pcalibre3 pcalibre4">var</code></h2>
+<p class="calibre8">Until ES2015, <code class="calibre10 pcalibre4 pcalibre3">var</code> was the only construct available for defining variables.</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">var</span> a = <span class="hljs-number">0</span>
+</code></pre>
+<p class="calibre8">If you forget to add <code class="calibre10 pcalibre4 pcalibre3">var</code> you will be assigning a value to an undeclared variable, and the results might vary.</p>
+<p class="calibre8">In modern environments, with strict mode enabled, you will get an error. In older environments (or with strict mode disabled) this will simply initialize the variable and assign it to the global object.</p>
+<p class="calibre8">If you don't initialize the variable when you declare it, it will have the <code class="calibre10 pcalibre4 pcalibre3">undefined</code> value until you assign a value to it.</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">var</span> a <span class="hljs-comment">//typeof a === 'undefined'</span>
+</code></pre>
+<p class="calibre8">You can redeclare the variable many times, overriding it:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">var</span> a = <span class="hljs-number">1</span>
+<span class="hljs-keyword">var</span> a = <span class="hljs-number">2</span>
+</code></pre>
+<p class="calibre8">You can also declare multiple variables at once in the same statement:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">var a = 1, b = 2
+</code></pre><p class="calibre8">The <strong class="calibre11">scope</strong> is the portion of code where the variable is visible.</p>
+<p class="calibre8">A variable initialized with <code class="calibre10 pcalibre4 pcalibre3">var</code> outside of any function is assigned to the global object, has a global scope and is visible everywhere.
+A variable initialized with <code class="calibre10 pcalibre4 pcalibre3">var</code> inside a function is assigned to that function, it's local and is visible only inside it, just like a function parameter.</p>
+<p class="calibre8">Any variable defined in a function with the same name as a global variable takes precedence over the global variable, shadowing it.</p>
+<p class="calibre8">It's important to understand that a block (identified by a pair of curly braces) does not define a new scope. A new scope is only created when a function is created, because <code class="calibre10 pcalibre4 pcalibre3">var</code> does not have block scope, but function scope.</p>
+<p class="calibre8">Inside a function, any variable defined in it is visible throughout all the function code, even if the variable is declared at the end of the function it can still be referenced in the beginning, because JavaScript before executing the code actually <em class="calibre17">moves all variables on top</em> (something that is called <strong class="calibre11">hoisting</strong>). To avoid confusion, always declare variables at the beginning of a function.</p>
+<h2 id="using-let" class="calibre13">Using <code class="calibre20 pcalibre3 pcalibre4">let</code></h2>
+<p class="calibre8"><code class="calibre10 pcalibre4 pcalibre3">let</code> is a new feature introduced in ES2015 and it's essentially a block scoped version of <code class="calibre10 pcalibre4 pcalibre3">var</code>. Its scope is limited to the block, statement or expression where it's defined, and all the contained inner blocks.</p>
+<p class="calibre8">Modern JavaScript developers might choose to only use <code class="calibre10 pcalibre4 pcalibre3">let</code> and completely discard the use of <code class="calibre10 pcalibre4 pcalibre3">var</code>.</p>
+<blockquote class="calibre19">
+<p class="calibre8">If <code class="calibre10 pcalibre4 pcalibre3">let</code> seems an obscure term, just read <code class="calibre10 pcalibre4 pcalibre3">let color = 'red'</code> as <em class="calibre17">let the color be red</em> and it all makes much more sense</p>
+</blockquote>
+<p class="calibre8">Defining <code class="calibre10 pcalibre4 pcalibre3">let</code> outside of any function - contrary to <code class="calibre10 pcalibre4 pcalibre3">var</code> - does not create a global variable.</p>
+<h2 id="using-const" class="calibre13">Using <code class="calibre20 pcalibre3 pcalibre4">const</code></h2>
+<p class="calibre8">Variables declared with <code class="calibre10 pcalibre4 pcalibre3">var</code> or <code class="calibre10 pcalibre4 pcalibre3">let</code> can be changed later on in the program, and reassigned. Once a <code class="calibre10 pcalibre4 pcalibre3">const</code> is initialized, its value can never be changed again, and it can't be reassigned to a different value.</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">const a = 'test'
+</code></pre><p class="calibre8">We can't assign a different literal to the <code class="calibre10 pcalibre4 pcalibre3">a</code> const. We can however mutate <code class="calibre10 pcalibre4 pcalibre3">a</code> if it's an object that provides methods that mutate its contents.</p>
+<p class="calibre8"><code class="calibre10 pcalibre4 pcalibre3">const</code> does not provide immutability, just makes sure that the reference can't be changed.</p>
+<p class="calibre8"><code class="calibre10 pcalibre4 pcalibre3">const</code> has block scope, same as <code class="calibre10 pcalibre4 pcalibre3">let</code>.</p>
+<p class="calibre8">Modern JavaScript developers might choose to always use <code class="calibre10 pcalibre4 pcalibre3">const</code> for variables that don't need to be reassigned later in the program.</p>
+<blockquote class="calibre21">
+<p class="calibre8">Why? Because we should always use the simplest construct available to avoid making errors down the road.</p>
+</blockquote>
+
+        </div>
+    
+</div>
+
+        
+    
+
+
+</body></html>

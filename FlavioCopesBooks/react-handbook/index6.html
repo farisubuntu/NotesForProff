@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>Work with objects and arrays using Rest and Spread</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="description" content="Learn two modern techniques to work with arrays and objects in JavaScript"/>
+    <meta name="generator" content="GitBook 3.2.3"/>
+    <meta name="author" content="Flavio Copes"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link href="stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="page_styles.css" rel="stylesheet" type="text/css"/>
+</head>
+  <body class="calibre">
+        
+<div class="page">
+    
+        <h1 class="book-chapter" id="calibre_toc_7">Work with objects and arrays using Rest and Spread</h1>
+        <h1 class="page-title">Work with objects and arrays using Rest and Spread</h1>
+        <h3 class="calibre7">Learn two modern techniques to work with arrays and objects in JavaScript</h3>
+
+        <div class="section">
+            <p class="calibre8">You can expand an array, an object or a string using the spread operator <code class="calibre10 pcalibre4 pcalibre3">...</code>.</p>
+<p class="calibre8">Let's start with an array example. Given</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> a = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]
+</code></pre>
+<p class="calibre8">you can create a new array using</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> b = [...a, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>]
+</code></pre>
+<p class="calibre8">You can also create a copy of an array using</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> c = [...a]
+</code></pre>
+<p class="calibre8">This works for objects as well. Clone an object with:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> newObj = { ...oldObj }
+</code></pre>
+<p class="calibre8">Using strings, the spread operator creates an array with each char in the string:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> hey = <span class="hljs-string">'hey'</span>
+<span class="hljs-keyword">const</span> arrayized = [...hey] <span class="hljs-comment">// ['h', 'e', 'y']</span>
+</code></pre>
+<p class="calibre8">This operator has some pretty useful applications. The most important one is the ability to use an array as function argument in a very simple way:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> f = (foo, bar) =&gt; {}
+<span class="hljs-keyword">const</span> a = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>]
+f(...a)
+</code></pre>
+<p class="calibre8">(in the past you could do this using <code class="calibre10 pcalibre4 pcalibre3">f.apply(null, a)</code> but that's not as nice and readable)</p>
+<p class="calibre8">The <strong class="calibre11">rest element</strong> is useful when working with <strong class="calibre11">array destructuring</strong>:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> numbers = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>]
+[first, second, ...others] = numbers
+</code></pre>
+<p class="calibre8">and <strong class="calibre11">spread elements</strong>:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> numbers = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>]
+<span class="hljs-keyword">const</span> sum = (a, b, c, d, e) =&gt; a + b + c + d + e
+<span class="hljs-keyword">const</span> sum = sum(...numbers)
+</code></pre>
+<p class="calibre8">ES2018 introduces rest properties, which are the same but for objects.</p>
+<p class="calibre8"><strong class="calibre11">Rest properties</strong>:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> { first, second, ...others } = {
+  first: <span class="hljs-number">1</span>,
+  second: <span class="hljs-number">2</span>,
+  third: <span class="hljs-number">3</span>,
+  fourth: <span class="hljs-number">4</span>,
+  fifth: <span class="hljs-number">5</span>
+}
+
+first <span class="hljs-comment">// 1</span>
+second <span class="hljs-comment">// 2</span>
+others <span class="hljs-comment">// { third: 3, fourth: 4, fifth: 5 }</span>
+</code></pre>
+<p class="calibre8"><strong class="calibre11">Spread properties</strong> allow to create a new object by combining the properties of the object passed after the spread operator:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> items = { first, second, ...others }
+items <span class="hljs-comment">//{ first: 1, second: 2, third: 3, fourth: 4, fifth: 5 }</span>
+</code></pre>
+
+        </div>
+    
+</div>
+
+        
+    
+
+
+</body></html>

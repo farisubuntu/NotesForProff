@@ -1,0 +1,191 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>Promises</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="description" content="Promises are one way to deal with asynchronous code in JavaScript, without writing too many callbacks in your code."/>
+    <meta name="generator" content="GitBook 3.2.3"/>
+    <meta name="author" content="Flavio Copes"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link href="stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="page_styles.css" rel="stylesheet" type="text/css"/>
+</head>
+  <body class="calibre">
+        
+<div class="page">
+    
+        <h1 class="book-chapter" id="calibre_toc_11">Promises</h1>
+        <h1 class="page-title">Promises</h1>
+        <h3 class="calibre7">Promises are one way to deal with asynchronous code in JavaScript, without writing too many callbacks in your code.</h3>
+
+        <div class="section">
+            <p class="calibre8">A promise is commonly defined as <strong class="calibre11">a proxy for a value that will eventually become available</strong>.</p>
+<p class="calibre8">Promises are one way to deal with asynchronous code, without writing too many callbacks in your code.</p>
+<p class="calibre8">Although they've been around for years, they were standardized and introduced in <a href="https://flaviocopes.com/ecmascript/#es2015-aka-es6" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">ES2015</a>, and now they have been superseded in <a href="https://flaviocopes.com/ecmascript/#es2017-aka-es8" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">ES2017</a> by <a href="https://flaviocopes.com/javascript-async-await" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">async functions</a>.</p>
+<p class="calibre8"><strong class="calibre11">Async functions</strong> use the promises API as their building block, so understanding them is fundamental even if in newer code you'll likely use async functions instead of promises.</p>
+<h3 id="how-promises-work-in-brief" class="calibre14">How promises work, in brief</h3>
+<p class="calibre8">Once a promise has been called, it will start in <strong class="calibre11">pending state</strong>. This means that the caller function continues the execution, while it waits for the promise to do its own processing, and give the caller function some feedback.</p>
+<p class="calibre8">At this point, the caller function waits for it to either return the promise in a <strong class="calibre11">resolved state</strong>, or in a <strong class="calibre11">rejected state</strong>, but as you know <a href="https://flaviocopes.com/javascript/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">JavaScript</a> is asynchronous, so <em class="calibre17">the function continues its execution while the promise does it work</em>.</p>
+<h3 id="which-js-api-use-promises" class="calibre14">Which JS API use promises?</h3>
+<p class="calibre8">In addition to your own code and library code, promises are used by standard modern Web APIs such as:</p>
+<ul class="calibre15">
+<li class="calibre16">the Battery API</li>
+<li class="calibre16">the <a href="https://flaviocopes.com/fetch-api/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">Fetch API</a></li>
+<li class="calibre16"><a href="https://flaviocopes.com/service-workers/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">Service Workers</a></li>
+</ul>
+<p class="calibre8">It's unlikely that in modern JavaScript you'll find yourself <em class="calibre17">not</em> using promises, so let's start diving right into them.</p>
+<hr class="calibre22 pcalibre8 pcalibre7"/>
+<h2 id="creating-a-promise" class="calibre13">Creating a promise</h2>
+<p class="calibre8">The Promise API exposes a Promise constructor, which you initialize using <code class="calibre10 pcalibre4 pcalibre3">new Promise()</code>:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">let</span> done = <span class="hljs-number">true</span>
+
+<span class="hljs-keyword">const</span> isItDoneYet = <span class="hljs-keyword">new</span> <span class="hljs-number">Promise</span>((resolve, reject) =&gt; {
+  <span class="hljs-keyword">if</span> (done) {
+    <span class="hljs-keyword">const</span> workDone = <span class="hljs-string">'Here is the thing I built'</span>
+    resolve(workDone)
+  } <span class="hljs-keyword">else</span> {
+    <span class="hljs-keyword">const</span> why = <span class="hljs-string">'Still working on something else'</span>
+    reject(why)
+  }
+})
+</code></pre>
+<p class="calibre8">As you can see the promise checks the <code class="calibre10 pcalibre4 pcalibre3">done</code> global constant, and if that's true, we return a resolved promise, otherwise a rejected promise.</p>
+<p class="calibre8">Using <code class="calibre10 pcalibre4 pcalibre3">resolve</code> and <code class="calibre10 pcalibre4 pcalibre3">reject</code> we can communicate back a value, in the above case we just return a string, but it could be an object as well.</p>
+<hr class="calibre22 pcalibre8 pcalibre7"/>
+<h2 id="consuming-a-promise" class="calibre13">Consuming a promise</h2>
+<p class="calibre8">In the last section, we introduced how a promise is created.</p>
+<p class="calibre8">Now let's see how the promise can be <em class="calibre17">consumed</em> or used.</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> isItDoneYet = <span class="hljs-keyword">new</span> <span class="hljs-number">Promise</span>()
+<span class="hljs-comment">//...</span>
+
+<span class="hljs-keyword">const</span> checkIfItsDone = () =&gt; {
+  isItDoneYet
+    .then(ok =&gt; {
+      <span class="hljs-number">console</span>.log(ok)
+    })
+    .catch(err =&gt; {
+      <span class="hljs-number">console</span>.error(err)
+    })
+}
+</code></pre>
+<p class="calibre8">Running <code class="calibre10 pcalibre4 pcalibre3">checkIfItsDone()</code> will execute the <code class="calibre10 pcalibre4 pcalibre3">isItDoneYet()</code> promise and will wait for it to resolve, using the <code class="calibre10 pcalibre4 pcalibre3">then</code> callback, and if there is an error, it will handle it in the <code class="calibre10 pcalibre4 pcalibre3">catch</code> callback.</p>
+<hr class="calibre22 pcalibre8 pcalibre7"/>
+<h2 id="chaining-promises" class="calibre13">Chaining promises</h2>
+<p class="calibre8">A promise can be returned to another promise, creating a chain of promises.</p>
+<p class="calibre8">A great example of chaining promises is given by the <a href="https://flaviocopes.com/fetch-api" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">Fetch API</a>, a layer on top of the XMLHttpRequest API, which we can use to get a resource and queue a chain of promises to execute when the resource is fetched.</p>
+<p class="calibre8">The Fetch API is a promise-based mechanism, and calling <code class="calibre10 pcalibre4 pcalibre3">fetch()</code> is equivalent to defining our own promise using <code class="calibre10 pcalibre4 pcalibre3">new Promise()</code>.</p>
+<h3 id="example-of-chaining-promises" class="calibre14">Example of chaining promises</h3>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> status = response =&gt; {
+  <span class="hljs-keyword">if</span> (response.status &gt;= <span class="hljs-number">200</span> &amp;&amp; response.status &lt; <span class="hljs-number">300</span>) {
+    <span class="hljs-keyword">return</span> <span class="hljs-number">Promise</span>.resolve(response)
+  }
+  <span class="hljs-keyword">return</span> <span class="hljs-number">Promise</span>.reject(<span class="hljs-keyword">new</span> <span class="hljs-number">Error</span>(response.statusText))
+}
+
+<span class="hljs-keyword">const</span> json = response =&gt; response.json()
+
+fetch(<span class="hljs-string">'/todos.json'</span>)
+  .then(status)
+  .then(json)
+  .then(data =&gt; {
+    <span class="hljs-number">console</span>.log(<span class="hljs-string">'Request succeeded with JSON response'</span>, data)
+  })
+  .catch(error =&gt; {
+    <span class="hljs-number">console</span>.log(<span class="hljs-string">'Request failed'</span>, error)
+  })
+</code></pre>
+<p class="calibre8">In this example, we call <code class="calibre10 pcalibre4 pcalibre3">fetch()</code> to get a list of TODO items from the <code class="calibre10 pcalibre4 pcalibre3">todos.json</code> file found in the domain root, and we create a chain of promises.</p>
+<p class="calibre8">Running <code class="calibre10 pcalibre4 pcalibre3">fetch()</code> returns a <a href="https://fetch.spec.whatwg.org/#concept-response" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">response</a>, which has many properties, and within those we reference:</p>
+<ul class="calibre15">
+<li class="calibre16"><code class="calibre10 pcalibre4 pcalibre3">status</code>, a numeric value representing the HTTP status code</li>
+<li class="calibre16"><code class="calibre10 pcalibre4 pcalibre3">statusText</code>, a status message, which is <code class="calibre10 pcalibre4 pcalibre3">OK</code> if the request succeeded</li>
+</ul>
+<p class="calibre8"><code class="calibre10 pcalibre4 pcalibre3">response</code> also has a <code class="calibre10 pcalibre4 pcalibre3">json()</code> method, which returns a promise that will resolve with the content of the body processed and transformed into JSON.</p>
+<p class="calibre8">So given those premises, this is what happens: the first promise in the chain is a function that we defined, called <code class="calibre10 pcalibre4 pcalibre3">status()</code>, that checks the response status and if it's not a success response (between 200 and 299), it rejects the promise.</p>
+<p class="calibre8">This operation will cause the promise chain to skip all the chained promises listed and will skip directly to the <code class="calibre10 pcalibre4 pcalibre3">catch()</code> statement at the bottom, logging the <code class="calibre10 pcalibre4 pcalibre3">Request failed</code> text along with the error message.</p>
+<p class="calibre8">If that succeeds instead, it calls the json() function we defined. Since the previous promise, when successful, returned the <code class="calibre10 pcalibre4 pcalibre3">response</code> object, we get it as an input to the second promise.</p>
+<p class="calibre8">In this case, we return the data JSON processed, so the third promise receives the JSON directly:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">.then((data) =&gt; {
+  <span class="hljs-number">console</span>.log(<span class="hljs-string">'Request succeeded with JSON response'</span>, data)
+})
+</code></pre>
+<p class="calibre8">and we simply log it to the console.</p>
+<hr class="calibre22 pcalibre8 pcalibre7"/>
+<h2 id="handling-errors" class="calibre13">Handling errors</h2>
+<p class="calibre8">In the above example, in the previous section, we had a <code class="calibre10 pcalibre4 pcalibre3">catch</code> that was appended to the chain of promises.</p>
+<p class="calibre8">When anything in the chain of promises fails and raises an error or rejects the promise, the control goes to the nearest <code class="calibre10 pcalibre4 pcalibre3">catch()</code> statement down the chain.</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">new</span> <span class="hljs-number">Promise</span>((resolve, reject) =&gt; {
+  <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-number">Error</span>(<span class="hljs-string">'Error'</span>)
+}).catch(err =&gt; {
+  <span class="hljs-number">console</span>.error(err)
+})
+
+<span class="hljs-comment">// or</span>
+
+<span class="hljs-keyword">new</span> <span class="hljs-number">Promise</span>((resolve, reject) =&gt; {
+  reject(<span class="hljs-string">'Error'</span>)
+}).catch(err =&gt; {
+  <span class="hljs-number">console</span>.error(err)
+})
+</code></pre>
+<h3 id="cascading-errors" class="calibre14">Cascading errors</h3>
+<p class="calibre8">If inside the <code class="calibre10 pcalibre4 pcalibre3">catch()</code> you raise an error, you can append a second <code class="calibre10 pcalibre4 pcalibre3">catch()</code> to handle it, and so on.</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">new</span> <span class="hljs-number">Promise</span>((resolve, reject) =&gt; {
+  <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-number">Error</span>(<span class="hljs-string">'Error'</span>)
+})
+  .catch(err =&gt; {
+    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-number">Error</span>(<span class="hljs-string">'Error'</span>)
+  })
+  .catch(err =&gt; {
+    <span class="hljs-number">console</span>.error(err)
+  })
+</code></pre>
+<hr class="calibre22 pcalibre8 pcalibre7"/>
+<h2 id="orchestrating-promises" class="calibre13">Orchestrating promises</h2>
+<h3 id="promiseall" class="calibre14"><code class="pcalibre3 calibre23 pcalibre4">Promise.all()</code></h3>
+<p class="calibre8">If you need to synchronize different promises, <code class="calibre10 pcalibre4 pcalibre3">Promise.all()</code> helps you define a list of promises, and execute something when they are all resolved.</p>
+<p class="calibre8">Example:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> f1 = fetch(<span class="hljs-string">'/something.json'</span>)
+<span class="hljs-keyword">const</span> f2 = fetch(<span class="hljs-string">'/something2.json'</span>)
+
+<span class="hljs-number">Promise</span>.all([f1, f2])
+  .then(res =&gt; {
+    <span class="hljs-number">console</span>.log(<span class="hljs-string">'Array of results'</span>, res)
+  })
+  .catch(err =&gt; {
+    <span class="hljs-number">console</span>.error(err)
+  })
+</code></pre>
+<p class="calibre8">The <a href="https://flaviocopes.com/ecmascript/#destructuring-assignments" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">ES2015 destructuring assignment</a> syntax allows you to also do</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-number">Promise</span>.all([f1, f2]).then(([res1, res2]) =&gt; {
+  <span class="hljs-number">console</span>.log(<span class="hljs-string">'Results'</span>, res1, res2)
+})
+</code></pre>
+<p class="calibre8">You are not limited to using <code class="calibre10 pcalibre4 pcalibre3">fetch</code> of course, <strong class="calibre11">any promise is good to go</strong>.</p>
+<h3 id="promiserace" class="calibre14"><code class="pcalibre3 calibre23 pcalibre4">Promise.race()</code></h3>
+<p class="calibre8"><code class="calibre10 pcalibre4 pcalibre3">Promise.race()</code> runs as soon as one of the promises you pass to it resolves, and it runs the attached callback just once with the result of the first promise resolved.</p>
+<p class="calibre8">Example:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> promiseOne = <span class="hljs-keyword">new</span> <span class="hljs-number">Promise</span>((resolve, reject) =&gt; {
+  setTimeout(resolve, <span class="hljs-number">500</span>, <span class="hljs-string">'one'</span>)
+})
+<span class="hljs-keyword">const</span> promiseTwo = <span class="hljs-keyword">new</span> <span class="hljs-number">Promise</span>((resolve, reject) =&gt; {
+  setTimeout(resolve, <span class="hljs-number">100</span>, <span class="hljs-string">'two'</span>)
+})
+
+<span class="hljs-number">Promise</span>.race([promiseOne, promiseTwo]).then(result =&gt; {
+  <span class="hljs-number">console</span>.log(result) <span class="hljs-comment">// 'two'</span>
+})
+</code></pre>
+<h2 id="common-errors" class="calibre13">Common errors</h2>
+<h3 id="uncaught-typeerror-undefined-is-not-a-promise" class="calibre14">Uncaught TypeError: undefined is not a promise</h3>
+<p class="calibre8">If you get the <code class="calibre10 pcalibre4 pcalibre3">Uncaught TypeError: undefined is not a promise</code> error in the console, make sure you use <code class="calibre10 pcalibre4 pcalibre3">new Promise()</code> instead of just <code class="calibre10 pcalibre4 pcalibre3">Promise()</code></p>
+
+        </div>
+    
+</div>
+
+        
+    
+
+
+</body></html>

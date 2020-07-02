@@ -1,0 +1,210 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>React Router</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="description" content="React Router 4 is the perfect tool to link together the URL and your React app. React Router is the de-facto React routing library, and it's one of the most popular projects built on top of React."/>
+    <meta name="generator" content="GitBook 3.2.3"/>
+    <meta name="author" content="Flavio Copes"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link href="stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="page_styles.css" rel="stylesheet" type="text/css"/>
+</head>
+  <body class="calibre">
+        
+<div class="page">
+    
+        <h1 class="book-chapter" id="calibre_toc_47">React Router</h1>
+        <h1 class="page-title">React Router</h1>
+        <h3 class="calibre7">React Router 4 is the perfect tool to link together the URL and your React app. React Router is the de-facto React routing library, and it's one of the most popular projects built on top of React.</h3>
+
+        <div class="section">
+            <p class="calibre8"><img src="banner1.png" alt="React Router" class="calibre9"/></p>
+<blockquote class="calibre19">
+<p class="calibre8">This tutorial introduces React Router 4, the last stable version</p>
+</blockquote>
+<p class="calibre8">React Router is the de-facto React routing library, and it's one of the most popular projects built on top of React.</p>
+<p class="calibre8">React at its core is a very simple library, and it does not dictate anything about routing.</p>
+<p class="calibre8">Routing in a Single Page Application is the way to introduce some features to navigating the app through links, which are <strong class="calibre11">expected</strong> in normal web applications:</p>
+<ol class="calibre2">
+<li class="calibre16">The browser should <strong class="calibre11">change the URL</strong> when you navigate to a different screen</li>
+<li class="calibre16"><strong class="calibre11">Deep linking</strong> should work: if you point the browser to a URL, the application should reconstruct the same view that was presented when the URL was generated.</li>
+<li class="calibre16">The <strong class="calibre11">browser back (and forward) button</strong> should work like expected.</li>
+</ol>
+<p class="calibre8"><strong class="calibre11">Routing links together your application navigation with the navigation features offered by the browser</strong>: the <strong class="calibre11">address bar</strong> and the <strong class="calibre11">navigation buttons</strong>.</p>
+<p class="calibre8">React Router offers a way to write your code so that <strong class="calibre11">it will show certain components of your app only if the route matches what you define</strong>.</p>
+<h2 id="installation" class="calibre13">Installation</h2>
+<p class="calibre8">With <a href="https://flaviocopes.com/npm/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">npm</a>:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">npm install react-router-dom
+</code></pre>
+<p class="calibre8">With <a href="https://flaviocopes.com/yarn/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">Yarn</a>:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">yarn add react-router-dom
+</code></pre>
+<h2 id="types-of-routes" class="calibre13">Types of routes</h2>
+<p class="calibre8">React Router provides two different kind of routes:</p>
+<ul class="calibre15">
+<li class="calibre16"><code class="calibre10 pcalibre4 pcalibre3">BrowserRouter</code></li>
+<li class="calibre16"><code class="calibre10 pcalibre4 pcalibre3">HashRouter</code></li>
+</ul>
+<p class="calibre8">One builds classic URLs, the other builds URLs with the hash:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">https:<span class="hljs-comment">//application.com/dashboard   /* BrowserRouter */</span>
+https:<span class="hljs-comment">//application.com/#/dashboard /* HashRouter    */</span>
+</code></pre>
+<p class="calibre8">Which one to use is mainly dictated by the browsers you need to support. <code class="calibre10 pcalibre4 pcalibre3">BrowserRouter</code> uses the <a href="https://flaviocopes.com/history-api/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">History API</a>, which is relatively recent, and not supported in IE9 and below. If you don't have to worry about older browsers, it's the recommended choice.</p>
+<h2 id="components" class="calibre13">Components</h2>
+<p class="calibre8">The 3 components you will interact the most when working with React Router are:</p>
+<ul class="calibre15">
+<li class="calibre16"><code class="calibre10 pcalibre4 pcalibre3">BrowserRouter</code>, usually aliased as <code class="calibre10 pcalibre4 pcalibre3">Router</code></li>
+<li class="calibre16"><code class="calibre10 pcalibre4 pcalibre3">Link</code></li>
+<li class="calibre16"><code class="calibre10 pcalibre4 pcalibre3">Route</code></li>
+</ul>
+<p class="calibre8"><code class="calibre10 pcalibre4 pcalibre3">BrowserRouter</code> wraps all your Route components.</p>
+<p class="calibre8"><code class="calibre10 pcalibre4 pcalibre3">Link</code> components are - as you can imagine - used to generate links to your routes</p>
+<p class="calibre8"><code class="calibre10 pcalibre4 pcalibre3">Route</code> components are responsible for showing - or hiding - the components they contain.</p>
+<h2 id="browserrouter" class="calibre13">BrowserRouter</h2>
+<p class="calibre8">Here's a simple example of the BrowserRouter component. You import it from react-router-dom, and you use it to wrap all your app:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>
+<span class="hljs-keyword">import</span> ReactDOM <span class="hljs-keyword">from</span> <span class="hljs-string">'react-dom'</span>
+<span class="hljs-keyword">import</span> { BrowserRouter <span class="hljs-keyword">as</span> Router } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-router-dom'</span>
+
+ReactDOM.render(
+  <span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">Router</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-comment">&lt;!-- --&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">Router</span>&gt;</span></span>,
+  <span class="hljs-number">document</span>.getElementById(<span class="hljs-string">'app'</span>)
+)
+</code></pre>
+<p class="calibre8">A BrowserRouter component can only have one child element, so we wrap all we're going to add in a <code class="calibre10 pcalibre4 pcalibre3">div</code> element.</p>
+<h2 id="link" class="calibre13">Link</h2>
+<p class="calibre8">The Link component is used to trigger new routes. You import it from <code class="calibre10 pcalibre4 pcalibre3">react-router-dom</code>, and you can add the Link components to point at different routes, with the <code class="calibre10 pcalibre4 pcalibre3">to</code> attribute:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>
+<span class="hljs-keyword">import</span> ReactDOM <span class="hljs-keyword">from</span> <span class="hljs-string">'react-dom'</span>
+<span class="hljs-keyword">import</span> { BrowserRouter <span class="hljs-keyword">as</span> Router, Link } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-router-dom'</span>
+
+ReactDOM.render(
+  <span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">Router</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">aside</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">Link</span> <span class="hljs-name">to</span>=<span class="hljs-string">{`</span>/<span class="hljs-name">dashboard</span>`}&gt;</span>Dashboard<span class="hljs-tag">&lt;/<span class="hljs-name">Link</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">Link</span> <span class="hljs-name">to</span>=<span class="hljs-string">{`</span>/<span class="hljs-name">about</span>`}&gt;</span>About<span class="hljs-tag">&lt;/<span class="hljs-name">Link</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">aside</span>&gt;</span>
+        <span class="hljs-comment">&lt;!-- --&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">Router</span>&gt;</span></span>,
+  <span class="hljs-number">document</span>.getElementById(<span class="hljs-string">'app'</span>)
+)
+</code></pre>
+<h2 id="route" class="calibre13">Route</h2>
+<p class="calibre8">Now let's add the Route component in the above snippet to make things actually work as we want:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>
+<span class="hljs-keyword">import</span> ReactDOM <span class="hljs-keyword">from</span> <span class="hljs-string">'react-dom'</span>
+<span class="hljs-keyword">import</span> { BrowserRouter <span class="hljs-keyword">as</span> Router, Link, Route } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-router-dom'</span>
+
+<span class="hljs-keyword">const</span> Dashboard = () =&gt; (
+  <span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>Dashboard<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+    ...
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+)
+
+<span class="hljs-keyword">const</span> About = () =&gt; (
+  <span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>About<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+    ...
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+)
+
+ReactDOM.render(
+  &lt;Router&gt;
+    &lt;div&gt;
+      &lt;aside&gt;
+        &lt;Link to={`/`}&gt;Dashboard&lt;/Link&gt;
+        &lt;Link to={`/about`}&gt;About&lt;/Link&gt;
+      &lt;/aside&gt;
+
+      &lt;main&gt;
+        &lt;Route exact path="/" component={Dashboard} /&gt;
+        &lt;Route path="/about" component={About} /&gt;
+      &lt;/main&gt;
+    &lt;/div&gt;
+  &lt;/Router&gt;,
+  document.getElementById('app')
+)
+</code></pre>
+<p class="calibre8">Check this example on Glitch: <a href="https://flaviocopes-react-router-v4.glitch.me/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">https://flaviocopes-react-router-v4.glitch.me/</a></p>
+<p class="calibre8">When the route matches <code class="calibre10 pcalibre4 pcalibre3">/</code>, the application shows the <strong class="calibre11">Dashboard</strong> component.</p>
+<p class="calibre8">When the route is changed by clicking the "About" link to <code class="calibre10 pcalibre4 pcalibre3">/about</code>, the Dashboard component is removed and the <strong class="calibre11">About</strong> component is inserted in the DOM.</p>
+<p class="calibre8">Notice the <code class="calibre10 pcalibre4 pcalibre3">exact</code> attribute. Without this, <code class="calibre10 pcalibre4 pcalibre3">path="/"</code> would also match <code class="calibre10 pcalibre4 pcalibre3">/about</code>, since <code class="calibre10 pcalibre4 pcalibre3">/</code> is contained in the route.</p>
+<h2 id="match-multiple-paths" class="calibre13">Match multiple paths</h2>
+<p class="calibre8">You can have a route respond to multiple paths simply using a regex, because <code class="calibre10 pcalibre4 pcalibre3">path</code> can be a regular expressions string:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">&lt;Route path=<span class="hljs-string">"/(about|who)/"</span> component={Dashboard} /&gt;
+</code></pre>
+<h2 id="inline-rendering" class="calibre13">Inline rendering</h2>
+<p class="calibre8">Instead of specifying a <code class="calibre10 pcalibre4 pcalibre3">component</code> property on <code class="calibre10 pcalibre4 pcalibre3">Route</code>, you can set a <code class="calibre10 pcalibre4 pcalibre3">render</code> prop:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">&lt;Route
+  path=<span class="hljs-string">"/(about|who)/"</span>
+  render={() =&gt; (
+    <span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>About<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+      ...
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+  )}
+/&gt;
+</code></pre>
+<h2 id="match-dynamic-route-parameter" class="calibre13">Match dynamic route parameter</h2>
+<p class="calibre8">You already saw how to use static routes like</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> Posts = () =&gt; (
+  <span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>Posts<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+    ...
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+)
+
+<span class="hljs-comment">//...</span>
+
+&lt;Route exact path=<span class="hljs-string">"/posts"</span> component={Posts} /&gt;
+</code></pre>
+<p class="calibre8">Here's how to handle dynamic routes:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> Post = ({match}) =&gt; (
+  <span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>Post #{match.params.id}<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+    ...
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+)
+
+<span class="hljs-comment">//...</span>
+
+&lt;Route exact path=<span class="hljs-string">"/post/:id"</span> component={Post} /&gt;
+</code></pre>
+<p class="calibre8">In your Route component you can lookup the dynamic parameters in <code class="calibre10 pcalibre4 pcalibre3">match.params</code>.</p>
+<p class="calibre8"><code class="calibre10 pcalibre4 pcalibre3">match</code> is also available in inline rendered routes, and this is especially useful in this case, because we can use the <code class="calibre10 pcalibre4 pcalibre3">id</code> parameter to lookup the post data in our data source before rendering Post:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> posts = [
+  { id: <span class="hljs-number">1</span>, title: <span class="hljs-string">'First'</span>, content: <span class="hljs-string">'Hello world!'</span> },
+  { id: <span class="hljs-number">2</span>, title: <span class="hljs-string">'Second'</span>, content: <span class="hljs-string">'Hello again!'</span> }
+]
+
+<span class="hljs-keyword">const</span> Post = ({post}) =&gt; (
+  <span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>{post.title}<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+    {post.content}
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+)
+
+<span class="hljs-comment">//...</span>
+
+&lt;Route exact path=<span class="hljs-string">"/post/:id"</span> render={({match}) =&gt; (
+  <span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">Post</span> <span class="hljs-name">post</span>=<span class="hljs-string">{posts.find(p</span> =&gt;</span> p.id === match.params.id)} /&gt;
+)} /&gt;
+</span></code></pre>
+
+        </div>
+    
+</div>
+
+        
+    
+
+
+</body></html>

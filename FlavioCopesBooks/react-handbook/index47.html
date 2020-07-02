@@ -1,0 +1,186 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>Redux</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="description" content="Redux is a state manager that's usually used along with React, but it's not tied to that library. Learn Redux by reading this simple and easy to follow guide"/>
+    <meta name="generator" content="GitBook 3.2.3"/>
+    <meta name="author" content="Flavio Copes"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link href="stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="page_styles.css" rel="stylesheet" type="text/css"/>
+</head>
+  <body class="calibre">
+        
+<div class="page">
+    
+        <h1 class="book-chapter" id="calibre_toc_48">Redux</h1>
+        <h1 class="page-title">Redux</h1>
+        <h3 class="calibre7">Redux is a state manager that's usually used along with React, but it's not tied to that library. Learn Redux by reading this simple and easy to follow guide</h3>
+
+        <div class="section">
+            <h2 id="why-you-need-redux" class="calibre13">Why you need Redux</h2>
+<p class="calibre8">Redux is a state manager that's usually used along with React, but it's not tied to that library - it can be used with other technologies as well, but we'll stick to React for the sake of the explanation.</p>
+<p class="calibre8">React has its own way to manage state, as you can read on the <a href="https://flaviocopes.com/react/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">React Beginner's Guide</a>, where I introduce how you can manage State in React.</p>
+<p class="calibre8">Moving the state up in the tree works in simple cases, but in a complex app you might find you are moving almost all the state up, and then down using props.</p>
+<p class="calibre8">React in version 16.3.0 introduced the <a href="https://flaviocopes.com/react/#the-context-api" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12"><strong class="calibre11">Context API</strong></a>, which makes Redux redundant for the use case of accessing the state from different parts of your app, so consider using the Context API instead of Redux, unless you need a specific feature that Redux provides.</p>
+<p class="calibre8">Redux is a way to manage an application state, and move it to an <strong class="calibre11">external global store</strong>.</p>
+<p class="calibre8">There are a few concepts to grasp, but once you do, Redux is a very simple approach to the problem.</p>
+<p class="calibre8">Redux is very popular with React applications, but it's in no way unique to React: there are bindings for nearly any popular framework. That said, I'll make some examples using React as it is its primary use case.</p>
+<h2 id="when-should-you-use-redux" class="calibre13">When should you use Redux?</h2>
+<p class="calibre8">Redux is ideal for medium to big apps, and you should only use it when you have trouble managing the state with the default state management of React, or the other library you use.</p>
+<p class="calibre8">Simple apps should not need it at all (and there's nothing wrong with simple apps).</p>
+<h2 id="immutable-state-tree" class="calibre13">Immutable State Tree</h2>
+<p class="calibre8">In Redux, the whole state of the application is represented by <strong class="calibre11">one</strong> <a href="https://flaviocopes.com/javascript/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">JavaScript</a> object, called <strong class="calibre11">State</strong> or <strong class="calibre11">State Tree</strong>.</p>
+<p class="calibre8">We call it <strong class="calibre11">Immutable State Tree</strong> because it is read only: it can't be changed directly.</p>
+<p class="calibre8">It can only be changed by dispatching an <strong class="calibre11">Action</strong>.</p>
+<h2 id="actions" class="calibre13">Actions</h2>
+<p class="calibre8">An <strong class="calibre11">Action</strong> is <strong class="calibre11">a JavaScript object that describes a change in a minimal way</strong> (with just the information needed):</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">{
+  type: <span class="hljs-string">'CLICKED_SIDEBAR'</span>
+}
+
+<span class="hljs-comment">// e.g. with more data</span>
+{
+  type: <span class="hljs-string">'SELECTED_USER'</span>,
+  userId: <span class="hljs-number">232</span>
+}
+</code></pre>
+<p class="calibre8">The only requirement of an action object is having a <code class="calibre10 pcalibre4 pcalibre3">type</code> property, whose value is usually a string.</p>
+<h3 id="actions-types-should-be-constants" class="calibre14">Actions types should be constants</h3>
+<p class="calibre8">In a simple app an action type can be defined as a string, as I did in the example in the previous lesson.</p>
+<p class="calibre8">When the app grows is best to use constants:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> ADD_ITEM = <span class="hljs-string">'ADD_ITEM'</span>
+<span class="hljs-keyword">const</span> action = { type: ADD_ITEM, title: <span class="hljs-string">'Third item'</span> }
+</code></pre>
+<p class="calibre8">and to separate actions in their own files, and import them</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">import</span> { ADD_ITEM, REMOVE_ITEM } <span class="hljs-keyword">from</span> <span class="hljs-string">'./actions'</span>
+</code></pre>
+<h3 id="action-creators" class="calibre14">Action creators</h3>
+<p class="calibre8"><strong class="calibre11">Actions Creators</strong> are functions that create actions.</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-comment">addItem</span>(<span class="hljs-number">t</span>) </span>{
+  <span class="hljs-keyword">return</span> {
+    type: ADD_ITEM,
+    title: t
+  }
+}
+</code></pre>
+<p class="calibre8">You usually run action creators in combination with triggering the dispatcher:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">dispatch(addItem(<span class="hljs-string">'Milk'</span>))
+</code></pre>
+<p class="calibre8">or by defining an action dispatcher function:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> dispatchAddItem = i =&gt; dispatch(addItem(i))
+dispatchAddItem(<span class="hljs-string">'Milk'</span>)
+</code></pre>
+<h2 id="reducers" class="calibre13">Reducers</h2>
+<p class="calibre8">When an action is fired, something must happen, the state of the application must change.</p>
+<p class="calibre8">This is the job of <strong class="calibre11">reducers</strong>.</p>
+<h3 id="what-is-a-reducer" class="calibre14">What is a reducer</h3>
+<p class="calibre8">A <strong class="calibre11">reducer</strong> is a <strong class="calibre11">pure function</strong> that calculates the next State Tree based on the previous State Tree, and the action dispatched.</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">;(currentState, action) =&gt; newState
+</code></pre>
+<p class="calibre8">A pure function takes an input and returns an output without changing the input or anything else. Thus, a reducer returns a completely new state tree object that substitutes the previous one.</p>
+<h3 id="what-a-reducer-should-not-do" class="calibre14">What a reducer should not do</h3>
+<p class="calibre8">A reducer should be a pure function, so it should:</p>
+<ul class="calibre15">
+<li class="calibre16">never mutate its arguments</li>
+<li class="calibre16">never mutate the state, but instead create a new one with <code class="calibre10 pcalibre4 pcalibre3">Object.assign({}, ...)</code></li>
+<li class="calibre16">never generate side-effects (no API calls changing anything)</li>
+<li class="calibre16">never call non-pure functions, functions that change their output based on factors other than their input (e.g. <code class="calibre10 pcalibre4 pcalibre3">Date.now()</code> or <code class="calibre10 pcalibre4 pcalibre3">Math.random()</code>)</li>
+</ul>
+<p class="calibre8">There is no reinforcement, but you should stick to the rules.</p>
+<h3 id="multiple-reducers" class="calibre14">Multiple reducers</h3>
+<p class="calibre8">Since the state of a complex app could be really wide, there is not a single reducer, but many reducers for any kind of action.</p>
+<h3 id="a-simulation-of-a-reducer" class="calibre14">A simulation of a reducer</h3>
+<p class="calibre8">At its core, Redux can be simplified with this simple model:</p>
+<h4 id="the-state" class="calibre14">The state</h4>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">{
+  list: [
+    { title: <span class="hljs-string">"First item"</span> },
+    { title: <span class="hljs-string">"Second item"</span> },
+  ],
+  title: <span class="hljs-string">'Groceries list'</span>
+}
+</code></pre>
+<h4 id="a-list-of-actions" class="calibre14">A list of actions</h4>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">{ type: <span class="hljs-string">'ADD_ITEM'</span>, title: <span class="hljs-string">'Third item'</span> }
+{ type: <span class="hljs-string">'REMOVE_ITEM'</span>, index: <span class="hljs-number">1</span> }
+{ type: <span class="hljs-string">'CHANGE_LIST_TITLE'</span>, title: <span class="hljs-string">'Road trip list'</span> }
+</code></pre>
+<h4 id="a-reducer-for-every-part-of-the-state" class="calibre14">A reducer for every part of the state</h4>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> title = (state = <span class="hljs-string">''</span>, action) =&gt; {
+    <span class="hljs-keyword">if</span> (action.type === <span class="hljs-string">'CHANGE_LIST_TITLE'</span>) {
+      <span class="hljs-keyword">return</span> action.title
+    } <span class="hljs-keyword">else</span> {
+      <span class="hljs-keyword">return</span> state
+    }
+}
+
+<span class="hljs-keyword">const</span> list = (state = [], action) =&gt; {
+  <span class="hljs-keyword">switch</span> (action.type) {
+    <span class="hljs-keyword">case</span> <span class="hljs-string">'ADD_ITEM'</span>:
+      <span class="hljs-keyword">return</span> state.concat([{ title: action.title }])
+    <span class="hljs-keyword">case</span> <span class="hljs-string">'REMOVE_ITEM'</span>:
+      <span class="hljs-keyword">return</span> state.map((item, index) =&gt;
+        action.index === index
+          ? { title: item.title }
+          : item
+    <span class="hljs-keyword">default</span>:
+      <span class="hljs-keyword">return</span> state
+  }
+}
+</code></pre>
+<h4 id="a-reducer-for-the-whole-state" class="calibre14">A reducer for the whole state</h4>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> listManager = (state = {}, action) =&gt; {
+  <span class="hljs-keyword">return</span> {
+    title: title(state.title, action),
+    list: list(state.list, action)
+  }
+}
+</code></pre>
+<h2 id="the-store" class="calibre13">The Store</h2>
+<p class="calibre8">The <strong class="calibre11">Store</strong> is an object that:</p>
+<ul class="calibre15">
+<li class="calibre16"><strong class="calibre11">holds the state</strong> of the app</li>
+<li class="calibre16"><strong class="calibre11">exposes the state</strong> via <code class="calibre10 pcalibre4 pcalibre3">getState()</code></li>
+<li class="calibre16">allows us to <strong class="calibre11">update the state</strong> via <code class="calibre10 pcalibre4 pcalibre3">dispatch()</code></li>
+<li class="calibre16">allows us to (un)register a <strong class="calibre11">state change listener</strong> using <code class="calibre10 pcalibre4 pcalibre3">subscribe()</code></li>
+</ul>
+<p class="calibre8">A store is <strong class="calibre11">unique</strong> in the app.</p>
+<p class="calibre8">Here is how a store for the listManager app is created:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">import</span> { createStore } <span class="hljs-keyword">from</span> <span class="hljs-string">'redux'</span>
+<span class="hljs-keyword">import</span> listManager <span class="hljs-keyword">from</span> <span class="hljs-string">'./reducers'</span>
+<span class="hljs-keyword">let</span> store = createStore(listManager)
+</code></pre>
+<h3 id="can-i-initialize-the-store-with-server-side-data" class="calibre14">Can I initialize the store with server-side data?</h3>
+<p class="calibre8">Sure, <strong class="calibre11">just pass a starting state</strong>:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">let</span> store = createStore(listManager, preexistingState)
+</code></pre>
+<h3 id="getting-the-state" class="calibre14">Getting the state</h3>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">store.getState()
+</code></pre>
+<h3 id="update-the-state" class="calibre14">Update the state</h3>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">store.dispatch(addItem(<span class="hljs-string">'Something'</span>))
+</code></pre>
+<h3 id="listen-to-state-changes" class="calibre14">Listen to state changes</h3>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> unsubscribe = store.subscribe(() =&gt;
+  <span class="hljs-keyword">const</span> newState = store.getState()
+)
+
+unsubscribe()
+</code></pre>
+<h2 id="data-flow" class="calibre13">Data Flow</h2>
+<p class="calibre8">Data flow in Redux is always <strong class="calibre11">unidirectional</strong>.</p>
+<p class="calibre8">You call <code class="calibre10 pcalibre4 pcalibre3">dispatch()</code> on the Store, passing an Action.</p>
+<p class="calibre8">The Store takes care of passing the Action to the Reducer, generating the next State.</p>
+<p class="calibre8">The Store updates the State and alerts all the Listeners.</p>
+
+        </div>
+    
+</div>
+
+        
+    
+
+
+</body></html>

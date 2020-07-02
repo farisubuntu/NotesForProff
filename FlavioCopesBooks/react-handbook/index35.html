@@ -1,0 +1,111 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>Render Props</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="description" content="Learn how Render Props can help you build a React application"/>
+    <meta name="generator" content="GitBook 3.2.3"/>
+    <meta name="author" content="Flavio Copes"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link href="stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="page_styles.css" rel="stylesheet" type="text/css"/>
+</head>
+  <body class="calibre">
+        
+<div class="page">
+    
+        <h1 class="book-chapter" id="calibre_toc_36">Render Props</h1>
+        <h1 class="page-title">Render Props</h1>
+        <h3 class="calibre7">Learn how Render Props can help you build a React application</h3>
+
+        <div class="section">
+            <p class="calibre8">A common pattern used to share state between components is to use the <code class="calibre10 pcalibre4 pcalibre3">children</code> prop.</p>
+<p class="calibre8">Inside a component JSX you can render <code class="calibre10 pcalibre4 pcalibre3">{this.props.children}</code> which automatically injects any JSX passed in the parent component as a children:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-name"><span class="hljs-keyword">class</span> <span class="hljs-comment">Parent</span> <span class="hljs-keyword">extends</span> <span class="hljs-comment">React</span>.<span class="hljs-comment">Component</span> </span>{
+  <span class="hljs-keyword">constructor</span>(props) {
+    <span class="hljs-keyword">super</span>(props)
+    <span class="hljs-keyword">this</span>.state = {
+      <span class="hljs-comment">/*...*/</span>
+    }
+  }
+
+  render() {
+    <span class="hljs-keyword">return</span> <span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>{this.props.children}<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+  }
+}
+
+<span class="hljs-keyword">const</span> Children1 = () =&gt; {}
+
+<span class="hljs-keyword">const</span> Children2 = () =&gt; {}
+
+<span class="hljs-keyword">const</span> App = () =&gt; (
+  &lt;Parent&gt;
+    &lt;Children1 /&gt;
+    &lt;Children2 /&gt;
+  &lt;/Parent&gt;
+)
+</code></pre>
+<p class="calibre8">However, there is a problem here: the state of the parent component cannot be accessed from the children.</p>
+<p class="calibre8">To be able to share the state, you need to use a render prop component, and instead of passing components as children of the parent component, you pass a function which you then execute in <code class="calibre10 pcalibre4 pcalibre3">{this.props.children()}</code>. The function can accept arguments, :</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-name"><span class="hljs-keyword">class</span> <span class="hljs-comment">Parent</span> <span class="hljs-keyword">extends</span> <span class="hljs-comment">React</span>.<span class="hljs-comment">Component</span> </span>{
+  <span class="hljs-keyword">constructor</span>(props) {
+    <span class="hljs-keyword">super</span>(props)
+    <span class="hljs-keyword">this</span>.state = { name: <span class="hljs-string">'Flavio'</span> }
+  }
+
+  render() {
+    <span class="hljs-keyword">return</span> <span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>{this.props.children(this.state.name)}<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+  }
+}
+
+<span class="hljs-keyword">const</span> Children1 = props =&gt; {
+  <span class="hljs-keyword">return</span> <span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>{props.name}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span>
+}
+
+<span class="hljs-keyword">const</span> App = () =&gt; <span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">Parent</span>&gt;</span>{name =&gt; <span class="hljs-tag">&lt;<span class="hljs-name">Children1</span> <span class="hljs-name">name</span>=<span class="hljs-string">{name}</span> /&gt;</span>}<span class="hljs-tag">&lt;/<span class="hljs-name">Parent</span>&gt;</span>
+</span></code></pre>
+<p class="calibre8">Instead of using the <code class="calibre10 pcalibre4 pcalibre3">children</code> prop, which has a very specific meaning, you can use any prop, and so you can use this pattern multiple times on the same component:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-name"><span class="hljs-keyword">class</span> <span class="hljs-comment">Parent</span> <span class="hljs-keyword">extends</span> <span class="hljs-comment">React</span>.<span class="hljs-comment">Component</span> </span>{
+  <span class="hljs-keyword">constructor</span>(props) {
+    <span class="hljs-keyword">super</span>(props)
+    <span class="hljs-keyword">this</span>.state = { name: <span class="hljs-string">'Flavio'</span>, age: <span class="hljs-number">35</span> }
+  }
+
+  render() {
+    <span class="hljs-keyword">return</span> (
+      <span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Test<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+        {this.props.someprop1(this.state.name)}
+        {this.props.someprop2(this.state.age)}
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+    )
+  }
+}
+
+<span class="hljs-keyword">const</span> Children1 = props =&gt; {
+  <span class="hljs-keyword">return</span> <span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>{props.name}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span>
+}
+
+<span class="hljs-keyword">const</span> Children2 = props =&gt; {
+  <span class="hljs-keyword">return</span> <span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>{props.age}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span>
+}
+
+<span class="hljs-keyword">const</span> App = () =&gt; (
+  &lt;Parent
+    someprop1={name =&gt; &lt;Children1 name={name} /&gt;}
+    someprop2={age =&gt; &lt;Children2 age={age} /&gt;}
+  /&gt;
+)
+
+ReactDOM.render(&lt;App /&gt;, document.getElementById('app'))
+</code></pre>
+
+        </div>
+    
+</div>
+
+        
+    
+
+
+</body></html>

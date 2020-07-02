@@ -1,0 +1,113 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>ES Modules</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="description" content="ES Modules is the ECMAScript standard for working with modules. While Node.js has been using the CommonJS standard for years, the browser never had a module system, as every major decision such as a module system must be first standardized by ECMAScript and then implemented"/>
+    <meta name="generator" content="GitBook 3.2.3"/>
+    <meta name="author" content="Flavio Copes"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link href="stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="page_styles.css" rel="stylesheet" type="text/css"/>
+</head>
+  <body class="calibre">
+        
+<div class="page">
+    
+        <h1 class="book-chapter" id="calibre_toc_13">ES Modules</h1>
+        <h1 class="page-title">ES Modules</h1>
+        <h3 class="calibre7">ES Modules is the ECMAScript standard for working with modules. While Node.js has been using the CommonJS standard for years, the browser never had a module system, as every major decision such as a module system must be first standardized by ECMAScript and then implemented</h3>
+
+        <div class="section">
+            <p class="calibre8"><img src="banner.jpg" alt="ES Modules" class="calibre9"/></p>
+<p class="calibre8">ES Modules is the ECMAScript standard for working with modules.</p>
+<p class="calibre8">While <a href="https://flaviocopes.com/node/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">Node.js</a> has been using the CommonJS standard for years, the browser never had a module system, as every major decision such as a module system must be first standardized by ECMAScript and then implemented by the browser.</p>
+<p class="calibre8">This standardization process completed with <a href="https://flaviocopes.com/es6/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">ES6</a> and browsers started implementing this standard trying to keep everything well aligned, working all in the same way, and now ES Modules are supported in Chrome, Safari, Edge and Firefox (since version 60).</p>
+<p class="calibre8">Modules are very cool, because they let you encapsulate all sorts of functionality, and expose this functionality to other JavaScript files, as libraries.</p>
+<p class="calibre8"><img src="browser-support.png" alt="ES Modules Support" class="calibre9"/></p>
+<h2 id="the-es-modules-syntax" class="calibre13">The ES Modules Syntax</h2>
+<p class="calibre8">The syntax to import a module is:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">import</span> package <span class="hljs-keyword">from</span> <span class="hljs-string">'module-name'</span>
+</code></pre>
+<p class="calibre8">while CommonJS uses</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> package = <span class="hljs-number">require</span>(<span class="hljs-string">'module-name'</span>)
+</code></pre>
+<p class="calibre8">A module is a JavaScript file that <strong class="calibre11">exports</strong> one or more values (objects, functions or variables), using the <code class="calibre10 pcalibre4 pcalibre3">export</code> keyword. For example, this module exports a function that returns a string uppercase:</p>
+<blockquote class="calibre19">
+<p class="calibre8">uppercase.js</p>
+</blockquote>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> str =&gt; str.toUpperCase()
+</code></pre>
+<p class="calibre8">In this example, the module defines a single, <strong class="calibre11">default export</strong>, so it can be an anonymous function. Otherwise it would need a name to distinguish it from other exports.</p>
+<p class="calibre8">Now, <strong class="calibre11">any other JavaScript module</strong> can import the functionality offered by uppercase.js by importing it.</p>
+<p class="calibre8">An HTML page can add a module by using a <code class="calibre10 pcalibre4 pcalibre3">&lt;script&gt;</code> tag with the special <code class="calibre10 pcalibre4 pcalibre3">type="module"</code> attribute:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-name">type</span>=<span class="hljs-string">"module"</span> <span class="hljs-name">src</span>=<span class="hljs-string">"index.js"</span>&gt;</span><span class="hljs-name"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</code></pre>
+<blockquote class="calibre19">
+<p class="calibre8">Note: this module import behaves like a <code class="calibre10 pcalibre4 pcalibre3">defer</code> script load. See <a href="https://flaviocopes.com/javascript-async-defer/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">efficiently load JavaScript with defer and async</a></p>
+</blockquote>
+<p class="calibre8">It's important to note that any script loaded with <code class="calibre10 pcalibre4 pcalibre3">type="module"</code> is loaded in <a href="https://flaviocopes.com/javascript-strict-mode/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">strict mode</a>.</p>
+<p class="calibre8">In this example, the <code class="calibre10 pcalibre4 pcalibre3">uppercase.js</code> module defines a <strong class="calibre11">default export</strong>, so when we import it, we can assign it a name we prefer:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">import</span> toUpperCase <span class="hljs-keyword">from</span> <span class="hljs-string">'./uppercase.js'</span>
+</code></pre>
+<p class="calibre8">and we can use it:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">toUpperCase(<span class="hljs-string">'test'</span>) <span class="hljs-comment">//'TEST'</span>
+</code></pre>
+<p class="calibre8">You can also use an absolute path for the module import, to reference modules defined on another domain:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">import</span> toUpperCase <span class="hljs-keyword">from</span> <span class="hljs-string">'https://flavio-es-modules-example.glitch.me/uppercase.js'</span>
+</code></pre>
+<p class="calibre8">This is also valid import syntax:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">import</span> { foo } <span class="hljs-keyword">from</span> <span class="hljs-string">'/uppercase.js'</span>
+<span class="hljs-keyword">import</span> { foo } <span class="hljs-keyword">from</span> <span class="hljs-string">'../uppercase.js'</span>
+</code></pre>
+<p class="calibre8">This is not:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">import</span> { foo } <span class="hljs-keyword">from</span> <span class="hljs-string">'uppercase.js'</span>
+<span class="hljs-keyword">import</span> { foo } <span class="hljs-keyword">from</span> <span class="hljs-string">'utils/uppercase.js'</span>
+</code></pre>
+<p class="calibre8">It's either absolute, or has a <code class="calibre10 pcalibre4 pcalibre3">./</code> or <code class="calibre10 pcalibre4 pcalibre3">/</code> before the name.</p>
+<h2 id="other-importexport-options" class="calibre13">Other import/export options</h2>
+<p class="calibre8">We saw this example above:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> str =&gt; str.toUpperCase()
+</code></pre>
+<p class="calibre8">This creates one default export. In a file however you can export more than one thing, by using this syntax:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> a = <span class="hljs-number">1</span>
+<span class="hljs-keyword">const</span> b = <span class="hljs-number">2</span>
+<span class="hljs-keyword">const</span> c = <span class="hljs-number">3</span>
+
+<span class="hljs-keyword">export</span> { a, b, c }
+</code></pre>
+<p class="calibre8">Another module can import all those exports using</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">import</span> * <span class="hljs-keyword">from</span> <span class="hljs-string">'module'</span>
+</code></pre>
+<p class="calibre8">You can import just a few of those exports, using the <a href="https://flaviocopes.com/es6/#destructuring-assignments" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">destructuring assignment</a>:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">import</span> { a } <span class="hljs-keyword">from</span> <span class="hljs-string">'module'</span>
+<span class="hljs-keyword">import</span> { a, b } <span class="hljs-keyword">from</span> <span class="hljs-string">'module'</span>
+</code></pre>
+<p class="calibre8">You can rename any import, for convenience, using <code class="calibre10 pcalibre4 pcalibre3">as</code>:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">import</span> { a, b <span class="hljs-keyword">as</span> two } <span class="hljs-keyword">from</span> <span class="hljs-string">'module'</span>
+</code></pre>
+<p class="calibre8">You can import the default export, and any non-default export by name, like in this common React import:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">import</span> React, { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>
+</code></pre>
+<p class="calibre8">You can see an ES Modules example here: <a href="https://glitch.com/edit/#!/flavio-es-modules-example?path=index.html" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">https://glitch.com/edit/#!/flavio-es-modules-example?path=index.html</a></p>
+<h2 id="cors" class="calibre13">CORS</h2>
+<p class="calibre8">Modules are fetched using <a href="https://flaviocopes.com/cors/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">CORS</a>. This means that if you reference scripts from other domains, they must have a valid CORS header that allows cross-site loading (like <code class="calibre10 pcalibre4 pcalibre3">Access-Control-Allow-Origin: *</code>)</p>
+<h2 id="what-about-browsers-that-do-not-support-modules" class="calibre13">What about browsers that do not support modules?</h2>
+<p class="calibre8">Use a combination of <code class="calibre10 pcalibre4 pcalibre3">type="module"</code> and <code class="calibre10 pcalibre4 pcalibre3">nomodule</code>:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-name">type</span>=<span class="hljs-string">"module"</span> <span class="hljs-name">src</span>=<span class="hljs-string">"module.js"</span>&gt;</span><span class="hljs-name"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-name">nomodule</span> <span class="hljs-name">src</span>=<span class="hljs-string">"fallback.js"</span>&gt;</span><span class="hljs-name"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</code></pre>
+<h2 id="conclusion" class="calibre13">Conclusion</h2>
+<p class="calibre8">ES Modules are one of the biggest features introduced in modern browsers. They are part of ES6 but the road to implement them has been long.</p>
+<p class="calibre8">We can now use them! But we must also remember that having more than a few modules is going to have a performance hit on our pages, as it's one more step that the browser must perform at runtime.</p>
+<p class="calibre8"><a href="https://flaviocopes.com/webpack/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">Webpack</a> is probably going to still be a huge player even if ES Modules land in the browser, but having such a feature directly built in the language is huge for a unification of how modules work client-side and on Node.js as well.</p>
+
+        </div>
+    
+</div>
+
+        
+    
+
+
+</body></html>

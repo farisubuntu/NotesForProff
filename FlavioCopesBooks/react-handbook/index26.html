@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>PropTypes</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="description" content="How to use PropTypes to set the required type of a prop"/>
+    <meta name="generator" content="GitBook 3.2.3"/>
+    <meta name="author" content="Flavio Copes"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link href="stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="page_styles.css" rel="stylesheet" type="text/css"/>
+</head>
+  <body class="calibre">
+        
+<div class="page">
+    
+        <h1 class="book-chapter" id="calibre_toc_27">PropTypes</h1>
+        <h1 class="page-title">PropTypes</h1>
+        <h3 class="calibre7">How to use PropTypes to set the required type of a prop</h3>
+
+        <div class="section">
+            <p class="calibre8">Since JavaScript is a dynamically typed language, we don't really have a way to enforce the type of a variable at compile time, and if we pass invalid types, they will fail at runtime or give weird results if the types are compatible but not what we expect.</p>
+<p class="calibre8">Flow and TypeScript help a lot, but React has a way to directly help with props types, and even before running the code, our tools (editors, linters) can detect when we are passing the wrong values:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">import</span> PropTypes <span class="hljs-keyword">from</span> <span class="hljs-string">'prop-types'</span>
+<span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>
+
+<span class="hljs-name"><span class="hljs-keyword">class</span> <span class="hljs-comment">BlogPostExcerpt</span> <span class="hljs-keyword">extends</span> <span class="hljs-comment">Component</span> </span>{
+  render() {
+    <span class="hljs-keyword">return</span> (
+      <span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>{this.props.title}<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>{this.props.description}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+    )
+  }
+}
+
+BlogPostExcerpt.propTypes = {
+  title: PropTypes.string,
+  description: PropTypes.string
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> BlogPostExcerpt
+</code></pre>
+<h3 id="which-types-can-we-use" class="calibre14">Which types can we use</h3>
+<p class="calibre8">These are the fundamental types we can accept:</p>
+<ul class="calibre15">
+<li class="calibre16">PropTypes.array</li>
+<li class="calibre16">PropTypes.bool</li>
+<li class="calibre16">PropTypes.func</li>
+<li class="calibre16">PropTypes.number</li>
+<li class="calibre16">PropTypes.object</li>
+<li class="calibre16">PropTypes.string</li>
+<li class="calibre16">PropTypes.symbol</li>
+</ul>
+<p class="calibre8">We can accept one of two types:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">PropTypes.oneOfType([
+  PropTypes.string,
+  PropTypes.number
+]),
+</code></pre>
+<p class="calibre8">We can accept one of many values:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">PropTypes.oneOf([<span class="hljs-string">'Test1'</span>, <span class="hljs-string">'Test2'</span>]),
+</code></pre>
+<p class="calibre8">We can accept an instance of a class:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">PropTypes.instanceOf(Something)
+</code></pre>
+<p class="calibre8">We can accept any React node:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">PropTypes.node
+</code></pre>
+<p class="calibre8">or even any type at all:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">PropTypes.any
+</code></pre>
+<p class="calibre8">Arrays have a special syntax that we can use to accept an array of a particular type:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">PropTypes.arrayOf(PropTypes.string)
+</code></pre>
+<p class="calibre8">Objects, we can compose an object properties by using</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">PropTypes.shape({
+  color: PropTypes.string,
+  fontSize: PropTypes.number
+})
+</code></pre>
+<h3 id="requiring-properties" class="calibre14">Requiring properties</h3>
+<p class="calibre8">Appending <code class="calibre10 pcalibre4 pcalibre3">isRequired</code> to any PropTypes option will cause React to return an error if that property is missing:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">PropTypes.arrayOf(PropTypes.string).isRequired,
+PropTypes.string.isRequired,
+</code></pre>
+
+        </div>
+    
+</div>
+
+        
+    
+
+
+</body></html>

@@ -1,0 +1,144 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>Server side rendering</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="description" content="What is Server Side Rendering? How to do it with React?"/>
+    <meta name="generator" content="GitBook 3.2.3"/>
+    <meta name="author" content="Flavio Copes"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link href="stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="page_styles.css" rel="stylesheet" type="text/css"/>
+</head>
+  <body class="calibre">
+        
+<div class="page">
+    
+        <h1 class="book-chapter" id="calibre_toc_33">Server side rendering</h1>
+        <h1 class="page-title">Server side rendering</h1>
+        <h3 class="calibre7">What is Server Side Rendering? How to do it with React?</h3>
+
+        <div class="section">
+            <p class="calibre8"><strong class="calibre11">Server Side Rendering</strong>, also called <strong class="calibre11">SSR</strong>, is the ability of a JavaScript application to render on the server rather than in the browser.</p>
+<p class="calibre8">Why would we ever want to do so?</p>
+<ul class="calibre15">
+<li class="calibre16">it allows your site to have a faster first page load time, which is the key to a good user experience</li>
+<li class="calibre16">it is essential for SEO: search engines cannot (yet?) efficiently and correctly index applications that exclusively render client-side. Despite the latest improvements to indexing in Google, there are other search engines too, and Google is not perfect at it in any case. Also, Google favors sites with fast load times, and having to load client-side is not good for speed</li>
+<li class="calibre16">it's great when people share a page of your site on social media, as they can easily gather the metadata needed to nicely share the link (images, title, description..)</li>
+</ul>
+<p class="calibre8">Without Server Side Rendering, all your server ships is an HTML page with no body, just some script tags that are then used by the browser to render the application.</p>
+<p class="calibre8">Client-rendered apps are great at any subsequent user interaction after the first page load. Server Side Rendering allows us to get the sweet spot in the middle of client-rendered apps and backend-rendered apps: the page is generated server-side, but all interactions with the page once it's been loaded are handled client-side.</p>
+<p class="calibre8">However Server Side Rendering has its drawback too:</p>
+<ul class="calibre15">
+<li class="calibre16">it's fair to say that a simple SSR proof of concept is simple, but the complexity of SSR can grow with the complexity of your application</li>
+<li class="calibre16">rendering a big application server-side can be quite resource-intensive, and under heavy load it could even provide a slower experience than client-side rendering, since you have a single bottleneck</li>
+</ul>
+<h2 id="a-very-simplistic-example-of-what-it-takes-to-server-side-render-a-react-app" class="calibre13">A very simplistic example of what it takes to Server-Side render a React app</h2>
+<p class="calibre8">SSR setups can grow very, very complex and most tutorials will bake in Redux, React Router and many other concepts from the start.</p>
+<p class="calibre8">To understand how SSR works, let's start from the basics to implement a proof of concept.</p>
+<blockquote class="calibre19">
+<p class="calibre8">Feel free to skip this paragraph if you just want to look into the libraries that provide SSR and not bother with the ground work</p>
+</blockquote>
+<p class="calibre8">To implement basic SSR we're going to use Express.</p>
+<blockquote class="calibre19">
+<p class="calibre8">If you are new to Express, or need some catch-up, check out my free Express Handbook here: <a href="https://flaviocopes.com/page/ebooks/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">https://flaviocopes.com/page/ebooks/</a>.</p>
+</blockquote>
+<p class="calibre8">Warning: the complexity of SSR can grow with the complexity of your application. This is the bare minimum setup to render a basic React app. For more complex needs you might need to do a bit more work or also check out SSR libraries for React.</p>
+<p class="calibre8">I assume you started a React app with <code class="calibre10 pcalibre4 pcalibre3">create-react-app</code>. If you are just trying, install one now using <code class="calibre10 pcalibre4 pcalibre3">npx create-react-app ssr</code>.</p>
+<p class="calibre8">Go to the main app folder with the terminal, then run:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">npm install express
+</code></pre>
+<p class="calibre8">You have a set of folders in your app directory. Create a new folder called <code class="calibre10 pcalibre4 pcalibre3">server</code>, then go into it and create a file named <code class="calibre10 pcalibre4 pcalibre3">server.js</code>.</p>
+<p class="calibre8">Following the <code class="calibre10 pcalibre4 pcalibre3">create-react-app</code> conventions, the app lives in the <code class="calibre10 pcalibre4 pcalibre3">src/App.js</code> file. We're going to load that component, and render it to a string using <a href="https://reactjs.org/docs/react-dom-server.html" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">ReactDOMServer.renderToString()</a>, which is provided by <code class="calibre10 pcalibre4 pcalibre3">react-dom</code>.</p>
+<p class="calibre8">You get the contents of the <code class="calibre10 pcalibre4 pcalibre3">./build/index.html</code> file, and replace the <code class="calibre10 pcalibre4 pcalibre3">&lt;div id="root"&gt;&lt;/div&gt;</code> placeholder, which is the tag where the application hooks by default, with <code class="calibre10 pcalibre4 pcalibre3">`&lt;div id="root"&gt;\${ReactDOMServer.renderToString(&lt;App /&gt;)}&lt;/div&gt;</code>.</p>
+<p class="calibre8">All the content inside the <code class="calibre10 pcalibre4 pcalibre3">build</code> folder is going to be served as-is, statically by Express.</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">import</span> path <span class="hljs-keyword">from</span> <span class="hljs-string">'path'</span>
+<span class="hljs-keyword">import</span> fs <span class="hljs-keyword">from</span> <span class="hljs-string">'fs'</span>
+
+<span class="hljs-keyword">import</span> express <span class="hljs-keyword">from</span> <span class="hljs-string">'express'</span>
+<span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>
+<span class="hljs-keyword">import</span> ReactDOMServer <span class="hljs-keyword">from</span> <span class="hljs-string">'react-dom/server'</span>
+
+<span class="hljs-keyword">import</span> App <span class="hljs-keyword">from</span> <span class="hljs-string">'../src/App'</span>
+
+<span class="hljs-keyword">const</span> PORT = <span class="hljs-number">8080</span>
+<span class="hljs-keyword">const</span> app = express()
+
+<span class="hljs-keyword">const</span> router = express.Router()
+
+<span class="hljs-keyword">const</span> serverRenderer = (req, res, next) =&gt; {
+  fs.readFile(path.resolve(<span class="hljs-string">'./build/index.html'</span>), <span class="hljs-string">'utf8'</span>, (err, data) =&gt; {
+    <span class="hljs-keyword">if</span> (err) {
+      <span class="hljs-number">console</span>.error(err)
+      <span class="hljs-keyword">return</span> res.status(<span class="hljs-number">500</span>).send(<span class="hljs-string">'An error occurred'</span>)
+    }
+    <span class="hljs-keyword">return</span> res.send(
+      data.replace(
+        <span class="hljs-string">'&lt;div id="root"&gt;&lt;/div&gt;'</span>,
+        <span class="hljs-string">`&lt;div id="root"&gt;<span class="hljs-name">${ReactDOMServer.renderToString(&lt;App /&gt;)}</span>&lt;/div&gt;`</span>
+      )
+    )
+  })
+}
+router.use(<span class="hljs-string">'^/$'</span>, serverRenderer)
+
+router.use(
+  express.static(path.resolve(__dirname, <span class="hljs-string">'..'</span>, <span class="hljs-string">'build'</span>), { maxAge: <span class="hljs-string">'30d'</span> })
+)
+
+<span class="hljs-comment">// tell the app to use the above rules</span>
+app.use(router)
+
+<span class="hljs-comment">// app.use(express.static('./build'))</span>
+app.listen(PORT, () =&gt; {
+  <span class="hljs-number">console</span>.log(<span class="hljs-string">`SSR running on port <span class="hljs-name">${PORT}</span>`</span>)
+})
+</code></pre>
+<p class="calibre8">Now, in the client application, in your <code class="calibre10 pcalibre4 pcalibre3">src/index.js</code>, instead of calling <code class="calibre10 pcalibre4 pcalibre3">ReactDOM.render()</code>:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">ReactDOM.render(<span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">App</span> /&gt;</span>, document.getElementById('root'))
+</span></code></pre>
+<p class="calibre8">call <a href="https://reactjs.org/docs/react-dom.html#hydrate" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12"><code class="calibre10 pcalibre4 pcalibre3">ReactDOM.hydrate()</code></a>, which is the same but has the additional ability to attach event listeners to existing markup once React loads:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">ReactDOM.hydrate(<span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">App</span> /&gt;</span>, document.getElementById('root'))
+</span></code></pre>
+<p class="calibre8">All the Node.js code needs to be transpiled by <a href="https://flaviocopes.com/babel/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">Babel</a>, as server-side Node.js code does not know anything about JSX, nor ES Modules (which we use for the <code class="calibre10 pcalibre4 pcalibre3">include</code> statements).</p>
+<p class="calibre8">Install these 3 packages:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">npm install @babel/register @babel/preset-env @babel/preset-react ignore-styles express
+</code></pre>
+<p class="calibre8"><a href="https://www.npmjs.com/package/ignore-styles" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12"><code class="calibre10 pcalibre4 pcalibre3">ignore-styles</code></a> is a Babel utility that will tell it to ignore CSS files imported using the <code class="calibre10 pcalibre4 pcalibre3">import</code> syntax.</p>
+<p class="calibre8">Let's create an entry point in <code class="calibre10 pcalibre4 pcalibre3">server/index.js</code>:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-number">require</span>(<span class="hljs-string">'ignore-styles'</span>)
+
+<span class="hljs-number">require</span>(<span class="hljs-string">'@babel/register'</span>)({
+  ignore: [<span class="hljs-tag">/(node_modules)/</span>],
+  presets: [<span class="hljs-string">'@babel/preset-env'</span>, <span class="hljs-string">'@babel/preset-react'</span>]
+})
+
+<span class="hljs-number">require</span>(<span class="hljs-string">'./server'</span>)
+</code></pre>
+<p class="calibre8">Build the React application, so that the build/ folder is populated:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">npm run build
+</code></pre>
+<p class="calibre8">and let's run this:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">node server/index.js
+</code></pre>
+<p class="calibre8">I said this is a simplistic approach, and it is:</p>
+<ul class="calibre15">
+<li class="calibre16">it does not handle rendering images correctly when using imports, which need Webpack in order to work (and which complicates the process a lot)</li>
+<li class="calibre16">it does not handle page header metadata, which is essential for SEO and social sharing purposes (among other things)</li>
+</ul>
+<p class="calibre8">So while this is a good example of using <code class="calibre10 pcalibre4 pcalibre3">ReactDOMServer.renderToString()</code> and <code class="calibre10 pcalibre4 pcalibre3">ReactDOM.hydrate</code> to get this basic server-side rendering, it's not enough for real world usage.</p>
+<h2 id="server-side-rendering-using-libraries" class="calibre13">Server Side Rendering using libraries</h2>
+<p class="calibre8">SSR is hard to do right, and React has no de-facto way to implement it.</p>
+<p class="calibre8">It's still very much debatable if it's worth the trouble, complication and overhead to get the benefits, rather than using a different technology to serve those pages. <a href="https://www.reddit.com/r/reactjs/comments/7o6oj6/serverside_rendering_not_worth_it/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">This discussion on Reddit</a> has lots of opinions in that regard.</p>
+<p class="calibre8">When Server Side Rendering is an important matter, my suggestion is to rely on pre-made libraries and tools that have had this goal in mind since the beginning.</p>
+<p class="calibre8">In particular, I suggest <strong class="calibre11">Next.js</strong> and <strong class="calibre11">Gatsby</strong>, two projects we'll see later on.</p>
+
+        </div>
+    
+</div>
+
+        
+    
+
+
+</body></html>

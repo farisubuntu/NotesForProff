@@ -1,0 +1,185 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>Events</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="description" content="Learn how to interact with events in a React application"/>
+    <meta name="generator" content="GitBook 3.2.3"/>
+    <meta name="author" content="Flavio Copes"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link href="stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="page_styles.css" rel="stylesheet" type="text/css"/>
+</head>
+  <body class="calibre">
+        
+<div class="page">
+    
+        <h1 class="book-chapter" id="calibre_toc_29">Events</h1>
+        <h1 class="page-title">Events</h1>
+        <h3 class="calibre7">Learn how to interact with events in a React application</h3>
+
+        <div class="section">
+            <p class="calibre8">React provides an easy way to manage events. Prepare to say goodbye to <code class="calibre10 pcalibre4 pcalibre3">addEventListener</code>.</p>
+<p class="calibre8">In the previous article about the State you saw this example:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> CurrencySwitcher = props =&gt; {
+  <span class="hljs-keyword">return</span> (
+    <span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-name">onClick</span>=<span class="hljs-string">{props.handleChangeCurrency}</span>&gt;</span>
+      Current currency is {props.currency}. Change it!
+    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span>
+  )
+}
+</code></pre>
+<p class="calibre8">If you've been using JavaScript for a while, this is just like plain old <a href="https://flaviocopes.com/javascript-events/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">JavaScript event handlers</a>, except that this time you're defining everything in JavaScript, not in your HTML, and you're passing a function, not a string.</p>
+<p class="calibre8">The actual event names are a little bit different because in React you use camelCase for everything, so <code class="calibre10 pcalibre4 pcalibre3">onclick</code> becomes <code class="calibre10 pcalibre4 pcalibre3">onClick</code>, <code class="calibre10 pcalibre4 pcalibre3">onsubmit</code> becomes <code class="calibre10 pcalibre4 pcalibre3">onSubmit</code>.</p>
+<p class="calibre8">For reference, this is old school HTML with JavaScript events mixed in:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-name">onclick</span>=<span class="hljs-string">"handleChangeCurrency()"</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+</code></pre>
+<h3 id="event-handlers" class="calibre14">Event handlers</h3>
+<p class="calibre8">It's a convention to have event handlers defined as methods on the Component class:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-name"><span class="hljs-keyword">class</span> <span class="hljs-comment">Converter</span> <span class="hljs-keyword">extends</span> <span class="hljs-comment">React</span>.<span class="hljs-comment">Component</span> </span>{
+  handleChangeCurrency = event =&gt; {
+    <span class="hljs-keyword">this</span>.setState({ currency: <span class="hljs-keyword">this</span>.state.currency === <span class="hljs-string">'€'</span> ? <span class="hljs-string">'$'</span> : <span class="hljs-string">'€'</span> })
+  }
+}
+</code></pre>
+<p class="calibre8">All handlers receive an event object that adheres, cross-browser, to the <a href="https://www.w3.org/TR/DOM-Level-3-Events/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">W3C UI Events spec</a>.</p>
+<h3 id="bind-this-in-methods" class="calibre14">Bind <code class="pcalibre3 calibre23 pcalibre4">this</code> in methods</h3>
+<p class="calibre8">Don't forget to bind methods. The methods of ES6 classes by default are not bound. What this means is that <code class="calibre10 pcalibre4 pcalibre3">this</code> is not defined unless you define methods as arrow functions:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-name"><span class="hljs-keyword">class</span> <span class="hljs-comment">Converter</span> <span class="hljs-keyword">extends</span> <span class="hljs-comment">React</span>.<span class="hljs-comment">Component</span> </span>{
+  handleClick = e =&gt; {
+    <span class="hljs-comment">/* ... */</span>
+  }
+  <span class="hljs-comment">//...</span>
+}
+</code></pre>
+<p class="calibre8">when using the the property initializer syntax with Babel (enabled by default in <code class="calibre10 pcalibre4 pcalibre3">create-react-app</code>), otherwise you need to bind it manually in the constructor:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-name"><span class="hljs-keyword">class</span> <span class="hljs-comment">Converter</span> <span class="hljs-keyword">extends</span> <span class="hljs-comment">React</span>.<span class="hljs-comment">Component</span> </span>{
+  <span class="hljs-keyword">constructor</span>(props) {
+    <span class="hljs-keyword">super</span>(props)
+    <span class="hljs-keyword">this</span>.handleClick = <span class="hljs-keyword">this</span>.handleClick.bind(<span class="hljs-keyword">this</span>)
+  }
+  handleClick(e) {}
+}
+</code></pre>
+<h3 id="the-events-reference" class="calibre14">The events reference</h3>
+<p class="calibre8">There are lots of events supported, here's a summary list.</p>
+<h4 id="clipboard" class="calibre14">Clipboard</h4>
+<ul class="calibre15">
+<li class="calibre16">onCopy</li>
+<li class="calibre16">onCut</li>
+<li class="calibre16">onPaste</li>
+</ul>
+<h4 id="composition" class="calibre14">Composition</h4>
+<ul class="calibre15">
+<li class="calibre16">onCompositionEnd</li>
+<li class="calibre16">onCompositionStart</li>
+<li class="calibre16">onCompositionUpdate</li>
+</ul>
+<h4 id="keyboard" class="calibre14">Keyboard</h4>
+<ul class="calibre15">
+<li class="calibre16">onKeyDown</li>
+<li class="calibre16">onKeyPress</li>
+<li class="calibre16">onKeyUp</li>
+</ul>
+<h4 id="focus" class="calibre14">Focus</h4>
+<ul class="calibre15">
+<li class="calibre16">onFocus</li>
+<li class="calibre16">onBlur</li>
+</ul>
+<h4 id="form" class="calibre14">Form</h4>
+<ul class="calibre15">
+<li class="calibre16">onChange</li>
+<li class="calibre16">onInput</li>
+<li class="calibre16">onSubmit</li>
+</ul>
+<h4 id="mouse" class="calibre14">Mouse</h4>
+<ul class="calibre15">
+<li class="calibre16">onClick</li>
+<li class="calibre16">onContextMenu</li>
+<li class="calibre16">onDoubleClick</li>
+<li class="calibre16">onDrag</li>
+<li class="calibre16">onDragEnd</li>
+<li class="calibre16">onDragEnter</li>
+<li class="calibre16">onDragExit</li>
+<li class="calibre16">onDragLeave</li>
+<li class="calibre16">onDragOver</li>
+<li class="calibre16">onDragStart</li>
+<li class="calibre16">onDrop</li>
+<li class="calibre16">onMouseDown</li>
+<li class="calibre16">onMouseEnter</li>
+<li class="calibre16">onMouseLeave</li>
+<li class="calibre16">onMouseMove</li>
+<li class="calibre16">onMouseOut</li>
+<li class="calibre16">onMouseOver</li>
+<li class="calibre16">onMouseUp</li>
+</ul>
+<h4 id="selection" class="calibre14">Selection</h4>
+<ul class="calibre15">
+<li class="calibre16">onSelect</li>
+</ul>
+<h4 id="touch" class="calibre14">Touch</h4>
+<ul class="calibre15">
+<li class="calibre16">onTouchCancel</li>
+<li class="calibre16">onTouchEnd</li>
+<li class="calibre16">onTouchMove</li>
+<li class="calibre16">onTouchStart</li>
+</ul>
+<h4 id="ui" class="calibre14">UI</h4>
+<ul class="calibre15">
+<li class="calibre16">onScroll</li>
+</ul>
+<h4 id="mouse-wheel" class="calibre14">Mouse Wheel</h4>
+<ul class="calibre15">
+<li class="calibre16">onWheel</li>
+</ul>
+<h4 id="media" class="calibre14">Media</h4>
+<ul class="calibre15">
+<li class="calibre16">onAbort</li>
+<li class="calibre16">onCanPlay</li>
+<li class="calibre16">onCanPlayThrough</li>
+<li class="calibre16">onDurationChange</li>
+<li class="calibre16">onEmptied</li>
+<li class="calibre16">onEncrypted</li>
+<li class="calibre16">onEnded</li>
+<li class="calibre16">onError</li>
+<li class="calibre16">onLoadedData</li>
+<li class="calibre16">onLoadedMetadata</li>
+<li class="calibre16">onLoadStart</li>
+<li class="calibre16">onPause</li>
+<li class="calibre16">onPlay</li>
+<li class="calibre16">onPlaying</li>
+<li class="calibre16">onProgress</li>
+<li class="calibre16">onRateChange</li>
+<li class="calibre16">onSeeked</li>
+<li class="calibre16">onSeeking</li>
+<li class="calibre16">onStalled</li>
+<li class="calibre16">onSuspend</li>
+<li class="calibre16">onTimeUpdate</li>
+<li class="calibre16">onVolumeChange</li>
+<li class="calibre16">onWaiting</li>
+</ul>
+<h4 id="image" class="calibre14">Image</h4>
+<ul class="calibre15">
+<li class="calibre16">onLoad</li>
+<li class="calibre16">onError</li>
+</ul>
+<h4 id="animation" class="calibre14">Animation</h4>
+<ul class="calibre15">
+<li class="calibre16">onAnimationStart</li>
+<li class="calibre16">onAnimationEnd</li>
+<li class="calibre16">onAnimationIteration</li>
+</ul>
+<h4 id="transition" class="calibre14">Transition</h4>
+<ul class="calibre15">
+<li class="calibre16">onTransitionEnd</li>
+</ul>
+
+        </div>
+    
+</div>
+
+        
+    
+
+
+</body></html>

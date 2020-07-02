@@ -1,0 +1,192 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>Babel</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="description" content="Babel is an awesome entry in the Web Developer toolset. It's an awesome tool, and it&#x2019;s been around for quite some time, but nowadays almost every JavaScript developer relies on it, and this will continue going on, because Babel is now indispensable and has solved a big problem for everyone."/>
+    <meta name="generator" content="GitBook 3.2.3"/>
+    <meta name="author" content="Flavio Copes"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link href="stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="page_styles.css" rel="stylesheet" type="text/css"/>
+</head>
+  <body class="calibre">
+        
+<div class="page">
+    
+        <h1 class="book-chapter" id="calibre_toc_42">Babel</h1>
+        <h1 class="page-title">Babel</h1>
+        <h3 class="calibre7">Babel is an awesome entry in the Web Developer toolset. It's an awesome tool, and it’s been around for quite some time, but nowadays almost every JavaScript developer relies on it, and this will continue going on, because Babel is now indispensable and has solved a big problem for everyone.</h3>
+
+        <div class="section">
+            <p class="calibre8">Babel is an awesome tool, and it’s been around for quite some time, but nowadays almost every <a href="https://flaviocopes.com/javascript/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">JavaScript</a> developer relies on it, and this will continue, because Babel is now indispensable and has solved a big problem for everyone.</p>
+<p class="calibre8">Which problem?</p>
+<p class="calibre8">The problem that every Web Developer has surely had: a feature of JavaScript is available in the latest release of a browser, but not in the older versions. Or maybe Chrome or Firefox implement it, but Safari iOS and Edge do not.</p>
+<p class="calibre8">For example, ES6 introduced the <strong class="calibre11">arrow function</strong>:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>].map((n) =&gt; n + <span class="hljs-number">1</span>)
+</code></pre>
+<p class="calibre8">Which is now supported by all modern browsers. IE11 does not support it, nor Opera Mini (How do I know? By checking the <a href="http://kangax.github.io/compat-table/es6/#test-arrow_functions" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">ES6 Compatibility Table</a>).</p>
+<p class="calibre8">So how should you deal with this problem? Should you move on and leave those customers with older/incompatible browsers behind, or should you write older JavaScript code to make all your users happy?</p>
+<p class="calibre8">Enter Babel. Babel is a <strong class="calibre11">compiler</strong>: it takes code written in one standard, and it transpiles it to code written into another standard.</p>
+<p class="calibre8">You can configure Babel to transpile modern ES2017 JavaScript into JavaScript ES5 syntax:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>].map(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-number">n</span>) </span>{
+  <span class="hljs-keyword">return</span> n + <span class="hljs-number">1</span>
+})
+</code></pre>
+<p class="calibre8">This must happen at build time, so you must setup a workflow that handles this for you. <a href="https://flaviocopes.com/webpack/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">Webpack</a> is a common solution.</p>
+<p class="calibre8">(P.S. if all this <em class="calibre17">ES</em> thing sounds confusing to you, see more about ES versions <a href="https://flaviocopes.com/ecmascript/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">in the ECMAScript guide</a>)</p>
+<h2 id="installing-babel" class="calibre13">Installing Babel</h2>
+<p class="calibre8">Babel is easily installed using <a href="https://flaviocopes.com/npm/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">npm</a>, locally in a project:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">npm install --save-dev @babel/core @babel/cli
+</code></pre>
+<blockquote class="calibre19">
+<p class="calibre8">In the past I recommended installing <code class="calibre10 pcalibre4 pcalibre3">babel-cli</code> globally, but this is now discouraged by the Babel maintainers, because by using it locally you can have different versions of Babel in each project, and also checking in babel in your repository is better for team work</p>
+</blockquote>
+<p class="calibre8">Since npm now comes with <a href="https://flaviocopes.com/node/npx/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12"><code class="calibre10 pcalibre4 pcalibre3">npx</code></a>, locally installed CLI packages can run by typing the command in the project folder:</p>
+<p class="calibre8">So we can run Babel by just running</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">npx babel script.js
+</code></pre>
+<h2 id="an-example-babel-configuration" class="calibre13">An example Babel configuration</h2>
+<p class="calibre8">Babel out of the box does not do anything useful, you need to configure it and add plugins.</p>
+<blockquote class="calibre19">
+<p class="calibre8"><a href="https://babeljs.io/docs/en/plugins" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">Here is a list of Babel plugins</a></p>
+</blockquote>
+<p class="calibre8">To solve the problem we talked about in the introduction (using arrow functions in every browser), we can run</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">npm install --save-dev \
+    @babel/plugin-transform-es2015-arrow-functions
+</code></pre>
+<p class="calibre8">to download the package in the <code class="calibre10 pcalibre4 pcalibre3">node_modules</code> folder of our app, then we need to add</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">{
+  <span class="hljs-string">"plugins"</span>: [<span class="hljs-string">"transform-es2015-arrow-functions"</span>]
+}
+</code></pre>
+<p class="calibre8">to the <code class="calibre10 pcalibre4 pcalibre3">.babelrc</code> file present in the application root folder. If you don't have that file already, you just create a blank file, and put that content into it.</p>
+<blockquote class="calibre19">
+<p class="calibre8">TIP: If you have never seen a dot file (a file starting with a dot) it might be odd at first because that file might not appear in your file manager, as it's a hidden file.</p>
+</blockquote>
+<p class="calibre8">Now if we have a <code class="calibre10 pcalibre4 pcalibre3">script.js</code> file with this content:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">var</span> a = () =&gt; {};
+<span class="hljs-keyword">var</span> a = (b) =&gt; b;
+
+<span class="hljs-keyword">const</span> double = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>].map((num) =&gt; num * <span class="hljs-number">2</span>);
+<span class="hljs-number">console</span>.log(double); <span class="hljs-comment">// [2,4,6]</span>
+
+<span class="hljs-keyword">var</span> bob = {
+  _name: <span class="hljs-string">"Bob"</span>,
+  _friends: [<span class="hljs-string">"Sally"</span>, <span class="hljs-string">"Tom"</span>],
+  printFriends() {
+    <span class="hljs-keyword">this</span>._friends.forEach(f =&gt;
+      <span class="hljs-number">console</span>.log(<span class="hljs-keyword">this</span>._name + <span class="hljs-string">" knows "</span> + f));
+  }
+};
+<span class="hljs-number">console</span>.log(bob.printFriends());
+</code></pre>
+<p class="calibre8">running <code class="calibre10 pcalibre4 pcalibre3">babel script.js</code> will output the following code:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">var</span> a = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-number"></span>) </span>{};<span class="hljs-keyword">var</span> a = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-number">b</span>) </span>{
+  <span class="hljs-keyword">return</span> b;
+};
+
+<span class="hljs-keyword">const</span> double = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>].map(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-number">num</span>) </span>{
+  <span class="hljs-keyword">return</span> num * <span class="hljs-number">2</span>;
+});<span class="hljs-number">console</span>.log(double); <span class="hljs-comment">// [2,4,6]</span>
+
+<span class="hljs-keyword">var</span> bob = {
+  _name: <span class="hljs-string">"Bob"</span>,
+  _friends: [<span class="hljs-string">"Sally"</span>, <span class="hljs-string">"Tom"</span>],
+  printFriends() {
+    <span class="hljs-keyword">var</span> _this = <span class="hljs-keyword">this</span>;
+
+    <span class="hljs-keyword">this</span>._friends.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-number">f</span>) </span>{
+      <span class="hljs-keyword">return</span> <span class="hljs-number">console</span>.log(_this._name + <span class="hljs-string">" knows "</span> + f);
+    });
+  }
+};
+<span class="hljs-number">console</span>.log(bob.printFriends());
+</code></pre>
+<p class="calibre8">As you can see arrow functions have all been converted to JavaScript ES5 functions.</p>
+<h2 id="babel-presets" class="calibre13">Babel presets</h2>
+<p class="calibre8">We just saw in the previous article how Babel can be configured to transpile specific JavaScript features.</p>
+<p class="calibre8">You can add much more plugins, but you can't add to the configuration features one by one, it's not practical.</p>
+<p class="calibre8">This is why Babel offers <strong class="calibre11">presets</strong>.</p>
+<p class="calibre8">The most popular presets are <code class="calibre10 pcalibre4 pcalibre3">env</code> and <code class="calibre10 pcalibre4 pcalibre3">react</code>.</p>
+<blockquote class="calibre19">
+<p class="calibre8">Tip: Babel 7 deprecated (and removed) yearly presets like <code class="calibre10 pcalibre4 pcalibre3">preset-es2017</code>, and stage presets. Use <code class="calibre10 pcalibre4 pcalibre3">@babel/preset-env</code> instead.</p>
+</blockquote>
+<h3 id="env-preset" class="calibre14"><code class="pcalibre3 calibre23 pcalibre4">env</code> preset</h3>
+<p class="calibre8">The <code class="calibre10 pcalibre4 pcalibre3">env</code> preset is very nice: you tell it which environments you want to support, and it does everything for you, <strong class="calibre11">supporting all modern JavaScript features</strong>.</p>
+<p class="calibre8">E.g. "support the last 2 versions of every browser, but for Safari let's support all versions since Safari 7`</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">{
+  <span class="hljs-string">"presets"</span>: [
+    [<span class="hljs-string">"env"</span>, {
+      <span class="hljs-string">"targets"</span>: {
+        <span class="hljs-string">"browsers"</span>: [<span class="hljs-string">"last 2 versions"</span>, <span class="hljs-string">"safari &gt;= 7"</span>]
+      }
+    }]
+  ]
+}
+</code></pre>
+<p class="calibre8">or "I don't need browser support, just let me work with <a href="https://flaviocopes.com/node/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">Node.js</a> 6.10"</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">{
+  <span class="hljs-string">"presets"</span>: [
+    [<span class="hljs-string">"env"</span>, {
+      <span class="hljs-string">"targets"</span>: {
+        <span class="hljs-string">"node"</span>: <span class="hljs-string">"6.10"</span>
+      }
+    }]
+  ]
+}
+</code></pre>
+<h3 id="react-preset" class="calibre14"><code class="pcalibre3 calibre23 pcalibre4">react</code> preset</h3>
+<p class="calibre8">The <code class="calibre10 pcalibre4 pcalibre3">react</code> preset is very convenient when writing React apps: adding <code class="calibre10 pcalibre4 pcalibre3">preset-flow</code>, <code class="calibre10 pcalibre4 pcalibre3">syntax-jsx</code>, <code class="calibre10 pcalibre4 pcalibre3">transform-react-jsx</code>, <code class="calibre10 pcalibre4 pcalibre3">transform-react-display-name</code>.</p>
+<p class="calibre8">By including it, you are all ready to go developing React apps, with JSX transforms and Flow support.</p>
+<h3 id="more-info-on-presets" class="calibre14">More info on presets</h3>
+<p class="calibre8"><a href="https://babeljs.io/docs/plugins/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">https://babeljs.io/docs/plugins/</a></p>
+<h2 id="using-babel-with-webpack" class="calibre13">Using Babel with webpack</h2>
+<p class="calibre8">If you want to run modern JavaScript in the browser, Babel on its own is not enough, you also need to bundle the code. Webpack is the perfect tool for this.</p>
+<blockquote class="calibre19">
+<p class="calibre8">TIP: read the <a href="https://flaviocopes.com/webpack/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">webpack guide</a> if you're not familiar with webpack</p>
+</blockquote>
+<p class="calibre8">Modern JS needs two different stages: a compile stage, and a runtime stage. This is because some ES6+ features need a polyfill or a runtime helper.</p>
+<p class="calibre8">To install the Babel polyfill runtime functionality, run</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">npm install @babel/polyfill \
+            @babel/runtime \
+            @babel/plugin-transform-runtime
+</code></pre>
+<p class="calibre8">Now in your <code class="calibre10 pcalibre4 pcalibre3">webpack.config.js</code> file add:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">entry: [
+  <span class="hljs-string">'babel-polyfill'</span>,
+  <span class="hljs-comment">// your app scripts should be here</span>
+],
+
+<span class="hljs-number">module</span>: {
+  loaders: [
+    <span class="hljs-comment">// Babel loader compiles ES2015 into ES5 for</span>
+    <span class="hljs-comment">// complete cross-browser support</span>
+    {
+      loader: <span class="hljs-string">'babel-loader'</span>,
+      test: <span class="hljs-tag">/\.js$/</span>,
+      <span class="hljs-comment">// only include files present in the `src` subdirectory</span>
+      include: [path.resolve(__dirname, <span class="hljs-string">"src"</span>)],
+      <span class="hljs-comment">// exclude node_modules, equivalent to the above line</span>
+      exclude: <span class="hljs-tag">/node_modules/</span>,
+      query: {
+        <span class="hljs-comment">// Use the default ES2015 preset</span>
+        <span class="hljs-comment">// to include all ES2015 features</span>
+        presets: [<span class="hljs-string">'es2015'</span>],
+        plugins: [<span class="hljs-string">'transform-runtime'</span>]
+      }
+    }
+  ]
+}
+</code></pre>
+<p class="calibre8">By keeping the presets and plugins information inside the <code class="calibre10 pcalibre4 pcalibre3">webpack.config.js</code> file, we can avoid having a <code class="calibre10 pcalibre4 pcalibre3">.babelrc</code> file.</p>
+
+        </div>
+    
+</div>
+
+        
+    
+
+
+</body></html>

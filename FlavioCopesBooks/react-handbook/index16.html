@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>Purity</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="description" content="What is purity, a pure function and a pure component"/>
+    <meta name="generator" content="GitBook 3.2.3"/>
+    <meta name="author" content="Flavio Copes"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link href="stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="page_styles.css" rel="stylesheet" type="text/css"/>
+</head>
+  <body class="calibre">
+        
+<div class="page">
+    
+        <h1 class="book-chapter" id="calibre_toc_17">Purity</h1>
+        <h1 class="page-title">Purity</h1>
+        <h3 class="calibre7">What is purity, a pure function and a pure component</h3>
+
+        <div class="section">
+            <p class="calibre8">In JavaScript, when a function does not mutate objects but just returns a new object, it's called a pure function.</p>
+<p class="calibre8">A function, or a method, in order to be called <em class="calibre17">pure</em> should not cause side effects and should return the same output when called multiple times with the same input.</p>
+<p class="calibre8">A pure function takes an input and returns an output without changing the input nor anything else.</p>
+<p class="calibre8">Its output is only determined by the arguments. You could call this function 1M times, and given the same set of arguments, the output will always be the same.</p>
+<p class="calibre8">React applies this concept to components. A React component is a pure component when its output is only dependant on its props.</p>
+<p class="calibre8">All functional components are pure components:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> Button = props =&gt; {
+  <span class="hljs-keyword">return</span> <span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>{props.message}<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span>
+}
+</code></pre>
+<p class="calibre8">Class components can be pure if their output only depends on the props:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-name"><span class="hljs-keyword">class</span> <span class="hljs-comment">Button</span> <span class="hljs-keyword">extends</span> <span class="hljs-comment">React</span>.<span class="hljs-comment">Component</span> </span>{
+  render() {
+    <span class="hljs-keyword">return</span> <span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>{this.props.message}<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span>
+  }
+}
+</code></pre>
+
+        </div>
+    
+</div>
+
+        
+    
+
+
+</body></html>

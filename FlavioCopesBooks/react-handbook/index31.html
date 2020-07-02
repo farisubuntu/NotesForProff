@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>Reference a DOM element</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="description" content="Find out how to ref a DOM element in React"/>
+    <meta name="generator" content="GitBook 3.2.3"/>
+    <meta name="author" content="Flavio Copes"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link href="stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="page_styles.css" rel="stylesheet" type="text/css"/>
+</head>
+  <body class="calibre">
+        
+<div class="page">
+    
+        <h1 class="book-chapter" id="calibre_toc_32">Reference a DOM element</h1>
+        <h1 class="page-title">Reference a DOM element</h1>
+        <h3 class="calibre7">Find out how to ref a DOM element in React</h3>
+
+        <div class="section">
+            <p class="calibre8">React is great at abstracting away the DOM from you when building apps.</p>
+<p class="calibre8">But what if you want to access the DOM element that a React component represents?</p>
+<p class="calibre8">Maybe you have to add a library that interacts directly with the DOM like a chart library, maybe you need to call some DOM API, or add focus on an element.</p>
+<blockquote class="calibre19">
+<p class="calibre8">Whatever the reason is, a good practice is making sure there's no other way of doing so without accessing the DOM directly.</p>
+</blockquote>
+<p class="calibre8">In the JSX of your component, you can assign the reference of the DOM element to a component property using this attribute:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">ref={el =&gt; <span class="hljs-keyword">this</span>.someProperty = el}
+</code></pre>
+<p class="calibre8">Put this into context, for example with a <code class="calibre10 pcalibre4 pcalibre3">button</code> element:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">&lt;button ref={el =&gt; (<span class="hljs-keyword">this</span>.button = el)} /&gt;
+</code></pre>
+<p class="calibre8"><code class="calibre10 pcalibre4 pcalibre3">button</code> refers to a property of the component, which can then be used by the component's lifecycle methods (or other methods) to interact with the DOM:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-name"><span class="hljs-keyword">class</span> <span class="hljs-comment">SomeComponent</span> <span class="hljs-keyword">extends</span> <span class="hljs-comment">Component</span> </span>{
+  render() {
+    <span class="hljs-keyword">return</span> <span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-name">ref</span>=<span class="hljs-string">{el</span> =&gt;</span> (this.button = el)} /&gt;
+  }
+}
+</span></code></pre>
+<p class="calibre8">In a function component the mechanism is the same, you just avoid using <code class="calibre10 pcalibre4 pcalibre3">this</code> (since it does not point to the component instance) and use a property instead:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-comment">SomeComponent</span>(<span class="hljs-number"></span>) </span>{
+  <span class="hljs-keyword">let</span> button
+  <span class="hljs-keyword">return</span> <span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-name">ref</span>=<span class="hljs-string">{el</span> =&gt;</span> (button = el)} /&gt;
+}
+</span></code></pre>
+
+        </div>
+    
+</div>
+
+        
+    
+
+
+</body></html>

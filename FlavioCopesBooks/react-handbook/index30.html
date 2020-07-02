@@ -1,0 +1,166 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>Handling forms</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="description" content="How to handle forms in a React application"/>
+    <meta name="generator" content="GitBook 3.2.3"/>
+    <meta name="author" content="Flavio Copes"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link href="stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="page_styles.css" rel="stylesheet" type="text/css"/>
+</head>
+  <body class="calibre">
+        
+<div class="page">
+    
+        <h1 class="book-chapter" id="calibre_toc_31">Handling forms</h1>
+        <h1 class="page-title">Handling forms</h1>
+        <h3 class="calibre7">How to handle forms in a React application</h3>
+
+        <div class="section">
+            <p class="calibre8"><img src="banner1.jpg" alt="Handling Forms in React" class="calibre9"/></p>
+<p class="calibre8">Forms are one of the few HTML elements that are interactive by default.</p>
+<p class="calibre8">They were designed to allow the user to interact with a page.</p>
+<p class="calibre8">Common uses of forms?</p>
+<ul class="calibre15">
+<li class="calibre16">Search</li>
+<li class="calibre16">Contact forms</li>
+<li class="calibre16">Shopping carts checkout</li>
+<li class="calibre16">Login and registration</li>
+<li class="calibre16">and more!</li>
+</ul>
+<p class="calibre8">Using React we can make our forms much more interactive and less static.</p>
+<p class="calibre8">There are two main ways of handling forms in React, which differ on a fundamental level: how data is managed.</p>
+<ul class="calibre15">
+<li class="calibre16">if the data is handled by the DOM, we call them <strong class="calibre11">uncontrolled components</strong></li>
+<li class="calibre16">if the data is handled by the components we call them <strong class="calibre11">controlled components</strong></li>
+</ul>
+<p class="calibre8">As you can imagine, controlled components is what you will use most of the time. The component state is the single source of truth, rather than the DOM. Some form fields are inherently uncontrolled because of their behavior, like the <code class="calibre10 pcalibre4 pcalibre3">&lt;input type="file"&gt;</code> field.</p>
+<p class="calibre8">When an element state changes in a form field managed by a component, we track it using the <code class="calibre10 pcalibre4 pcalibre3">onChange</code> attribute.</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-name"><span class="hljs-keyword">class</span> <span class="hljs-comment">Form</span> <span class="hljs-keyword">extends</span> <span class="hljs-comment">React</span>.<span class="hljs-comment">Component</span> </span>{
+  <span class="hljs-keyword">constructor</span>(props) {
+    <span class="hljs-keyword">super</span>(props)
+    <span class="hljs-keyword">this</span>.state = { username: <span class="hljs-string">''</span> }
+  }
+
+  handleChange(event) {}
+
+  render() {
+    <span class="hljs-keyword">return</span> (
+      <span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">form</span>&gt;</span>
+        Username:
+        <span class="hljs-tag">&lt;<span class="hljs-name">input</span>
+          <span class="hljs-name">type</span>=<span class="hljs-string">"text"</span>
+          <span class="hljs-name">value</span>=<span class="hljs-string">{this.state.username}</span>
+          <span class="hljs-name">onChange</span>=<span class="hljs-string">{this.handleChange}</span>
+        /&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+    )
+  }
+}
+</span></code></pre>
+<p class="calibre8">In order to set the new state, we must bind <code class="calibre10 pcalibre4 pcalibre3">this</code> to the <code class="calibre10 pcalibre4 pcalibre3">handleChange</code> method, otherwise <code class="calibre10 pcalibre4 pcalibre3">this</code> is not accessible from within that method:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-name"><span class="hljs-keyword">class</span> <span class="hljs-comment">Form</span> <span class="hljs-keyword">extends</span> <span class="hljs-comment">React</span>.<span class="hljs-comment">Component</span> </span>{
+  <span class="hljs-keyword">constructor</span>(props) {
+    <span class="hljs-keyword">super</span>(props)
+    <span class="hljs-keyword">this</span>.state = { username: <span class="hljs-string">''</span> }
+    <span class="hljs-keyword">this</span>.handleChange = <span class="hljs-keyword">this</span>.handleChange.bind(<span class="hljs-keyword">this</span>)
+  }
+
+  handleChange(event) {
+    <span class="hljs-keyword">this</span>.setState({ value: event.target.value })
+  }
+
+  render() {
+    <span class="hljs-keyword">return</span> (
+      <span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">form</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">input</span>
+          <span class="hljs-name">type</span>=<span class="hljs-string">"text"</span>
+          <span class="hljs-name">value</span>=<span class="hljs-string">{this.state.username}</span>
+          <span class="hljs-name">onChange</span>=<span class="hljs-string">{this.handleChange}</span>
+        /&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+    )
+  }
+}
+</span></code></pre>
+<p class="calibre8">Similarly, we use the <code class="calibre10 pcalibre4 pcalibre3">onSubmit</code> attribute on the form to call the <code class="calibre10 pcalibre4 pcalibre3">handleSubmit</code> method when the form is submitted:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-name"><span class="hljs-keyword">class</span> <span class="hljs-comment">Form</span> <span class="hljs-keyword">extends</span> <span class="hljs-comment">React</span>.<span class="hljs-comment">Component</span> </span>{
+  <span class="hljs-keyword">constructor</span>(props) {
+    <span class="hljs-keyword">super</span>(props)
+    <span class="hljs-keyword">this</span>.state = { username: <span class="hljs-string">''</span> }
+    <span class="hljs-keyword">this</span>.handleChange = <span class="hljs-keyword">this</span>.handleChange.bind(<span class="hljs-keyword">this</span>)
+    <span class="hljs-keyword">this</span>.handleSubmit = <span class="hljs-keyword">this</span>.handleSubmit.bind(<span class="hljs-keyword">this</span>)
+  }
+
+  handleChange(event) {
+    <span class="hljs-keyword">this</span>.setState({ value: event.target.value })
+  }
+
+  handleSubmit(event) {
+    alert(<span class="hljs-keyword">this</span>.state.username)
+    event.preventDefault()
+  }
+
+  render() {
+    <span class="hljs-keyword">return</span> (
+      &lt;form onSubmit={this.handleSubmit}&gt;
+        &lt;input
+          type="text"
+          value={this.state.username}
+          onChange={this.handleChange}
+        /&gt;
+        &lt;input type="submit" value="Submit" /&gt;
+      &lt;/form&gt;
+    )
+  }
+}
+</code></pre>
+<p class="calibre8">Validation in a form can be handled in the <code class="calibre10 pcalibre4 pcalibre3">handleChange</code> method: you have access to the old value of the state, and the new one. You can check the new value and if not valid reject the updated value (and communicate it in some way to the user).</p>
+<p class="calibre8">HTML Forms are inconsistent. They have a long history, and it shows. React however makes things more consistent for us, and you can get (and update) fields using its <code class="calibre10 pcalibre4 pcalibre3">value</code> attribute.</p>
+<p class="calibre8">Here's a <code class="calibre10 pcalibre4 pcalibre3">textarea</code>, for example:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-tag">&lt;<span class="hljs-name">textarea</span> <span class="hljs-name">value</span>=<span class="hljs-string">{this.state.address}</span> <span class="hljs-name">onChange</span>=<span class="hljs-string">{this.handleChange}</span> /&gt;</span>
+</code></pre>
+<p class="calibre8">The same goes for the <code class="calibre10 pcalibre4 pcalibre3">select</code> tag:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-name">value</span>=<span class="hljs-string">"{this.state.age}"</span> <span class="hljs-name">onChange</span>=<span class="hljs-string">"{this.handleChange}"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-name">value</span>=<span class="hljs-string">"teen"</span>&gt;</span>Less than 18<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-name">value</span>=<span class="hljs-string">"adult"</span>&gt;</span>18+<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span>
+</code></pre>
+<p class="calibre8">Previously we mentioned the <code class="calibre10 pcalibre4 pcalibre3">&lt;input type="file"&gt;</code> field. That works a bit differently.</p>
+<p class="calibre8">In this case you need to get a reference to the field by assigning the <code class="calibre10 pcalibre4 pcalibre3">ref</code> attribute to a property defined in the constructor with <code class="calibre10 pcalibre4 pcalibre3">React.createRef()</code>, and use that to get the value of it in the submit handler:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-name"><span class="hljs-keyword">class</span> <span class="hljs-comment">FileInput</span> <span class="hljs-keyword">extends</span> <span class="hljs-comment">React</span>.<span class="hljs-comment">Component</span> </span>{
+  <span class="hljs-keyword">constructor</span>(props) {
+    <span class="hljs-keyword">super</span>(props)
+    <span class="hljs-keyword">this</span>.curriculum = React.createRef()
+    <span class="hljs-keyword">this</span>.handleSubmit = <span class="hljs-keyword">this</span>.handleSubmit.bind(<span class="hljs-keyword">this</span>)
+  }
+
+  handleSubmit(event) {
+    alert(<span class="hljs-keyword">this</span>.curriculum.current.files[<span class="hljs-number">0</span>].name)
+    event.preventDefault()
+  }
+
+  render() {
+    <span class="hljs-keyword">return</span> (
+      &lt;form onSubmit={this.handleSubmit}&gt;
+        &lt;input type="file" ref={this.curriculum} /&gt;
+        &lt;input type="submit" value="Submit" /&gt;
+      &lt;/form&gt;
+    )
+  }
+}
+</code></pre>
+<p class="calibre8">This is the <strong class="calibre11">uncontrolled components</strong> way. The state is stored in the DOM rather than in the component state (notice we used <code class="calibre10 pcalibre4 pcalibre3">this.curriculum</code> to access the uploaded file, and have not touched the <code class="calibre10 pcalibre4 pcalibre3">state</code>.</p>
+<p class="calibre8">I know what you're thinking - beyond those basics, there must be a library that simplifies all this form handling stuff and automates validation, error handling and more, right? There is a great one, Formik (Formik tutorial coming tomorrow!)</p>
+
+        </div>
+    
+</div>
+
+        
+    
+
+
+</body></html>

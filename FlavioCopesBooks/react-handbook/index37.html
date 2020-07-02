@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>Code splitting</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="description" content="What is Code Splitting and how to introduce it in a React app"/>
+    <meta name="generator" content="GitBook 3.2.3"/>
+    <meta name="author" content="Flavio Copes"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link href="stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="page_styles.css" rel="stylesheet" type="text/css"/>
+</head>
+  <body class="calibre">
+        
+<div class="page">
+    
+        <h1 class="book-chapter" id="calibre_toc_38">Code splitting</h1>
+        <h1 class="page-title">Code splitting</h1>
+        <h3 class="calibre7">What is Code Splitting and how to introduce it in a React app</h3>
+
+        <div class="section">
+            <p class="calibre8">Modern JavaScript applications can be quite huge in terms of bundle size. You don't want your users to have to download a 1MB package of JavaScript (your code and the libraries you use) just to load the first page, right? But this is what happens by default when you ship a modern Web App built with Webpack bundling.</p>
+<p class="calibre8">That bundle will contain code that might never run because the user only stops on the login page and never sees the rest of your app.</p>
+<p class="calibre8">Code splitting is the practice of only loading the JavaScript you need the moment when you need it.</p>
+<p class="calibre8">This improves:</p>
+<ul class="calibre15">
+<li class="calibre16">the performance of your app</li>
+<li class="calibre16">the impact on memory, and so battery usage on mobile devices</li>
+<li class="calibre16">the downloaded KiloBytes (or MegaBytes) size</li>
+</ul>
+<p class="calibre8">React 16.6.0, released in October 2018, introduced a way of performing code splitting that should take the place of every previously used tool or library: <strong class="calibre11">React.lazy</strong> and <strong class="calibre11">Suspense</strong>.</p>
+<p class="calibre8"><code class="calibre10 pcalibre4 pcalibre3">React.lazy</code> and <code class="calibre10 pcalibre4 pcalibre3">Suspense</code> form the perfect way to lazily load a dependency and only load it when needed.</p>
+<p class="calibre8">Let's start with <code class="calibre10 pcalibre4 pcalibre3">React.lazy</code>. You use it to import any component:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>
+
+<span class="hljs-keyword">const</span> TodoList = React.lazy(() =&gt; <span class="hljs-keyword">import</span>(<span class="hljs-string">'./TodoList'</span>))
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> () =&gt; {
+  <span class="hljs-keyword">return</span> (
+    <span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">TodoList</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  )
+}
+</span></code></pre>
+<p class="calibre8">the TodoList component will be dynamically added to the output as soon as it's available. Webpack will create a separate bundle for it, and will take care of loading it when necessary.</p>
+<p class="calibre8"><code class="calibre10 pcalibre4 pcalibre3">Suspense</code> is a component that you can use to wrap any lazily loaded component:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>
+
+<span class="hljs-keyword">const</span> TodoList = React.lazy(() =&gt; <span class="hljs-keyword">import</span>(<span class="hljs-string">'./TodoList'</span>))
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> () =&gt; {
+  <span class="hljs-keyword">return</span> (
+    &lt;div&gt;
+      &lt;React.Suspense&gt;
+        &lt;TodoList /&gt;
+      &lt;/React.Suspense&gt;
+    &lt;/div&gt;
+  )
+}
+</code></pre>
+<p class="calibre8">It takes care of handling the output while the lazy loaded component is fetched and rendered.</p>
+<p class="calibre8">Use its <code class="calibre10 pcalibre4 pcalibre3">fallback</code> prop to output some JSX or a component output:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">...
+      &lt;React.Suspense fallback={<span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Please wait<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span>}&gt;
+        <span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">TodoList</span> /&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">React.Suspense</span>&gt;</span>
+...
+</span></code></pre>
+<p class="calibre8">All this plays well with React Router:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>
+<span class="hljs-keyword">import</span> { BrowserRouter <span class="hljs-keyword">as</span> Router, Route, Switch } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-router-dom'</span>
+
+<span class="hljs-keyword">const</span> TodoList = React.lazy(() =&gt; <span class="hljs-keyword">import</span>(<span class="hljs-string">'./routes/TodoList'</span>))
+<span class="hljs-keyword">const</span> NewTodo = React.lazy(() =&gt; <span class="hljs-keyword">import</span>(<span class="hljs-string">'./routes/NewTodo'</span>))
+
+<span class="hljs-keyword">const</span> App = () =&gt; (
+  &lt;Router&gt;
+    &lt;React.Suspense fallback={&lt;p&gt;Please wait&lt;/p&gt;}&gt;
+      &lt;Switch&gt;
+        &lt;Route exact path="/" component={TodoList} /&gt;
+        &lt;Route path="/new" component={NewTodo} /&gt;
+      &lt;/Switch&gt;
+    &lt;/React.Suspense&gt;
+  &lt;/Router&gt;
+)
+</code></pre>
+
+        </div>
+    
+</div>
+
+        
+    
+
+
+</body></html>

@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>Single Page Apps</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="description" content="React Applications are also called Single Page Applications. What does this mean?"/>
+    <meta name="generator" content="GitBook 3.2.3"/>
+    <meta name="author" content="Flavio Copes"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link href="stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="page_styles.css" rel="stylesheet" type="text/css"/>
+</head>
+  <body class="calibre">
+        
+<div class="page">
+    
+        <h1 class="book-chapter" id="calibre_toc_14">Single Page Apps</h1>
+        <h1 class="page-title">Single Page Apps</h1>
+        <h3 class="calibre7">React Applications are also called Single Page Applications. What does this mean?</h3>
+
+        <div class="section">
+            <p class="calibre8">In the past, when browsers were much less capable than today, and JavaScript performance was poor, every page was coming from a server. Every time you clicked something, a new request was made to the server and the browser subsequently loaded the new page.</p>
+<p class="calibre8">Only very innovative products worked differently, and experimented with new approaches.</p>
+<p class="calibre8">Today, popularized by modern frontend JavaScript frameworks like React, an app is usually built as a single page application: you only load the application code (HTML, <a href="https://flaviocopes.com/css/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">CSS</a>, <a href="https://flaviocopes.com/javascript/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">JavaScript</a>) once, and when you interact with the application, what generally happens is that JavaScript intercepts the browser events and instead of making a new request to the server that then returns a new document, the client requests some JSON or performs an action on the server but the page that the user sees is never completely wiped away, and behaves more like a desktop application.</p>
+<p class="calibre8">Single page applications are built in JavaScript (or at least compiled to JavaScript) and work in the browser.</p>
+<p class="calibre8">The technology is always the same, but the philosophy and some key components of how the application works are different.</p>
+<h2 id="examples-of-single-page-applications" class="calibre13">Examples of Single Page Applications</h2>
+<p class="calibre8">Some notable examples:</p>
+<ul class="calibre15">
+<li class="calibre16">Gmail</li>
+<li class="calibre16">Google Maps</li>
+<li class="calibre16">Facebook</li>
+<li class="calibre16">Twitter</li>
+<li class="calibre16">Google Drive</li>
+</ul>
+<h2 id="pros-and-cons-of-spas" class="calibre13">Pros and cons of SPAs</h2>
+<p class="calibre8">An SPA feels much faster to the user, because instead of waiting for the client-server communication to happen, and wait for the browser to re-render the page, you can now have instant feedback. This is the responsibility of the application maker, but you can have transitions and spinners and any kind of UX improvement that is certainly better than the traditional workflow.</p>
+<p class="calibre8">In addition to making the experience faster to the user, the server will consume less resources because you can focus on providing an efficient API instead of building the layouts server-side.</p>
+<p class="calibre8">This makes it ideal if you also build a mobile app on top of the API, as you can completely reuse your existing server-side code.</p>
+<p class="calibre8">Single Page Applications are easy to transform into Progressive Web Apps, which in turn enables you to provide local caching and to support offline experiences for your services (or simply a better error message if your users need to be online).</p>
+<p class="calibre8">SPAs are best used when there is no need for SEO (search engine optimization). For example for apps that work behind a login.</p>
+<p class="calibre8">Search engines, while improving every day, still have trouble indexing sites built with an SPA approach rather than the traditional server-rendered pages. This is the case for blogs. If you are going to rely on search engines, don't even bother with creating a single page application without having a server rendered part as well.</p>
+<p class="calibre8">When coding an SPA, you are going to write a great deal of JavaScript. Since the app can be long-running, you are going to need to pay a lot more attention to possible memory leaks - if in the past your page had a lifespan that was counted in minutes, now an SPA might stay open for hours at a time and if there is any memory issue that's going to increase the browser memory usage by a lot more and it's going to cause an unpleasantly slow experience if you don't take care of it.</p>
+<p class="calibre8">SPAs are great when working in teams. Backend developers can just focus on the API, and frontend developers can focus on creating the best user experience, making use of the API built in the backend.</p>
+<p class="calibre8">As a con, Single Page Apps rely heavily on JavaScript. This might make using an application running on low power devices a poor experience in terms of speed. Also, some of your visitors might just have JavaScript disabled, and you also need to consider accessibility for anything you build.</p>
+<h2 id="overriding-the-navigation" class="calibre13">Overriding the navigation</h2>
+<p class="calibre8">Since you get rid of the default browser navigation, URLs must be managed manually.</p>
+<p class="calibre8">This part of an application is called the router. Some frameworks already take care of them for you (like Ember), others require libraries that will do this job (like <a href="https://flaviocopes.com/react-router/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">React Router</a>).</p>
+<p class="calibre8">What's the problem? In the beginning, this was an afterthought for developers building Single Page Applications. This caused the common "broken back button" issue: when navigating inside the application the URL didn't change (since the browser default navigation was hijacked) and hitting the back button, a common operation that users do to go to the previous screen, might move to a website you visited a long time ago.</p>
+<p class="calibre8">This problem can now be solved using the <a href="https://flaviocopes.com/history-api/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">History API</a> offered by browsers, but most of the time you'll use a library that internally uses that API, like <strong class="calibre11">React Router</strong>.</p>
+
+        </div>
+    
+</div>
+
+        
+    
+
+
+</body></html>

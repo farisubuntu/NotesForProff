@@ -1,0 +1,401 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>Introduction to Jest</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="description" content="Jest is a library for testing JavaScript code. It's an open source project maintained by Facebook, and it's especially well suited for React code testing, although not limited to that: it can test any JavaScript code. Jest is very fast and easy to use"/>
+    <meta name="generator" content="GitBook 3.2.3"/>
+    <meta name="author" content="Flavio Copes"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link href="stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="page_styles.css" rel="stylesheet" type="text/css"/>
+</head>
+  <body class="calibre">
+        
+<div class="page">
+    
+        <h1 class="book-chapter" id="calibre_toc_45">Introduction to Jest</h1>
+        <h1 class="page-title">Introduction to Jest</h1>
+        <h3 class="calibre7">Jest is a library for testing JavaScript code. It's an open source project maintained by Facebook, and it's especially well suited for React code testing, although not limited to that: it can test any JavaScript code. Jest is very fast and easy to use</h3>
+
+        <div class="section">
+            <p class="calibre8"><img src="banner4.jpg" alt="Jest" class="calibre9"/></p>
+<p class="calibre8">Jest is a library for testing JavaScript code.</p>
+<p class="calibre8">It's an open source project maintained by Facebook, and it's especially well suited for React code testing, although not limited to that: it can test any JavaScript code. Its strengths are:</p>
+<ul class="calibre15">
+<li class="calibre16">it's fast</li>
+<li class="calibre16">it can perform <strong class="calibre11">snapshot testing</strong></li>
+<li class="calibre16">it's opinionated, and provides everything out of the box without requiring you to make choices</li>
+</ul>
+<p class="calibre8">Jest is a tool very similar to Mocha, although they have differences:</p>
+<ul class="calibre15">
+<li class="calibre16">Mocha is less opinionated, while Jest has a certain set of conventions</li>
+<li class="calibre16">Mocha requires more configuration, while Jest works usually out of the box, thanks to being opinionated</li>
+<li class="calibre16">Mocha is older and more established, with more tooling integrations</li>
+</ul>
+<p class="calibre8">In my opinion the biggest feature of Jest is it's an out of the box solution that works without having to interact with other testing libraries to perform its job.</p>
+<h2 id="installation" class="calibre13">Installation</h2>
+<p class="calibre8">Jest is automatically installed in <code class="calibre10 pcalibre4 pcalibre3">create-react-app</code>, so if you use that, you don't need to install Jest.</p>
+<p class="calibre8">Jest can be installed in any other project using <a href="https://flaviocopes.com/yarn/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">Yarn</a>:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">yarn add --dev jest
+</code></pre>
+<p class="calibre8">or <a href="https://flaviocopes.com/npm/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">npm</a>:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">npm install --save-dev jest
+</code></pre>
+<p class="calibre8">notice how we instruct both to put Jest in the <code class="calibre10 pcalibre4 pcalibre3">devDependencies</code> part of the <code class="calibre10 pcalibre4 pcalibre3">package.json</code> file, so that it will only be installed in the development environment and not in production.</p>
+<p class="calibre8">Add this line to the scripts part of your <code class="calibre10 pcalibre4 pcalibre3">package.json</code> file:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">{
+  <span class="hljs-string">"scripts"</span>: {
+    <span class="hljs-string">"test"</span>: <span class="hljs-string">"jest"</span>
+  }
+}
+</code></pre>
+<p class="calibre8">so that tests can be run using <code class="calibre10 pcalibre4 pcalibre3">yarn test</code> or <code class="calibre10 pcalibre4 pcalibre3">npm run test</code>.</p>
+<p class="calibre8">Alternatively, you can install Jest globally:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">yarn global add jest
+</code></pre>
+<p class="calibre8">and run all your tests using the <code class="calibre10 pcalibre4 pcalibre3">jest</code> command line tool.</p>
+<h2 id="create-the-first-jest-test" class="calibre13">Create the first Jest test</h2>
+<p class="calibre8">Projects created with <code class="calibre10 pcalibre4 pcalibre3">create-react-app</code> have Jest installed and preconfigured out of the box, but adding Jest to any project is as easy as typing</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">yarn add --dev jest
+</code></pre>
+<p class="calibre8">Add to your <code class="calibre10 pcalibre4 pcalibre3">package.json</code> this line:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">{
+  <span class="hljs-string">"scripts"</span>: {
+    <span class="hljs-string">"test"</span>: <span class="hljs-string">"jest"</span>
+  }
+}
+</code></pre>
+<p class="calibre8">and run your tests by executing <code class="calibre10 pcalibre4 pcalibre3">yarn test</code> in your shell.</p>
+<p class="calibre8">Now, you don't have any tests here, so nothing is going to be executed:</p>
+<p class="calibre8"><img src="testing-with-yarn.png" alt="Testing with Yarn" class="calibre9"/></p>
+<p class="calibre8">Let's create the first test. Open a <code class="calibre10 pcalibre4 pcalibre3">math.js</code> file and type a couple functions that we'll later test:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> sum = (a, b) =&gt; a + b
+<span class="hljs-keyword">const</span> mul = (a, b) =&gt; a * b
+<span class="hljs-keyword">const</span> sub = (a, b) =&gt; a - b
+<span class="hljs-keyword">const</span> div = (a, b) =&gt; a / b
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> { sum, mul, sub, div }
+</code></pre>
+<p class="calibre8">Now create a <code class="calibre10 pcalibre4 pcalibre3">math.test.js</code> file, in the same folder, and there we'll use Jest to test the functions defined in <code class="calibre10 pcalibre4 pcalibre3">math.js</code>:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> { sum, mul, sub, div } = <span class="hljs-number">require</span>(<span class="hljs-string">'./math'</span>)
+
+test(<span class="hljs-string">'Adding 1 + 1 equals 2'</span>, () =&gt; {
+  expect(sum(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>)).toBe(<span class="hljs-number">2</span>)
+})
+test(<span class="hljs-string">'Multiplying 1 * 1 equals 1'</span>, () =&gt; {
+  expect(mul(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>)).toBe(<span class="hljs-number">1</span>)
+})
+test(<span class="hljs-string">'Subtracting 1 - 1 equals 0'</span>, () =&gt; {
+  expect(sub(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>)).toBe(<span class="hljs-number">0</span>)
+})
+test(<span class="hljs-string">'Dividing 1 / 1 equals 1'</span>, () =&gt; {
+  expect(div(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>)).toBe(<span class="hljs-number">1</span>)
+})
+</code></pre>
+<p class="calibre8">Running <code class="calibre10 pcalibre4 pcalibre3">yarn test</code> results in Jest being run on all the test files it finds, and returning us the end result:</p>
+<p class="calibre8"><img src="passing-tests.png" alt="Passing tests" class="calibre9"/></p>
+<h2 id="run-jest-with-vs-code" class="calibre13">Run Jest with VS Code</h2>
+<p class="calibre8">Visual Studio Code is a great editor for JavaScript development. The <a href="https://marketplace.visualstudio.com/items?itemName=Orta.vscode-jest" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">Jest extension</a> offers a top notch integration for our tests.</p>
+<p class="calibre8">Once you install it, it will automatically detect if you have installed Jest in your devDependencies and run the tests. You can also invoke the tests manually by selecting the <strong class="calibre11">Jest: Start Runner</strong> command. It will run the tests and stay in watch mode to re-run them whenever you change one of the files that have a test (or a test file):</p>
+<p class="calibre8"><img src="simple-test-running-vs-code.png" alt="A simple Jest test running in VS Code" class="calibre9"/></p>
+<h2 id="matchers" class="calibre13">Matchers</h2>
+<p class="calibre8">In the previous article I used <code class="calibre10 pcalibre4 pcalibre3">toBe()</code> as the only <strong class="calibre11">matcher</strong>:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">test(<span class="hljs-string">'Adding 1 + 1 equals 2'</span>, () =&gt; {
+  expect(sum(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>)).toBe(<span class="hljs-number">2</span>)
+})
+</code></pre>
+<p class="calibre8">A matcher is a method that lets you test values.</p>
+<p class="calibre8">Most commonly used matchers, comparing the value of the result of <code class="calibre10 pcalibre4 pcalibre3">expect()</code> with the value passed in as argument, are:</p>
+<ul class="calibre15">
+<li class="calibre16"><code class="calibre10 pcalibre4 pcalibre3">toBe</code> compares strict equality, using <code class="calibre10 pcalibre4 pcalibre3">===</code></li>
+<li class="calibre16"><code class="calibre10 pcalibre4 pcalibre3">toEqual</code> compares the values of two variables. If it's an object or array, it checks the equality of all the properties or elements</li>
+<li class="calibre16"><code class="calibre10 pcalibre4 pcalibre3">toBeNull</code> is true when passing a null value</li>
+<li class="calibre16"><code class="calibre10 pcalibre4 pcalibre3">toBeDefined</code> is true when passing a defined value (opposite to the above)</li>
+<li class="calibre16"><code class="calibre10 pcalibre4 pcalibre3">toBeUndefined</code> is true when passing an undefined value</li>
+<li class="calibre16"><code class="calibre10 pcalibre4 pcalibre3">toBeCloseTo</code> is used to compare floating values, avoiding rounding errors</li>
+<li class="calibre16"><code class="calibre10 pcalibre4 pcalibre3">toBeTruthy</code> true if the value is considered true (like an <code class="calibre10 pcalibre4 pcalibre3">if</code> does)</li>
+<li class="calibre16"><code class="calibre10 pcalibre4 pcalibre3">toBeFalsy</code> true if the value is considered false (like an <code class="calibre10 pcalibre4 pcalibre3">if</code> does)</li>
+<li class="calibre16"><code class="calibre10 pcalibre4 pcalibre3">toBeGreaterThan</code> true if the result of expect() is higher than the argument</li>
+<li class="calibre16"><code class="calibre10 pcalibre4 pcalibre3">toBeGreaterThanOrEqual</code> true if the result of expect() is equal to the argument, or higher than the argument</li>
+<li class="calibre16"><code class="calibre10 pcalibre4 pcalibre3">toBeLessThan</code> true if the result of expect() is lower than the argument</li>
+<li class="calibre16"><code class="calibre10 pcalibre4 pcalibre3">toBeLessThanOrEqual</code> true if the result of expect() is equal to the argument, or lower than the argument</li>
+<li class="calibre16"><code class="calibre10 pcalibre4 pcalibre3">toMatch</code> is used to compare strings with <a href="https://flaviocopes.com/javascript-regular-expressions/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">regular expression</a> pattern matching</li>
+<li class="calibre16"><code class="calibre10 pcalibre4 pcalibre3">toContain</code> is used in arrays, true if the expected array contains the argument in its elements set</li>
+<li class="calibre16"><code class="calibre10 pcalibre4 pcalibre3">toHaveLength(number)</code>: checks the length of an array</li>
+<li class="calibre16"><code class="calibre10 pcalibre4 pcalibre3">toHaveProperty(key, value)</code>: checks if an object has a property, and optionally checks its value</li>
+<li class="calibre16"><code class="calibre10 pcalibre4 pcalibre3">toThrow</code> checks if a function you pass throws an exception (in general) or a specific exception</li>
+<li class="calibre16"><code class="calibre10 pcalibre4 pcalibre3">toBeInstanceOf()</code>: checks if an object is an instance of a class</li>
+</ul>
+<p class="calibre8">All those matchers can be negated using <code class="calibre10 pcalibre4 pcalibre3">.not.</code> inside the statement, for example:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">test(<span class="hljs-string">'Adding 1 + 1 does not equal 3'</span>, () =&gt; {
+  expect(sum(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>)).not.toBe(<span class="hljs-number">3</span>)
+})
+</code></pre>
+<p class="calibre8">For use with promises, you can use <code class="calibre10 pcalibre4 pcalibre3">.resolves</code> and <code class="calibre10 pcalibre4 pcalibre3">.rejects</code>:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">expect(<span class="hljs-number">Promise</span>.resolve(<span class="hljs-string">'lemon'</span>)).resolves.toBe(<span class="hljs-string">'lemon'</span>)
+
+expect(<span class="hljs-number">Promise</span>.reject(<span class="hljs-keyword">new</span> <span class="hljs-number">Error</span>(<span class="hljs-string">'octopus'</span>))).rejects.toThrow(<span class="hljs-string">'octopus'</span>)
+</code></pre>
+<h2 id="setup" class="calibre13">Setup</h2>
+<p class="calibre8">Before running your tests you will want to perform some initialization.</p>
+<p class="calibre8">To do something once before all the tests run, use the <code class="calibre10 pcalibre4 pcalibre3">beforeAll()</code> function:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">beforeAll(() =&gt; {
+  <span class="hljs-comment">//do something</span>
+})
+</code></pre>
+<p class="calibre8">To perform something before each test runs, use <code class="calibre10 pcalibre4 pcalibre3">beforeEach()</code>:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">beforeEach(() =&gt; {
+  <span class="hljs-comment">//do something</span>
+})
+</code></pre>
+<h2 id="teardown" class="calibre13">Teardown</h2>
+<p class="calibre8">Just as you can do with setup, you can also perform something after each test runs:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">afterEach(() =&gt; {
+  <span class="hljs-comment">//do something</span>
+})
+</code></pre>
+<p class="calibre8">and after all tests end:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">afterAll(() =&gt; {
+  <span class="hljs-comment">//do something</span>
+})
+</code></pre>
+<h2 id="group-tests-using-describe" class="calibre13">Group tests using describe()</h2>
+<p class="calibre8">You can create groups of tests, in a single file, that isolate the setup and teardown functions:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">describe(<span class="hljs-string">'first set'</span>, () =&gt; {
+  beforeEach(() =&gt; {
+    <span class="hljs-comment">//do something</span>
+  })
+  afterAll(() =&gt; {
+    <span class="hljs-comment">//do something</span>
+  })
+  test(<span class="hljs-comment">/*...*/</span>)
+  test(<span class="hljs-comment">/*...*/</span>)
+})
+
+describe(<span class="hljs-string">'second set'</span>, () =&gt; {
+  beforeEach(() =&gt; {
+    <span class="hljs-comment">//do something</span>
+  })
+  beforeAll(() =&gt; {
+    <span class="hljs-comment">//do something</span>
+  })
+  test(<span class="hljs-comment">/*...*/</span>)
+  test(<span class="hljs-comment">/*...*/</span>)
+})
+</code></pre>
+<h2 id="testing-asynchronous-code" class="calibre13">Testing asynchronous code</h2>
+<p class="calibre8">Asynchronous code in modern JavaScript can have basically 2 forms: callbacks and promises. On top of promises we can use async/await.</p>
+<h3 id="callbacks" class="calibre14">Callbacks</h3>
+<p class="calibre8">You can't have a test in a callback, because Jest won't execute it - the execution of the test file ends before the callback is called. To fix this, pass a parameter to the test function, which you can conveniently call <code class="calibre10 pcalibre4 pcalibre3">done</code>. Jest will wait until you call <code class="calibre10 pcalibre4 pcalibre3">done()</code> before ending that test:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-comment">//uppercase.js</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-comment">uppercase</span>(<span class="hljs-number">str, callback</span>) </span>{
+  callback(str.toUpperCase())
+}
+<span class="hljs-number">module</span>.exports = uppercase
+
+<span class="hljs-comment">//uppercase.test.js</span>
+<span class="hljs-keyword">const</span> uppercase = <span class="hljs-number">require</span>(<span class="hljs-string">'./src/uppercase'</span>)
+
+test(<span class="hljs-string">`uppercase 'test' to equal 'TEST'`</span>, (done) =&gt; {
+  uppercase(<span class="hljs-string">'test'</span>, (str) =&gt; {
+    expect(str).toBe(<span class="hljs-string">'TEST'</span>)
+    done()
+  }
+})
+</code></pre>
+<p class="calibre8"><img src="jest-async-test-callback.png" alt="Jest async test callback" class="calibre9"/></p>
+<h3 id="promises" class="calibre14">Promises</h3>
+<p class="calibre8">With functions that return promises, we simply <strong class="calibre11">return a promise</strong> from the test:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-comment">//uppercase.js</span>
+<span class="hljs-keyword">const</span> uppercase = str =&gt; {
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-number">Promise</span>((resolve, reject) =&gt; {
+    <span class="hljs-keyword">if</span> (!str) {
+      reject(<span class="hljs-string">'Empty string'</span>)
+      <span class="hljs-keyword">return</span>
+    }
+    resolve(str.toUpperCase())
+  })
+}
+<span class="hljs-number">module</span>.exports = uppercase
+
+<span class="hljs-comment">//uppercase.test.js</span>
+<span class="hljs-keyword">const</span> uppercase = <span class="hljs-number">require</span>(<span class="hljs-string">'./uppercase'</span>)
+test(<span class="hljs-string">`uppercase 'test' to equal 'TEST'`</span>, () =&gt; {
+  <span class="hljs-keyword">return</span> uppercase(<span class="hljs-string">'test'</span>).then(str =&gt; {
+    expect(str).toBe(<span class="hljs-string">'TEST'</span>)
+  })
+})
+</code></pre>
+<p class="calibre8"><img src="jest-async-test-promises.png" alt="Jest async test promises" class="calibre9"/></p>
+<p class="calibre8">Promises that are rejected can be tested using <code class="calibre10 pcalibre4 pcalibre3">.catch()</code>:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-comment">//uppercase.js</span>
+<span class="hljs-keyword">const</span> uppercase = str =&gt; {
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-number">Promise</span>((resolve, reject) =&gt; {
+    <span class="hljs-keyword">if</span> (!str) {
+      reject(<span class="hljs-string">'Empty string'</span>)
+      <span class="hljs-keyword">return</span>
+    }
+    resolve(str.toUpperCase())
+  })
+}
+
+<span class="hljs-number">module</span>.exports = uppercase
+
+<span class="hljs-comment">//uppercase.test.js</span>
+<span class="hljs-keyword">const</span> uppercase = <span class="hljs-number">require</span>(<span class="hljs-string">'./uppercase'</span>)
+
+test(<span class="hljs-string">`uppercase 'test' to equal 'TEST'`</span>, () =&gt; {
+  <span class="hljs-keyword">return</span> uppercase(<span class="hljs-string">''</span>).catch(e =&gt; {
+    expect(e).toMatch(<span class="hljs-string">'Empty string'</span>)
+  })
+})
+</code></pre>
+<p class="calibre8"><img src="jest-async-test-catch.png" alt="Jest async test catch" class="calibre9"/></p>
+<h3 id="asyncawait" class="calibre14">Async/await</h3>
+<p class="calibre8">To test functions that return promises we can also use async/await, which makes the syntax very straightforward and simple:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-comment">//uppercase.test.js</span>
+<span class="hljs-keyword">const</span> uppercase = <span class="hljs-number">require</span>(<span class="hljs-string">'./uppercase'</span>)
+test(<span class="hljs-string">`uppercase 'test' to equal 'TEST'`</span>, <span class="hljs-keyword">async</span> () =&gt; {
+  <span class="hljs-keyword">const</span> str = <span class="hljs-keyword">await</span> uppercase(<span class="hljs-string">'test'</span>)
+  expect(str).toBe(<span class="hljs-string">'TEST'</span>)
+})
+</code></pre>
+<p class="calibre8"><img src="jest-async-test-await-async.png" alt="Jest async test await async" class="calibre9"/></p>
+<h2 id="mocking" class="calibre13">Mocking</h2>
+<p class="calibre8">In testing, <strong class="calibre11">mocking</strong> allows you to test functionality that depends on:</p>
+<ul class="calibre15">
+<li class="calibre16"><strong class="calibre11">Database</strong></li>
+<li class="calibre16"><strong class="calibre11">Network</strong> requests</li>
+<li class="calibre16">access to <strong class="calibre11">Files</strong></li>
+<li class="calibre16">any <strong class="calibre11">External</strong> system</li>
+</ul>
+<p class="calibre8">so that:</p>
+<ol class="calibre2">
+<li class="calibre16">your tests run <strong class="calibre11">faster</strong>, giving a quick turnaround time during development</li>
+<li class="calibre16">your tests are <strong class="calibre11">independent</strong> of network conditions, or the state of the database</li>
+<li class="calibre16">your tests do not <strong class="calibre11">pollute</strong> any data storage because they do not touch the database</li>
+<li class="calibre16">any change done in a test does not change the state for subsequent tests, and re-running the test suite should start from a known and reproducible starting point</li>
+<li class="calibre16">you don't have to worry about rate limiting on API calls and network requests</li>
+</ol>
+<p class="calibre8">Mocking is useful when you want to avoid side effects (e.g. writing to a database) or you want to skip slow portions of code (like network access), and also avoids implications with running your tests multiple times (e.g. imagine a function that sends an email or calls a rate-limited API).</p>
+<p class="calibre8">Even more important, if you are writing a <strong class="calibre11">Unit Test</strong>, you should test the functionality of a function in isolation, not with all its baggage of things it touches.</p>
+<p class="calibre8">Using mocks, you can inspect if a module function has been called and which parameters were used, with:</p>
+<ul class="calibre15">
+<li class="calibre16"><code class="calibre10 pcalibre4 pcalibre3">expect().toHaveBeenCalled()</code>: check if a spied function has been called</li>
+<li class="calibre16"><code class="calibre10 pcalibre4 pcalibre3">expect().toHaveBeenCalledTimes()</code>: count how many times a spied function has been called</li>
+<li class="calibre16"><code class="calibre10 pcalibre4 pcalibre3">expect().toHaveBeenCalledWith()</code>: check if the function has been called with a specific set of parameters</li>
+<li class="calibre16"><code class="calibre10 pcalibre4 pcalibre3">expect().toHaveBeenLastCalledWith()</code>: check the parameters of the last time the function has been invoked</li>
+</ul>
+<h3 id="spy-packages-without-affecting-the-functions-code" class="calibre14">Spy packages without affecting the functions code</h3>
+<p class="calibre8">When you import a package, you can tell Jest to "spy" on the execution of a particular function, using <code class="calibre10 pcalibre4 pcalibre3">spyOn()</code>, without affecting how that method works.</p>
+<p class="calibre8">Example:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> mathjs = <span class="hljs-number">require</span>(<span class="hljs-string">'mathjs'</span>)
+
+test(<span class="hljs-string">`The mathjs log function`</span>, () =&gt; {
+  <span class="hljs-keyword">const</span> spy = jest.spyOn(mathjs, <span class="hljs-string">'log'</span>)
+  <span class="hljs-keyword">const</span> result = mathjs.log(<span class="hljs-number">10000</span>, <span class="hljs-number">10</span>)
+
+  expect(mathjs.log).toHaveBeenCalled()
+  expect(mathjs.log).toHaveBeenCalledWith(<span class="hljs-number">10000</span>, <span class="hljs-number">10</span>)
+})
+</code></pre>
+<h3 id="mock-an-entire-package" class="calibre14">Mock an entire package</h3>
+<p class="calibre8">Jest provides a convenient way to mock an entire package. Create a <code class="calibre10 pcalibre4 pcalibre3">__mocks__</code> folder in the project root, and in this folder create one JavaScript file for each of your packages.</p>
+<p class="calibre8">Say you import <code class="calibre10 pcalibre4 pcalibre3">mathjs</code>. Create a <code class="calibre10 pcalibre4 pcalibre3">__mocks__/mathjs.js</code> file in your project root, and add this content:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-number">module</span>.exports = {
+  log: jest.fn(() =&gt; <span class="hljs-string">'test'</span>)
+}
+</code></pre>
+<p class="calibre8">This will mock the log() function of the package. Add as many functions as you want to mock:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> mathjs = <span class="hljs-number">require</span>(<span class="hljs-string">'mathjs'</span>)
+
+test(<span class="hljs-string">`The mathjs log function`</span>, () =&gt; {
+  <span class="hljs-keyword">const</span> result = mathjs.log(<span class="hljs-number">10000</span>, <span class="hljs-number">10</span>)
+  expect(result).toBe(<span class="hljs-string">'test'</span>)
+  expect(mathjs.log).toHaveBeenCalled()
+  expect(mathjs.log).toHaveBeenCalledWith(<span class="hljs-number">10000</span>, <span class="hljs-number">10</span>)
+})
+</code></pre>
+<h3 id="mock-a-single-function" class="calibre14">Mock a single function</h3>
+<p class="calibre8">More simply, you can mock a single function using <code class="calibre10 pcalibre4 pcalibre3">jest.fn()</code>:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> mathjs = <span class="hljs-number">require</span>(<span class="hljs-string">'mathjs'</span>)
+
+mathjs.log = jest.fn(() =&gt; <span class="hljs-string">'test'</span>)
+test(<span class="hljs-string">`The mathjs log function`</span>, () =&gt; {
+  <span class="hljs-keyword">const</span> result = mathjs.log(<span class="hljs-number">10000</span>, <span class="hljs-number">10</span>)
+  expect(result).toBe(<span class="hljs-string">'test'</span>)
+  expect(mathjs.log).toHaveBeenCalled()
+  expect(mathjs.log).toHaveBeenCalledWith(<span class="hljs-number">10000</span>, <span class="hljs-number">10</span>)
+})
+</code></pre>
+<p class="calibre8">You can also use <code class="calibre10 pcalibre4 pcalibre3">jest.fn().mockReturnValue('test')</code> to create a simple mock that does nothing except returning a value.</p>
+<h3 id="pre-built-mocks" class="calibre14">Pre-built mocks</h3>
+<p class="calibre8">You can find pre-made mocks for popular libraries. For example this package <a href="https://github.com/jefflau/jest-fetch-mock" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">https://github.com/jefflau/jest-fetch-mock</a> allows you to mock <code class="calibre10 pcalibre4 pcalibre3">fetch()</code> calls, and provide sample return values without interacting with the actual server in your tests.</p>
+<h2 id="snapshot-testing" class="calibre13">Snapshot testing</h2>
+<p class="calibre8">Snapshot testing is a pretty cool feature offered by Jest. It can memorize how your UI components are rendered, and compare it to the current test, raising an error if there's a mismatch.</p>
+<p class="calibre8">This is a simple test on the App component of a simple <code class="calibre10 pcalibre4 pcalibre3">create-react-app</code> application (make sure you install <code class="calibre10 pcalibre4 pcalibre3">react-test-renderer</code>):</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>
+<span class="hljs-keyword">import</span> App <span class="hljs-keyword">from</span> <span class="hljs-string">'./App'</span>
+<span class="hljs-keyword">import</span> renderer <span class="hljs-keyword">from</span> <span class="hljs-string">'react-test-renderer'</span>
+
+it(<span class="hljs-string">'renders correctly'</span>, () =&gt; {
+  <span class="hljs-keyword">const</span> tree = renderer.create(<span class="hljs-name"><span class="hljs-tag">&lt;<span class="hljs-name">App</span> /&gt;</span>).toJSON()
+  expect(tree).toMatchSnapshot()
+})
+</span></code></pre>
+<p class="calibre8">the first time you run this test, Jest saves the snapshot to the <code class="calibre10 pcalibre4 pcalibre3">__snapshots__</code> folder. Here's what App.test.js.snap contains:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-comment">// Jest Snapshot v1, https://goo.gl/fbAQLP</span>
+
+exports[<span class="hljs-string">`renders correctly 1`</span>] = <span class="hljs-string">`
+&lt;div
+  className="App"
+&gt;
+  &lt;header
+    className="App-header"
+  &gt;
+    &lt;img
+      alt="logo"
+      className="App-logo"
+      src="logo.svg"
+    /&gt;
+    &lt;h1
+      className="App-title"
+    &gt;
+      Welcome to React
+    &lt;/h1&gt;
+  &lt;/header&gt;
+  &lt;p
+    className="App-intro"
+  &gt;
+    To get started, edit
+    &lt;code&gt;
+      src/App.js
+    &lt;/code&gt;
+     and save to reload.
+  &lt;/p&gt;
+&lt;/div&gt;
+`</span>
+</code></pre>
+<p class="calibre8">As you see it's the code that the App component renders, nothing more.</p>
+<p class="calibre8">The next time the test compares the output of <code class="calibre10 pcalibre4 pcalibre3">&lt;App /&gt;</code> to this. If App changes, you get an error:</p>
+<p class="calibre8"><img src="error-with-snapshot.png" alt="Error with snapshot" class="calibre9"/></p>
+<p class="calibre8">When using <code class="calibre10 pcalibre4 pcalibre3">yarn test</code> in <code class="calibre10 pcalibre4 pcalibre3">create-react-app</code> you are in <strong class="calibre11">watch mode</strong>, and from there you can press <code class="calibre10 pcalibre4 pcalibre3">w</code> and show more options:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5">Watch Usage
+ › Press u to update failing snapshots.
+ › Press p to filter by a filename regex pattern.
+ › Press t to filter by a test name regex pattern.
+ › Press q to quit watch mode.
+ › Press Enter to trigger a test run.
+</code></pre><p class="calibre8">If your change is intended, pressing <code class="calibre10 pcalibre4 pcalibre3">u</code> will update the failing snapshots, and make the test pass.</p>
+<p class="calibre8">You can also update the snapshot by running <code class="calibre10 pcalibre4 pcalibre3">jest -u</code> (or <code class="calibre10 pcalibre4 pcalibre3">jest --updateSnapshot</code>) outside of watch mode.</p>
+
+        </div>
+    
+</div>
+
+        
+    
+
+
+</body></html>

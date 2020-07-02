@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>Prettier</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="description" content="Prettier is an opinionated code formatter. It is a great way to keep code formatted consistently for you and your team, and supports a lot of different languages out of the box"/>
+    <meta name="generator" content="GitBook 3.2.3"/>
+    <meta name="author" content="Flavio Copes"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link href="stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="page_styles.css" rel="stylesheet" type="text/css"/>
+</head>
+  <body class="calibre">
+        
+<div class="page">
+    
+        <h1 class="book-chapter" id="calibre_toc_44">Prettier</h1>
+        <h1 class="page-title">Prettier</h1>
+        <h3 class="calibre7">Prettier is an opinionated code formatter. It is a great way to keep code formatted consistently for you and your team, and supports a lot of different languages out of the box</h3>
+
+        <div class="section">
+            <p class="calibre8"><img src="banner3.jpg" alt="Prettier" class="calibre9"/></p>
+<p class="calibre8">Prettier is an opinionated code formatter.</p>
+<p class="calibre8"><img src="logo.png" alt="Prettier logo" class="calibre9"/></p>
+<p class="calibre8">It supports a lot of different syntax out of the box, including:</p>
+<ul class="calibre15">
+<li class="calibre16">JavaScript</li>
+<li class="calibre16">Flow, TypeScript</li>
+<li class="calibre16">CSS, SCSS, Less</li>
+<li class="calibre16">JSX</li>
+<li class="calibre16">GraphQL</li>
+<li class="calibre16">JSON</li>
+<li class="calibre16">Markdown</li>
+</ul>
+<p class="calibre8">and with <a href="https://prettier.io/docs/en/plugins.html" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">plugins</a> you can use it for Python, PHP, Swift, Ruby, Java and more.</p>
+<p class="calibre8">It integrates with the most popular code editors, including VS Code, Sublime Text, Atom and more.</p>
+<p class="calibre8">Prettier is hugely popular, as in February 2018 it has been downloaded over 3.5 million times.</p>
+<p class="calibre8">The most important links you need to know more about Prettier are</p>
+<ul class="calibre15">
+<li class="calibre16"><a href="https://prettier.io/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">https://prettier.io/</a></li>
+<li class="calibre16"><a href="https://github.com/prettier/prettier" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">https://github.com/prettier/prettier</a></li>
+<li class="calibre16"><a href="https://www.npmjs.com/package/prettier" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">https://www.npmjs.com/package/prettier</a></li>
+</ul>
+<h2 id="less-options" class="calibre13">Less options</h2>
+<p class="calibre8">I learned Go recently and one of the best things about Go is <strong class="calibre11">gofmt</strong>, an official tool that automatically formats your code according to common standards.</p>
+<p class="calibre8">95% (made up stat) of the Go code around looks exactly the same, because this tool can be easily enforced and since the style is defined for you by the Go maintainers, you are much more likely to adapt to that standard instead of insisting on your own style. Like tabs vs spaces, or where to put an opening bracket.</p>
+<p class="calibre8">This might sound like a limitation, but it's actually very powerful. All Go code looks the same.</p>
+<p class="calibre8"><strong class="calibre11">Prettier is the <code class="calibre10 pcalibre4 pcalibre3">gofmt</code> for the rest of the world</strong>.</p>
+<p class="calibre8">It has very few options, and <strong class="calibre11">most of the decisions are already taken for you</strong> so you can stop arguing about style and little things, and focus on your code.</p>
+<h2 id="difference-with-eslint" class="calibre13">Difference with ESLint</h2>
+<p class="calibre8"><a href="https://flaviocopes.com/eslint/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">ESLint</a> is a linter, it does not just format, but it also highlights some errors thanks to its static analysis of the code.</p>
+<p class="calibre8">It is an invaluable tool and it can be used alongside Prettier.</p>
+<p class="calibre8">ESLint also highlights formatting issues, but since it's a lot more configurable, everyone could have a different set of formatting rules. Prettier provides a common ground for all.</p>
+<p class="calibre8">Now, there are a few things you can customize, like:</p>
+<ul class="calibre15">
+<li class="calibre16">the tab width</li>
+<li class="calibre16">the use of single quotes vs double quotes</li>
+<li class="calibre16">the line columns number</li>
+<li class="calibre16">the use of trailing commas</li>
+</ul>
+<p class="calibre8">and some others, but Prettier tries to keep the number of those customizations under control, to avoid becoming too customizable.</p>
+<h2 id="installation" class="calibre13">Installation</h2>
+<p class="calibre8">Prettier can run from the command line, and you can install it using <a href="https://flaviocopes.com/yarn/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">Yarn</a> or <a href="https://flaviocopes.com/npm/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">npm</a>.</p>
+<p class="calibre8">Another great use case for Prettier is to run it on PRs for your <a href="https://flaviocopes.com/git/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">Git</a> repositories, for example on <a href="https://flaviocopes.com/github/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">GitHub</a>.</p>
+<p class="calibre8">If you use a supported editor the best thing is to use Prettier directly from the editor, and the Prettier formatting will be run every time you save.</p>
+<p class="calibre8">For example here is the Prettier extension for VS Code: <a href="https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode</a></p>
+<h2 id="prettier-for-beginners" class="calibre13">Prettier for beginners</h2>
+<p class="calibre8">If you think Prettier is just for teams, or for pro users, you are missing a good value proposition of this tool.</p>
+<p class="calibre8">A good style enforces good habits.</p>
+<p class="calibre8">Formatting is a topic that's mostly overlooked by beginners, but having clean and consistent formatting is key to your success as a new developer.</p>
+<p class="calibre8">Also, even if you started using <a href="https://flaviocopes.com/javascript/" target="_blank" class="pcalibre2 pcalibre pcalibre1 calibre12">JavaScript</a> 2 weeks ago, with Prettier your code - style wise - will look just like code written from a JavaScript Guru writing JS since 1998.</p>
+
+        </div>
+    
+</div>
+
+        
+    
+
+
+</body></html>

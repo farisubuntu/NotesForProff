@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>Arrow functions</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="description" content="Arrow Functions are one of the most impactful changes in ES6/ES2015, and they are widely used nowadays. They slightly differ from regular functions. Find out how"/>
+    <meta name="generator" content="GitBook 3.2.3"/>
+    <meta name="author" content="Flavio Copes"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link href="stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="page_styles.css" rel="stylesheet" type="text/css"/>
+</head>
+  <body class="calibre">
+        
+<div class="page">
+    
+        <h1 class="book-chapter" id="calibre_toc_6">Arrow functions</h1>
+        <h1 class="page-title">Arrow functions</h1>
+        <h3 class="calibre7">Arrow Functions are one of the most impactful changes in ES6/ES2015, and they are widely used nowadays. They slightly differ from regular functions. Find out how</h3>
+
+        <div class="section">
+            <p class="calibre8">Arrow functions were introduced in ES6 / ECMAScript 2015, and since their introduction they changed forever how JavaScript code looks (and works).</p>
+<p class="calibre8">In my opinion this change was so welcoming that you now rarely see the usage of the <code class="calibre10 pcalibre4 pcalibre3">function</code> keyword in modern codebases.</p>
+<p class="calibre8">Visually, it’s a simple and welcome change, which allows you to write functions with a shorter syntax, from:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> myFunction = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-number"></span>) </span>{
+  <span class="hljs-comment">//...</span>
+}
+</code></pre>
+<p class="calibre8">to</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> myFunction = () =&gt; {
+  <span class="hljs-comment">//...</span>
+}
+</code></pre>
+<p class="calibre8">If the function body contains just a single statement, you can omit the brackets and write all on a single line:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> myFunction = () =&gt; doSomething()
+</code></pre>
+<p class="calibre8">Parameters are passed in the parentheses:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> myFunction = (param1, param2) =&gt; doSomething(param1, param2)
+</code></pre>
+<p class="calibre8">If you have one (and just one) parameter, you could omit the parentheses completely:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> myFunction = param =&gt; doSomething(param)
+</code></pre>
+<p class="calibre8">Thanks to this short syntax, arrow functions <strong class="calibre11">encourage the use of small functions</strong>.</p>
+<h2 id="implicit-return" class="calibre13">Implicit return</h2>
+<p class="calibre8">Arrow functions allow you to have an implicit return: values are returned without having to use the <code class="calibre10 pcalibre4 pcalibre3">return</code> keyword.</p>
+<p class="calibre8">It works when there is a one-line statement in the function body:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> myFunction = () =&gt; <span class="hljs-string">'test'</span>
+
+myFunction() <span class="hljs-comment">//'test'</span>
+</code></pre>
+<p class="calibre8">Another example, when returning an object, remember to wrap the curly brackets in parentheses to avoid it being considered the wrapping function body brackets:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> myFunction = () =&gt; ({ value: <span class="hljs-string">'test'</span> })
+
+myFunction() <span class="hljs-comment">//{value: 'test'}</span>
+</code></pre>
+<h2 id="how-this-works-in-arrow-functions" class="calibre13">How <code class="calibre20 pcalibre3 pcalibre4">this</code> works in arrow functions</h2>
+<p class="calibre8"><code class="calibre10 pcalibre4 pcalibre3">this</code> is a concept that can be complicated to grasp, as it varies a lot depending on the context and also varies depending on the mode of JavaScript (<em class="calibre17">strict mode</em> or not).</p>
+<p class="calibre8">It's important to clarify this concept because arrow functions behave very differently compared to regular functions.</p>
+<p class="calibre8">When defined as a method of an object, in a regular function <code class="calibre10 pcalibre4 pcalibre3">this</code> refers to the object, so you can do:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> car = {
+  model: <span class="hljs-string">'Fiesta'</span>,
+  manufacturer: <span class="hljs-string">'Ford'</span>,
+  fullName: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-number"></span>) </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-name">${this.manufacturer}</span> <span class="hljs-name">${this.model}</span>`</span>
+  }
+}
+</code></pre>
+<p class="calibre8">calling <code class="calibre10 pcalibre4 pcalibre3">car.fullName()</code> will return <code class="calibre10 pcalibre4 pcalibre3">"Ford Fiesta"</code>.</p>
+<p class="calibre8">The <code class="calibre10 pcalibre4 pcalibre3">this</code> scope with arrow functions is <strong class="calibre11">inherited</strong> from the execution context. An arrow function does not bind <code class="calibre10 pcalibre4 pcalibre3">this</code> at all, so its value will be looked up in the call stack, so in this code <code class="calibre10 pcalibre4 pcalibre3">car.fullName()</code> will not work, and will return the string <code class="calibre10 pcalibre4 pcalibre3">"undefined undefined"</code>:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> car = {
+  model: <span class="hljs-string">'Fiesta'</span>,
+  manufacturer: <span class="hljs-string">'Ford'</span>,
+  fullName: () =&gt; {
+    <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-name">${this.manufacturer}</span> <span class="hljs-name">${this.model}</span>`</span>
+  }
+}
+</code></pre>
+<p class="calibre8">Due to this, arrow functions are not suited as object methods.</p>
+<p class="calibre8">Arrow functions cannot be used as constructors either, when instantiating an object will raise a <code class="calibre10 pcalibre4 pcalibre3">TypeError</code>.</p>
+<p class="calibre8">This is where regular functions should be used instead, <strong class="calibre11">when dynamic context is not needed</strong>.</p>
+<p class="calibre8">This is also a problem when handling events. DOM Event listeners set <code class="calibre10 pcalibre4 pcalibre3">this</code> to be the target element, and if you rely on <code class="calibre10 pcalibre4 pcalibre3">this</code> in an event handler, a regular function is necessary:</p>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> link = <span class="hljs-number">document</span>.querySelector(<span class="hljs-string">'#link'</span>)
+link.addEventListener(<span class="hljs-string">'click'</span>, () =&gt; {
+  <span class="hljs-comment">// this === window</span>
+})
+</code></pre>
+<pre class="calibre18"><code class="pcalibre6 lang-html pcalibre5"><span class="hljs-keyword">const</span> link = <span class="hljs-number">document</span>.querySelector(<span class="hljs-string">'#link'</span>)
+link.addEventListener(<span class="hljs-string">'click'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-number"></span>) </span>{
+  <span class="hljs-comment">// this === link</span>
+})
+</code></pre>
+
+        </div>
+    
+</div>
+
+        
+    
+
+
+</body></html>
