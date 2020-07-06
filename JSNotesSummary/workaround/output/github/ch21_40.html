@@ -1,0 +1,133 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <title>Chapter 21: Prototypes, objects 19</title>
+    <link type="text/css" rel="stylesheet" href="assets/css/github-markdown.css">
+    <link type="text/css" rel="stylesheet" href="assets/css/pilcrow.css">
+    <link type="text/css" rel="stylesheet" href="assets/css/hljs-github.min.css"/>
+  </head>
+  <body>
+    <article class="markdown-body"><h2 id="chapter-21:-prototypes,-objects-19"><a class="header-link" href="#chapter-21:-prototypes,-objects-19"></a>Chapter 21: Prototypes, objects 19</h2>
+<h3 id="section-21.1:-creation-and-initialising-prototype-19"><a class="header-link" href="#section-21.1:-creation-and-initialising-prototype-19"></a>Section 21.1: Creation and initialising Prototype 19</h3>
+<h2 id="chapter-22:-classes9"><a class="header-link" href="#chapter-22:-classes9"></a>Chapter 22: Classes9</h2>
+<h3 id="section-22.1:-class-constructor-19"><a class="header-link" href="#section-22.1:-class-constructor-19"></a>Section 22.1: Class Constructor 19</h3>
+<h3 id="section-22.2:-class-inheritance-19"><a class="header-link" href="#section-22.2:-class-inheritance-19"></a>Section 22.2: Class Inheritance 19</h3>
+<h3 id="section-22.3:-static-methods-19"><a class="header-link" href="#section-22.3:-static-methods-19"></a>Section 22.3: Static Methods 19</h3>
+<h3 id="section-22.4:-getters-and-setters9"><a class="header-link" href="#section-22.4:-getters-and-setters9"></a>Section 22.4: Getters and Setters9</h3>
+<h3 id="section-22.5:-private-members-19"><a class="header-link" href="#section-22.5:-private-members-19"></a>Section 22.5: Private Members 19</h3>
+<h3 id="section-22.6:-methods-19"><a class="header-link" href="#section-22.6:-methods-19"></a>Section 22.6: Methods 19</h3>
+<h3 id="section-22.7:-dynamic-method-names9"><a class="header-link" href="#section-22.7:-dynamic-method-names9"></a>Section 22.7: Dynamic Method Names9</h3>
+<h3 id="section-22.8:-managing-private-data-with-classes-19"><a class="header-link" href="#section-22.8:-managing-private-data-with-classes-19"></a>Section 22.8: Managing Private Data with Classes 19</h3>
+<h3 id="section-22.9:-class-name-binding-19"><a class="header-link" href="#section-22.9:-class-name-binding-19"></a>Section 22.9: Class Name binding 19</h3>
+<h2 id="chapter-23:-namespacing-19"><a class="header-link" href="#chapter-23:-namespacing-19"></a>Chapter 23: Namespacing 19</h2>
+<h3 id="section-23.1:-namespace-by-direct-assignment9"><a class="header-link" href="#section-23.1:-namespace-by-direct-assignment9"></a>Section 23.1: Namespace by direct assignment9</h3>
+<h3 id="section-23.2:-nested-namespaces-19"><a class="header-link" href="#section-23.2:-nested-namespaces-19"></a>Section 23.2: Nested Namespaces 19</h3>
+<h2 id="chapter-24:-context-(this)-20"><a class="header-link" href="#chapter-24:-context-(this)-20"></a>Chapter 24: Context (this) 20</h2>
+<h3 id="section-24.1:-this-with-simple-objects-20"><a class="header-link" href="#section-24.1:-this-with-simple-objects-20"></a>Section 24.1: this with simple objects 20</h3>
+<h3 id="section-24.2:-saving-this-for-use-in-nested-functions-/-objects0"><a class="header-link" href="#section-24.2:-saving-this-for-use-in-nested-functions-/-objects0"></a>Section 24.2: Saving this for use in nested functions / objects0</h3>
+<h3 id="section-24.3:-binding-function-context-20"><a class="header-link" href="#section-24.3:-binding-function-context-20"></a>Section 24.3: Binding function context 20</h3>
+<h3 id="section-24.4:-this-in-constructor-functi-20"><a class="header-link" href="#section-24.4:-this-in-constructor-functi-20"></a>Section 24.4: this in constructor functi 20</h3>
+<h2 id="chapter-25:-setters-and-getters0"><a class="header-link" href="#chapter-25:-setters-and-getters0"></a>Chapter 25: Setters and Getters0</h2>
+<h3 id="section-25.1:-defining-a-setter/getter-using-object.defineproperty0"><a class="header-link" href="#section-25.1:-defining-a-setter/getter-using-object.defineproperty0"></a>Section 25.1: Defining a Setter/Getter Using Object.defineProperty0</h3>
+<h3 id="section-25.2:-defining-an-setter/getter-in-a-newly-created-object0"><a class="header-link" href="#section-25.2:-defining-an-setter/getter-in-a-newly-created-object0"></a>Section 25.2: Defining an Setter/Getter in a Newly Created Object0</h3>
+<h3 id="section-25.3:-defining-getters-and-setters-in-es6-class-20"><a class="header-link" href="#section-25.3:-defining-getters-and-setters-in-es6-class-20"></a>Section 25.3: Defining getters and setters in ES6 class 20</h3>
+<h2 id="chapter-26:-events-20"><a class="header-link" href="#chapter-26:-events-20"></a>Chapter 26: Events 20</h2>
+<h3 id="section-26.1:-page,-dom-and-browser-loading-20"><a class="header-link" href="#section-26.1:-page,-dom-and-browser-loading-20"></a>Section 26.1: Page, DOM and Browser loading 20</h3>
+<h2 id="chapter-27:-inheritance-20"><a class="header-link" href="#chapter-27:-inheritance-20"></a>Chapter 27: Inheritance 20</h2>
+<h3 id="section-27.1:-standard-function-prototype0"><a class="header-link" href="#section-27.1:-standard-function-prototype0"></a>Section 27.1: Standard function prototype0</h3>
+<h3 id="section-27.2:-dierence-between-object.key-and-object.prototype.key-20"><a class="header-link" href="#section-27.2:-dierence-between-object.key-and-object.prototype.key-20"></a>Section 27.2: Dierence between Object.key and Object.prototype.key 20</h3>
+<h3 id="section-27.3:-prototypal-inheritance-20"><a class="header-link" href="#section-27.3:-prototypal-inheritance-20"></a>Section 27.3: Prototypal inheritance 20</h3>
+<h3 id="section-27.4:-pseudo-classical-inheritance0"><a class="header-link" href="#section-27.4:-pseudo-classical-inheritance0"></a>Section 27.4: Pseudo-classical inheritance0</h3>
+<h3 id="section-27.5:-setting-an-object's-prototype-20"><a class="header-link" href="#section-27.5:-setting-an-object's-prototype-20"></a>Section 27.5: Setting an Object&#39;s prototype 20</h3>
+<h2 id="chapter-28:-method-chaining-21"><a class="header-link" href="#chapter-28:-method-chaining-21"></a>Chapter 28: Method Chaining 21</h2>
+<h3 id="section-28.1:-chainable-object-design-and-chaining1"><a class="header-link" href="#section-28.1:-chainable-object-design-and-chaining1"></a>Section 28.1: Chainable object design and chaining1</h3>
+<h3 id="section-28.2:-method-chaining-21"><a class="header-link" href="#section-28.2:-method-chaining-21"></a>Section 28.2: Method Chaining 21</h3>
+<h2 id="chapter-29:-callbacks-21"><a class="header-link" href="#chapter-29:-callbacks-21"></a>Chapter 29: Callbacks 21</h2>
+<h3 id="section-29.1:-simple-callback-usage-examples-21"><a class="header-link" href="#section-29.1:-simple-callback-usage-examples-21"></a>Section 29.1: Simple Callback Usage Examples 21</h3>
+<h3 id="section-29.2:-continuation-(synchronous-and-asynchronous)1"><a class="header-link" href="#section-29.2:-continuation-(synchronous-and-asynchronous)1"></a>Section 29.2: Continuation (synchronous and asynchronous)1</h3>
+<h3 id="section-29.3:-what-is-a-callback?1"><a class="header-link" href="#section-29.3:-what-is-a-callback?1"></a>Section 29.3: What is a callback?1</h3>
+<h3 id="section-29.4:-callbacks-and-`this`1"><a class="header-link" href="#section-29.4:-callbacks-and-`this`1"></a>Section 29.4: Callbacks and <code>this</code>1</h3>
+<h3 id="section-29.5:-callback-using-arrow-function1"><a class="header-link" href="#section-29.5:-callback-using-arrow-function1"></a>Section 29.5: Callback using Arrow function1</h3>
+<h3 id="section-29.6:-error-handling-and-control-flow-branching1"><a class="header-link" href="#section-29.6:-error-handling-and-control-flow-branching1"></a>Section 29.6: Error handling and control-flow branching1</h3>
+<h2 id="chapter-30:-intervals-and-timeouts-21"><a class="header-link" href="#chapter-30:-intervals-and-timeouts-21"></a>Chapter 30: Intervals and Timeouts 21</h2>
+<h3 id="section-30.1:-recursive-settimeout1"><a class="header-link" href="#section-30.1:-recursive-settimeout1"></a>Section 30.1: Recursive setTimeout1</h3>
+<h3 id="section-30.2:-intervals-21"><a class="header-link" href="#section-30.2:-intervals-21"></a>Section 30.2: Intervals 21</h3>
+<h3 id="section-30.3:-intervals-21"><a class="header-link" href="#section-30.3:-intervals-21"></a>Section 30.3: Intervals 21</h3>
+<h3 id="section-30.4:-removing-intervals2"><a class="header-link" href="#section-30.4:-removing-intervals2"></a>Section 30.4: Removing intervals2</h3>
+<h3 id="section-30.5:-removing-timeouts2"><a class="header-link" href="#section-30.5:-removing-timeouts2"></a>Section 30.5: Removing timeouts2</h3>
+<h3 id="section-30.6:-settimeout,-order-of-operations,-cleartimeout-22"><a class="header-link" href="#section-30.6:-settimeout,-order-of-operations,-cleartimeout-22"></a>Section 30.6: setTimeout, order of operations, clearTimeout 22</h3>
+<h2 id="chapter-31:-regular-expressions-22"><a class="header-link" href="#chapter-31:-regular-expressions-22"></a>Chapter 31: Regular expressions 22</h2>
+<h3 id="section-31.1:-creating-a-regexp-object2"><a class="header-link" href="#section-31.1:-creating-a-regexp-object2"></a>Section 31.1: Creating a RegExp Object2</h3>
+<h3 id="section-31.2:-regexp-flags-22"><a class="header-link" href="#section-31.2:-regexp-flags-22"></a>Section 31.2: RegExp Flags 22</h3>
+<h3 id="section-31.3:-check-if-string-contains-pattern-using-.test()-22"><a class="header-link" href="#section-31.3:-check-if-string-contains-pattern-using-.test()-22"></a>Section 31.3: Check if string contains pattern using .test() 22</h3>
+<h3 id="section-31.4:-matching-with-.exec()2"><a class="header-link" href="#section-31.4:-matching-with-.exec()2"></a>Section 31.4: Matching With .exec()2</h3>
+<h3 id="section-31.5:-using-regexp-with-strings-22"><a class="header-link" href="#section-31.5:-using-regexp-with-strings-22"></a>Section 31.5: Using RegExp With Strings 22</h3>
+<h3 id="section-31.6:-regexp-groups-22"><a class="header-link" href="#section-31.6:-regexp-groups-22"></a>Section 31.6: RegExp Groups 22</h3>
+<h3 id="section-31.7:-replacing-string-match-with-a-callback-function-22"><a class="header-link" href="#section-31.7:-replacing-string-match-with-a-callback-function-22"></a>Section 31.7: Replacing string match with a callback function 22</h3>
+<h3 id="section-31.8:-using-regex.exec()-with-parentheses-regex-to-extract-matches-of-a-string-22"><a class="header-link" href="#section-31.8:-using-regex.exec()-with-parentheses-regex-to-extract-matches-of-a-string-22"></a>Section 31.8: Using Regex.exec() with parentheses regex to extract matches of a string 22</h3>
+<h2 id="chapter-32:-cookies2"><a class="header-link" href="#chapter-32:-cookies2"></a>Chapter 32: Cookies2</h2>
+<h3 id="section-32.1:-test-if-cookies-are-enabled2"><a class="header-link" href="#section-32.1:-test-if-cookies-are-enabled2"></a>Section 32.1: Test if cookies are enabled2</h3>
+<h3 id="section-32.2:-adding-and-setting-cookies-22"><a class="header-link" href="#section-32.2:-adding-and-setting-cookies-22"></a>Section 32.2: Adding and Setting Cookies 22</h3>
+<h3 id="section-32.3:-reading-cookies-22"><a class="header-link" href="#section-32.3:-reading-cookies-22"></a>Section 32.3: Reading cookies 22</h3>
+<h3 id="section-32.4:-removing-cookies-22"><a class="header-link" href="#section-32.4:-removing-cookies-22"></a>Section 32.4: Removing cookies 22</h3>
+<h2 id="chapter-33:-web-storage2"><a class="header-link" href="#chapter-33:-web-storage2"></a>Chapter 33: Web Storage2</h2>
+<h3 id="section-33.1:-using-localstorage-22"><a class="header-link" href="#section-33.1:-using-localstorage-22"></a>Section 33.1: Using localStorage 22</h3>
+<h3 id="section-33.2:-simpler-way-of-handling-storage-22"><a class="header-link" href="#section-33.2:-simpler-way-of-handling-storage-22"></a>Section 33.2: Simpler way of handling Storage 22</h3>
+<h3 id="section-33.3:-storage-events-23"><a class="header-link" href="#section-33.3:-storage-events-23"></a>Section 33.3: Storage events 23</h3>
+<h3 id="section-33.4:-sessionstorage-23"><a class="header-link" href="#section-33.4:-sessionstorage-23"></a>Section 33.4: sessionStorage 23</h3>
+<h3 id="section-33.5:-localstorage-length3"><a class="header-link" href="#section-33.5:-localstorage-length3"></a>Section 33.5: localStorage length3</h3>
+<h3 id="section-33.6:-error-conditions-23"><a class="header-link" href="#section-33.6:-error-conditions-23"></a>Section 33.6: Error conditions 23</h3>
+<h3 id="section-33.7:-clearing-storage-23"><a class="header-link" href="#section-33.7:-clearing-storage-23"></a>Section 33.7: Clearing storage 23</h3>
+<h3 id="section-33.8:-remove-storage-item-23"><a class="header-link" href="#section-33.8:-remove-storage-item-23"></a>Section 33.8: Remove Storage Item 23</h3>
+<h2 id="chapter-34:-data-attributes3"><a class="header-link" href="#chapter-34:-data-attributes3"></a>Chapter 34: Data attributes3</h2>
+<h3 id="section-34.1:-accessing-data-attributes3"><a class="header-link" href="#section-34.1:-accessing-data-attributes3"></a>Section 34.1: Accessing data attributes3</h3>
+<h2 id="chapter-35:-json-23"><a class="header-link" href="#chapter-35:-json-23"></a>Chapter 35: JSON 23</h2>
+<h3 id="section-35.1:-json-versus-javascript-literals-23"><a class="header-link" href="#section-35.1:-json-versus-javascript-literals-23"></a>Section 35.1: JSON versus JavaScript literals 23</h3>
+<h3 id="section-35.2:-parsing-with-a-reviver-function-23"><a class="header-link" href="#section-35.2:-parsing-with-a-reviver-function-23"></a>Section 35.2: Parsing with a reviver function 23</h3>
+<h3 id="section-35.3:-serializing-a-value3"><a class="header-link" href="#section-35.3:-serializing-a-value3"></a>Section 35.3: Serializing a value3</h3>
+<h3 id="section-35.4:-serializing-and-restoring-class-instances-23"><a class="header-link" href="#section-35.4:-serializing-and-restoring-class-instances-23"></a>Section 35.4: Serializing and restoring class instances 23</h3>
+<h3 id="section-35.5:-serializing-with-a-replacer-function-23"><a class="header-link" href="#section-35.5:-serializing-with-a-replacer-function-23"></a>Section 35.5: Serializing with a replacer function 23</h3>
+<h3 id="section-35.6:-parsing-a-simple-json-string-23"><a class="header-link" href="#section-35.6:-parsing-a-simple-json-string-23"></a>Section 35.6: Parsing a simple JSON string 23</h3>
+<h3 id="section-35.7:-cyclic-object-values3"><a class="header-link" href="#section-35.7:-cyclic-object-values3"></a>Section 35.7: Cyclic object values3</h3>
+<h2 id="chapter-36:-ajax-24"><a class="header-link" href="#chapter-36:-ajax-24"></a>Chapter 36: AJAX 24</h2>
+<h3 id="section-36.1:-sending-and-receiving-json-data-via-post4"><a class="header-link" href="#section-36.1:-sending-and-receiving-json-data-via-post4"></a>Section 36.1: Sending and Receiving JSON Data via POST4</h3>
+<h3 id="section-36.2:-add-an-ajax-preloader-24"><a class="header-link" href="#section-36.2:-add-an-ajax-preloader-24"></a>Section 36.2: Add an AJAX preloader 24</h3>
+<h3 id="section-36.3:-displaying-the-top-javascript-questions-of-the-month-from-stack-overflow's-api-24"><a class="header-link" href="#section-36.3:-displaying-the-top-javascript-questions-of-the-month-from-stack-overflow's-api-24"></a>Section 36.3: Displaying the top JavaScript questions of the month from Stack Overflow&#39;s API 24</h3>
+<h3 id="section-36.4:-using-get-with-parameters-24"><a class="header-link" href="#section-36.4:-using-get-with-parameters-24"></a>Section 36.4: Using GET with parameters 24</h3>
+<h3 id="section-36.5:-check-if-a-file-exists-via-a-head-request-24"><a class="header-link" href="#section-36.5:-check-if-a-file-exists-via-a-head-request-24"></a>Section 36.5: Check if a file exists via a HEAD request 24</h3>
+<h3 id="section-36.6:-using-get-and-no-parameters4"><a class="header-link" href="#section-36.6:-using-get-and-no-parameters4"></a>Section 36.6: Using GET and no parameters4</h3>
+<h3 id="section-36.7:-listening-to-ajax-events-at-a-global-level-24"><a class="header-link" href="#section-36.7:-listening-to-ajax-events-at-a-global-level-24"></a>Section 36.7: Listening to AJAX events at a global level 24</h3>
+<h2 id="chapter-37:-enumerations-24"><a class="header-link" href="#chapter-37:-enumerations-24"></a>Chapter 37: Enumerations 24</h2>
+<h3 id="section-37.1:-enum-definition-using-object.freeze()-24"><a class="header-link" href="#section-37.1:-enum-definition-using-object.freeze()-24"></a>Section 37.1: Enum definition using Object.freeze() 24</h3>
+<h3 id="section-37.2:-alternate-definition-24"><a class="header-link" href="#section-37.2:-alternate-definition-24"></a>Section 37.2: Alternate definition 24</h3>
+<h3 id="section-37.3:-printing-an-enum-variable-24"><a class="header-link" href="#section-37.3:-printing-an-enum-variable-24"></a>Section 37.3: Printing an enum variable 24</h3>
+<h3 id="section-37.4:-implementing-enums-using-symbols-24"><a class="header-link" href="#section-37.4:-implementing-enums-using-symbols-24"></a>Section 37.4: Implementing Enums Using Symbols 24</h3>
+<h3 id="section-37.5:-automatic-enumeration-value4"><a class="header-link" href="#section-37.5:-automatic-enumeration-value4"></a>Section 37.5: Automatic Enumeration Value4</h3>
+<h2 id="chapter-38:-map-24"><a class="header-link" href="#chapter-38:-map-24"></a>Chapter 38: Map 24</h2>
+<h3 id="section-38.1:-creating-a-map-24"><a class="header-link" href="#section-38.1:-creating-a-map-24"></a>Section 38.1: Creating a Map 24</h3>
+<h3 id="section-38.2:-clearing-a-map-24"><a class="header-link" href="#section-38.2:-clearing-a-map-24"></a>Section 38.2: Clearing a Map 24</h3>
+<h3 id="section-38.3:-removing-an-element-from-a-map-24"><a class="header-link" href="#section-38.3:-removing-an-element-from-a-map-24"></a>Section 38.3: Removing an element from a Map 24</h3>
+<h3 id="section-38.4:-checking-if-a-key-exists-in-a-map-24"><a class="header-link" href="#section-38.4:-checking-if-a-key-exists-in-a-map-24"></a>Section 38.4: Checking if a key exists in a Map 24</h3>
+<h3 id="section-38.5:-iterating-maps4"><a class="header-link" href="#section-38.5:-iterating-maps4"></a>Section 38.5: Iterating Maps4</h3>
+<h3 id="section"><a class="header-link" href="#section"></a>Section</h3>
+<p>  38.6: Getting and setting elements 24 </p>
+<h3 id="section-38.7:-getting-the-number-of-elements-of-a-map-24"><a class="header-link" href="#section-38.7:-getting-the-number-of-elements-of-a-map-24"></a>Section 38.7: Getting the number of elements of a Map 24</h3>
+<h2 id="chapter-39:-timestamps-25"><a class="header-link" href="#chapter-39:-timestamps-25"></a>Chapter 39: Timestamps 25</h2>
+<h3 id="section-39.1:-high-resolution-timestamps-25"><a class="header-link" href="#section-39.1:-high-resolution-timestamps-25"></a>Section 39.1: High-resolution timestamps 25</h3>
+<h3 id="section-39.2:-get-timestamp-in-seconds5"><a class="header-link" href="#section-39.2:-get-timestamp-in-seconds5"></a>Section 39.2: Get Timestamp in Seconds5</h3>
+<h3 id="section-39.3:-low-resolution-timestamps-25"><a class="header-link" href="#section-39.3:-low-resolution-timestamps-25"></a>Section 39.3: Low-resolution timestamps 25</h3>
+<h3 id="section-39.4:-support-for-legacy-browsers5"><a class="header-link" href="#section-39.4:-support-for-legacy-browsers5"></a>Section 39.4: Support for legacy browsers5</h3>
+<h2 id="chapter-40:-unary-operators-25"><a class="header-link" href="#chapter-40:-unary-operators-25"></a>Chapter 40: Unary Operators 25</h2>
+<h3 id="section-40.1:-overview5"><a class="header-link" href="#section-40.1:-overview5"></a>Section 40.1: Overview5</h3>
+<h3 id="section-40.2:-the-typeof-operator-25"><a class="header-link" href="#section-40.2:-the-typeof-operator-25"></a>Section 40.2: The typeof operator 25</h3>
+<h3 id="section-40.3:-the-delete-operator-25"><a class="header-link" href="#section-40.3:-the-delete-operator-25"></a>Section 40.3: The delete operator 25</h3>
+<h3 id="section-40.4:-the-unary-plus-operator-(+)-25"><a class="header-link" href="#section-40.4:-the-unary-plus-operator-(+)-25"></a>Section 40.4: The unary plus operator (+) 25</h3>
+<h3 id="section-40.5:-the-void-operator-25"><a class="header-link" href="#section-40.5:-the-void-operator-25"></a>Section 40.5: The void operator 25</h3>
+<h3 id="section-40.6:-the-unary-negation-operator-(-)-25"><a class="header-link" href="#section-40.6:-the-unary-negation-operator-(-)-25"></a>Section 40.6: The unary negation operator (-) 25</h3>
+<h3 id="section-40.7:-the-bitwise-not-operator-(~)-25"><a class="header-link" href="#section-40.7:-the-bitwise-not-operator-(~)-25"></a>Section 40.7: The bitwise NOT operator (~) 25</h3>
+<h3 id="section-40.8:-the-logical-not-operator-(!)5"><a class="header-link" href="#section-40.8:-the-logical-not-operator-(!)5"></a>Section 40.8: The logical NOT operator (!)5</h3>
+    </article>
+  </body>
+</html>

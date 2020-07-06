@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Chapter 61: WebSockets 33</title>
+    <link type="text/css" rel="stylesheet" href="assets/css/bootstrap.css"/>
+    <link type="text/css" rel="stylesheet" href="assets/css/bootstrap-responsive.css"/>
+    <link type="text/css" rel="stylesheet" href="assets/css/pilcrow.css"/>
+    <link type="text/css" rel="stylesheet" href="assets/css/hljs-github.min.css"/>
+    <link type="text/css" rel="stylesheet" href="assets/css/style.css"/>
+    <style>
+    body {
+      background: url('assets/img/textured_paper.png') repeat top left;
+      background-color: #f6f6f6;
+    }
+    </style>
+  </head>
+<body>
+
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span3"><ul class="nav nav-list">
+    <li class="sidebar-header-2"><a href="#chapter-61:-websockets-33">Chapter 61: WebSockets 33</a></li>
+    <li class="sidebar-header-3"><a href="#section-61.1:-working-with-string-messages-33">Section 61.1: Working with string messages 33</a></li>
+    <li class="sidebar-header-3"><a href="#section-61.2:-establish-a-web-socket-connection-33">Section 61.2: Establish a web socket connection 33</a></li>
+    <li class="sidebar-header-3"><a href="#section-61.3:-working-with-binary-messages-33">Section 61.3: Working with binary messages 33</a></li>
+    <li class="sidebar-header-3"><a href="#section-61.4:-making-a-secure-web-socket-connection-33">Section 61.4: Making a secure web socket connection 33</a></li>
+    <li class="sidebar-header-2"><a href="#chapter-62:-arrow-functions-33">Chapter 62: Arrow Functions 33</a></li>
+    <li class="sidebar-header-3"><a href="#section-62.1:-introduction-33">Section 62.1: Introduction 33</a></li>
+    <li class="sidebar-header-3"><a href="#section-62.2:-lexical-scoping-&amp;-binding-(value-of-&quot;this&quot;)3">Section 62.2: Lexical Scoping &amp; Binding (Value of &quot;this&quot;)3</a></li>
+    <li class="sidebar-header-3"><a href="#section-62.3:-arguments-object-33">Section 62.3: Arguments Object 33</a></li>
+    <li class="sidebar-header-3"><a href="#section-62.4:-implicit-return3">Section 62.4: Implicit Return3</a></li>
+    <li class="sidebar-header-3"><a href="#section-62.5:-arrow-functions-as-a-constructor-33">Section 62.5: Arrow functions as a constructor 33</a></li>
+    <li class="sidebar-header-3"><a href="#section-62.6:-explicit-return3">Section 62.6: Explicit Return3</a></li>
+    <li class="sidebar-header-2"><a href="#chapter-63:-workers-34">Chapter 63: Workers 34</a></li>
+    <li class="sidebar-header-3"><a href="#section-63.1:-web-worker-34">Section 63.1: Web Worker 34</a></li>
+    <li class="sidebar-header-3"><a href="#section-63.2:-a-simple-service-worker-34">Section 63.2: A simple service worker 34</a></li>
+    <li class="sidebar-header-3"><a href="#section-63.3:-register-a-service-worker-34">Section 63.3: Register a service worker 34</a></li>
+    <li class="sidebar-header-3"><a href="#section-63.4:-communicating-with-a-web-worker-34">Section 63.4: Communicating with a Web Worker 34</a></li>
+    <li class="sidebar-header-3"><a href="#section-63.5:-terminate-a-worker4">Section 63.5: Terminate a worker4</a></li>
+    <li class="sidebar-header-3"><a href="#section-63.6:-populating-your-cache-34">Section 63.6: Populating your cache 34</a></li>
+    <li class="sidebar-header-3"><a href="#section-63.7:-dedicated-workers-and-shared-workers4">Section 63.7: Dedicated Workers and Shared Workers4</a></li>
+    <li class="sidebar-header-2"><a href="#chapter-64:-requestanimationframe-34">Chapter 64: requestAnimationFrame 34</a></li>
+    <li class="sidebar-header-3"><a href="#section-64.1:-use-requestanimationframe-to-fade-in-element4">Section 64.1: Use requestAnimationFrame to fade in element4</a></li>
+    <li class="sidebar-header-3"><a href="#section-64.2:-keeping-compatibility-34">Section 64.2: Keeping Compatibility 34</a></li>
+    <li class="sidebar-header-3"><a href="#section-64.3:-cancelling-an-animation-34">Section 64.3: Cancelling an Animation 34</a></li>
+    <li class="sidebar-header-2"><a href="#chapter-65:-creational-design-patterns4">Chapter 65: Creational Design Patterns4</a></li>
+    <li class="sidebar-header-3"><a href="#section-65.1:-factory-functions-34">Section 65.1: Factory Functions 34</a></li>
+    <li class="sidebar-header-3"><a href="#section-65.2:-factory-with-composition-34">Section 65.2: Factory with Composition 34</a></li>
+    <li class="sidebar-header-3"><a href="#section-65.3:-module-and-revealing-module-patterns-35">Section 65.3: Module and Revealing Module Patterns 35</a></li>
+    <li class="sidebar-header-3"><a href="#section-65.4:-prototype-pattern5">Section 65.4: Prototype Pattern5</a></li>
+    <li class="sidebar-header-3"><a href="#section-65.5:-singleton-pattern-35">Section 65.5: Singleton Pattern 35</a></li>
+    <li class="sidebar-header-3"><a href="#section-65.6:-abstract-factory-pattern5">Section 65.6: Abstract Factory Pattern5</a></li>
+    <li class="sidebar-header-2"><a href="#chapter-66:-detecting-browser5">Chapter 66: Detecting browser5</a></li>
+    <li class="sidebar-header-3"><a href="#section-66.1:-feature-detection-method-35">Section 66.1: Feature Detection Method 35</a></li>
+    <li class="sidebar-header-3"><a href="#section-66.2:-user-agent-detection5">Section 66.2: User Agent Detection5</a></li>
+    <li class="sidebar-header-3"><a href="#section-66.3:-library-method-35">Section 66.3: Library Method 35</a></li>
+    <li class="sidebar-header-2"><a href="#chapter-67:-symbols-35">Chapter 67: Symbols 35</a></li>
+    <li class="sidebar-header-3"><a href="#section-67.1:-basics-of-symbol-primitive-type-35">Section 67.1: Basics of symbol primitive type 35</a></li>
+    <li class="sidebar-header-3"><a href="#section-67.2:-using-symbol.for()-to-create-global,-shared-symbols-35">Section 67.2: Using Symbol.for() to create global, shared symbols 35</a></li>
+    <li class="sidebar-header-3"><a href="#section-67.3:-converting-a-symbol-into-a-string5">Section 67.3: Converting a symbol into a string5</a></li>
+    <li class="sidebar-header-2"><a href="#chapter-68:-transpiling-35">Chapter 68: Transpiling 35</a></li>
+    <li class="sidebar-header-3"><a href="#section-68.1:-introduction-to-transpiling-35">Section 68.1: Introduction to Transpiling 35</a></li>
+    <li class="sidebar-header-3"><a href="#section-68.2:-start-using-es6/7-with-babel6">Section 68.2: Start using ES6/7 with Babel6</a></li>
+    <li class="sidebar-header-2"><a href="#chapter-69:-automatic-semicolon-insertion---asi-36">Chapter 69: Automatic Semicolon Insertion - ASI 36</a></li>
+    <li class="sidebar-header-3"><a href="#section-69.1:-avoid-semicolon-insertion-on-return-statements-36">Section 69.1: Avoid semicolon insertion on return statements 36</a></li>
+    <li class="sidebar-header-3"><a href="#section-69.2:-rules-of-automatic-semicolon-insertion-36">Section 69.2: Rules of Automatic Semicolon Insertion 36</a></li>
+    <li class="sidebar-header-3"><a href="#section-69.3:-statements-aected-by-automatic-semicolon-insertion6">Section 69.3: Statements aected by automatic semicolon insertion6</a></li>
+    <li class="sidebar-header-2"><a href="#chapter-70:-localization-36">Chapter 70: Localization 36</a></li>
+    <li class="sidebar-header-3"><a href="#section-70.1:-number-formatting-36">Section 70.1: Number formatting 36</a></li>
+    <li class="sidebar-header-3"><a href="#section-70.2:-currency-formatting-36">Section 70.2: Currency formatting 36</a></li>
+    <li class="sidebar-header-3"><a href="#section-70.3:-date-and-time-formatting-36">Section 70.3: Date and time formatting 36</a></li>
+    <li class="sidebar-header-2"><a href="#chapter-71:-geolocation6">Chapter 71: Geolocation6</a></li>
+    <li class="sidebar-header-3"><a href="#section-71.1:-get-updates-when-a-user&#x27;s-location-changes-36">Section 71.1: Get updates when a user&#x27;s location changes 36</a></li>
+    <li class="sidebar-header-3"><a href="#section-71.2:-get-a-user&#x27;s-latitude-and-longitude-36">Section 71.2: Get a user&#x27;s latitude and longitude 36</a></li>
+    <li class="sidebar-header-3"><a href="#section-71.3:-more-descriptive-error-codes6">Section 71.3: More descriptive error codes6</a></li>
+    <li class="sidebar-header-2"><a href="#chapter-72:-indexeddb-36">Chapter 72: IndexedDB 36</a></li>
+    <li class="sidebar-header-3"><a href="#section-72.1:-opening-a-database-36">Section 72.1: Opening a database 36</a></li>
+    <li class="sidebar-header-3"><a href="#section-72.2:-adding-objects-36">Section 72.2: Adding objects 36</a></li>
+    <li class="sidebar-header-3"><a href="#section-72.3:-retrieving-data-36">Section 72.3: Retrieving data 36</a></li>
+    <li class="sidebar-header-3"><a href="#section-72.4:-testing-for-indexeddb-availability6">Section 72.4: Testing for IndexedDB availability6</a></li>
+    <li class="sidebar-header-2"><a href="#chapter-73:-modularization-techniques7">Chapter 73: Modularization Techniques7</a></li>
+    <li class="sidebar-header-3"><a href="#section-73.1:-es6-modules-37">Section 73.1: ES6 Modules 37</a></li>
+    <li class="sidebar-header-3"><a href="#section-73.2:-universal-module-definition-(umd)-37">Section 73.2: Universal Module Definition (UMD) 37</a></li>
+    <li class="sidebar-header-3"><a href="#section-73.3:-immediately-invoked-function-expressions-(iife)7">Section 73.3: Immediately invoked function expressions (IIFE)7</a></li>
+    <li class="sidebar-header-3"><a href="#section-73.4:-asynchronous-module-definition-(amd)-37">Section 73.4: Asynchronous Module Definition (AMD) 37</a></li>
+    <li class="sidebar-header-3"><a href="#section-73.5:-commonjs---node.js-37">Section 73.5: CommonJS - Node.js 37</a></li>
+    <li class="sidebar-header-2"><a href="#chapter-74:-proxy7">Chapter 74: Proxy7</a></li>
+    <li class="sidebar-header-3"><a href="#section-74.1:-proxying-property-lookup-37">Section 74.1: Proxying property lookup 37</a></li>
+    <li class="sidebar-header-3"><a href="#section-74.2:-very-simple-proxy-(using-the-set-trap)-37">Section 74.2: Very simple proxy (using the set trap) 37</a></li>
+    <li class="sidebar-header-2"><a href="#chapter-75:-.postmessage()-and-messageevent-37">Chapter 75: .postMessage() and MessageEvent 37</a></li>
+    <li class="sidebar-header-3"><a href="#section-75.1:-getting-started-37">Section 75.1: Getting Started 37</a></li>
+    <li class="sidebar-header-2"><a href="#chapter-76:-weakmap-37">Chapter 76: WeakMap 37</a></li>
+    <li class="sidebar-header-3"><a href="#section-76.1:-creating-a-weakmap-object-37">Section 76.1: Creating a WeakMap object 37</a></li>
+    <li class="sidebar-header-3"><a href="#section-76.2:-getting-a-value-associated-to-the-key7">Section 76.2: Getting a value associated to the key7</a></li>
+    <li class="sidebar-header-3"><a href="#section-76.3:-assigning-a-value-to-the-key7">Section 76.3: Assigning a value to the key7</a></li>
+    <li class="sidebar-header-3"><a href="#section-76.4:-checking-if-an-element-with-the-key-exists-37">Section 76.4: Checking if an element with the key exists 37</a></li>
+    <li class="sidebar-header-3"><a href="#section-76.5:-removing-an-element-with-the-key-38">Section 76.5: Removing an element with the key 38</a></li>
+    <li class="sidebar-header-3"><a href="#section-76.6:-weak-reference-demo-38">Section 76.6: Weak reference demo 38</a></li>
+    <li class="sidebar-header-2"><a href="#chapter-77:-weakset">Chapter 77: WeakSet</a></li>
+    <li class="sidebar-header-3"><a href="#section-77.1:-creating-a-weakset-object8">Section 77.1: Creating a WeakSet object8</a></li>
+    <li class="sidebar-header-3"><a href="#section-77.2:-adding-a-value-38">Section 77.2: Adding a value 38</a></li>
+    <li class="sidebar-header-3"><a href="#section-77.3:-checking-if-a-value-exists8">Section 77.3: Checking if a value exists8</a></li>
+    <li class="sidebar-header-3"><a href="#section-77.4:-removing-a-value8">Section 77.4: Removing a value8</a></li>
+    <li class="sidebar-header-2"><a href="#chapter-78:-escape-sequences">Chapter 78: Escape Sequences</a></li>
+    <li class="sidebar-header-3"><a href="#section-78.1:-entering-special-characters-in-strings-and-regular-expressions8">Section 78.1: Entering special characters in strings and regular expressions8</a></li>
+    <li class="sidebar-header-3"><a href="#section-78.2:-escape-sequence-types-38">Section 78.2: Escape sequence types 38</a></li>
+    <li class="sidebar-header-2"><a href="#chapter-79:-behavioral-design-patterns">Chapter 79: Behavioral Design Patterns</a></li>
+    <li class="sidebar-header-3"><a href="#section-79.1:-observer-pattern-38">Section 79.1: Observer pattern 38</a></li>
+    <li class="sidebar-header-3"><a href="#section-79.2:-mediator-pattern-38">Section 79.2: Mediator Pattern 38</a></li>
+    <li class="sidebar-header-3"><a href="#section-79.3:-command-38">Section 79.3: Command 38</a></li>
+    <li class="sidebar-header-3"><a href="#section-79.4:-iterator8">Section 79.4: Iterator8</a></li>
+    <li class="sidebar-header-2"><a href="#chapter-80:-server-sent-events-39">Chapter 80: Server-sent events 39</a></li>
+    <li class="sidebar-header-3"><a href="#section-80.1:-setting-up-a-basic-event-stream-to-the-server-39">Section 80.1: Setting up a basic event stream to the server 39</a></li>
+    <li class="sidebar-header-3"><a href="#section-80.2:-closing-an-event-stream9">Section 80.2: Closing an event stream9</a></li>
+    <li class="sidebar-header-3"><a href="#section-80.3:-binding-event-listeners-to-eventsource9">Section 80.3: Binding event listeners to EventSource9</a></li>
+</ul>
+      </div>
+      <div class="span9 main"><h2 id="chapter-61:-websockets-33"><a class="header-link" href="#chapter-61:-websockets-33"></a>Chapter 61: WebSockets 33</h2>
+<h3 id="section-61.1:-working-with-string-messages-33"><a class="header-link" href="#section-61.1:-working-with-string-messages-33"></a>Section 61.1: Working with string messages 33</h3>
+<h3 id="section-61.2:-establish-a-web-socket-connection-33"><a class="header-link" href="#section-61.2:-establish-a-web-socket-connection-33"></a>Section 61.2: Establish a web socket connection 33</h3>
+<h3 id="section-61.3:-working-with-binary-messages-33"><a class="header-link" href="#section-61.3:-working-with-binary-messages-33"></a>Section 61.3: Working with binary messages 33</h3>
+<h3 id="section-61.4:-making-a-secure-web-socket-connection-33"><a class="header-link" href="#section-61.4:-making-a-secure-web-socket-connection-33"></a>Section 61.4: Making a secure web socket connection 33</h3>
+<h2 id="chapter-62:-arrow-functions-33"><a class="header-link" href="#chapter-62:-arrow-functions-33"></a>Chapter 62: Arrow Functions 33</h2>
+<h3 id="section-62.1:-introduction-33"><a class="header-link" href="#section-62.1:-introduction-33"></a>Section 62.1: Introduction 33</h3>
+<h3 id="section-62.2:-lexical-scoping-&-binding-(value-of-"this")3"><a class="header-link" href="#section-62.2:-lexical-scoping-&-binding-(value-of-"this")3"></a>Section 62.2: Lexical Scoping &amp; Binding (Value of &quot;this&quot;)3</h3>
+<h3 id="section-62.3:-arguments-object-33"><a class="header-link" href="#section-62.3:-arguments-object-33"></a>Section 62.3: Arguments Object 33</h3>
+<h3 id="section-62.4:-implicit-return3"><a class="header-link" href="#section-62.4:-implicit-return3"></a>Section 62.4: Implicit Return3</h3>
+<h3 id="section-62.5:-arrow-functions-as-a-constructor-33"><a class="header-link" href="#section-62.5:-arrow-functions-as-a-constructor-33"></a>Section 62.5: Arrow functions as a constructor 33</h3>
+<h3 id="section-62.6:-explicit-return3"><a class="header-link" href="#section-62.6:-explicit-return3"></a>Section 62.6: Explicit Return3</h3>
+<h2 id="chapter-63:-workers-34"><a class="header-link" href="#chapter-63:-workers-34"></a>Chapter 63: Workers 34</h2>
+<h3 id="section-63.1:-web-worker-34"><a class="header-link" href="#section-63.1:-web-worker-34"></a>Section 63.1: Web Worker 34</h3>
+<h3 id="section-63.2:-a-simple-service-worker-34"><a class="header-link" href="#section-63.2:-a-simple-service-worker-34"></a>Section 63.2: A simple service worker 34</h3>
+<h3 id="section-63.3:-register-a-service-worker-34"><a class="header-link" href="#section-63.3:-register-a-service-worker-34"></a>Section 63.3: Register a service worker 34</h3>
+<h3 id="section-63.4:-communicating-with-a-web-worker-34"><a class="header-link" href="#section-63.4:-communicating-with-a-web-worker-34"></a>Section 63.4: Communicating with a Web Worker 34</h3>
+<h3 id="section-63.5:-terminate-a-worker4"><a class="header-link" href="#section-63.5:-terminate-a-worker4"></a>Section 63.5: Terminate a worker4</h3>
+<h3 id="section-63.6:-populating-your-cache-34"><a class="header-link" href="#section-63.6:-populating-your-cache-34"></a>Section 63.6: Populating your cache 34</h3>
+<h3 id="section-63.7:-dedicated-workers-and-shared-workers4"><a class="header-link" href="#section-63.7:-dedicated-workers-and-shared-workers4"></a>Section 63.7: Dedicated Workers and Shared Workers4</h3>
+<h2 id="chapter-64:-requestanimationframe-34"><a class="header-link" href="#chapter-64:-requestanimationframe-34"></a>Chapter 64: requestAnimationFrame 34</h2>
+<h3 id="section-64.1:-use-requestanimationframe-to-fade-in-element4"><a class="header-link" href="#section-64.1:-use-requestanimationframe-to-fade-in-element4"></a>Section 64.1: Use requestAnimationFrame to fade in element4</h3>
+<h3 id="section-64.2:-keeping-compatibility-34"><a class="header-link" href="#section-64.2:-keeping-compatibility-34"></a>Section 64.2: Keeping Compatibility 34</h3>
+<h3 id="section-64.3:-cancelling-an-animation-34"><a class="header-link" href="#section-64.3:-cancelling-an-animation-34"></a>Section 64.3: Cancelling an Animation 34</h3>
+<h2 id="chapter-65:-creational-design-patterns4"><a class="header-link" href="#chapter-65:-creational-design-patterns4"></a>Chapter 65: Creational Design Patterns4</h2>
+<h3 id="section-65.1:-factory-functions-34"><a class="header-link" href="#section-65.1:-factory-functions-34"></a>Section 65.1: Factory Functions 34</h3>
+<h3 id="section-65.2:-factory-with-composition-34"><a class="header-link" href="#section-65.2:-factory-with-composition-34"></a>Section 65.2: Factory with Composition 34</h3>
+<h3 id="section-65.3:-module-and-revealing-module-patterns-35"><a class="header-link" href="#section-65.3:-module-and-revealing-module-patterns-35"></a>Section 65.3: Module and Revealing Module Patterns 35</h3>
+<h3 id="section-65.4:-prototype-pattern5"><a class="header-link" href="#section-65.4:-prototype-pattern5"></a>Section 65.4: Prototype Pattern5</h3>
+<h3 id="section-65.5:-singleton-pattern-35"><a class="header-link" href="#section-65.5:-singleton-pattern-35"></a>Section 65.5: Singleton Pattern 35</h3>
+<h3 id="section-65.6:-abstract-factory-pattern5"><a class="header-link" href="#section-65.6:-abstract-factory-pattern5"></a>Section 65.6: Abstract Factory Pattern5</h3>
+<h2 id="chapter-66:-detecting-browser5"><a class="header-link" href="#chapter-66:-detecting-browser5"></a>Chapter 66: Detecting browser5</h2>
+<h3 id="section-66.1:-feature-detection-method-35"><a class="header-link" href="#section-66.1:-feature-detection-method-35"></a>Section 66.1: Feature Detection Method 35</h3>
+<h3 id="section-66.2:-user-agent-detection5"><a class="header-link" href="#section-66.2:-user-agent-detection5"></a>Section 66.2: User Agent Detection5</h3>
+<h3 id="section-66.3:-library-method-35"><a class="header-link" href="#section-66.3:-library-method-35"></a>Section 66.3: Library Method 35</h3>
+<h2 id="chapter-67:-symbols-35"><a class="header-link" href="#chapter-67:-symbols-35"></a>Chapter 67: Symbols 35</h2>
+<h3 id="section-67.1:-basics-of-symbol-primitive-type-35"><a class="header-link" href="#section-67.1:-basics-of-symbol-primitive-type-35"></a>Section 67.1: Basics of symbol primitive type 35</h3>
+<h3 id="section-67.2:-using-symbol.for()-to-create-global,-shared-symbols-35"><a class="header-link" href="#section-67.2:-using-symbol.for()-to-create-global,-shared-symbols-35"></a>Section 67.2: Using Symbol.for() to create global, shared symbols 35</h3>
+<h3 id="section-67.3:-converting-a-symbol-into-a-string5"><a class="header-link" href="#section-67.3:-converting-a-symbol-into-a-string5"></a>Section 67.3: Converting a symbol into a string5</h3>
+<h2 id="chapter-68:-transpiling-35"><a class="header-link" href="#chapter-68:-transpiling-35"></a>Chapter 68: Transpiling 35</h2>
+<h3 id="section-68.1:-introduction-to-transpiling-35"><a class="header-link" href="#section-68.1:-introduction-to-transpiling-35"></a>Section 68.1: Introduction to Transpiling 35</h3>
+<h3 id="section-68.2:-start-using-es6/7-with-babel6"><a class="header-link" href="#section-68.2:-start-using-es6/7-with-babel6"></a>Section 68.2: Start using ES6/7 with Babel6</h3>
+<h2 id="chapter-69:-automatic-semicolon-insertion---asi-36"><a class="header-link" href="#chapter-69:-automatic-semicolon-insertion---asi-36"></a>Chapter 69: Automatic Semicolon Insertion - ASI 36</h2>
+<h3 id="section-69.1:-avoid-semicolon-insertion-on-return-statements-36"><a class="header-link" href="#section-69.1:-avoid-semicolon-insertion-on-return-statements-36"></a>Section 69.1: Avoid semicolon insertion on return statements 36</h3>
+<h3 id="section-69.2:-rules-of-automatic-semicolon-insertion-36"><a class="header-link" href="#section-69.2:-rules-of-automatic-semicolon-insertion-36"></a>Section 69.2: Rules of Automatic Semicolon Insertion 36</h3>
+<h3 id="section-69.3:-statements-aected-by-automatic-semicolon-insertion6"><a class="header-link" href="#section-69.3:-statements-aected-by-automatic-semicolon-insertion6"></a>Section 69.3: Statements aected by automatic semicolon insertion6</h3>
+<h2 id="chapter-70:-localization-36"><a class="header-link" href="#chapter-70:-localization-36"></a>Chapter 70: Localization 36</h2>
+<h3 id="section-70.1:-number-formatting-36"><a class="header-link" href="#section-70.1:-number-formatting-36"></a>Section 70.1: Number formatting 36</h3>
+<h3 id="section-70.2:-currency-formatting-36"><a class="header-link" href="#section-70.2:-currency-formatting-36"></a>Section 70.2: Currency formatting 36</h3>
+<h3 id="section-70.3:-date-and-time-formatting-36"><a class="header-link" href="#section-70.3:-date-and-time-formatting-36"></a>Section 70.3: Date and time formatting 36</h3>
+<h2 id="chapter-71:-geolocation6"><a class="header-link" href="#chapter-71:-geolocation6"></a>Chapter 71: Geolocation6</h2>
+<h3 id="section-71.1:-get-updates-when-a-user's-location-changes-36"><a class="header-link" href="#section-71.1:-get-updates-when-a-user's-location-changes-36"></a>Section 71.1: Get updates when a user&#39;s location changes 36</h3>
+<h3 id="section-71.2:-get-a-user's-latitude-and-longitude-36"><a class="header-link" href="#section-71.2:-get-a-user's-latitude-and-longitude-36"></a>Section 71.2: Get a user&#39;s latitude and longitude 36</h3>
+<h3 id="section-71.3:-more-descriptive-error-codes6"><a class="header-link" href="#section-71.3:-more-descriptive-error-codes6"></a>Section 71.3: More descriptive error codes6</h3>
+<h2 id="chapter-72:-indexeddb-36"><a class="header-link" href="#chapter-72:-indexeddb-36"></a>Chapter 72: IndexedDB 36</h2>
+<h3 id="section-72.1:-opening-a-database-36"><a class="header-link" href="#section-72.1:-opening-a-database-36"></a>Section 72.1: Opening a database 36</h3>
+<h3 id="section-72.2:-adding-objects-36"><a class="header-link" href="#section-72.2:-adding-objects-36"></a>Section 72.2: Adding objects 36</h3>
+<h3 id="section-72.3:-retrieving-data-36"><a class="header-link" href="#section-72.3:-retrieving-data-36"></a>Section 72.3: Retrieving data 36</h3>
+<h3 id="section-72.4:-testing-for-indexeddb-availability6"><a class="header-link" href="#section-72.4:-testing-for-indexeddb-availability6"></a>Section 72.4: Testing for IndexedDB availability6</h3>
+<h2 id="chapter-73:-modularization-techniques7"><a class="header-link" href="#chapter-73:-modularization-techniques7"></a>Chapter 73: Modularization Techniques7</h2>
+<h3 id="section-73.1:-es6-modules-37"><a class="header-link" href="#section-73.1:-es6-modules-37"></a>Section 73.1: ES6 Modules 37</h3>
+<h3 id="section-73.2:-universal-module-definition-(umd)-37"><a class="header-link" href="#section-73.2:-universal-module-definition-(umd)-37"></a>Section 73.2: Universal Module Definition (UMD) 37</h3>
+<h3 id="section-73.3:-immediately-invoked-function-expressions-(iife)7"><a class="header-link" href="#section-73.3:-immediately-invoked-function-expressions-(iife)7"></a>Section 73.3: Immediately invoked function expressions (IIFE)7</h3>
+<h3 id="section-73.4:-asynchronous-module-definition-(amd)-37"><a class="header-link" href="#section-73.4:-asynchronous-module-definition-(amd)-37"></a>Section 73.4: Asynchronous Module Definition (AMD) 37</h3>
+<h3 id="section-73.5:-commonjs---node.js-37"><a class="header-link" href="#section-73.5:-commonjs---node.js-37"></a>Section 73.5: CommonJS - Node.js 37</h3>
+<h2 id="chapter-74:-proxy7"><a class="header-link" href="#chapter-74:-proxy7"></a>Chapter 74: Proxy7</h2>
+<h3 id="section-74.1:-proxying-property-lookup-37"><a class="header-link" href="#section-74.1:-proxying-property-lookup-37"></a>Section 74.1: Proxying property lookup 37</h3>
+<h3 id="section-74.2:-very-simple-proxy-(using-the-set-trap)-37"><a class="header-link" href="#section-74.2:-very-simple-proxy-(using-the-set-trap)-37"></a>Section 74.2: Very simple proxy (using the set trap) 37</h3>
+<h2 id="chapter-75:-.postmessage()-and-messageevent-37"><a class="header-link" href="#chapter-75:-.postmessage()-and-messageevent-37"></a>Chapter 75: .postMessage() and MessageEvent 37</h2>
+<h3 id="section-75.1:-getting-started-37"><a class="header-link" href="#section-75.1:-getting-started-37"></a>Section 75.1: Getting Started 37</h3>
+<h2 id="chapter-76:-weakmap-37"><a class="header-link" href="#chapter-76:-weakmap-37"></a>Chapter 76: WeakMap 37</h2>
+<h3 id="section-76.1:-creating-a-weakmap-object-37"><a class="header-link" href="#section-76.1:-creating-a-weakmap-object-37"></a>Section 76.1: Creating a WeakMap object 37</h3>
+<h3 id="section-76.2:-getting-a-value-associated-to-the-key7"><a class="header-link" href="#section-76.2:-getting-a-value-associated-to-the-key7"></a>Section 76.2: Getting a value associated to the key7</h3>
+<h3 id="section-76.3:-assigning-a-value-to-the-key7"><a class="header-link" href="#section-76.3:-assigning-a-value-to-the-key7"></a>Section 76.3: Assigning a value to the key7</h3>
+<h3 id="section-76.4:-checking-if-an-element-with-the-key-exists-37"><a class="header-link" href="#section-76.4:-checking-if-an-element-with-the-key-exists-37"></a>Section 76.4: Checking if an element with the key exists 37</h3>
+<h3 id="section-76.5:-removing-an-element-with-the-key-38"><a class="header-link" href="#section-76.5:-removing-an-element-with-the-key-38"></a>Section 76.5: Removing an element with the key 38</h3>
+<h3 id="section-76.6:-weak-reference-demo-38"><a class="header-link" href="#section-76.6:-weak-reference-demo-38"></a>Section 76.6: Weak reference demo 38</h3>
+<h2 id="chapter-77:-weakset"><a class="header-link" href="#chapter-77:-weakset"></a>Chapter 77: WeakSet</h2>
+<h3 id="section-77.1:-creating-a-weakset-object8"><a class="header-link" href="#section-77.1:-creating-a-weakset-object8"></a>Section 77.1: Creating a WeakSet object8</h3>
+<h3 id="section-77.2:-adding-a-value-38"><a class="header-link" href="#section-77.2:-adding-a-value-38"></a>Section 77.2: Adding a value 38</h3>
+<h3 id="section-77.3:-checking-if-a-value-exists8"><a class="header-link" href="#section-77.3:-checking-if-a-value-exists8"></a>Section 77.3: Checking if a value exists8</h3>
+<h3 id="section-77.4:-removing-a-value8"><a class="header-link" href="#section-77.4:-removing-a-value8"></a>Section 77.4: Removing a value8</h3>
+<h2 id="chapter-78:-escape-sequences"><a class="header-link" href="#chapter-78:-escape-sequences"></a>Chapter 78: Escape Sequences</h2>
+<h3 id="section-78.1:-entering-special-characters-in-strings-and-regular-expressions8"><a class="header-link" href="#section-78.1:-entering-special-characters-in-strings-and-regular-expressions8"></a>Section 78.1: Entering special characters in strings and regular expressions8</h3>
+<h3 id="section-78.2:-escape-sequence-types-38"><a class="header-link" href="#section-78.2:-escape-sequence-types-38"></a>Section 78.2: Escape sequence types 38</h3>
+<h2 id="chapter-79:-behavioral-design-patterns"><a class="header-link" href="#chapter-79:-behavioral-design-patterns"></a>Chapter 79: Behavioral Design Patterns</h2>
+<h3 id="section-79.1:-observer-pattern-38"><a class="header-link" href="#section-79.1:-observer-pattern-38"></a>Section 79.1: Observer pattern 38</h3>
+<h3 id="section-79.2:-mediator-pattern-38"><a class="header-link" href="#section-79.2:-mediator-pattern-38"></a>Section 79.2: Mediator Pattern 38</h3>
+<h3 id="section-79.3:-command-38"><a class="header-link" href="#section-79.3:-command-38"></a>Section 79.3: Command 38</h3>
+<h3 id="section-79.4:-iterator8"><a class="header-link" href="#section-79.4:-iterator8"></a>Section 79.4: Iterator8</h3>
+<h2 id="chapter-80:-server-sent-events-39"><a class="header-link" href="#chapter-80:-server-sent-events-39"></a>Chapter 80: Server-sent events 39</h2>
+<h3 id="section-80.1:-setting-up-a-basic-event-stream-to-the-server-39"><a class="header-link" href="#section-80.1:-setting-up-a-basic-event-stream-to-the-server-39"></a>Section 80.1: Setting up a basic event stream to the server 39</h3>
+<h3 id="section-80.2:-closing-an-event-stream9"><a class="header-link" href="#section-80.2:-closing-an-event-stream9"></a>Section 80.2: Closing an event stream9</h3>
+<h3 id="section-80.3:-binding-event-listeners-to-eventsource9"><a class="header-link" href="#section-80.3:-binding-event-listeners-to-eventsource9"></a>Section 80.3: Binding event listeners to EventSource9</h3>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+</body>
+</html>

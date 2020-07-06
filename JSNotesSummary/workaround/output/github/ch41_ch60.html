@@ -1,0 +1,154 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <title>Chapter 41: Generators 25</title>
+    <link type="text/css" rel="stylesheet" href="assets/css/github-markdown.css">
+    <link type="text/css" rel="stylesheet" href="assets/css/pilcrow.css">
+    <link type="text/css" rel="stylesheet" href="assets/css/hljs-github.min.css"/>
+  </head>
+  <body>
+    <article class="markdown-body"><h2 id="chapter-41:-generators-25"><a class="header-link" href="#chapter-41:-generators-25"></a>Chapter 41: Generators 25</h2>
+<h3 id="section-41.1:-generator-functions5"><a class="header-link" href="#section-41.1:-generator-functions5"></a>Section 41.1: Generator Functions5</h3>
+<h3 id="section-41.2:-sending-values-to-generator5"><a class="header-link" href="#section-41.2:-sending-values-to-generator5"></a>Section 41.2: Sending Values to Generator5</h3>
+<h3 id="section-41.3:-delegating-to-other-generator5"><a class="header-link" href="#section-41.3:-delegating-to-other-generator5"></a>Section 41.3: Delegating to other Generator5</h3>
+<h3 id="section-41.4:-iteration-25"><a class="header-link" href="#section-41.4:-iteration-25"></a>Section 41.4: Iteration 25</h3>
+<h3 id="section-41.5:-async-flow-with-generators6"><a class="header-link" href="#section-41.5:-async-flow-with-generators6"></a>Section 41.5: Async flow with generators6</h3>
+<h3 id="section-41.6:-iterator-observer-interface6"><a class="header-link" href="#section-41.6:-iterator-observer-interface6"></a>Section 41.6: Iterator-Observer interface6</h3>
+<h2 id="chapter-42:-promises-26"><a class="header-link" href="#chapter-42:-promises-26"></a>Chapter 42: Promises 26</h2>
+<h3 id="section-42.1:-introduction-26"><a class="header-link" href="#section-42.1:-introduction-26"></a>Section 42.1: Introduction 26</h3>
+<h3 id="section-42.2:-promise-chaining-26"><a class="header-link" href="#section-42.2:-promise-chaining-26"></a>Section 42.2: Promise chaining 26</h3>
+<h3 id="section-42.3:-waiting-for-multiple-concurrent-promises-26"><a class="header-link" href="#section-42.3:-waiting-for-multiple-concurrent-promises-26"></a>Section 42.3: Waiting for multiple concurrent promises 26</h3>
+<h3 id="section-42.4:-reduce-an-array-to-chained-promises-26"><a class="header-link" href="#section-42.4:-reduce-an-array-to-chained-promises-26"></a>Section 42.4: Reduce an array to chained promises 26</h3>
+<h3 id="section-42.5:-waiting-for-the-first-of-multiple-concurrent-promises-26"><a class="header-link" href="#section-42.5:-waiting-for-the-first-of-multiple-concurrent-promises-26"></a>Section 42.5: Waiting for the first of multiple concurrent promises 26</h3>
+<h3 id="section-42.6:-"promisifying"-functions-with-callbacks6"><a class="header-link" href="#section-42.6:-"promisifying"-functions-with-callbacks6"></a>Section 42.6: &quot;Promisifying&quot; functions with callbacks6</h3>
+<h3 id="section-42.7:-error-handling-26"><a class="header-link" href="#section-42.7:-error-handling-26"></a>Section 42.7: Error Handling 26</h3>
+<h3 id="section-42.8:-reconciling-synchronous-and-asynchronous-operations-27"><a class="header-link" href="#section-42.8:-reconciling-synchronous-and-asynchronous-operations-27"></a>Section 42.8: Reconciling synchronous and asynchronous operations 27</h3>
+<h3 id="section-42.9:-delay-function-call"><a class="header-link" href="#section-42.9:-delay-function-call"></a>Section 42.9: Delay function call</h3>
+<h3 id="section-42.10:-"promisifying"-values"><a class="header-link" href="#section-42.10:-"promisifying"-values"></a>Section 42.10: &quot;Promisifying&quot; values</h3>
+<h3 id="section-42.11:-using-es2017-async/await"><a class="header-link" href="#section-42.11:-using-es2017-async/await"></a>Section 42.11: Using ES2017 async/await</h3>
+<h3 id="section-42.12:-performing-cleanup-with-finally()"><a class="header-link" href="#section-42.12:-performing-cleanup-with-finally()"></a>Section 42.12: Performing cleanup with finally()</h3>
+<h3 id="section-42.13:-foreach-with-promises"><a class="header-link" href="#section-42.13:-foreach-with-promises"></a>Section 42.13: forEach with promises</h3>
+<h3 id="section-42.14:-asynchronous-api-request"><a class="header-link" href="#section-42.14:-asynchronous-api-request"></a>Section 42.14: Asynchronous API request</h3>
+<h2 id="chapter-43:-set7"><a class="header-link" href="#chapter-43:-set7"></a>Chapter 43: Set7</h2>
+<h3 id="section-43.1:-creating-a-set-27"><a class="header-link" href="#section-43.1:-creating-a-set-27"></a>Section 43.1: Creating a Set 27</h3>
+<h3 id="section-43.2:-adding-a-value-to-a-set"><a class="header-link" href="#section-43.2:-adding-a-value-to-a-set"></a>Section 43.2: Adding a value to a Set</h3>
+<h3 id="section-43.3:-removing-value-from-a-set"><a class="header-link" href="#section-43.3:-removing-value-from-a-set"></a>Section 43.3: Removing value from a set</h3>
+<h3 id="section-43.4:-checking-if-a-value-exist-in-a-set"><a class="header-link" href="#section-43.4:-checking-if-a-value-exist-in-a-set"></a>Section 43.4: Checking if a value exist in a set</h3>
+<h3 id="section-43.5:-clearing-a-set"><a class="header-link" href="#section-43.5:-clearing-a-set"></a>Section 43.5: Clearing a Set</h3>
+<h3 id="section-43.6:-getting-set-length"><a class="header-link" href="#section-43.6:-getting-set-length"></a>Section 43.6: Getting set length</h3>
+<h3 id="section-43.7:-converting-sets-to-arrays"><a class="header-link" href="#section-43.7:-converting-sets-to-arrays"></a>Section 43.7: Converting Sets to arrays</h3>
+<h3 id="section-43.8:-inter"><a class="header-link" href="#section-43.8:-inter"></a>Section 43.8: Inter</h3>
+<h3 id="section-and-dierence-in-sets"><a class="header-link" href="#section-and-dierence-in-sets"></a>Section and dierence in Sets</h3>
+<h3 id="section-43.9:-iterating-sets"><a class="header-link" href="#section-43.9:-iterating-sets"></a>Section 43.9: Iterating Sets</h3>
+<h2 id="chapter-44:-modals---prompts"><a class="header-link" href="#chapter-44:-modals---prompts"></a>Chapter 44: Modals - Prompts</h2>
+<h3 id="section-44.1:-about-user-prompts"><a class="header-link" href="#section-44.1:-about-user-prompts"></a>Section 44.1: About User Prompts</h3>
+<h3 id="section-44.2:-persistent-prompt-modal"><a class="header-link" href="#section-44.2:-persistent-prompt-modal"></a>Section 44.2: Persistent Prompt Modal</h3>
+<h3 id="section-44.3:-confirm-to-delete-element"><a class="header-link" href="#section-44.3:-confirm-to-delete-element"></a>Section 44.3: Confirm to Delete element</h3>
+<h3 id="section-44.4:-usage-of-alert()"><a class="header-link" href="#section-44.4:-usage-of-alert()"></a>Section 44.4: Usage of alert()</h3>
+<h3 id="section-44.5:-usage-of-prompt()"><a class="header-link" href="#section-44.5:-usage-of-prompt()"></a>Section 44.5: Usage of prompt()</h3>
+<h2 id="chapter-45:-execcommand-and-contenteditable-28"><a class="header-link" href="#chapter-45:-execcommand-and-contenteditable-28"></a>Chapter 45: execCommand and contenteditable 28</h2>
+<h3 id="section-45.1:-listening-to-changes-of-contenteditable"><a class="header-link" href="#section-45.1:-listening-to-changes-of-contenteditable"></a>Section 45.1: Listening to Changes of contenteditable</h3>
+<h3 id="section-45.2:-getting-started"><a class="header-link" href="#section-45.2:-getting-started"></a>Section 45.2: Getting started</h3>
+<h3 id="section-45.3:-copy-to-clipboard-from-textarea-using-execcommand("copy")"><a class="header-link" href="#section-45.3:-copy-to-clipboard-from-textarea-using-execcommand("copy")"></a>Section 45.3: Copy to clipboard from textarea using execCommand(&quot;copy&quot;)</h3>
+<h3 id="section-45.4:-formatting"><a class="header-link" href="#section-45.4:-formatting"></a>Section 45.4: Formatting</h3>
+<h2 id="chapter-46:-history8"><a class="header-link" href="#chapter-46:-history8"></a>Chapter 46: History8</h2>
+<h3 id="section-46.1:-history.pushstate()-28"><a class="header-link" href="#section-46.1:-history.pushstate()-28"></a>Section 46.1: history.pushState() 28</h3>
+<h3 id="section-46.2:-history.replacestate()-28"><a class="header-link" href="#section-46.2:-history.replacestate()-28"></a>Section 46.2: history.replaceState() 28</h3>
+<h3 id="section-46.3:-load-a-specific-url-from-the-history-list-28"><a class="header-link" href="#section-46.3:-load-a-specific-url-from-the-history-list-28"></a>Section 46.3: Load a specific URL from the history list 28</h3>
+<h2 id="chapter-47:-navigator-object-28"><a class="header-link" href="#chapter-47:-navigator-object-28"></a>Chapter 47: Navigator Object 28</h2>
+<h3 id="section-47.1:-get-some-basic-browser-data-and-return-it-as-a-json-object-28"><a class="header-link" href="#section-47.1:-get-some-basic-browser-data-and-return-it-as-a-json-object-28"></a>Section 47.1: Get some basic browser data and return it as a JSON object 28</h3>
+<h2 id="chapter-48:-bom-(browser-object-model)-29"><a class="header-link" href="#chapter-48:-bom-(browser-object-model)-29"></a>Chapter 48: BOM (Browser Object Model) 29</h2>
+<h3 id="section-48.1:-introduction-29"><a class="header-link" href="#section-48.1:-introduction-29"></a>Section 48.1: Introduction 29</h3>
+<h3 id="section-48.2:-window-object-properties-29"><a class="header-link" href="#section-48.2:-window-object-properties-29"></a>Section 48.2: Window Object Properties 29</h3>
+<h3 id="section-48.3:-window-object-methods-29"><a class="header-link" href="#section-48.3:-window-object-methods-29"></a>Section 48.3: Window Object Methods 29</h3>
+<h2 id="chapter-49:-the-event-loop9"><a class="header-link" href="#chapter-49:-the-event-loop9"></a>Chapter 49: The Event Loop9</h2>
+<h3 id="section-49.1:-the-event-loop-in-a-web-browser-29"><a class="header-link" href="#section-49.1:-the-event-loop-in-a-web-browser-29"></a>Section 49.1: The event loop in a web browser 29</h3>
+<h3 id="section-49.2:-asynchronous-operations-and-the-event-loop-29"><a class="header-link" href="#section-49.2:-asynchronous-operations-and-the-event-loop-29"></a>Section 49.2: Asynchronous operations and the event loop 29</h3>
+<h2 id="chapter-50:-strict-mode-29"><a class="header-link" href="#chapter-50:-strict-mode-29"></a>Chapter 50: Strict mode 29</h2>
+<h3 id="section-50.1:-for-entire-scripts-29"><a class="header-link" href="#section-50.1:-for-entire-scripts-29"></a>Section 50.1: For entire scripts 29</h3>
+<h3 id="section-50.2:-for-functions-29"><a class="header-link" href="#section-50.2:-for-functions-29"></a>Section 50.2: For functions 29</h3>
+<h3 id="section-50.3:-changes-to-properties-29"><a class="header-link" href="#section-50.3:-changes-to-properties-29"></a>Section 50.3: Changes to properties 29</h3>
+<h3 id="section-50.4:-changes-to-global-properties-29"><a class="header-link" href="#section-50.4:-changes-to-global-properties-29"></a>Section 50.4: Changes to global properties 29</h3>
+<h3 id="section-50.5:-duplicate-parameters-29"><a class="header-link" href="#section-50.5:-duplicate-parameters-29"></a>Section 50.5: Duplicate Parameters 29</h3>
+<h3 id="section-50.6:-function-scoping-in-strict-mode-29"><a class="header-link" href="#section-50.6:-function-scoping-in-strict-mode-29"></a>Section 50.6: Function scoping in strict mode 29</h3>
+<h3 id="section-50.7:-behaviour-of-a-function's-arguments-list-29"><a class="header-link" href="#section-50.7:-behaviour-of-a-function's-arguments-list-29"></a>Section 50.7: Behaviour of a function&#39;s arguments list 29</h3>
+<h3 id="section-50.8:-non-simple-parameter-lists-29"><a class="header-link" href="#section-50.8:-non-simple-parameter-lists-29"></a>Section 50.8: Non-Simple parameter lists 29</h3>
+<h2 id="chapter-51:-custom-elements9"><a class="header-link" href="#chapter-51:-custom-elements9"></a>Chapter 51: Custom Elements9</h2>
+<h3 id="section-51.1:-extending-native-elements-29"><a class="header-link" href="#section-51.1:-extending-native-elements-29"></a>Section 51.1: Extending Native Elements 29</h3>
+<h3 id="section-51.2:-registering-new-elements-29"><a class="header-link" href="#section-51.2:-registering-new-elements-29"></a>Section 51.2: Registering New Elements 29</h3>
+<h2 id="chapter-52:-data-manipulation0"><a class="header-link" href="#chapter-52:-data-manipulation0"></a>Chapter 52: Data Manipulation0</h2>
+<h3 id="section-52.1:-format-numbers-as-money-30"><a class="header-link" href="#section-52.1:-format-numbers-as-money-30"></a>Section 52.1: Format numbers as money 30</h3>
+<h3 id="section-52.2:-extract-extension-from-file-name-30"><a class="header-link" href="#section-52.2:-extract-extension-from-file-name-30"></a>Section 52.2: Extract extension from file name 30</h3>
+<h3 id="section-52.3:-set-object-property-given-its-string-name-30"><a class="header-link" href="#section-52.3:-set-object-property-given-its-string-name-30"></a>Section 52.3: Set object property given its string name 30</h3>
+<h2 id="chapter-53:-binary-data-30"><a class="header-link" href="#chapter-53:-binary-data-30"></a>Chapter 53: Binary Data 30</h2>
+<h3 id="section-53.1:-getting-binary-representation-of-an-image-file0"><a class="header-link" href="#section-53.1:-getting-binary-representation-of-an-image-file0"></a>Section 53.1: Getting binary representation of an image file0</h3>
+<h3 id="section-53.2:-converting-between-blobs-and-arraybuers-30"><a class="header-link" href="#section-53.2:-converting-between-blobs-and-arraybuers-30"></a>Section 53.2: Converting between Blobs and ArrayBuers 30</h3>
+<h3 id="section-53.3:-manipulating-arraybuers-with-dataviews0"><a class="header-link" href="#section-53.3:-manipulating-arraybuers-with-dataviews0"></a>Section 53.3: Manipulating ArrayBuers with DataViews0</h3>
+<h3 id="section-53.4:-creating-a-typedarray-from-a-base64-string-30"><a class="header-link" href="#section-53.4:-creating-a-typedarray-from-a-base64-string-30"></a>Section 53.4: Creating a TypedArray from a Base64 string 30</h3>
+<h3 id="section-53.5:-using-typedarrays-30"><a class="header-link" href="#section-53.5:-using-typedarrays-30"></a>Section 53.5: Using TypedArrays 30</h3>
+<h3 id="section-53.6:-iterating-through-an-arraybuer-30"><a class="header-link" href="#section-53.6:-iterating-through-an-arraybuer-30"></a>Section 53.6: Iterating through an arrayBuer 30</h3>
+<h2 id="chapter-54:-template-literals-30"><a class="header-link" href="#chapter-54:-template-literals-30"></a>Chapter 54: Template Literals 30</h2>
+<h3 id="section-54.1:-basic-interpolation-and-multiline-strings0"><a class="header-link" href="#section-54.1:-basic-interpolation-and-multiline-strings0"></a>Section 54.1: Basic interpolation and multiline strings0</h3>
+<h3 id="section-54.2:-tagged-strings-30"><a class="header-link" href="#section-54.2:-tagged-strings-30"></a>Section 54.2: Tagged strings 30</h3>
+<h3 id="section-54.3:-raw-strings-30"><a class="header-link" href="#section-54.3:-raw-strings-30"></a>Section 54.3: Raw strings 30</h3>
+<h3 id="section-54.4:-templating-html-with-template-strings-30"><a class="header-link" href="#section-54.4:-templating-html-with-template-strings-30"></a>Section 54.4: Templating HTML With Template Strings 30</h3>
+<h3 id="section-54.5:-introduction-30"><a class="header-link" href="#section-54.5:-introduction-30"></a>Section 54.5: Introduction 30</h3>
+<h2 id="chapter-55:-fetch-30"><a class="header-link" href="#chapter-55:-fetch-30"></a>Chapter 55: Fetch 30</h2>
+<h3 id="section-55.1:-getting-json-data-30"><a class="header-link" href="#section-55.1:-getting-json-data-30"></a>Section 55.1: Getting JSON data 30</h3>
+<h3 id="section-55.2:-set-request-headers0"><a class="header-link" href="#section-55.2:-set-request-headers0"></a>Section 55.2: Set Request Headers0</h3>
+<h3 id="section-55.3:-post-data0"><a class="header-link" href="#section-55.3:-post-data0"></a>Section 55.3: POST Data0</h3>
+<h3 id="section-55.4:-send-cookies-31"><a class="header-link" href="#section-55.4:-send-cookies-31"></a>Section 55.4: Send cookies 31</h3>
+<h3 id="section-55.5:-globalfetch-31"><a class="header-link" href="#section-55.5:-globalfetch-31"></a>Section 55.5: GlobalFetch 31</h3>
+<h3 id="section-55.6:-using-fetch-to-display-questions-from-the-stack-overflow-api-31"><a class="header-link" href="#section-55.6:-using-fetch-to-display-questions-from-the-stack-overflow-api-31"></a>Section 55.6: Using Fetch to Display Questions from the Stack Overflow API 31</h3>
+<h2 id="chapter-56:-scope1"><a class="header-link" href="#chapter-56:-scope1"></a>Chapter 56: Scope1</h2>
+<h3 id="section-56.1:-closures-31"><a class="header-link" href="#section-56.1:-closures-31"></a>Section 56.1: Closures 31</h3>
+<h3 id="section-56.2:-hoisting-31"><a class="header-link" href="#section-56.2:-hoisting-31"></a>Section 56.2: Hoisting 31</h3>
+<h3 id="section-56.3:-dierence-between-var-and-let-31"><a class="header-link" href="#section-56.3:-dierence-between-var-and-let-31"></a>Section 56.3: Dierence between var and let 31</h3>
+<h3 id="section-56.4:-apply-and-call-syntax-and-invocation-31"><a class="header-link" href="#section-56.4:-apply-and-call-syntax-and-invocation-31"></a>Section 56.4: Apply and Call syntax and invocation 31</h3>
+<h3 id="section-56.5:-arrow-function-invocation-31"><a class="header-link" href="#section-56.5:-arrow-function-invocation-31"></a>Section 56.5: Arrow function invocation 31</h3>
+<h3 id="section-56.6:-bound-invocation-31"><a class="header-link" href="#section-56.6:-bound-invocation-31"></a>Section 56.6: Bound invocation 31</h3>
+<h3 id="section-56.7:-method-invocation-31"><a class="header-link" href="#section-56.7:-method-invocation-31"></a>Section 56.7: Method invocation 31</h3>
+<h3 id="section-56.8:-anonymous-invocation2"><a class="header-link" href="#section-56.8:-anonymous-invocation2"></a>Section 56.8: Anonymous invocation2</h3>
+<h3 id="section-56.9:-constructor-invocation2"><a class="header-link" href="#section-56.9:-constructor-invocation2"></a>Section 56.9: Constructor invocation2</h3>
+<h3 id="section-56.10:-using-let-in-loops-instead-of-var-(click-handlers-example)-32"><a class="header-link" href="#section-56.10:-using-let-in-loops-instead-of-var-(click-handlers-example)-32"></a>Section 56.10: Using let in loops instead of var (click handlers example) 32</h3>
+<h2 id="chapter-57:-modules-32"><a class="header-link" href="#chapter-57:-modules-32"></a>Chapter 57: Modules 32</h2>
+<h3 id="section-57.1:-defining-a-module2"><a class="header-link" href="#section-57.1:-defining-a-module2"></a>Section 57.1: Defining a module2</h3>
+<h3 id="section-57.2:-default-exports-32"><a class="header-link" href="#section-57.2:-default-exports-32"></a>Section 57.2: Default exports 32</h3>
+<h3 id="section-57.3:-importing-named-members-from-another-module-32"><a class="header-link" href="#section-57.3:-importing-named-members-from-another-module-32"></a>Section 57.3: Importing named members from another module 32</h3>
+<h3 id="section-57.4:-importing-an-entire-module-32"><a class="header-link" href="#section-57.4:-importing-an-entire-module-32"></a>Section 57.4: Importing an entire module 32</h3>
+<h3 id="section-57.5:-importing-named-members-with-aliases-32"><a class="header-link" href="#section-57.5:-importing-named-members-with-aliases-32"></a>Section 57.5: Importing named members with aliases 32</h3>
+<h3 id="section-57.6:-importing-with-side-eects2"><a class="header-link" href="#section-57.6:-importing-with-side-eects2"></a>Section 57.6: Importing with side eects2</h3>
+<h3 id="section-57.7:-exporting-multiple-named-members-32"><a class="header-link" href="#section-57.7:-exporting-multiple-named-members-32"></a>Section 57.7: Exporting multiple named members 32</h3>
+<h2 id="chapter-58:-screen-32"><a class="header-link" href="#chapter-58:-screen-32"></a>Chapter 58: Screen 32</h2>
+<h3 id="section-58.1:-getting-the-screen-resolution2"><a class="header-link" href="#section-58.1:-getting-the-screen-resolution2"></a>Section 58.1: Getting the screen resolution2</h3>
+<h3 id="section-58.2:-getting-the-“available”-area-of-the-screen-32"><a class="header-link" href="#section-58.2:-getting-the-“available”-area-of-the-screen-32"></a>Section 58.2: Getting the “available” area of the screen 32</h3>
+<h3 id="section-58.3:-page-width-and-height-32"><a class="header-link" href="#section-58.3:-page-width-and-height-32"></a>Section 58.3: Page width and height 32</h3>
+<h3 id="section-58.4:-window-innerwidth-and-innerheight-properties2"><a class="header-link" href="#section-58.4:-window-innerwidth-and-innerheight-properties2"></a>Section 58.4: Window innerWidth and innerHeight Properties2</h3>
+<h3 id="section-58.5:-getting-color-information-about-the-screen-32"><a class="header-link" href="#section-58.5:-getting-color-information-about-the-screen-32"></a>Section 58.5: Getting color information about the screen 32</h3>
+<h2 id="chapter-59:-variable-coercion/conversion2"><a class="header-link" href="#chapter-59:-variable-coercion/conversion2"></a>Chapter 59: Variable coercion/conversion2</h2>
+<h3 id="section-59.1:-double-negation-(!!x)-32"><a class="header-link" href="#section-59.1:-double-negation-(!!x)-32"></a>Section 59.1: Double Negation (!!x) 32</h3>
+<h3 id="section-59.2:-implicit-conversion-32"><a class="header-link" href="#section-59.2:-implicit-conversion-32"></a>Section 59.2: Implicit conversion 32</h3>
+<h3 id="section-59.3:-converting-to-boolean-32"><a class="header-link" href="#section-59.3:-converting-to-boolean-32"></a>Section 59.3: Converting to boolean 32</h3>
+<h3 id="section-59.4:-converting-a-string-to-a-number-32"><a class="header-link" href="#section-59.4:-converting-a-string-to-a-number-32"></a>Section 59.4: Converting a string to a number 32</h3>
+<h3 id="section-59.5:-converting-a-number-to-a-string-32"><a class="header-link" href="#section-59.5:-converting-a-number-to-a-string-32"></a>Section 59.5: Converting a number to a string 32</h3>
+<h3 id="section-59.6:-primitive-to-primitive-conversion-table-32"><a class="header-link" href="#section-59.6:-primitive-to-primitive-conversion-table-32"></a>Section 59.6: Primitive to Primitive conversion table 32</h3>
+<h3 id="section-59.7:-convert-an-array-to-a-string2"><a class="header-link" href="#section-59.7:-convert-an-array-to-a-string2"></a>Section 59.7: Convert an array to a string2</h3>
+<h3 id="section-59.8:-array-to-string-using-array-methods-32"><a class="header-link" href="#section-59.8:-array-to-string-using-array-methods-32"></a>Section 59.8: Array to String using array methods 32</h3>
+<h3 id="section-59.9:-converting-a-number-to-a-boolean-32"><a class="header-link" href="#section-59.9:-converting-a-number-to-a-boolean-32"></a>Section 59.9: Converting a number to a boolean 32</h3>
+<h3 id="section-59.10:-converting-a-string-to-a-boolean2"><a class="header-link" href="#section-59.10:-converting-a-string-to-a-boolean2"></a>Section 59.10: Converting a string to a boolean2</h3>
+<h3 id="section-59.11:-integer-to-float-32"><a class="header-link" href="#section-59.11:-integer-to-float-32"></a>Section 59.11: Integer to Float 32</h3>
+<h3 id="section-59.12:-float-to-integer3"><a class="header-link" href="#section-59.12:-float-to-integer3"></a>Section 59.12: Float to Integer3</h3>
+<h3 id="section-59.13:-convert-string-to-float-33"><a class="header-link" href="#section-59.13:-convert-string-to-float-33"></a>Section 59.13: Convert string to float 33</h3>
+<h2 id="chapter-60:-destructuring-assignment-33"><a class="header-link" href="#chapter-60:-destructuring-assignment-33"></a>Chapter 60: Destructuring assignment 33</h2>
+<h3 id="section-60.1:-destructuring-objects3"><a class="header-link" href="#section-60.1:-destructuring-objects3"></a>Section 60.1: Destructuring Objects3</h3>
+<h3 id="section-60.2:-destructuring-function-arguments-33"><a class="header-link" href="#section-60.2:-destructuring-function-arguments-33"></a>Section 60.2: Destructuring function arguments 33</h3>
+<h3 id="section-60.3:-nested-destructuring3"><a class="header-link" href="#section-60.3:-nested-destructuring3"></a>Section 60.3: Nested Destructuring3</h3>
+<h3 id="section-60.4:-destructuring-arrays-33"><a class="header-link" href="#section-60.4:-destructuring-arrays-33"></a>Section 60.4: Destructuring Arrays 33</h3>
+<h3 id="section-60.5:-destructuring-inside-variables3"><a class="header-link" href="#section-60.5:-destructuring-inside-variables3"></a>Section 60.5: Destructuring inside variables3</h3>
+<h3 id="section-60.6:-default-value-while-destructuring-33"><a class="header-link" href="#section-60.6:-default-value-while-destructuring-33"></a>Section 60.6: Default Value While Destructuring 33</h3>
+<h3 id="section-60.7:-renaming-variables-while-destructuring3"><a class="header-link" href="#section-60.7:-renaming-variables-while-destructuring3"></a>Section 60.7: Renaming Variables While Destructuring3</h3>
+    </article>
+  </body>
+</html>

@@ -1,0 +1,25 @@
+body {
+  background-color: burlywood;
+  padding-top: 30px;
+  font-size: 12px;
+}
+.main {
+  background-color: white;
+  border: 1px solid royalblue;
+  padding: 40px;
+}
+.container {
+  width: 1100px;
+}
+.nav-list {
+  font-size: 1.2rem;
+}
+.nav-header {
+  font-size: 17px;
+  text-transform: none;
+  line-height: 30px;
+}
+.sidebar-header-2 { margin-left: 10px; }
+.sidebar-header-3 { margin-left: 20px; }
+.sidebar-header-4 { margin-left: 30px; }
+.sidebar-header-5 { margin-left: 40px; }

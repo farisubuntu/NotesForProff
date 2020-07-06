@@ -1,0 +1,125 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <title>Chapter 81: Async functions (async/await) 39</title>
+    <link type="text/css" rel="stylesheet" href="assets/css/github-markdown.css">
+    <link type="text/css" rel="stylesheet" href="assets/css/pilcrow.css">
+    <link type="text/css" rel="stylesheet" href="assets/css/hljs-github.min.css"/>
+  </head>
+  <body>
+    <article class="markdown-body"><h2 id="chapter-81:-async-functions-(async/await)-39"><a class="header-link" href="#chapter-81:-async-functions-(async/await)-39"></a>Chapter 81: Async functions (async/await) 39</h2>
+<h3 id="section-81.1:-introduction-39"><a class="header-link" href="#section-81.1:-introduction-39"></a>Section 81.1: Introduction 39</h3>
+<h3 id="section-81.2:-await-and-operator-precedence9"><a class="header-link" href="#section-81.2:-await-and-operator-precedence9"></a>Section 81.2: Await and operator precedence9</h3>
+<h3 id="section-81.3:-async-functions-compared-to-promises9"><a class="header-link" href="#section-81.3:-async-functions-compared-to-promises9"></a>Section 81.3: Async functions compared to Promises9</h3>
+<h3 id="section-81.4:-looping-with-async-await9"><a class="header-link" href="#section-81.4:-looping-with-async-await9"></a>Section 81.4: Looping with async await9</h3>
+<h3 id="section-81.5:-less-indentation9"><a class="header-link" href="#section-81.5:-less-indentation9"></a>Section 81.5: Less indentation9</h3>
+<h3 id="section-81.6:-simultaneous-async-(parallel)-operations9"><a class="header-link" href="#section-81.6:-simultaneous-async-(parallel)-operations9"></a>Section 81.6: Simultaneous async (parallel) operations9</h3>
+<h2 id="chapter-82:-async-iterators-39"><a class="header-link" href="#chapter-82:-async-iterators-39"></a>Chapter 82: Async Iterators 39</h2>
+<h3 id="section-82.1:-basics-39"><a class="header-link" href="#section-82.1:-basics-39"></a>Section 82.1: Basics 39</h3>
+<h2 id="chapter-83:-how-to-make-iterator-usable-inside-async-callback-function-39"><a class="header-link" href="#chapter-83:-how-to-make-iterator-usable-inside-async-callback-function-39"></a>Chapter 83: How to make iterator usable inside async callback function 39</h2>
+<h3 id="section-83.1:-erroneous-code,-can-you-spot-why-this-usage-of-key-will-lead-to-bugs?-39"><a class="header-link" href="#section-83.1:-erroneous-code,-can-you-spot-why-this-usage-of-key-will-lead-to-bugs?-39"></a>Section 83.1: Erroneous code, can you spot why this usage of key will lead to bugs? 39</h3>
+<h3 id="section-83.2:-correct-writing-39"><a class="header-link" href="#section-83.2:-correct-writing-39"></a>Section 83.2: Correct Writing 39</h3>
+<h2 id="chapter-84:-tail-call-optimization-40"><a class="header-link" href="#chapter-84:-tail-call-optimization-40"></a>Chapter 84: Tail Call Optimization 40</h2>
+<h3 id="section-84.1:-what-is-tail-call-optimization-(tco)-40"><a class="header-link" href="#section-84.1:-what-is-tail-call-optimization-(tco)-40"></a>Section 84.1: What is Tail Call Optimization (TCO) 40</h3>
+<h3 id="section-84.2:-recursive-loops0"><a class="header-link" href="#section-84.2:-recursive-loops0"></a>Section 84.2: Recursive loops0</h3>
+<h2 id="chapter-85:-bitwise-operators---real-world-examples-(snippets)0"><a class="header-link" href="#chapter-85:-bitwise-operators---real-world-examples-(snippets)0"></a>Chapter 85: Bitwise Operators - Real World Examples (snippets)0</h2>
+<h3 id="section-85.1:-swapping-two-integers-with-bitwise-xor-(without-additional-memory-allocation)-40"><a class="header-link" href="#section-85.1:-swapping-two-integers-with-bitwise-xor-(without-additional-memory-allocation)-40"></a>Section 85.1: Swapping Two Integers with Bitwise XOR (without additional memory allocation) 40</h3>
+<h3 id="section-85.2:-faster-multiplication-or-division-by-powers-of0"><a class="header-link" href="#section-85.2:-faster-multiplication-or-division-by-powers-of0"></a>Section 85.2: Faster multiplication or division by powers of0</h3>
+<h3 id="section-85.3:-number's-parity-detection-with-bitwise-and0"><a class="header-link" href="#section-85.3:-number's-parity-detection-with-bitwise-and0"></a>Section 85.3: Number&#39;s Parity Detection with Bitwise AND0</h3>
+<h2 id="chapter-86:-tilde-~-40"><a class="header-link" href="#chapter-86:-tilde-~-40"></a>Chapter 86: Tilde ~ 40</h2>
+<h3 id="section-86.1:-~-integer-40"><a class="header-link" href="#section-86.1:-~-integer-40"></a>Section 86.1: ~ Integer 40</h3>
+<h3 id="section-86.2:-~~-operator-40"><a class="header-link" href="#section-86.2:-~~-operator-40"></a>Section 86.2: ~~ Operator 40</h3>
+<h3 id="section-86.3:-converting-non-numeric-values-to-numbers0"><a class="header-link" href="#section-86.3:-converting-non-numeric-values-to-numbers0"></a>Section 86.3: Converting Non-numeric values to Numbers0</h3>
+<h3 id="section-86.4:-shorthands-40"><a class="header-link" href="#section-86.4:-shorthands-40"></a>Section 86.4: Shorthands 40</h3>
+<h3 id="section-86.5:-~-decimal-40"><a class="header-link" href="#section-86.5:-~-decimal-40"></a>Section 86.5: ~ Decimal 40</h3>
+<h2 id="chapter-87:-using-javascript-to-get/set-css-custom-variables-40"><a class="header-link" href="#chapter-87:-using-javascript-to-get/set-css-custom-variables-40"></a>Chapter 87: Using JavaScript to get/set CSS custom variables 40</h2>
+<h3 id="section-87.1:-how-to-get-and-set-css-variable-property-values-40"><a class="header-link" href="#section-87.1:-how-to-get-and-set-css-variable-property-values-40"></a>Section 87.1: How to get and set CSS variable property values 40</h3>
+<h2 id="chapter-88:-selection-api0"><a class="header-link" href="#chapter-88:-selection-api0"></a>Chapter 88: Selection API0</h2>
+<h3 id="section-88.1:-get-the-text-of-the-selection-40"><a class="header-link" href="#section-88.1:-get-the-text-of-the-selection-40"></a>Section 88.1: Get the text of the selection 40</h3>
+<h3 id="section-88.2:-deselect-everything-that-is-selected-40"><a class="header-link" href="#section-88.2:-deselect-everything-that-is-selected-40"></a>Section 88.2: Deselect everything that is selected 40</h3>
+<h3 id="section-88.3:-select-the-contents-of-an-element0"><a class="header-link" href="#section-88.3:-select-the-contents-of-an-element0"></a>Section 88.3: Select the contents of an element0</h3>
+<h2 id="chapter-89:-file-api,-blobs-and-filereaders-40"><a class="header-link" href="#chapter-89:-file-api,-blobs-and-filereaders-40"></a>Chapter 89: File API, Blobs and FileReaders 40</h2>
+<h3 id="section-89.1:-read-file-as-string0"><a class="header-link" href="#section-89.1:-read-file-as-string0"></a>Section 89.1: Read file as string0</h3>
+<h3 id="section-89.2:-read-file-as-dataurl0"><a class="header-link" href="#section-89.2:-read-file-as-dataurl0"></a>Section 89.2: Read file as dataURL0</h3>
+<h3 id="section-89.3:-slice-a-file-40"><a class="header-link" href="#section-89.3:-slice-a-file-40"></a>Section 89.3: Slice a file 40</h3>
+<h3 id="section-89.4:-get-the-properties-of-the-file0"><a class="header-link" href="#section-89.4:-get-the-properties-of-the-file0"></a>Section 89.4: Get the properties of the file0</h3>
+<h3 id="section-89.5:-selecting-multiple-files-and-restricting-file-types-41"><a class="header-link" href="#section-89.5:-selecting-multiple-files-and-restricting-file-types-41"></a>Section 89.5: Selecting multiple files and restricting file types 41</h3>
+<h3 id="section-89.6:-client-side-csv-download-using-blob-41"><a class="header-link" href="#section-89.6:-client-side-csv-download-using-blob-41"></a>Section 89.6: Client side csv download using Blob 41</h3>
+<h2 id="chapter-90:-notifications-api-41"><a class="header-link" href="#chapter-90:-notifications-api-41"></a>Chapter 90: Notifications API 41</h2>
+<h3 id="section-90.1:-requesting-permission-to-send-notifications-41"><a class="header-link" href="#section-90.1:-requesting-permission-to-send-notifications-41"></a>Section 90.1: Requesting Permission to send notifications 41</h3>
+<h3 id="section-90.2:-sending-notifications1"><a class="header-link" href="#section-90.2:-sending-notifications1"></a>Section 90.2: Sending Notifications1</h3>
+<h3 id="section-90.3:-closing-a-notification1"><a class="header-link" href="#section-90.3:-closing-a-notification1"></a>Section 90.3: Closing a notification1</h3>
+<h3 id="section-90.4:-notification-events-41"><a class="header-link" href="#section-90.4:-notification-events-41"></a>Section 90.4: Notification events 41</h3>
+<h2 id="chapter-91:-vibration-api-41"><a class="header-link" href="#chapter-91:-vibration-api-41"></a>Chapter 91: Vibration API 41</h2>
+<h3 id="section-91.1:-single-vibration1"><a class="header-link" href="#section-91.1:-single-vibration1"></a>Section 91.1: Single vibration1</h3>
+<h3 id="section-91.2:-check-for-support1"><a class="header-link" href="#section-91.2:-check-for-support1"></a>Section 91.2: Check for support1</h3>
+<h3 id="section-91.3:-vibration-patterns1"><a class="header-link" href="#section-91.3:-vibration-patterns1"></a>Section 91.3: Vibration patterns1</h3>
+<h2 id="chapter-92:-battery-status-api1"><a class="header-link" href="#chapter-92:-battery-status-api1"></a>Chapter 92: Battery Status API1</h2>
+<h3 id="section-92.1:-battery-events1"><a class="header-link" href="#section-92.1:-battery-events1"></a>Section 92.1: Battery Events1</h3>
+<h3 id="section-92.2:-getting-current-battery-level1"><a class="header-link" href="#section-92.2:-getting-current-battery-level1"></a>Section 92.2: Getting current battery level1</h3>
+<h3 id="section-92.3:-is-battery-charging?-41"><a class="header-link" href="#section-92.3:-is-battery-charging?-41"></a>Section 92.3: Is battery charging? 41</h3>
+<h3 id="section-92.4:-get-time-left-until-battery-is-empty-41"><a class="header-link" href="#section-92.4:-get-time-left-until-battery-is-empty-41"></a>Section 92.4: Get time left until battery is empty 41</h3>
+<h3 id="section-92.5:-get-time-left-until-battery-is-fully-charged-41"><a class="header-link" href="#section-92.5:-get-time-left-until-battery-is-fully-charged-41"></a>Section 92.5: Get time left until battery is fully charged 41</h3>
+<h2 id="chapter-93:-fluent-api-41"><a class="header-link" href="#chapter-93:-fluent-api-41"></a>Chapter 93: Fluent API 41</h2>
+<h3 id="section-93.1:-fluent-api-capturing-construction-of-html-articles-with-js-41"><a class="header-link" href="#section-93.1:-fluent-api-capturing-construction-of-html-articles-with-js-41"></a>Section 93.1: Fluent API capturing construction of HTML articles with JS 41</h3>
+<h2 id="chapter-94:-web-cryptography-api-41"><a class="header-link" href="#chapter-94:-web-cryptography-api-41"></a>Chapter 94: Web Cryptography API 41</h2>
+<h3 id="section-94.1:-creating-digests-(e.g.-sha-256)-41"><a class="header-link" href="#section-94.1:-creating-digests-(e.g.-sha-256)-41"></a>Section 94.1: Creating digests (e.g. SHA-256) 41</h3>
+<h3 id="section-94.2:-cryptographically-random-data1"><a class="header-link" href="#section-94.2:-cryptographically-random-data1"></a>Section 94.2: Cryptographically random data1</h3>
+<h3 id="section-94.3:-generating-rsa-key-pair-and-converting-to-pem-format-41"><a class="header-link" href="#section-94.3:-generating-rsa-key-pair-and-converting-to-pem-format-41"></a>Section 94.3: Generating RSA key pair and converting to PEM format 41</h3>
+<h3 id="section-94.4:-converting-pem-key-pair-to-cryptokey1"><a class="header-link" href="#section-94.4:-converting-pem-key-pair-to-cryptokey1"></a>Section 94.4: Converting PEM key pair to CryptoKey1</h3>
+<h2 id="chapter-95:-security-issues-42"><a class="header-link" href="#chapter-95:-security-issues-42"></a>Chapter 95: Security issues 42</h2>
+<h3 id="section-95.1:-reflected-cross-site-scripting-(xss)-42"><a class="header-link" href="#section-95.1:-reflected-cross-site-scripting-(xss)-42"></a>Section 95.1: Reflected Cross-site scripting (XSS) 42</h3>
+<h3 id="section-95.2:-persistent-cross-site-scripting-(xss)-42"><a class="header-link" href="#section-95.2:-persistent-cross-site-scripting-(xss)-42"></a>Section 95.2: Persistent Cross-site scripting (XSS) 42</h3>
+<h3 id="section-95.3:-persistent-cross-site-scripting-from-javascript-string-literals2"><a class="header-link" href="#section-95.3:-persistent-cross-site-scripting-from-javascript-string-literals2"></a>Section 95.3: Persistent Cross-site scripting from JavaScript string literals2</h3>
+<h3 id="section-95.4:-why-scripts-from-other-people-can-harm-your-website-and-its-visitors-42"><a class="header-link" href="#section-95.4:-why-scripts-from-other-people-can-harm-your-website-and-its-visitors-42"></a>Section 95.4: Why scripts from other people can harm your website and its visitors 42</h3>
+<h3 id="section-95.5:-evaled-json-injection-42"><a class="header-link" href="#section-95.5:-evaled-json-injection-42"></a>Section 95.5: Evaled JSON injection 42</h3>
+<h2 id="chapter-96:-same-origin-policy-&-cross-origin-communication-42"><a class="header-link" href="#chapter-96:-same-origin-policy-&-cross-origin-communication-42"></a>Chapter 96: Same Origin Policy &amp; Cross-Origin Communication 42</h2>
+<h3 id="section-96.1:-safe-cross-origin-communication-with-messages-42"><a class="header-link" href="#section-96.1:-safe-cross-origin-communication-with-messages-42"></a>Section 96.1: Safe cross-origin communication with messages 42</h3>
+<h3 id="section-96.2:-ways-to-circumvent-same-origin-policy-42"><a class="header-link" href="#section-96.2:-ways-to-circumvent-same-origin-policy-42"></a>Section 96.2: Ways to circumvent Same-Origin Policy 42</h3>
+<h2 id="chapter-97:-error-handling-42"><a class="header-link" href="#chapter-97:-error-handling-42"></a>Chapter 97: Error Handling 42</h2>
+<h3 id="section-97.1:-error-objects2"><a class="header-link" href="#section-97.1:-error-objects2"></a>Section 97.1: Error objects2</h3>
+<h3 id="section-97.2:-interaction-with-promises-42"><a class="header-link" href="#section-97.2:-interaction-with-promises-42"></a>Section 97.2: Interaction with Promises 42</h3>
+<h3 id="section-97.3:-error-types3"><a class="header-link" href="#section-97.3:-error-types3"></a>Section 97.3: Error types3</h3>
+<h3 id="section-97.4:-order-of-operations-plus-advanced-thoughts-43"><a class="header-link" href="#section-97.4:-order-of-operations-plus-advanced-thoughts-43"></a>Section 97.4: Order of operations plus advanced thoughts 43</h3>
+<h2 id="chapter-98:-global-error-handling-in-browsers3"><a class="header-link" href="#chapter-98:-global-error-handling-in-browsers3"></a>Chapter 98: Global error handling in browsers3</h2>
+<h3 id="section-98.1:-handling-window.onerror-to-report-all-errors-back-to-the-server-side-43"><a class="header-link" href="#section-98.1:-handling-window.onerror-to-report-all-errors-back-to-the-server-side-43"></a>Section 98.1: Handling window.onerror to report all errors back to the server-side 43</h3>
+<h2 id="chapter-99:-debugging-43"><a class="header-link" href="#chapter-99:-debugging-43"></a>Chapter 99: Debugging 43</h2>
+<h3 id="section-99.1:-interactive-interpreter-variables-43"><a class="header-link" href="#section-99.1:-interactive-interpreter-variables-43"></a>Section 99.1: Interactive interpreter variables 43</h3>
+<h3 id="section-99.2:-breakpoints-43"><a class="header-link" href="#section-99.2:-breakpoints-43"></a>Section 99.2: Breakpoints 43</h3>
+<h3 id="section-99.3:-using-setters-and-getters-to-find-what-changed-a-property-43"><a class="header-link" href="#section-99.3:-using-setters-and-getters-to-find-what-changed-a-property-43"></a>Section 99.3: Using setters and getters to find what changed a property 43</h3>
+<h3 id="section-99.4:-using-the-console3"><a class="header-link" href="#section-99.4:-using-the-console3"></a>Section 99.4: Using the console3</h3>
+<h3 id="section-99.5:-automatically-pausing-execution-43"><a class="header-link" href="#section-99.5:-automatically-pausing-execution-43"></a>Section 99.5: Automatically pausing execution 43</h3>
+<h3 id="section-99.6:-elements-inspector-43"><a class="header-link" href="#section-99.6:-elements-inspector-43"></a>Section 99.6: Elements inspector 43</h3>
+<h3 id="section-99.7:-break-when-a-function-is-called-43"><a class="header-link" href="#section-99.7:-break-when-a-function-is-called-43"></a>Section 99.7: Break when a function is called 43</h3>
+<h3 id="section-99.8:-stepping-through-code3"><a class="header-link" href="#section-99.8:-stepping-through-code3"></a>Section 99.8: Stepping through code3</h3>
+<h2 id="chapter-100:-unit-testing-javascript-44"><a class="header-link" href="#chapter-100:-unit-testing-javascript-44"></a>Chapter 100: Unit Testing JavaScript 44</h2>
+<h3 id="section-100.1:-unit-testing-promises-with-mocha,-sinon,-chai-and-proxyquire-44"><a class="header-link" href="#section-100.1:-unit-testing-promises-with-mocha,-sinon,-chai-and-proxyquire-44"></a>Section 100.1: Unit Testing Promises with Mocha, Sinon, Chai and Proxyquire 44</h3>
+<h3 id="section-100.2:-basic-assertion4"><a class="header-link" href="#section-100.2:-basic-assertion4"></a>Section 100.2: Basic Assertion4</h3>
+<h2 id="chapter-101:-evaluating-javascript"><a class="header-link" href="#chapter-101:-evaluating-javascript"></a>Chapter 101: Evaluating JavaScript</h2>
+<h3 id="section-101.1:-evaluate-a-string-of-javascript-statements-44"><a class="header-link" href="#section-101.1:-evaluate-a-string-of-javascript-statements-44"></a>Section 101.1: Evaluate a string of JavaScript statements 44</h3>
+<h3 id="section-101.2:-introduction4"><a class="header-link" href="#section-101.2:-introduction4"></a>Section 101.2: Introduction4</h3>
+<h3 id="section-101.3:-evaluation-and-math-44"><a class="header-link" href="#section-101.3:-evaluation-and-math-44"></a>Section 101.3: Evaluation and Math 44</h3>
+<h2 id="chapter-102:-linters---ensuring-code-quality"><a class="header-link" href="#chapter-102:-linters---ensuring-code-quality"></a>Chapter 102: Linters - Ensuring code quality</h2>
+<h3 id="section-102.1:-jshint"><a class="header-link" href="#section-102.1:-jshint"></a>Section 102.1: JSHint</h3>
+<h3 id="section-102.2:-eslint-/-jscs"><a class="header-link" href="#section-102.2:-eslint-/-jscs"></a>Section 102.2: ESLint / JSCS</h3>
+<h3 id="section-102.3:-jslint"><a class="header-link" href="#section-102.3:-jslint"></a>Section 102.3: JSLint</h3>
+<h2 id="chapter-103:-anti-patterns4"><a class="header-link" href="#chapter-103:-anti-patterns4"></a>Chapter 103: Anti-patterns4</h2>
+<h3 id="section-103.1:-chaining-assignments-in-var-declarations-44"><a class="header-link" href="#section-103.1:-chaining-assignments-in-var-declarations-44"></a>Section 103.1: Chaining assignments in var declarations 44</h3>
+<h2 id="chapter-104:-performance-tips-44"><a class="header-link" href="#chapter-104:-performance-tips-44"></a>Chapter 104: Performance Tips 44</h2>
+<h3 id="section-104.1:-avoid-try/catch-in-performance-critical-functions4"><a class="header-link" href="#section-104.1:-avoid-try/catch-in-performance-critical-functions4"></a>Section 104.1: Avoid try/catch in performance-critical functions4</h3>
+<h3 id="section-104.2:-limit-dom-updates-44"><a class="header-link" href="#section-104.2:-limit-dom-updates-44"></a>Section 104.2: Limit DOM Updates 44</h3>
+<h3 id="section-104.3:-benchmarking-your-code---measuring-execution-time4"><a class="header-link" href="#section-104.3:-benchmarking-your-code---measuring-execution-time4"></a>Section 104.3: Benchmarking your code - measuring execution time4</h3>
+<h3 id="section-104.4:-use-a-memoizer-for-heavy-computing-functions5"><a class="header-link" href="#section-104.4:-use-a-memoizer-for-heavy-computing-functions5"></a>Section 104.4: Use a memoizer for heavy-computing functions5</h3>
+<h3 id="section-104.5:-initializing-object-properties-with-null5"><a class="header-link" href="#section-104.5:-initializing-object-properties-with-null5"></a>Section 104.5: Initializing object properties with null5</h3>
+<h3 id="section-104.6:-reuse-objects-rather-than-recreate-45"><a class="header-link" href="#section-104.6:-reuse-objects-rather-than-recreate-45"></a>Section 104.6: Reuse objects rather than recreate 45</h3>
+<h3 id="section-104.7:-prefer-local-variables-to-globals,-attributes,-and-indexed-values-45"><a class="header-link" href="#section-104.7:-prefer-local-variables-to-globals,-attributes,-and-indexed-values-45"></a>Section 104.7: Prefer local variables to globals, attributes, and indexed values 45</h3>
+<h3 id="section-104.8:-be-consistent-in-use-of-numbers-45"><a class="header-link" href="#section-104.8:-be-consistent-in-use-of-numbers-45"></a>Section 104.8: Be consistent in use of Numbers 45</h3>
+<h2 id="chapter-105:-memory-effeciency-45"><a class="header-link" href="#chapter-105:-memory-effeciency-45"></a>Chapter 105: Memory effeciency 45</h2>
+<h3 id="section-105.1:-drawback-of-creating-true-private-method-45-appendix-a:-reserved-keywords5"><a class="header-link" href="#section-105.1:-drawback-of-creating-true-private-method-45-appendix-a:-reserved-keywords5"></a>Section 105.1: Drawback of creating true private method 45 Appendix A: Reserved Keywords5</h3>
+<h3 id="section-a.1:-reserved-keywords-45"><a class="header-link" href="#section-a.1:-reserved-keywords-45"></a>Section A.1: Reserved Keywords 45</h3>
+<h3 id="section-a.2:-identifiers-&-identifier-names6"><a class="header-link" href="#section-a.2:-identifiers-&-identifier-names6"></a>Section A.2: Identifiers &amp; Identifier Names6</h3>
+    </article>
+  </body>
+</html>
