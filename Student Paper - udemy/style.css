@@ -1,0 +1,43 @@
+body{
+  margin:2%;
+  font-size:12px;
+}
+div{
+  border:1px solid blue;
+  margin:5px 5px;
+  font-size:1.5rem;
+  line-height:2;
+}
+.container {
+display: grid;
+grid-template-columns: repeat(3,1fr);
+grid-template-rows: 1fr 4fr 4fr;
+}
+.title{
+  grid-column-start: 1;
+  grid-column-end: 4;
+
+}
+.keywords{
+  grid-column-start: 1;
+}
+.notes{
+  grid-column-start: 2;
+  grid-column-end:4;
+}
+.summary{
+  grid-column-start:1;
+  grid-column-end: 4;
+}
+li input{
+  border:none;
+  border-bottom:1px solid black;
+  
+}
+input { width:95%; height:100%; color:brown;font-size: x-large;}
+h4{color:blue;}
+fieldset *{
+all:unset;
+font-size:large;
+font-
+}
