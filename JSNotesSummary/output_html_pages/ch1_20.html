@@ -1,284 +1,521 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Chapter 1: Getting started with JavaScript</title>
-    <link type="text/css" rel="stylesheet" href="assets/css/bootstrap.css"/>
-    <link type="text/css" rel="stylesheet" href="assets/css/bootstrap-responsive.css"/>
-    <link type="text/css" rel="stylesheet" href="assets/css/pilcrow.css"/>
-    <link type="text/css" rel="stylesheet" href="assets/css/hljs-github.min.css"/>
-    <link type="text/css" rel="stylesheet" href="assets/css/style.css"/>
-  </head>
+
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ <title>Chapter 1: Getting started with JavaScript</title>
+ <link type="text/css" rel="stylesheet" href="assets/css/bootstrap.css" />
+ <link type="text/css" rel="stylesheet" href="assets/css/bootstrap-responsive.css" />
+ <link type="text/css" rel="stylesheet" href="assets/css/pilcrow.css" />
+ <link type="text/css" rel="stylesheet" href="assets/css/hljs-github.min.css" />
+ <link type="text/css" rel="stylesheet" href="assets/css/style.css" />
+ <link rel="stylesheet" href="./assets/css/dark.css" />
+ <!-- <link rel="stylesheet" href="./assets/css/style.css" /> -->
+</head>
+
 <body>
 
-  <div class="container-fluid">
-    <div class="row-fluid">
-      <div class="span3"><ul class="nav nav-list">
-    <li class="sidebar-header-2"><a href="#chapter-1:-getting-started-with-javascript">Chapter 1: Getting started with JavaScript</a></li>
-    <li class="sidebar-header-3"><a href="#section-1.1:-using-console.log()">Section 1.1: Using console.log()</a></li>
-    <li class="sidebar-header-3"><a href="#section-1.2:-using-the-dom-api">Section 1.2: Using the DOM API</a></li>
-    <li class="sidebar-header-3"><a href="#section-1.3:-using-window.alert()">Section 1.3: Using window.alert()</a></li>
-    <li class="sidebar-header-3"><a href="#section-1.4:-using-window.prompt()">Section 1.4: Using window.prompt()</a></li>
-    <li class="sidebar-header-3"><a href="#section-1.5:-using-window.confirm()">Section 1.5: Using window.confirm()</a></li>
-    <li class="sidebar-header-3"><a href="#section-1.6:-using-the-dom-api-(with-graphical-text:-canvas,-svg,-or-image-file)">Section 1.6: Using the DOM API (with graphical text: Canvas, SVG, or image file)</a></li>
-    <li class="sidebar-header-2"><a href="#chapter-2:-javascript-variables">Chapter 2: JavaScript Variables</a></li>
-    <li class="sidebar-header-3"><a href="#section-2.1:-defining-a-variable">Section 2.1: Defining a Variable</a></li>
-    <li class="sidebar-header-3"><a href="#section-2.2:-using-a-variable">Section 2.2: Using a Variable</a></li>
-    <li class="sidebar-header-3"><a href="#section-2.3:-types-of-variables">Section 2.3: Types of Variables</a></li>
-    <li class="sidebar-header-3"><a href="#section-2.4:-arrays-and-objects">Section 2.4: Arrays and Objects</a></li>
-    <li class="sidebar-header-2"><a href="#chapter-3:-built-in-constants">Chapter 3: Built-in Constants</a></li>
-    <li class="sidebar-header-3"><a href="#section-3.1:-null">Section 3.1: null</a></li>
-    <li class="sidebar-header-3"><a href="#section-3.2:-testing-for-nan-using-isnan()">Section 3.2: Testing for NaN using isNaN()</a></li>
-    <li class="sidebar-header-3"><a href="#section-3.3:-nan">Section 3.3: NaN</a></li>
-    <li class="sidebar-header-3"><a href="#section-3.4:-&#x60;undefined&#x60;-and-&#x60;null&#x60;">Section 3.4: &#x60;undefined&#x60; and &#x60;null&#x60;</a></li>
-    <li class="sidebar-header-3"><a href="#section-3.5:-infinity-and--infinity">Section 3.5: Infinity and -Infinity</a></li>
-    <li class="sidebar-header-3"><a href="#section-3.6:-number-constants">Section 3.6: Number constants</a></li>
-    <li class="sidebar-header-3"><a href="#section-3.7:-operations-that-return-nan">Section 3.7: Operations that return NaN</a></li>
-    <li class="sidebar-header-3"><a href="#section-3.8:-math-library-functions-that-return-nan">Section 3.8: Math library functions that return NaN</a></li>
-    <li class="sidebar-header-2"><a href="#chapter-4:-comments">Chapter 4: Comments</a></li>
-    <li class="sidebar-header-3"><a href="#section-4.1:-using-commench1_20-copy-2">Section 4.1: Using Commench1_20 copy 2</a></li>
-    <li class="sidebar-header-3"><a href="#section-5.1:-measuring-time---console.time()-2">Section 5.1: Measuring time - console.time() 2</a></li>
-    <li class="sidebar-header-3"><a href="#section-5.2:-formatting-console-output-2">Section 5.2: Formatting console output 2</a></li>
-    <li class="sidebar-header-3"><a href="#section-5.3:-printing-to-a-browser&#x27;s-debugging-console-2">Section 5.3: Printing to a browser&#x27;s debugging console 2</a></li>
-    <li class="sidebar-header-3"><a href="#section-5.4:-including-a-stack-trace-when-logging---console.trace()-2">Section 5.4: Including a stack trace when logging - console.trace() 2</a></li>
-    <li class="sidebar-header-3"><a href="#section-5.5:-tabulating-values---console.table()-2">Section 5.5: Tabulating values - console.table() 2</a></li>
-    <li class="sidebar-header-3"><a href="#section-5.6:-counting---console.count()-2">Section 5.6: Counting - console.count() 2</a></li>
-    <li class="sidebar-header-3"><a href="#section-5.7:-clearing-the-console---console.clear()-3">Section 5.7: Clearing the console - console.clear() 3</a></li>
-    <li class="sidebar-header-3"><a href="#section-5.8:-displaying-objects-and-xml-interactively---console.dir(),-console.dirxml()-3">Section 5.8: Displaying objects and XML interactively - console.dir(), console.dirxml() 3</a></li>
-    <li class="sidebar-header-3"><a href="#section-5.9:-debugging-with-assertions---console.assert()">Section 5.9: Debugging with assertions - console.assert()</a></li>
-    <li class="sidebar-header-2"><a href="#chapter-6:-datatypes-in-javascript-3">Chapter 6: Datatypes in JavaScript 3</a></li>
-    <li class="sidebar-header-3"><a href="#section-6.1:-typeof">Section 6.1: typeof</a></li>
-    <li class="sidebar-header-3"><a href="#section-6.2:-finding-an-object&#x27;s-class-3">Section 6.2: Finding an object&#x27;s class 3</a></li>
-    <li class="sidebar-header-3"><a href="#section-6.3:-getting-object-type-by-constructor-name-3">Section 6.3: Getting object type by constructor name 3</a></li>
-    <li class="sidebar-header-2"><a href="#chapter-7:-strings">Chapter 7: Strings</a></li>
-    <li class="sidebar-header-3"><a href="#section-7.1:-basic-info-and-string-concatenation-3">Section 7.1: Basic Info and String Concatenation 3</a></li>
-    <li class="sidebar-header-3"><a href="#section-7.2:-reverse-string-3">Section 7.2: Reverse String 3</a></li>
-    <li class="sidebar-header-3"><a href="#section-7.3:-comparing-strings-lexicographically-3">Section 7.3: Comparing Strings Lexicographically 3</a></li>
-    <li class="sidebar-header-3"><a href="#section-7.4:-access-character-at-index-in-string">Section 7.4: Access character at index in string</a></li>
-    <li class="sidebar-header-3"><a href="#section-7.5:-escaping-quotes-4">Section 7.5: Escaping quotes 4</a></li>
-    <li class="sidebar-header-3"><a href="#section-7.6:-word-counter-4">Section 7.6: Word Counter 4</a></li>
-    <li class="sidebar-header-3"><a href="#section-7.7:-trim-whitespace-4">Section 7.7: Trim whitespace 4</a></li>
-    <li class="sidebar-header-3"><a href="#section-7.8:-splitting-a-string-into-an-array-4">Section 7.8: Splitting a string into an array 4</a></li>
-    <li class="sidebar-header-3"><a href="#section-7.9:-strings-are-unicode-4">Section 7.9: Strings are unicode 4</a></li>
-    <li class="sidebar-header-3"><a href="#section-7.10:-detecting-a-string">Section 7.10: Detecting a string</a></li>
-    <li class="sidebar-header-3"><a href="#section-7.11:-substrings-with-slice">Section 7.11: Substrings with slice</a></li>
-    <li class="sidebar-header-3"><a href="#section-7.12:-character-code-4">Section 7.12: Character code 4</a></li>
-    <li class="sidebar-header-3"><a href="#section-7.13:-string-representations-of-numbers">Section 7.13: String Representations of Numbers</a></li>
-    <li class="sidebar-header-3"><a href="#section-7.14:-string-find-and-replace-functions-4">Section 7.14: String Find and Replace Functions 4</a></li>
-    <li class="sidebar-header-3"><a href="#section-7.15:-find-the-index-of-a-substring-inside-a-string-4">Section 7.15: Find the index of a substring inside a string 4</a></li>
-    <li class="sidebar-header-3"><a href="#section-7.16:-string-to-upper-case-4">Section 7.16: String to Upper Case 4</a></li>
-    <li class="sidebar-header-3"><a href="#section-7.17:-string-to-lower-case-4">Section 7.17: String to Lower Case 4</a></li>
-    <li class="sidebar-header-3"><a href="#section-7.18:-repeat-a-string-4">Section 7.18: Repeat a String 4</a></li>
-    <li class="sidebar-header-2"><a href="#chapter-8:-date-4">Chapter 8: Date 4</a></li>
-    <li class="sidebar-header-3"><a href="#section-8.1:-create-a-new-date-object-4">Section 8.1: Create a new Date object 4</a></li>
-    <li class="sidebar-header-3"><a href="#section-8.2:-convert-to-a-string-format-4">Section 8.2: Convert to a string format 4</a></li>
-    <li class="sidebar-header-3"><a href="#section-8.3:-creating-a-date-from-utc-5">Section 8.3: Creating a Date from UTC 5</a></li>
-    <li class="sidebar-header-3"><a href="#section-8.4:-formatting-a-javascript-date-5">Section 8.4: Formatting a JavaScript date 5</a></li>
-    <li class="sidebar-header-3"><a href="#section-8.5:-get-the-number-of-milliseconds-elapsed-since-1-january-1970-00:00:00-utc-5">Section 8.5: Get the number of milliseconds elapsed since 1 January 1970 00:00:00 UTC 5</a></li>
-    <li class="sidebar-header-3"><a href="#section-8.6:-get-the-current-time-and-date-5">Section 8.6: Get the current time and date 5</a></li>
-    <li class="sidebar-header-3"><a href="#section-8.7:-increment-a-date-object-5">Section 8.7: Increment a Date Object 5</a></li>
-    <li class="sidebar-header-3"><a href="#section-8.8:-convert-to-json">Section 8.8: Convert to JSON</a></li>
-    <li class="sidebar-header-2"><a href="#chapter-9:-date-comparison-5">Chapter 9: Date Comparison 5</a></li>
-    <li class="sidebar-header-3"><a href="#section-9.1:-comparing-date-values-5">Section 9.1: Comparing Date values 5</a></li>
-    <li class="sidebar-header-3"><a href="#section-9.2:-date-dierence-calculation-5">Section 9.2: Date Dierence Calculation 5</a></li>
-    <li class="sidebar-header-2"><a href="#chapter-10:-comparison-operations">Chapter 10: Comparison Operations</a></li>
-    <li class="sidebar-header-3"><a href="#section-10.1:-abstract-equality-/-inequality-and-type-conversion-6">Section 10.1: Abstract equality / inequality and type conversion 6</a></li>
-    <li class="sidebar-header-3"><a href="#section-10.2:-nan-property-of-the-global-object-6">Section 10.2: NaN Property of the Global Object 6</a></li>
-    <li class="sidebar-header-3"><a href="#section-10.3:-short-circuiting-in-boolean-operators">Section 10.3: Short-circuiting in boolean operators</a></li>
-    <li class="sidebar-header-3"><a href="#section-10.4:-null-and-undefined">Section 10.4: Null and Undefined</a></li>
-    <li class="sidebar-header-3"><a href="#section-10.5:-abstract-equality-(&#x3D;&#x3D;)-6">Section 10.5: Abstract Equality (&#x3D;&#x3D;) 6</a></li>
-    <li class="sidebar-header-3"><a href="#section-10.6:-logic-operators-with-booleans-6">Section 10.6: Logic Operators with Booleans 6</a></li>
-    <li class="sidebar-header-3"><a href="#section-10.7:-automatic-type-conversions-6">Section 10.7: Automatic Type Conversions 6</a></li>
-    <li class="sidebar-header-3"><a href="#section-10.8:-logic-operators-with-non-boolean-values-(boolean-coercion)">Section 10.8: Logic Operators with Non-boolean values (boolean coercion)</a></li>
-    <li class="sidebar-header-3"><a href="#section-10.9:-empty-array">Section 10.9: Empty Array</a></li>
-    <li class="sidebar-header-3"><a href="#section-10.10:-equality-comparison-operations-6">Section 10.10: Equality comparison operations 6</a></li>
-    <li class="sidebar-header-3"><a href="#section-10.11:-relational-operators-(&lt;,-&lt;&#x3D;,&gt;,-&gt;&#x3D;)-7">Section 10.11: Relational operators (&lt;, &lt;&#x3D;,&gt;, &gt;&#x3D;) 7</a></li>
-    <li class="sidebar-header-3"><a href="#section-10.12:-inequality">Section 10.12: Inequality</a></li>
-    <li class="sidebar-header-3"><a href="#section-10.13:-list-of-comparison-operators-7">Section 10.13: List of Comparison Operators 7</a></li>
-    <li class="sidebar-header-3"><a href="#section-10.14:-grouping-multiple-logic-statements-7">Section 10.14: Grouping multiple logic statements 7</a></li>
-    <li class="sidebar-header-3"><a href="#section-10.15:-bit-fields-to-optimise-comparison-of-multi-state-data">Section 10.15: Bit fields to optimise comparison of multi state data</a></li>
-    <li class="sidebar-header-2"><a href="#chapter-11:-conditions">Chapter 11: Conditions</a></li>
-    <li class="sidebar-header-3"><a href="#section-11.1:-ternary-operators">Section 11.1: Ternary operators</a></li>
-    <li class="sidebar-header-3"><a href="#section-11.2:-switch-statement-7">Section 11.2: Switch statement 7</a></li>
-    <li class="sidebar-header-3"><a href="#section-11.3:-if-/-else-if-/-else-control">Section 11.3: If / Else If / Else Control</a></li>
-    <li class="sidebar-header-3"><a href="#section-11.4:-strategy-7">Section 11.4: Strategy 7</a></li>
-    <li class="sidebar-header-3"><a href="#section-11.5:-using-||-and-&amp;&amp;-short-circuiting">Section 11.5: Using || and &amp;&amp; short circuiting</a></li>
-    <li class="sidebar-header-2"><a href="#chapter-12:-arrays-8">Chapter 12: Arrays 8</a></li>
-    <li class="sidebar-header-3"><a href="#section-12.1:-converting-array-like-objects-to-arrays-8">Section 12.1: Converting Array-like Objects to Arrays 8</a></li>
-    <li class="sidebar-header-3"><a href="#section-12.2:-reducing-values-8">Section 12.2: Reducing values 8</a></li>
-    <li class="sidebar-header-3"><a href="#section-12.3:-mapping-values">Section 12.3: Mapping values</a></li>
-    <li class="sidebar-header-3"><a href="#section-12.4:-filtering-object-arrays-8">Section 12.4: Filtering Object Arrays 8</a></li>
-    <li class="sidebar-header-3"><a href="#section-12.5:-sorting-arrays">Section 12.5: Sorting Arrays</a></li>
-    <li class="sidebar-header-3"><a href="#section-12.6:-iteration-8">Section 12.6: Iteration 8</a></li>
-    <li class="sidebar-header-3"><a href="#section-12.7:-destructuring-an-array">Section 12.7: Destructuring an array</a></li>
-    <li class="sidebar-header-3"><a href="#section-12.8:-removing-duplicate-elements">Section 12.8: Removing duplicate elements</a></li>
-    <li class="sidebar-header-3"><a href="#section-12.9:-array-comparison-9">Section 12.9: Array comparison 9</a></li>
-    <li class="sidebar-header-3"><a href="#section-12.10:-reversing-arrays">Section 12.10: Reversing arrays</a></li>
-    <li class="sidebar-header-3"><a href="#section-12.11:-shallow-cloning-an-array-9">Section 12.11: Shallow cloning an array 9</a></li>
-    <li class="sidebar-header-3"><a href="#section-12.12:-concatenating-arrays">Section 12.12: Concatenating Arrays</a></li>
-    <li class="sidebar-header-3"><a href="#section-12.13:-merge-two-array-as-key-value-pair">Section 12.13: Merge two array as key value pair</a></li>
-    <li class="sidebar-header-3"><a href="#section-12.14:-array-spread-/-rest-9">Section 12.14: Array spread / rest 9</a></li>
-    <li class="sidebar-header-3"><a href="#section-12.15:-filtering-values">Section 12.15: Filtering values</a></li>
-    <li class="sidebar-header-3"><a href="#section-12.16:-searching-an-array-9">Section 12.16: Searching an Array 9</a></li>
-    <li class="sidebar-header-3"><a href="#section-12.17:-convert-a-string-to-an-array-10">Section 12.17: Convert a String to an Array 10</a></li>
-    <li class="sidebar-header-3"><a href="#section-12.18:-removing-items-from-an-array-10">Section 12.18: Removing items from an array 10</a></li>
-    <li class="sidebar-header-3"><a href="#section-12.19:-removing-all-elements0">Section 12.19: Removing all elements0</a></li>
-    <li class="sidebar-header-3"><a href="#section-12.20:-finding-the-minimum-or-maximum-element0">Section 12.20: Finding the minimum or maximum element0</a></li>
-    <li class="sidebar-header-3"><a href="#section-12.21:-standard-array-initialization0">Section 12.21: Standard array initialization0</a></li>
-    <li class="sidebar-header-3"><a href="#section-12.22:-joining-array-elements-in-a-string-10">Section 12.22: Joining array elements in a string 10</a></li>
-    <li class="sidebar-header-3"><a href="#section-12.23:-removing/adding-elements-using-splice()-10">Section 12.23: Removing/Adding elements using splice() 10</a></li>
-    <li class="sidebar-header-3"><a href="#section-12.24:-the-entries()-method-10">Section 12.24: The entries() method 10</a></li>
-    <li class="sidebar-header-3"><a href="#section-12.25:-remove-value-from-array0">Section 12.25: Remove value from array0</a></li>
-    <li class="sidebar-header-3"><a href="#section-12.26:-flattening-arrays-10">Section 12.26: Flattening Arrays 10</a></li>
-    <li class="sidebar-header-3"><a href="#section-12.27:-append-/-prepend-items-to-array-10">Section 12.27: Append / Prepend items to Array 10</a></li>
-    <li class="sidebar-header-3"><a href="#section-12.28:-object-keys-and-values-to-array-10">Section 12.28: Object keys and values to array 10</a></li>
-    <li class="sidebar-header-3"><a href="#section-12.29:-logical-connective-of-values-10">Section 12.29: Logical connective of values 10</a></li>
-    <li class="sidebar-header-3"><a href="#section-12.30:-checking-if-an-object-is-an-array0">Section 12.30: Checking if an object is an Array0</a></li>
-    <li class="sidebar-header-3"><a href="#section-12.31:-insert-an-item-into-an-array-at-a-specific-index-10">Section 12.31: Insert an item into an array at a specific index 10</a></li>
-    <li class="sidebar-header-3"><a href="#section-12.32:-sorting-multidimensional-array0">Section 12.32: Sorting multidimensional array0</a></li>
-    <li class="sidebar-header-3"><a href="#section-12.33:-test-all-array-items-for-equality-11">Section 12.33: Test all array items for equality 11</a></li>
-    <li class="sidebar-header-3"><a href="#section-12.34:-copy-part-of-an-array1">Section 12.34: Copy part of an Array1</a></li>
-    <li class="sidebar-header-2"><a href="#chapter-13:-objects-11">Chapter 13: Objects 11</a></li>
-    <li class="sidebar-header-3"><a href="#section-13.1:-shallow-cloning1">Section 13.1: Shallow cloning1</a></li>
-    <li class="sidebar-header-3"><a href="#section-13.2:-object.freeze1">Section 13.2: Object.freeze1</a></li>
-    <li class="sidebar-header-3"><a href="#section-13.3:-object-cloning-11">Section 13.3: Object cloning 11</a></li>
-    <li class="sidebar-header-3"><a href="#section-13.4:-object-properties-iteration-11">Section 13.4: Object properties iteration 11</a></li>
-    <li class="sidebar-header-3"><a href="#section-13.5:-object.assign1">Section 13.5: Object.assign1</a></li>
-    <li class="sidebar-header-3"><a href="#section-13.6:-object-rest/spread-()-11">Section 13.6: Object rest/spread () 11</a></li>
-    <li class="sidebar-header-3"><a href="#section-13.7:-object.defineproperty1">Section 13.7: Object.defineProperty1</a></li>
-    <li class="sidebar-header-3"><a href="#section-13.8:-accesor-properties-(get-and-set)1">Section 13.8: Accesor properties (get and set)1</a></li>
-    <li class="sidebar-header-3"><a href="#section-13.9:-dynamic-/-variable-property-names-11">Section 13.9: Dynamic / variable property names 11</a></li>
-    <li class="sidebar-header-3"><a href="#section-13.10:-arrays-are-objects-11">Section 13.10: Arrays are Objects 11</a></li>
-    <li class="sidebar-header-3"><a href="#section-13.11:-object.seal1">Section 13.11: Object.seal1</a></li>
-    <li class="sidebar-header-3"><a href="#section-13.12:-convert-object&#x27;s-values-to-array-12">Section 13.12: Convert object&#x27;s values to array 12</a></li>
-    <li class="sidebar-header-3"><a href="#section-13.13:-retrieving-properties-from-an-object-12">Section 13.13: Retrieving properties from an object 12</a></li>
-    <li class="sidebar-header-3"><a href="#section-13.14:-read-only-property-12">Section 13.14: Read-Only property 12</a></li>
-    <li class="sidebar-header-3"><a href="#section-13.15:-non-enumerable-property2">Section 13.15: Non enumerable property2</a></li>
-    <li class="sidebar-header-3"><a href="#section-13.16:-lock-property-description-12">Section 13.16: Lock property description 12</a></li>
-    <li class="sidebar-header-3"><a href="#section-13.17:-object.getownpropertydescriptor-12">Section 13.17: Object.getOwnPropertyDescriptor 12</a></li>
-    <li class="sidebar-header-3"><a href="#section-13.18:-descriptors-and-named-properties2">Section 13.18: Descriptors and Named Properties2</a></li>
-    <li class="sidebar-header-3"><a href="#section-13.19:-object.keys-12">Section 13.19: Object.keys 12</a></li>
-    <li class="sidebar-header-3"><a href="#section-13.20:-properties-with-special-characters-or-reserved-words-12">Section 13.20: Properties with special characters or reserved words 12</a></li>
-    <li class="sidebar-header-3"><a href="#section-13.21:-creating-an-iterable-object-12">Section 13.21: Creating an Iterable object 12</a></li>
-    <li class="sidebar-header-3"><a href="#section-13.22:-iterating-over-object-entries---object.entries()-12">Section 13.22: Iterating over Object entries - Object.entries() 12</a></li>
-    <li class="sidebar-header-3"><a href="#section-13.23:-object.values()-12">Section 13.23: Object.values() 12</a></li>
-    <li class="sidebar-header-2"><a href="#chapter-14:-arithmetic-(math)-12">Chapter 14: Arithmetic (Math) 12</a></li>
-    <li class="sidebar-header-3"><a href="#section-14.1:-constants2">Section 14.1: Constants2</a></li>
-    <li class="sidebar-header-3"><a href="#section-14.2:-remainder-/-modulus-(%)-12">Section 14.2: Remainder / Modulus (%) 12</a></li>
-    <li class="sidebar-header-3"><a href="#section-14.3:-rounding3">Section 14.3: Rounding3</a></li>
-    <li class="sidebar-header-3"><a href="#section-14.4:-trigonometry-13">Section 14.4: Trigonometry 13</a></li>
-    <li class="sidebar-header-3"><a href="#section-14.5:-bitwise-operators-13">Section 14.5: Bitwise operators 13</a></li>
-    <li class="sidebar-header-3"><a href="#section-14.6:-incrementing-(++)-13">Section 14.6: Incrementing (++) 13</a></li>
-    <li class="sidebar-header-3"><a href="#section-14.7:-exponentiation-(math.pow()-or-**)-13">Section 14.7: Exponentiation (Math.pow() or **) 13</a></li>
-    <li class="sidebar-header-3"><a href="#section-14.8:-random-integers-and-floats3">Section 14.8: Random Integers and Floats3</a></li>
-    <li class="sidebar-header-3"><a href="#section-14.9:-addition-(+)-13">Section 14.9: Addition (+) 13</a></li>
-    <li class="sidebar-header-3"><a href="#section-14.10:-little-/-big-endian-for-typed-arrays-when-using-bitwise-operators3">Section 14.10: Little / Big endian for typed arrays when using bitwise operators3</a></li>
-    <li class="sidebar-header-3"><a href="#section-14.11:-get-random-between-two-numbers-13">Section 14.11: Get Random Between Two Numbers 13</a></li>
-    <li class="sidebar-header-3"><a href="#section-14.12:-simulating-events-with-dierent-probabilities-13">Section 14.12: Simulating events with dierent probabilities 13</a></li>
-    <li class="sidebar-header-3"><a href="#section-14.13:-subtraction-(-)-14">Section 14.13: Subtraction (-) 14</a></li>
-    <li class="sidebar-header-3"><a href="#section-14.14:-multiplication-(*)-14">Section 14.14: Multiplication (*) 14</a></li>
-    <li class="sidebar-header-3"><a href="#section-14.15:-getting-maximum-and-minimum-14">Section 14.15: Getting maximum and minimum 14</a></li>
-    <li class="sidebar-header-3"><a href="#section-14.16:-restrict-number-to-min/max-range-14">Section 14.16: Restrict Number to Min/Max Range 14</a></li>
-    <li class="sidebar-header-3"><a href="#section-14.17:-ceiling-and-floor-14">Section 14.17: Ceiling and Floor 14</a></li>
-    <li class="sidebar-header-3"><a href="#section-14.18:-getting-roots-of-a-number4">Section 14.18: Getting roots of a number4</a></li>
-    <li class="sidebar-header-3"><a href="#section-14.19:-random-with-gaussian-distribution4">Section 14.19: Random with gaussian distribution4</a></li>
-    <li class="sidebar-header-3"><a href="#section-14.20:-math.atan2-to-find-direction-14">Section 14.20: Math.atan2 to find direction 14</a></li>
-    <li class="sidebar-header-3"><a href="#section-14.21:-sin-&amp;-cos-to-create-a-vector-given-direction-&amp;-dista-14">Section 14.21: Sin &amp; Cos to create a vector given direction &amp; dista 14</a></li>
-    <li class="sidebar-header-3"><a href="#section-14.22:-math.hypot-14">Section 14.22: Math.hypot 14</a></li>
-    <li class="sidebar-header-3"><a href="#section-14.23:-periodic-functions-using-math.sin4">Section 14.23: Periodic functions using Math.sin4</a></li>
-    <li class="sidebar-header-3"><a href="#section-14.24:-division-(/)-14">Section 14.24: Division (/) 14</a></li>
-    <li class="sidebar-header-3"><a href="#section-14.25:-decrementing-(--)-14">Section 14.25: Decrementing (--) 14</a></li>
-    <li class="sidebar-header-2"><a href="#chapter-15:-bitwise-operators4">Chapter 15: Bitwise operators4</a></li>
-    <li class="sidebar-header-3"><a href="#section-15.1:-bitwise-operators-14">Section 15.1: Bitwise operators 14</a></li>
-    <li class="sidebar-header-3"><a href="#section-15.2:-shift-operators-15">Section 15.2: Shift Operators 15</a></li>
-    <li class="sidebar-header-2"><a href="#chapter-16:-constructor-functions5">Chapter 16: Constructor functions5</a></li>
-    <li class="sidebar-header-3"><a href="#section-16.1:-declaring-a-constructor-function-15">Section 16.1: Declaring a constructor function 15</a></li>
-    <li class="sidebar-header-2"><a href="#chapter-17:-declarations-and-assignments-15">Chapter 17: Declarations and Assignments 15</a></li>
-    <li class="sidebar-header-3"><a href="#section-17.1:-modifying-constants5">Section 17.1: Modifying constants5</a></li>
-    <li class="sidebar-header-3"><a href="#section-17.2:-declaring-and-initializing-constants-15">Section 17.2: Declaring and initializing constants 15</a></li>
-    <li class="sidebar-header-3"><a href="#section-17.3:-declaration5">Section 17.3: Declaration5</a></li>
-    <li class="sidebar-header-3"><a href="#section-17.4:-undefined-15">Section 17.4: Undefined 15</a></li>
-    <li class="sidebar-header-3"><a href="#section-17.5:-data-types5">Section 17.5: Data Types5</a></li>
-    <li class="sidebar-header-3"><a href="#section-17.6:-mathematic-operations-and-assignment-15">Section 17.6: Mathematic operations and assignment 15</a></li>
-    <li class="sidebar-header-3"><a href="#section-17.7:-assignment5">Section 17.7: Assignment5</a></li>
-    <li class="sidebar-header-2"><a href="#chapter-18:-loops-15">Chapter 18: Loops 15</a></li>
-    <li class="sidebar-header-3"><a href="#section-18.1:-standard-&quot;for&quot;-loops5">Section 18.1: Standard &quot;for&quot; loops5</a></li>
-    <li class="sidebar-header-3"><a href="#section-18.2:-&quot;for-of&quot;-loop-15">Section 18.2: &quot;for of&quot; loop 15</a></li>
-    <li class="sidebar-header-3"><a href="#section-18.3:-&quot;for-in&quot;-loop-15">Section 18.3: &quot;for in&quot; loop 15</a></li>
-    <li class="sidebar-header-3"><a href="#section-18.4:-&quot;while&quot;-loops-15">Section 18.4: &quot;while&quot; Loops 15</a></li>
-    <li class="sidebar-header-3"><a href="#section-18.5:-&quot;continue&quot;-a-loop-16">Section 18.5: &quot;continue&quot; a loop 16</a></li>
-    <li class="sidebar-header-3"><a href="#section-18.6:-break-specific-nested-loops-16">Section 18.6: Break specific nested loops 16</a></li>
-    <li class="sidebar-header-3"><a href="#section-18.7:-&quot;do-while&quot;-loop6">Section 18.7: &quot;do while&quot; loop6</a></li>
-    <li class="sidebar-header-3"><a href="#section-18.8:-break-and-continue-labels-16">Section 18.8: Break and continue labels 16</a></li>
-    <li class="sidebar-header-2"><a href="#chapter-19:-functions-16">Chapter 19: Functions 16</a></li>
-    <li class="sidebar-header-3"><a href="#section-19.1:-function-scoping6">Section 19.1: Function Scoping6</a></li>
-    <li class="sidebar-header-3"><a href="#section-19.2:-currying-16">Section 19.2: Currying 16</a></li>
-    <li class="sidebar-header-3"><a href="#section-19.3:-immediately-invoked-function-expressions6">Section 19.3: Immediately Invoked Function Expressions6</a></li>
-    <li class="sidebar-header-3"><a href="#section-19.4:-named-functions-16">Section 19.4: Named Functions 16</a></li>
-    <li class="sidebar-header-3"><a href="#section-19.5:-binding-&#x60;this&#x60;-and-arguments6">Section 19.5: Binding &#x60;this&#x60; and arguments6</a></li>
-    <li class="sidebar-header-3"><a href="#section-19.6:-functions-with-an-unknown-number-of-arguments-(variadic-functions)7">Section 19.6: Functions with an Unknown Number of Arguments (variadic functions)7</a></li>
-    <li class="sidebar-header-3"><a href="#section-19.7:-anonymous-function-17">Section 19.7: Anonymous Function 17</a></li>
-    <li class="sidebar-header-3"><a href="#section-19.8:-default-parameters7">Section 19.8: Default parameters7</a></li>
-    <li class="sidebar-header-3"><a href="#section-19.9:-call-and-apply-17">Section 19.9: Call and apply 17</a></li>
-    <li class="sidebar-header-3"><a href="#section-19.10:-partial-application-17">Section 19.10: Partial Application 17</a></li>
-    <li class="sidebar-header-3"><a href="#section-19.11:-passing-arguments-by-reference-or-value-17">Section 19.11: Passing arguments by reference or value 17</a></li>
-    <li class="sidebar-header-3"><a href="#section-19.12:-function-arguments,-&quot;arguments&quot;-object,-rest-and-spread-parameters-17">Section 19.12: Function Arguments, &quot;arguments&quot; object, rest and spread parameters 17</a></li>
-    <li class="sidebar-header-3"><a href="#section-19.13:-function-composition-17">Section 19.13: Function Composition 17</a></li>
-    <li class="sidebar-header-3"><a href="#section-19.14:-get-the-name-of-a-function-object-18">Section 19.14: Get the name of a function object 18</a></li>
-    <li class="sidebar-header-3"><a href="#section-19.15:-recursive-function-18">Section 19.15: Recursive Function 18</a></li>
-    <li class="sidebar-header-3"><a href="#section-19.16:-using-the-return-statement8">Section 19.16: Using the Return Statement8</a></li>
-    <li class="sidebar-header-3"><a href="#section-19.17:-functions-as-a-variable-18">Section 19.17: Functions as a variable 18</a></li>
-    <li class="sidebar-header-2"><a href="#chapter-20:-functional-javascript-18">Chapter 20: Functional JavaScript 18</a></li>
-    <li class="sidebar-header-3"><a href="#section-20.1:-higher-order-functions8">Section 20.1: Higher-Order Functions8</a></li>
-    <li class="sidebar-header-3"><a href="#section-20.2:-identity-monad-18">Section 20.2: Identity Monad 18</a></li>
-    <li class="sidebar-header-3"><a href="#section-20.3:-pure-functions-18">Section 20.3: Pure Functions 18</a></li>
-    <li class="sidebar-header-3"><a href="#section-20.4:-accepting-functions-as-arguments8">Section 20.4: Accepting Functions as Arguments8</a></li>
-</ul>
-      </div>
-      <div class="span9 main"><p><style>
- /<em> Temporarly colors </em>/
-h2{color:green;}
-h3{color:yellow;}
-h{color:red;}
-b{color:orange; text-decoration:underline;}
-/<em> practice mode: </em>/
-/<em> h{color:white;} </em>/</p>
-<p> </style></p>
-<h2 id="chapter-1:-getting-started-with-javascript"><a class="header-link" href="#chapter-1:-getting-started-with-javascript"></a>Chapter 1: Getting started with JavaScript</h2>
-<h3 id="section-1.1:-using-console.log()"><a class="header-link" href="#section-1.1:-using-console.log()"></a>Section 1.1: Using console.log()</h3>
-<h3 id="section-1.2:-using-the-dom-api"><a class="header-link" href="#section-1.2:-using-the-dom-api"></a>Section 1.2: Using the DOM API</h3>
-<h3 id="section-1.3:-using-window.alert()"><a class="header-link" href="#section-1.3:-using-window.alert()"></a>Section 1.3: Using window.alert()</h3>
-<h3 id="section-1.4:-using-window.prompt()"><a class="header-link" href="#section-1.4:-using-window.prompt()"></a>Section 1.4: Using window.prompt()</h3>
-<h3 id="section-1.5:-using-window.confirm()"><a class="header-link" href="#section-1.5:-using-window.confirm()"></a>Section 1.5: Using window.confirm()</h3>
-<h3 id="section-1.6:-using-the-dom-api-(with-graphical-text:-canvas,-svg,-or-image-file)"><a class="header-link" href="#section-1.6:-using-the-dom-api-(with-graphical-text:-canvas,-svg,-or-image-file)"></a>Section 1.6: Using the DOM API (with graphical text: Canvas, SVG, or image file)</h3>
-<h2 id="chapter-2:-javascript-variables"><a class="header-link" href="#chapter-2:-javascript-variables"></a>Chapter 2: JavaScript Variables</h2>
-<h3 id="section-2.1:-defining-a-variable"><a class="header-link" href="#section-2.1:-defining-a-variable"></a>Section 2.1: Defining a Variable</h3>
-<h3 id="section-2.2:-using-a-variable"><a class="header-link" href="#section-2.2:-using-a-variable"></a>Section 2.2: Using a Variable</h3>
-<h3 id="section-2.3:-types-of-variables"><a class="header-link" href="#section-2.3:-types-of-variables"></a>Section 2.3: Types of Variables</h3>
-<h3 id="section-2.4:-arrays-and-objects"><a class="header-link" href="#section-2.4:-arrays-and-objects"></a>Section 2.4: Arrays and Objects</h3>
-<h2 id="chapter-3:-built-in-constants"><a class="header-link" href="#chapter-3:-built-in-constants"></a>Chapter 3: Built-in Constants</h2>
-<hr>
-<h3 id="section-3.1:-null"><a class="header-link" href="#section-3.1:-null"></a>Section 3.1: null</h3>
-<ul class="list">
-<li><p><code>null</code> is used for representing the intentional <h>absence</h> of an object value and is a primitive value. Unlike undefined,</p>
-</li>
-<li><p>It is not a <h>property</h> of the global object.</p>
-</li>
-<li>Explain by example: <code>null</code> is equal to <code>undefined</code> but not identical to it?</li>
-<li><code>typeof null;</code> // &#39;<h>object</h>&#39;</li>
-<li>To properly check if a value is <code>null</code>:</li>
-</ul>
-<p><code>var a=null;</code></p>
-<p><code>if(a</code> <h>===</h> <code>null); // true</code></p>
-<hr>
-<h3 id="section-3.2:-testing-for-nan-using-isnan()"><a class="header-link" href="#section-3.2:-testing-for-nan-using-isnan()"></a>Section 3.2: Testing for NaN using isNaN()</h3>
-<ul class="list">
-<li><p>The global function <code>isNaN()</code> can be used to check if a certain value or expression evaluates to NaN but it not preferred. Instead, use <h>Number</h>.IsNaN().</p>
-</li>
-<li><p>Guss the result and write it inside the comments below. Here we will use <code>window.isNaN()</code> global function:</p>
-</li>
-</ul>
-<pre>
+ <div class="container-fluid">
+  <div class="row-fluid">
+   <div class="span3">
+    <ul class="nav nav-list">
+     <li class="sidebar-header-2"><a href="#chapter-1:-getting-started-with-javascript">Chapter 1: Getting started
+       with JavaScript</a></li>
+     <li class="sidebar-header-3"><a href="#section-1.1:-using-console.log()">Section 1.1: Using console.log()</a>
+     </li>
+     <li class="sidebar-header-3"><a href="#section-1.2:-using-the-dom-api">Section 1.2: Using the DOM API</a></li>
+     <li class="sidebar-header-3"><a href="#section-1.3:-using-window.alert()">Section 1.3: Using
+       window.alert()</a></li>
+     <li class="sidebar-header-3"><a href="#section-1.4:-using-window.prompt()">Section 1.4: Using
+       window.prompt()</a></li>
+     <li class="sidebar-header-3"><a href="#section-1.5:-using-window.confirm()">Section 1.5: Using
+       window.confirm()</a></li>
+     <li class="sidebar-header-3"><a
+       href="#section-1.6:-using-the-dom-api-(with-graphical-text:-canvas,-svg,-or-image-file)">Section 1.6:
+       Using the DOM API (with graphical text: Canvas, SVG, or image file)</a></li>
+     <li class="sidebar-header-2"><a href="#chapter-2:-javascript-variables">Chapter 2: JavaScript Variables</a>
+     </li>
+     <li class="sidebar-header-3"><a href="#section-2.1:-defining-a-variable">Section 2.1: Defining a Variable</a>
+     </li>
+     <li class="sidebar-header-3"><a href="#section-2.2:-using-a-variable">Section 2.2: Using a Variable</a></li>
+     <li class="sidebar-header-3"><a href="#section-2.3:-types-of-variables">Section 2.3: Types of Variables</a>
+     </li>
+     <li class="sidebar-header-3"><a href="#section-2.4:-arrays-and-objects">Section 2.4: Arrays and Objects</a>
+     </li>
+     <li class="sidebar-header-2"><a href="#chapter-3:-built-in-constants">Chapter 3: Built-in Constants</a></li>
+     <li class="sidebar-header-3"><a href="#section-3.1:-null">Section 3.1: null</a></li>
+     <li class="sidebar-header-3"><a href="#section-3.2:-testing-for-nan-using-isnan()">Section 3.2: Testing for
+       NaN using isNaN()</a></li>
+     <li class="sidebar-header-3"><a href="#section-3.3:-nan">Section 3.3: NaN</a></li>
+     <li class="sidebar-header-3"><a href="#section-3.4:-&#x60;undefined&#x60;-and-&#x60;null&#x60;">Section 3.4:
+       &#x60;undefined&#x60; and &#x60;null&#x60;</a></li>
+     <li class="sidebar-header-3"><a href="#section-3.5:-infinity-and--infinity">Section 3.5: Infinity and
+       -Infinity</a></li>
+     <li class="sidebar-header-3"><a href="#section-3.6:-number-constants">Section 3.6: Number constants</a></li>
+     <li class="sidebar-header-3"><a href="#section-3.7:-operations-that-return-nan">Section 3.7: Operations that
+       return NaN</a></li>
+     <li class="sidebar-header-3"><a href="#section-3.8:-math-library-functions-that-return-nan">Section 3.8: Math
+       library functions that return NaN</a></li>
+     <li class="sidebar-header-2"><a href="#chapter-4:-comments">Chapter 4: Comments</a></li>
+     <li class="sidebar-header-3"><a href="#section-4.1:-using-commench1_20-copy-2">Section 4.1: Using Commench1_20
+       copy 2</a></li>
+     <li class="sidebar-header-3"><a href="#section-5.1:-measuring-time---console.time()-2">Section 5.1: Measuring
+       time - console.time() 2</a></li>
+     <li class="sidebar-header-3"><a href="#section-5.2:-formatting-console-output-2">Section 5.2: Formatting
+       console output 2</a></li>
+     <li class="sidebar-header-3"><a href="#section-5.3:-printing-to-a-browser&#x27;s-debugging-console-2">Section
+       5.3: Printing to a browser&#x27;s debugging console 2</a></li>
+     <li class="sidebar-header-3"><a
+       href="#section-5.4:-including-a-stack-trace-when-logging---console.trace()-2">Section 5.4: Including a
+       stack trace when logging - console.trace() 2</a></li>
+     <li class="sidebar-header-3"><a href="#section-5.5:-tabulating-values---console.table()-2">Section 5.5:
+       Tabulating values - console.table() 2</a></li>
+     <li class="sidebar-header-3"><a href="#section-5.6:-counting---console.count()-2">Section 5.6: Counting -
+       console.count() 2</a></li>
+     <li class="sidebar-header-3"><a href="#section-5.7:-clearing-the-console---console.clear()-3">Section 5.7:
+       Clearing the console - console.clear() 3</a></li>
+     <li class="sidebar-header-3"><a
+       href="#section-5.8:-displaying-objects-and-xml-interactively---console.dir(),-console.dirxml()-3">Section
+       5.8: Displaying objects and XML interactively - console.dir(), console.dirxml() 3</a></li>
+     <li class="sidebar-header-3"><a href="#section-5.9:-debugging-with-assertions---console.assert()">Section 5.9:
+       Debugging with assertions - console.assert()</a></li>
+     <li class="sidebar-header-2"><a href="#chapter-6:-datatypes-in-javascript-3">Chapter 6: Datatypes in
+       JavaScript 3</a></li>
+     <li class="sidebar-header-3"><a href="#section-6.1:-typeof">Section 6.1: typeof</a></li>
+     <li class="sidebar-header-3"><a href="#section-6.2:-finding-an-object&#x27;s-class-3">Section 6.2: Finding an
+       object&#x27;s class 3</a></li>
+     <li class="sidebar-header-3"><a href="#section-6.3:-getting-object-type-by-constructor-name-3">Section 6.3:
+       Getting object type by constructor name 3</a></li>
+     <li class="sidebar-header-2"><a href="#chapter-7:-strings">Chapter 7: Strings</a></li>
+     <li class="sidebar-header-3"><a href="#section-7.1:-basic-info-and-string-concatenation-3">Section 7.1: Basic
+       Info and String Concatenation 3</a></li>
+     <li class="sidebar-header-3"><a href="#section-7.2:-reverse-string-3">Section 7.2: Reverse String 3</a></li>
+     <li class="sidebar-header-3"><a href="#section-7.3:-comparing-strings-lexicographically-3">Section 7.3:
+       Comparing Strings Lexicographically 3</a></li>
+     <li class="sidebar-header-3"><a href="#section-7.4:-access-character-at-index-in-string">Section 7.4: Access
+       character at index in string</a></li>
+     <li class="sidebar-header-3"><a href="#section-7.5:-escaping-quotes-4">Section 7.5: Escaping quotes 4</a></li>
+     <li class="sidebar-header-3"><a href="#section-7.6:-word-counter-4">Section 7.6: Word Counter 4</a></li>
+     <li class="sidebar-header-3"><a href="#section-7.7:-trim-whitespace-4">Section 7.7: Trim whitespace 4</a></li>
+     <li class="sidebar-header-3"><a href="#section-7.8:-splitting-a-string-into-an-array-4">Section 7.8: Splitting
+       a string into an array 4</a></li>
+     <li class="sidebar-header-3"><a href="#section-7.9:-strings-are-unicode-4">Section 7.9: Strings are unicode
+       4</a></li>
+     <li class="sidebar-header-3"><a href="#section-7.10:-detecting-a-string">Section 7.10: Detecting a string</a>
+     </li>
+     <li class="sidebar-header-3"><a href="#section-7.11:-substrings-with-slice">Section 7.11: Substrings with
+       slice</a></li>
+     <li class="sidebar-header-3"><a href="#section-7.12:-character-code-4">Section 7.12: Character code 4</a></li>
+     <li class="sidebar-header-3"><a href="#section-7.13:-string-representations-of-numbers">Section 7.13: String
+       Representations of Numbers</a></li>
+     <li class="sidebar-header-3"><a href="#section-7.14:-string-find-and-replace-functions-4">Section 7.14: String
+       Find and Replace Functions 4</a></li>
+     <li class="sidebar-header-3"><a href="#section-7.15:-find-the-index-of-a-substring-inside-a-string-4">Section
+       7.15: Find the index of a substring inside a string 4</a></li>
+     <li class="sidebar-header-3"><a href="#section-7.16:-string-to-upper-case-4">Section 7.16: String to Upper
+       Case 4</a></li>
+     <li class="sidebar-header-3"><a href="#section-7.17:-string-to-lower-case-4">Section 7.17: String to Lower
+       Case 4</a></li>
+     <li class="sidebar-header-3"><a href="#section-7.18:-repeat-a-string-4">Section 7.18: Repeat a String 4</a>
+     </li>
+     <li class="sidebar-header-2"><a href="#chapter-8:-date-4">Chapter 8: Date 4</a></li>
+     <li class="sidebar-header-3"><a href="#section-8.1:-create-a-new-date-object-4">Section 8.1: Create a new Date
+       object 4</a></li>
+     <li class="sidebar-header-3"><a href="#section-8.2:-convert-to-a-string-format-4">Section 8.2: Convert to a
+       string format 4</a></li>
+     <li class="sidebar-header-3"><a href="#section-8.3:-creating-a-date-from-utc-5">Section 8.3: Creating a Date
+       from UTC 5</a></li>
+     <li class="sidebar-header-3"><a href="#section-8.4:-formatting-a-javascript-date-5">Section 8.4: Formatting a
+       JavaScript date 5</a></li>
+     <li class="sidebar-header-3"><a
+       href="#section-8.5:-get-the-number-of-milliseconds-elapsed-since-1-january-1970-00:00:00-utc-5">Section
+       8.5: Get the number of milliseconds elapsed since 1 January 1970 00:00:00 UTC 5</a></li>
+     <li class="sidebar-header-3"><a href="#section-8.6:-get-the-current-time-and-date-5">Section 8.6: Get the
+       current time and date 5</a></li>
+     <li class="sidebar-header-3"><a href="#section-8.7:-increment-a-date-object-5">Section 8.7: Increment a Date
+       Object 5</a></li>
+     <li class="sidebar-header-3"><a href="#section-8.8:-convert-to-json">Section 8.8: Convert to JSON</a></li>
+     <li class="sidebar-header-2"><a href="#chapter-9:-date-comparison-5">Chapter 9: Date Comparison 5</a></li>
+     <li class="sidebar-header-3"><a href="#section-9.1:-comparing-date-values-5">Section 9.1: Comparing Date
+       values 5</a></li>
+     <li class="sidebar-header-3"><a href="#section-9.2:-date-dierence-calculation-5">Section 9.2: Date Dierence
+       Calculation 5</a></li>
+     <li class="sidebar-header-2"><a href="#chapter-10:-comparison-operations">Chapter 10: Comparison
+       Operations</a></li>
+     <li class="sidebar-header-3"><a href="#section-10.1:-abstract-equality-/-inequality-and-type-conversion-6">Section
+       10.1: Abstract equality
+       / inequality and type conversion 6</a></li>
+     <li class="sidebar-header-3"><a href="#section-10.2:-nan-property-of-the-global-object-6">Section 10.2: NaN
+       Property of the Global Object 6</a></li>
+     <li class="sidebar-header-3"><a href="#section-10.3:-short-circuiting-in-boolean-operators">Section 10.3:
+       Short-circuiting in boolean operators</a></li>
+     <li class="sidebar-header-3"><a href="#section-10.4:-null-and-undefined">Section 10.4: Null and Undefined</a>
+     </li>
+     <li class="sidebar-header-3"><a href="#section-10.5:-abstract-equality-(&#x3D;&#x3D;)-6">Section 10.5:
+       Abstract Equality (&#x3D;&#x3D;) 6</a></li>
+     <li class="sidebar-header-3"><a href="#section-10.6:-logic-operators-with-booleans-6">Section 10.6: Logic
+       Operators with Booleans 6</a></li>
+     <li class="sidebar-header-3"><a href="#section-10.7:-automatic-type-conversions-6">Section 10.7: Automatic
+       Type Conversions 6</a></li>
+     <li class="sidebar-header-3"><a
+       href="#section-10.8:-logic-operators-with-non-boolean-values-(boolean-coercion)">Section 10.8: Logic
+       Operators with Non-boolean values (boolean coercion)</a></li>
+     <li class="sidebar-header-3"><a href="#section-10.9:-empty-array">Section 10.9: Empty Array</a></li>
+     <li class="sidebar-header-3"><a href="#section-10.10:-equality-comparison-operations-6">Section 10.10:
+       Equality comparison operations 6</a></li>
+     <li class="sidebar-header-3"><a
+       href="#section-10.11:-relational-operators-(&lt;,-&lt;&#x3D;,&gt;,-&gt;&#x3D;)-7">Section 10.11:
+       Relational operators (&lt;, &lt;&#x3D;,&gt;, &gt;&#x3D;) 7</a></li>
+     <li class="sidebar-header-3"><a href="#section-10.12:-inequality">Section 10.12: Inequality</a></li>
+     <li class="sidebar-header-3"><a href="#section-10.13:-list-of-comparison-operators-7">Section 10.13: List of
+       Comparison Operators 7</a></li>
+     <li class="sidebar-header-3"><a href="#section-10.14:-grouping-multiple-logic-statements-7">Section 10.14:
+       Grouping multiple logic statements 7</a></li>
+     <li class="sidebar-header-3"><a
+       href="#section-10.15:-bit-fields-to-optimise-comparison-of-multi-state-data">Section 10.15: Bit fields to
+       optimise comparison of multi state data</a></li>
+     <li class="sidebar-header-2"><a href="#chapter-11:-conditions">Chapter 11: Conditions</a></li>
+     <li class="sidebar-header-3"><a href="#section-11.1:-ternary-operators">Section 11.1: Ternary operators</a>
+     </li>
+     <li class="sidebar-header-3"><a href="#section-11.2:-switch-statement-7">Section 11.2: Switch statement 7</a>
+     </li>
+     <li class="sidebar-header-3"><a href="#section-11.3:-if-/-else-if-/-else-control">Section 11.3: If / Else If /
+       Else Control</a></li>
+     <li class="sidebar-header-3"><a href="#section-11.4:-strategy-7">Section 11.4: Strategy 7</a></li>
+     <li class="sidebar-header-3"><a href="#section-11.5:-using-||-and-&amp;&amp;-short-circuiting">Section 11.5:
+       Using || and &amp;&amp; short circuiting</a></li>
+     <li class="sidebar-header-2"><a href="#chapter-12:-arrays-8">Chapter 12: Arrays 8</a></li>
+     <li class="sidebar-header-3"><a href="#section-12.1:-converting-array-like-objects-to-arrays-8">Section 12.1:
+       Converting Array-like Objects to Arrays 8</a></li>
+     <li class="sidebar-header-3"><a href="#section-12.2:-reducing-values-8">Section 12.2: Reducing values 8</a>
+     </li>
+     <li class="sidebar-header-3"><a href="#section-12.3:-mapping-values">Section 12.3: Mapping values</a></li>
+     <li class="sidebar-header-3"><a href="#section-12.4:-filtering-object-arrays-8">Section 12.4: Filtering Object
+       Arrays 8</a></li>
+     <li class="sidebar-header-3"><a href="#section-12.5:-sorting-arrays">Section 12.5: Sorting Arrays</a></li>
+     <li class="sidebar-header-3"><a href="#section-12.6:-iteration-8">Section 12.6: Iteration 8</a></li>
+     <li class="sidebar-header-3"><a href="#section-12.7:-destructuring-an-array">Section 12.7: Destructuring an
+       array</a></li>
+     <li class="sidebar-header-3"><a href="#section-12.8:-removing-duplicate-elements">Section 12.8: Removing
+       duplicate elements</a></li>
+     <li class="sidebar-header-3"><a href="#section-12.9:-array-comparison-9">Section 12.9: Array comparison 9</a>
+     </li>
+     <li class="sidebar-header-3"><a href="#section-12.10:-reversing-arrays">Section 12.10: Reversing arrays</a>
+     </li>
+     <li class="sidebar-header-3"><a href="#section-12.11:-shallow-cloning-an-array-9">Section 12.11: Shallow
+       cloning an array 9</a></li>
+     <li class="sidebar-header-3"><a href="#section-12.12:-concatenating-arrays">Section 12.12: Concatenating
+       Arrays</a></li>
+     <li class="sidebar-header-3"><a href="#section-12.13:-merge-two-array-as-key-value-pair">Section 12.13: Merge
+       two array as key value pair</a></li>
+     <li class="sidebar-header-3"><a href="#section-12.14:-array-spread-/-rest-9">Section 12.14: Array spread /
+       rest 9</a></li>
+     <li class="sidebar-header-3"><a href="#section-12.15:-filtering-values">Section 12.15: Filtering values</a>
+     </li>
+     <li class="sidebar-header-3"><a href="#section-12.16:-searching-an-array-9">Section 12.16: Searching an Array
+       9</a></li>
+     <li class="sidebar-header-3"><a href="#section-12.17:-convert-a-string-to-an-array-10">Section 12.17: Convert
+       a String to an Array 10</a></li>
+     <li class="sidebar-header-3"><a href="#section-12.18:-removing-items-from-an-array-10">Section 12.18: Removing
+       items from an array 10</a></li>
+     <li class="sidebar-header-3"><a href="#section-12.19:-removing-all-elements0">Section 12.19: Removing all
+       elements0</a></li>
+     <li class="sidebar-header-3"><a href="#section-12.20:-finding-the-minimum-or-maximum-element0">Section 12.20:
+       Finding the minimum or maximum element0</a></li>
+     <li class="sidebar-header-3"><a href="#section-12.21:-standard-array-initialization0">Section 12.21: Standard
+       array initialization0</a></li>
+     <li class="sidebar-header-3"><a href="#section-12.22:-joining-array-elements-in-a-string-10">Section 12.22:
+       Joining array elements in a string 10</a></li>
+     <li class="sidebar-header-3"><a href="#section-12.23:-removing/adding-elements-using-splice()-10">Section
+       12.23: Removing/Adding elements using splice() 10</a></li>
+     <li class="sidebar-header-3"><a href="#section-12.24:-the-entries()-method-10">Section 12.24: The entries()
+       method 10</a></li>
+     <li class="sidebar-header-3"><a href="#section-12.25:-remove-value-from-array0">Section 12.25: Remove value
+       from array0</a></li>
+     <li class="sidebar-header-3"><a href="#section-12.26:-flattening-arrays-10">Section 12.26: Flattening Arrays
+       10</a></li>
+     <li class="sidebar-header-3"><a href="#section-12.27:-append-/-prepend-items-to-array-10">Section 12.27:
+       Append / Prepend items to Array 10</a></li>
+     <li class="sidebar-header-3"><a href="#section-12.28:-object-keys-and-values-to-array-10">Section 12.28:
+       Object keys and values to array 10</a></li>
+     <li class="sidebar-header-3"><a href="#section-12.29:-logical-connective-of-values-10">Section 12.29: Logical
+       connective of values 10</a></li>
+     <li class="sidebar-header-3"><a href="#section-12.30:-checking-if-an-object-is-an-array0">Section 12.30:
+       Checking if an object is an Array0</a></li>
+     <li class="sidebar-header-3"><a href="#section-12.31:-insert-an-item-into-an-array-at-a-specific-index-10">Section
+       12.31: Insert an item
+       into an array at a specific index 10</a></li>
+     <li class="sidebar-header-3"><a href="#section-12.32:-sorting-multidimensional-array0">Section 12.32: Sorting
+       multidimensional array0</a></li>
+     <li class="sidebar-header-3"><a href="#section-12.33:-test-all-array-items-for-equality-11">Section 12.33:
+       Test all array items for equality 11</a></li>
+     <li class="sidebar-header-3"><a href="#section-12.34:-copy-part-of-an-array1">Section 12.34: Copy part of an
+       Array1</a></li>
+     <li class="sidebar-header-2"><a href="#chapter-13:-objects-11">Chapter 13: Objects 11</a></li>
+     <li class="sidebar-header-3"><a href="#section-13.1:-shallow-cloning1">Section 13.1: Shallow cloning1</a></li>
+     <li class="sidebar-header-3"><a href="#section-13.2:-object.freeze1">Section 13.2: Object.freeze1</a></li>
+     <li class="sidebar-header-3"><a href="#section-13.3:-object-cloning-11">Section 13.3: Object cloning 11</a>
+     </li>
+     <li class="sidebar-header-3"><a href="#section-13.4:-object-properties-iteration-11">Section 13.4: Object
+       properties iteration 11</a></li>
+     <li class="sidebar-header-3"><a href="#section-13.5:-object.assign1">Section 13.5: Object.assign1</a></li>
+     <li class="sidebar-header-3"><a href="#section-13.6:-object-rest/spread-()-11">Section 13.6: Object
+       rest/spread () 11</a></li>
+     <li class="sidebar-header-3"><a href="#section-13.7:-object.defineproperty1">Section 13.7:
+       Object.defineProperty1</a></li>
+     <li class="sidebar-header-3"><a href="#section-13.8:-accesor-properties-(get-and-set)1">Section 13.8: Accesor
+       properties (get and set)1</a></li>
+     <li class="sidebar-header-3"><a href="#section-13.9:-dynamic-/-variable-property-names-11">Section 13.9:
+       Dynamic / variable property names 11</a></li>
+     <li class="sidebar-header-3"><a href="#section-13.10:-arrays-are-objects-11">Section 13.10: Arrays are Objects
+       11</a></li>
+     <li class="sidebar-header-3"><a href="#section-13.11:-object.seal1">Section 13.11: Object.seal1</a></li>
+     <li class="sidebar-header-3"><a href="#section-13.12:-convert-object&#x27;s-values-to-array-12">Section 13.12:
+       Convert object&#x27;s values to array 12</a></li>
+     <li class="sidebar-header-3"><a href="#section-13.13:-retrieving-properties-from-an-object-12">Section 13.13:
+       Retrieving properties from an object 12</a></li>
+     <li class="sidebar-header-3"><a href="#section-13.14:-read-only-property-12">Section 13.14: Read-Only property
+       12</a></li>
+     <li class="sidebar-header-3"><a href="#section-13.15:-non-enumerable-property2">Section 13.15: Non enumerable
+       property2</a></li>
+     <li class="sidebar-header-3"><a href="#section-13.16:-lock-property-description-12">Section 13.16: Lock
+       property description 12</a></li>
+     <li class="sidebar-header-3"><a href="#section-13.17:-object.getownpropertydescriptor-12">Section 13.17:
+       Object.getOwnPropertyDescriptor 12</a></li>
+     <li class="sidebar-header-3"><a href="#section-13.18:-descriptors-and-named-properties2">Section 13.18:
+       Descriptors and Named Properties2</a></li>
+     <li class="sidebar-header-3"><a href="#section-13.19:-object.keys-12">Section 13.19: Object.keys 12</a></li>
+     <li class="sidebar-header-3"><a
+       href="#section-13.20:-properties-with-special-characters-or-reserved-words-12">Section 13.20: Properties
+       with special characters or reserved words 12</a></li>
+     <li class="sidebar-header-3"><a href="#section-13.21:-creating-an-iterable-object-12">Section 13.21: Creating
+       an Iterable object 12</a></li>
+     <li class="sidebar-header-3"><a href="#section-13.22:-iterating-over-object-entries---object.entries()-12">Section
+       13.22: Iterating over
+       Object entries - Object.entries() 12</a></li>
+     <li class="sidebar-header-3"><a href="#section-13.23:-object.values()-12">Section 13.23: Object.values()
+       12</a></li>
+     <li class="sidebar-header-2"><a href="#chapter-14:-arithmetic-(math)-12">Chapter 14: Arithmetic (Math) 12</a>
+     </li>
+     <li class="sidebar-header-3"><a href="#section-14.1:-constants2">Section 14.1: Constants2</a></li>
+     <li class="sidebar-header-3"><a href="#section-14.2:-remainder-/-modulus-(%)-12">Section 14.2: Remainder /
+       Modulus (%) 12</a></li>
+     <li class="sidebar-header-3"><a href="#section-14.3:-rounding3">Section 14.3: Rounding3</a></li>
+     <li class="sidebar-header-3"><a href="#section-14.4:-trigonometry-13">Section 14.4: Trigonometry 13</a></li>
+     <li class="sidebar-header-3"><a href="#section-14.5:-bitwise-operators-13">Section 14.5: Bitwise operators
+       13</a></li>
+     <li class="sidebar-header-3"><a href="#section-14.6:-incrementing-(++)-13">Section 14.6: Incrementing (++)
+       13</a></li>
+     <li class="sidebar-header-3"><a href="#section-14.7:-exponentiation-(math.pow()-or-**)-13">Section 14.7:
+       Exponentiation (Math.pow() or **) 13</a></li>
+     <li class="sidebar-header-3"><a href="#section-14.8:-random-integers-and-floats3">Section 14.8: Random
+       Integers and Floats3</a></li>
+     <li class="sidebar-header-3"><a href="#section-14.9:-addition-(+)-13">Section 14.9: Addition (+) 13</a></li>
+     <li class="sidebar-header-3"><a
+       href="#section-14.10:-little-/-big-endian-for-typed-arrays-when-using-bitwise-operators3">Section 14.10:
+       Little / Big endian for typed arrays when using bitwise operators3</a></li>
+     <li class="sidebar-header-3"><a href="#section-14.11:-get-random-between-two-numbers-13">Section 14.11: Get
+       Random Between Two Numbers 13</a></li>
+     <li class="sidebar-header-3"><a href="#section-14.12:-simulating-events-with-dierent-probabilities-13">Section
+       14.12: Simulating events
+       with dierent probabilities 13</a></li>
+     <li class="sidebar-header-3"><a href="#section-14.13:-subtraction-(-)-14">Section 14.13: Subtraction (-)
+       14</a></li>
+     <li class="sidebar-header-3"><a href="#section-14.14:-multiplication-(*)-14">Section 14.14: Multiplication (*)
+       14</a></li>
+     <li class="sidebar-header-3"><a href="#section-14.15:-getting-maximum-and-minimum-14">Section 14.15: Getting
+       maximum and minimum 14</a></li>
+     <li class="sidebar-header-3"><a href="#section-14.16:-restrict-number-to-min/max-range-14">Section 14.16:
+       Restrict Number to Min/Max Range 14</a></li>
+     <li class="sidebar-header-3"><a href="#section-14.17:-ceiling-and-floor-14">Section 14.17: Ceiling and Floor
+       14</a></li>
+     <li class="sidebar-header-3"><a href="#section-14.18:-getting-roots-of-a-number4">Section 14.18: Getting roots
+       of a number4</a></li>
+     <li class="sidebar-header-3"><a href="#section-14.19:-random-with-gaussian-distribution4">Section 14.19:
+       Random with gaussian distribution4</a></li>
+     <li class="sidebar-header-3"><a href="#section-14.20:-math.atan2-to-find-direction-14">Section 14.20:
+       Math.atan2 to find direction 14</a></li>
+     <li class="sidebar-header-3"><a
+       href="#section-14.21:-sin-&amp;-cos-to-create-a-vector-given-direction-&amp;-dista-14">Section 14.21: Sin
+       &amp; Cos to create a vector given direction &amp; dista 14</a></li>
+     <li class="sidebar-header-3"><a href="#section-14.22:-math.hypot-14">Section 14.22: Math.hypot 14</a></li>
+     <li class="sidebar-header-3"><a href="#section-14.23:-periodic-functions-using-math.sin4">Section 14.23:
+       Periodic functions using Math.sin4</a></li>
+     <li class="sidebar-header-3"><a href="#section-14.24:-division-(/)-14">Section 14.24: Division (/) 14</a></li>
+     <li class="sidebar-header-3"><a href="#section-14.25:-decrementing-(--)-14">Section 14.25: Decrementing (--)
+       14</a></li>
+     <li class="sidebar-header-2"><a href="#chapter-15:-bitwise-operators4">Chapter 15: Bitwise operators4</a></li>
+     <li class="sidebar-header-3"><a href="#section-15.1:-bitwise-operators-14">Section 15.1: Bitwise operators
+       14</a></li>
+     <li class="sidebar-header-3"><a href="#section-15.2:-shift-operators-15">Section 15.2: Shift Operators 15</a>
+     </li>
+     <li class="sidebar-header-2"><a href="#chapter-16:-constructor-functions5">Chapter 16: Constructor
+       functions5</a></li>
+     <li class="sidebar-header-3"><a href="#section-16.1:-declaring-a-constructor-function-15">Section 16.1:
+       Declaring a constructor function 15</a></li>
+     <li class="sidebar-header-2"><a href="#chapter-17:-declarations-and-assignments-15">Chapter 17: Declarations
+       and Assignments 15</a></li>
+     <li class="sidebar-header-3"><a href="#section-17.1:-modifying-constants5">Section 17.1: Modifying
+       constants5</a></li>
+     <li class="sidebar-header-3"><a href="#section-17.2:-declaring-and-initializing-constants-15">Section 17.2:
+       Declaring and initializing constants 15</a></li>
+     <li class="sidebar-header-3"><a href="#section-17.3:-declaration5">Section 17.3: Declaration5</a></li>
+     <li class="sidebar-header-3"><a href="#section-17.4:-undefined-15">Section 17.4: Undefined 15</a></li>
+     <li class="sidebar-header-3"><a href="#section-17.5:-data-types5">Section 17.5: Data Types5</a></li>
+     <li class="sidebar-header-3"><a href="#section-17.6:-mathematic-operations-and-assignment-15">Section 17.6:
+       Mathematic operations and assignment 15</a></li>
+     <li class="sidebar-header-3"><a href="#section-17.7:-assignment5">Section 17.7: Assignment5</a></li>
+     <li class="sidebar-header-2"><a href="#chapter-18:-loops-15">Chapter 18: Loops 15</a></li>
+     <li class="sidebar-header-3"><a href="#section-18.1:-standard-&quot;for&quot;-loops5">Section 18.1: Standard
+       &quot;for&quot; loops5</a></li>
+     <li class="sidebar-header-3"><a href="#section-18.2:-&quot;for-of&quot;-loop-15">Section 18.2: &quot;for
+       of&quot; loop 15</a></li>
+     <li class="sidebar-header-3"><a href="#section-18.3:-&quot;for-in&quot;-loop-15">Section 18.3: &quot;for
+       in&quot; loop 15</a></li>
+     <li class="sidebar-header-3"><a href="#section-18.4:-&quot;while&quot;-loops-15">Section 18.4:
+       &quot;while&quot; Loops 15</a></li>
+     <li class="sidebar-header-3"><a href="#section-18.5:-&quot;continue&quot;-a-loop-16">Section 18.5:
+       &quot;continue&quot; a loop 16</a></li>
+     <li class="sidebar-header-3"><a href="#section-18.6:-break-specific-nested-loops-16">Section 18.6: Break
+       specific nested loops 16</a></li>
+     <li class="sidebar-header-3"><a href="#section-18.7:-&quot;do-while&quot;-loop6">Section 18.7: &quot;do
+       while&quot; loop6</a></li>
+     <li class="sidebar-header-3"><a href="#section-18.8:-break-and-continue-labels-16">Section 18.8: Break and
+       continue labels 16</a></li>
+     <li class="sidebar-header-2"><a href="#chapter-19:-functions-16">Chapter 19: Functions 16</a></li>
+     <li class="sidebar-header-3"><a href="#section-19.1:-function-scoping6">Section 19.1: Function Scoping6</a>
+     </li>
+     <li class="sidebar-header-3"><a href="#section-19.2:-currying-16">Section 19.2: Currying 16</a></li>
+     <li class="sidebar-header-3"><a href="#section-19.3:-immediately-invoked-function-expressions6">Section 19.3:
+       Immediately Invoked Function Expressions6</a></li>
+     <li class="sidebar-header-3"><a href="#section-19.4:-named-functions-16">Section 19.4: Named Functions 16</a>
+     </li>
+     <li class="sidebar-header-3"><a href="#section-19.5:-binding-&#x60;this&#x60;-and-arguments6">Section 19.5:
+       Binding &#x60;this&#x60; and arguments6</a></li>
+     <li class="sidebar-header-3"><a
+       href="#section-19.6:-functions-with-an-unknown-number-of-arguments-(variadic-functions)7">Section 19.6:
+       Functions with an Unknown Number of Arguments (variadic functions)7</a></li>
+     <li class="sidebar-header-3"><a href="#section-19.7:-anonymous-function-17">Section 19.7: Anonymous Function
+       17</a></li>
+     <li class="sidebar-header-3"><a href="#section-19.8:-default-parameters7">Section 19.8: Default
+       parameters7</a></li>
+     <li class="sidebar-header-3"><a href="#section-19.9:-call-and-apply-17">Section 19.9: Call and apply 17</a>
+     </li>
+     <li class="sidebar-header-3"><a href="#section-19.10:-partial-application-17">Section 19.10: Partial
+       Application 17</a></li>
+     <li class="sidebar-header-3"><a href="#section-19.11:-passing-arguments-by-reference-or-value-17">Section
+       19.11: Passing arguments by reference or value 17</a></li>
+     <li class="sidebar-header-3"><a
+       href="#section-19.12:-function-arguments,-&quot;arguments&quot;-object,-rest-and-spread-parameters-17">Section
+       19.12: Function Arguments, &quot;arguments&quot; object, rest and spread parameters 17</a></li>
+     <li class="sidebar-header-3"><a href="#section-19.13:-function-composition-17">Section 19.13: Function
+       Composition 17</a></li>
+     <li class="sidebar-header-3"><a href="#section-19.14:-get-the-name-of-a-function-object-18">Section 19.14: Get
+       the name of a function object 18</a></li>
+     <li class="sidebar-header-3"><a href="#section-19.15:-recursive-function-18">Section 19.15: Recursive Function
+       18</a></li>
+     <li class="sidebar-header-3"><a href="#section-19.16:-using-the-return-statement8">Section 19.16: Using the
+       Return Statement8</a></li>
+     <li class="sidebar-header-3"><a href="#section-19.17:-functions-as-a-variable-18">Section 19.17: Functions as
+       a variable 18</a></li>
+     <li class="sidebar-header-2"><a href="#chapter-20:-functional-javascript-18">Chapter 20: Functional JavaScript
+       18</a></li>
+     <li class="sidebar-header-3"><a href="#section-20.1:-higher-order-functions8">Section 20.1: Higher-Order
+       Functions8</a></li>
+     <li class="sidebar-header-3"><a href="#section-20.2:-identity-monad-18">Section 20.2: Identity Monad 18</a>
+     </li>
+     <li class="sidebar-header-3"><a href="#section-20.3:-pure-functions-18">Section 20.3: Pure Functions 18</a>
+     </li>
+     <li class="sidebar-header-3"><a href="#section-20.4:-accepting-functions-as-arguments8">Section 20.4:
+       Accepting Functions as Arguments8</a></li>
+    </ul>
+   </div>
+   <div class="span9 main">
+    <p>
+     <style>
+      /<em>Temporarly colors </em>/ h2 {
+       color: green;
+      }
+
+      h3 {
+       color: yellow;
+      }
+
+      h {
+       color: red;
+      }
+
+      b {
+       color: orange;
+       text-decoration: underline;
+      }
+
+      /<em>practice mode: </em>/ /<em>h {
+       color: white;
+      }
+
+      </em>/</p><p>
+     </style>
+    </p>
+    <h2 id="chapter-1:-getting-started-with-javascript"><a class="header-link"
+      href="#chapter-1:-getting-started-with-javascript"></a>Chapter 1: Getting started with JavaScript</h2>
+    <h3 id="section-1.1:-using-console.log()"><a class="header-link"
+      href="#section-1.1:-using-console.log()"></a>Section 1.1: Using console.log()</h3>
+    <h3 id="section-1.2:-using-the-dom-api"><a class="header-link" href="#section-1.2:-using-the-dom-api"></a>Section
+     1.2: Using the DOM API</h3>
+    <h3 id="section-1.3:-using-window.alert()"><a class="header-link"
+      href="#section-1.3:-using-window.alert()"></a>Section 1.3: Using window.alert()</h3>
+    <h3 id="section-1.4:-using-window.prompt()"><a class="header-link"
+      href="#section-1.4:-using-window.prompt()"></a>Section 1.4: Using window.prompt()</h3>
+    <h3 id="section-1.5:-using-window.confirm()"><a class="header-link"
+      href="#section-1.5:-using-window.confirm()"></a>Section 1.5: Using window.confirm()</h3>
+    <h3 id="section-1.6:-using-the-dom-api-(with-graphical-text:-canvas,-svg,-or-image-file)"><a class="header-link"
+      href="#section-1.6:-using-the-dom-api-(with-graphical-text:-canvas,-svg,-or-image-file)"></a>Section 1.6:
+     Using the DOM API (with graphical text: Canvas, SVG, or image file)</h3>
+    <h2 id="chapter-2:-javascript-variables"><a class="header-link" href="#chapter-2:-javascript-variables"></a>Chapter
+     2: JavaScript Variables</h2>
+    <h3 id="section-2.1:-defining-a-variable"><a class="header-link"
+      href="#section-2.1:-defining-a-variable"></a>Section 2.1: Defining a Variable</h3>
+    <h3 id="section-2.2:-using-a-variable"><a class="header-link" href="#section-2.2:-using-a-variable"></a>Section
+     2.2: Using a Variable</h3>
+    <h3 id="section-2.3:-types-of-variables"><a class="header-link" href="#section-2.3:-types-of-variables"></a>Section
+     2.3: Types of Variables</h3>
+    <h3 id="section-2.4:-arrays-and-objects"><a class="header-link" href="#section-2.4:-arrays-and-objects"></a>Section
+     2.4: Arrays and Objects</h3>
+    <h2 id="chapter-3:-built-in-constants"><a class="header-link" href="#chapter-3:-built-in-constants"></a>Chapter
+     3: Built-in Constants</h2>
+    <hr>
+    <h3 id="section-3.1:-null"><a class="header-link" href="#section-3.1:-null"></a>Section 3.1: null</h3>
+    <ul class="list">
+     <li>
+      <p><code>null</code> is used for representing the intentional <h>absence</h> of an object value and is a
+       primitive value. Unlike undefined,</p>
+     </li>
+     <li>
+      <p>It is not a <h>property</h> of the global object.</p>
+     </li>
+     <li>Explain by example: <code>null</code> is equal to <code>undefined</code> but not identical to it?</li>
+     <li><code>typeof null;</code> // &#39;<h>object</h>&#39;</li>
+     <li>To properly check if a value is <code>null</code>:</li>
+    </ul>
+    <p><code>var a=null;</code></p>
+    <p><code>if(a</code>
+     <h>===</h> <code>null); // true</code>
+    </p>
+    <hr>
+    <h3 id="section-3.2:-testing-for-nan-using-isnan()"><a class="header-link"
+      href="#section-3.2:-testing-for-nan-using-isnan()"></a>Section 3.2: Testing for NaN using isNaN()</h3>
+    <ul class="list">
+     <li>
+      <p>The global function <code>isNaN()</code> can be used to check if a certain value or expression evaluates
+       to NaN but it not preferred. Instead, use <h>Number</h>.IsNaN().</p>
+     </li>
+     <li>
+      <p>Guss the result and write it inside the comments below. Here we will use <code>window.isNaN()</code>
+       global function:</p>
+     </li>
+    </ul>
+    <pre>
 <code>
 isNaN(NaN);// <h>true</h>
 isNaN(1);// <h>false</h>: 1 is a number
@@ -303,21 +540,26 @@ isNaN([1, 2]);<h>true</h> : converted to "1, 2", which can't be converted to a n
 </code>
 </pre>
 
-<ul class="list">
-<li><p>In <code>ECMAScript</code> <code>Version</code> <h>6</h> and greater, You can use <code>Number.isNaN()</code> function which doesn&#39;t <h>convert</h> a number before testing.</p>
-</li>
-<li><p>When the Number.isNaN is called with one argument number, the following steps are taken:</p>
-<ol class="list">
-<li>If Type(number) is not Number, return <h>false</h>.</li>
-<li>If number is NaN, return <h>true</h>.</li>
-<li>Otherwise, return <h>false</h>.</li>
-</ol>
-</li>
-</ul>
-<p><b>Note: The one and only the true</b>:</p>
-<p><code>Number.isNaN(NaN); // true</code></p>
-<p><b> And all following are <code>false</code></b></p>
-<pre class="hljs"><code><span class="hljs-comment">// Numbers</span>
+    <ul class="list">
+     <li>
+      <p>In <code>ECMAScript</code> <code>Version</code>
+       <h>6</h> and greater, You can use <code>Number.isNaN()</code> function which doesn&#39;t <h>convert</h> a
+       number before testing.
+      </p>
+     </li>
+     <li>
+      <p>When the Number.isNaN is called with one argument number, the following steps are taken:</p>
+      <ol class="list">
+       <li>If Type(number) is not Number, return <h>false</h>.</li>
+       <li>If number is NaN, return <h>true</h>.</li>
+       <li>Otherwise, return <h>false</h>.</li>
+      </ol>
+     </li>
+    </ul>
+    <p><b>Note: The one and only the true</b>:</p>
+    <p><code>Number.isNaN(NaN); // true</code></p>
+    <p><b> And all following are <code>false</code></b></p>
+    <pre class="hljs"><code><span class="hljs-comment">// Numbers</span>
 <span class="hljs-built_in">Number</span>.isNaN(<span class="hljs-number">1</span>);
 <span class="hljs-built_in">Number</span>.isNaN(<span class="hljs-number">-2e-4</span>);
 <span class="hljs-built_in">Number</span>.isNaN(<span class="hljs-literal">Infinity</span>);
@@ -341,253 +583,529 @@ isNaN([1, 2]);<h>true</h> : converted to "1, 2", which can't be converted to a n
 <span class="hljs-built_in">Number</span>.isNaN([]);
 <span class="hljs-built_in">Number</span>.isNaN([<span class="hljs-number">1</span>]);
 <span class="hljs-built_in">Number</span>.isNaN([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>]);
-<span class="hljs-built_in">Number</span>.isNaN([<span class="hljs-literal">true</span>]);</code></pre><h3 id="section-3.3:-nan"><a class="header-link" href="#section-3.3:-nan"></a>Section 3.3: NaN</h3>
-<ul class="list">
-<li><code>NaN</code> stands for <h>Not Number</h></li>
-<li>When a mathematical function or operation in JavaScript cannot return a specific <h>number</h>, it returns the value <code>NaN</code> instead.</li>
-<li>It is a property of the global object, and a <h>reference</h> to <code>Number.NaN</code>.</li>
-<li>always, <code>typeof NaN</code> will return <h><code>number</code></h></li>
-<li>Explain why: Don&#39;t check for NaN using the equality operator. See isNaN instead.</li>
-</ul>
-<hr>
-<h3 id="section-3.4:-`undefined`-and-`null`"><a class="header-link" href="#section-3.4:-`undefined`-and-`null`"></a>Section 3.4: <code>undefined</code> and <code>null</code></h3>
-<p><b>The main differences:</b></p>
-<ul class="list">
-<li><code>undefined</code> is a global value that represents the absence of an assigned value.
-<code>typeof undefined === &#39;undefined&#39;</code></li>
-<li><code>null</code> is an object that indicates that a variable has been explicitly assigned &quot;no value&quot;.
-<code>`typeof null === &#39;object&#39;</code></li>
-</ul>
-<p><b>The following evaluate to <code>undefined</code>:</b></p>
-<ul class="list">
-<li>A variable when it is declared but not assigned a value (i.e. defined)
-<code>let foo;
-console.log(&#39;is undefined?&#39;, foo === undefined);</code>
-// is undefined? true</li>
-<li>Accessing the value of a property that doesn&#39;t exist
-let foo = { a: &#39;a&#39; };
-console.log(&#39;is undefined?&#39;, foo.b === undefined);
-// is undefined? true</li>
-<li>The return value of a function that doesn&#39;t return a value
-function foo() { return; }
-console.log(&#39;is undefined?&#39;, foo() === undefined);
-// is undefined? true</li>
-<li>The value of a function argument that is declared but has been omitted from the function call
-function foo(param) {
-console.log(&#39;is undefined?&#39;, param === undefined);
-}
-foo(&#39;a&#39;);
-foo();
-// is undefined? false
-// is undefined? true</li>
-</ul>
-<h3 id="section-3.5:-infinity-and--infinity"><a class="header-link" href="#section-3.5:-infinity-and--infinity"></a>Section 3.5: Infinity and -Infinity</h3>
-<h3 id="section-3.6:-number-constants"><a class="header-link" href="#section-3.6:-number-constants"></a>Section 3.6: Number constants</h3>
-<h3 id="section-3.7:-operations-that-return-nan"><a class="header-link" href="#section-3.7:-operations-that-return-nan"></a>Section 3.7: Operations that return NaN</h3>
-<h3 id="section-3.8:-math-library-functions-that-return-nan"><a class="header-link" href="#section-3.8:-math-library-functions-that-return-nan"></a>Section 3.8: Math library functions that return NaN</h3>
-<h2 id="chapter-4:-comments"><a class="header-link" href="#chapter-4:-comments"></a>Chapter 4: Comments</h2>
-<h3 id="section-4.1:-using-commench1_20-copy-2"><a class="header-link" href="#section-4.1:-using-commench1_20-copy-2"></a>Section 4.1: Using Commench1_20 copy 2</h3>
-<h3 id="section-5.1:-measuring-time---console.time()-2"><a class="header-link" href="#section-5.1:-measuring-time---console.time()-2"></a>Section 5.1: Measuring time - console.time() 2</h3>
-<h3 id="section-5.2:-formatting-console-output-2"><a class="header-link" href="#section-5.2:-formatting-console-output-2"></a>Section 5.2: Formatting console output 2</h3>
-<h3 id="section-5.3:-printing-to-a-browser's-debugging-console-2"><a class="header-link" href="#section-5.3:-printing-to-a-browser's-debugging-console-2"></a>Section 5.3: Printing to a browser&#39;s debugging console 2</h3>
-<h3 id="section-5.4:-including-a-stack-trace-when-logging---console.trace()-2"><a class="header-link" href="#section-5.4:-including-a-stack-trace-when-logging---console.trace()-2"></a>Section 5.4: Including a stack trace when logging - console.trace() 2</h3>
-<h3 id="section-5.5:-tabulating-values---console.table()-2"><a class="header-link" href="#section-5.5:-tabulating-values---console.table()-2"></a>Section 5.5: Tabulating values - console.table() 2</h3>
-<h3 id="section-5.6:-counting---console.count()-2"><a class="header-link" href="#section-5.6:-counting---console.count()-2"></a>Section 5.6: Counting - console.count() 2</h3>
-<h3 id="section-5.7:-clearing-the-console---console.clear()-3"><a class="header-link" href="#section-5.7:-clearing-the-console---console.clear()-3"></a>Section 5.7: Clearing the console - console.clear() 3</h3>
-<h3 id="section-5.8:-displaying-objects-and-xml-interactively---console.dir(),-console.dirxml()-3"><a class="header-link" href="#section-5.8:-displaying-objects-and-xml-interactively---console.dir(),-console.dirxml()-3"></a>Section 5.8: Displaying objects and XML interactively - console.dir(), console.dirxml() 3</h3>
-<h3 id="section-5.9:-debugging-with-assertions---console.assert()"><a class="header-link" href="#section-5.9:-debugging-with-assertions---console.assert()"></a>Section 5.9: Debugging with assertions - console.assert()</h3>
-<h2 id="chapter-6:-datatypes-in-javascript-3"><a class="header-link" href="#chapter-6:-datatypes-in-javascript-3"></a>Chapter 6: Datatypes in JavaScript 3</h2>
-<h3 id="section-6.1:-typeof"><a class="header-link" href="#section-6.1:-typeof"></a>Section 6.1: typeof</h3>
-<h3 id="section-6.2:-finding-an-object's-class-3"><a class="header-link" href="#section-6.2:-finding-an-object's-class-3"></a>Section 6.2: Finding an object&#39;s class 3</h3>
-<h3 id="section-6.3:-getting-object-type-by-constructor-name-3"><a class="header-link" href="#section-6.3:-getting-object-type-by-constructor-name-3"></a>Section 6.3: Getting object type by constructor name 3</h3>
-<h2 id="chapter-7:-strings"><a class="header-link" href="#chapter-7:-strings"></a>Chapter 7: Strings</h2>
-<h3 id="section-7.1:-basic-info-and-string-concatenation-3"><a class="header-link" href="#section-7.1:-basic-info-and-string-concatenation-3"></a>Section 7.1: Basic Info and String Concatenation 3</h3>
-<h3 id="section-7.2:-reverse-string-3"><a class="header-link" href="#section-7.2:-reverse-string-3"></a>Section 7.2: Reverse String 3</h3>
-<h3 id="section-7.3:-comparing-strings-lexicographically-3"><a class="header-link" href="#section-7.3:-comparing-strings-lexicographically-3"></a>Section 7.3: Comparing Strings Lexicographically 3</h3>
-<h3 id="section-7.4:-access-character-at-index-in-string"><a class="header-link" href="#section-7.4:-access-character-at-index-in-string"></a>Section 7.4: Access character at index in string</h3>
-<h3 id="section-7.5:-escaping-quotes-4"><a class="header-link" href="#section-7.5:-escaping-quotes-4"></a>Section 7.5: Escaping quotes 4</h3>
-<h3 id="section-7.6:-word-counter-4"><a class="header-link" href="#section-7.6:-word-counter-4"></a>Section 7.6: Word Counter 4</h3>
-<h3 id="section-7.7:-trim-whitespace-4"><a class="header-link" href="#section-7.7:-trim-whitespace-4"></a>Section 7.7: Trim whitespace 4</h3>
-<h3 id="section-7.8:-splitting-a-string-into-an-array-4"><a class="header-link" href="#section-7.8:-splitting-a-string-into-an-array-4"></a>Section 7.8: Splitting a string into an array 4</h3>
-<h3 id="section-7.9:-strings-are-unicode-4"><a class="header-link" href="#section-7.9:-strings-are-unicode-4"></a>Section 7.9: Strings are unicode 4</h3>
-<h3 id="section-7.10:-detecting-a-string"><a class="header-link" href="#section-7.10:-detecting-a-string"></a>Section 7.10: Detecting a string</h3>
-<h3 id="section-7.11:-substrings-with-slice"><a class="header-link" href="#section-7.11:-substrings-with-slice"></a>Section 7.11: Substrings with slice</h3>
-<h3 id="section-7.12:-character-code-4"><a class="header-link" href="#section-7.12:-character-code-4"></a>Section 7.12: Character code 4</h3>
-<h3 id="section-7.13:-string-representations-of-numbers"><a class="header-link" href="#section-7.13:-string-representations-of-numbers"></a>Section 7.13: String Representations of Numbers</h3>
-<h3 id="section-7.14:-string-find-and-replace-functions-4"><a class="header-link" href="#section-7.14:-string-find-and-replace-functions-4"></a>Section 7.14: String Find and Replace Functions 4</h3>
-<h3 id="section-7.15:-find-the-index-of-a-substring-inside-a-string-4"><a class="header-link" href="#section-7.15:-find-the-index-of-a-substring-inside-a-string-4"></a>Section 7.15: Find the index of a substring inside a string 4</h3>
-<h3 id="section-7.16:-string-to-upper-case-4"><a class="header-link" href="#section-7.16:-string-to-upper-case-4"></a>Section 7.16: String to Upper Case 4</h3>
-<h3 id="section-7.17:-string-to-lower-case-4"><a class="header-link" href="#section-7.17:-string-to-lower-case-4"></a>Section 7.17: String to Lower Case 4</h3>
-<h3 id="section-7.18:-repeat-a-string-4"><a class="header-link" href="#section-7.18:-repeat-a-string-4"></a>Section 7.18: Repeat a String 4</h3>
-<h2 id="chapter-8:-date-4"><a class="header-link" href="#chapter-8:-date-4"></a>Chapter 8: Date 4</h2>
-<h3 id="section-8.1:-create-a-new-date-object-4"><a class="header-link" href="#section-8.1:-create-a-new-date-object-4"></a>Section 8.1: Create a new Date object 4</h3>
-<h3 id="section-8.2:-convert-to-a-string-format-4"><a class="header-link" href="#section-8.2:-convert-to-a-string-format-4"></a>Section 8.2: Convert to a string format 4</h3>
-<h3 id="section-8.3:-creating-a-date-from-utc-5"><a class="header-link" href="#section-8.3:-creating-a-date-from-utc-5"></a>Section 8.3: Creating a Date from UTC 5</h3>
-<h3 id="section-8.4:-formatting-a-javascript-date-5"><a class="header-link" href="#section-8.4:-formatting-a-javascript-date-5"></a>Section 8.4: Formatting a JavaScript date 5</h3>
-<h3 id="section-8.5:-get-the-number-of-milliseconds-elapsed-since-1-january-1970-00:00:00-utc-5"><a class="header-link" href="#section-8.5:-get-the-number-of-milliseconds-elapsed-since-1-january-1970-00:00:00-utc-5"></a>Section 8.5: Get the number of milliseconds elapsed since 1 January 1970 00:00:00 UTC 5</h3>
-<h3 id="section-8.6:-get-the-current-time-and-date-5"><a class="header-link" href="#section-8.6:-get-the-current-time-and-date-5"></a>Section 8.6: Get the current time and date 5</h3>
-<h3 id="section-8.7:-increment-a-date-object-5"><a class="header-link" href="#section-8.7:-increment-a-date-object-5"></a>Section 8.7: Increment a Date Object 5</h3>
-<h3 id="section-8.8:-convert-to-json"><a class="header-link" href="#section-8.8:-convert-to-json"></a>Section 8.8: Convert to JSON</h3>
-<h2 id="chapter-9:-date-comparison-5"><a class="header-link" href="#chapter-9:-date-comparison-5"></a>Chapter 9: Date Comparison 5</h2>
-<h3 id="section-9.1:-comparing-date-values-5"><a class="header-link" href="#section-9.1:-comparing-date-values-5"></a>Section 9.1: Comparing Date values 5</h3>
-<h3 id="section-9.2:-date-dierence-calculation-5"><a class="header-link" href="#section-9.2:-date-dierence-calculation-5"></a>Section 9.2: Date Dierence Calculation 5</h3>
-<h2 id="chapter-10:-comparison-operations"><a class="header-link" href="#chapter-10:-comparison-operations"></a>Chapter 10: Comparison Operations</h2>
-<h3 id="section-10.1:-abstract-equality-/-inequality-and-type-conversion-6"><a class="header-link" href="#section-10.1:-abstract-equality-/-inequality-and-type-conversion-6"></a>Section 10.1: Abstract equality / inequality and type conversion 6</h3>
-<h3 id="section-10.2:-nan-property-of-the-global-object-6"><a class="header-link" href="#section-10.2:-nan-property-of-the-global-object-6"></a>Section 10.2: NaN Property of the Global Object 6</h3>
-<h3 id="section-10.3:-short-circuiting-in-boolean-operators"><a class="header-link" href="#section-10.3:-short-circuiting-in-boolean-operators"></a>Section 10.3: Short-circuiting in boolean operators</h3>
-<h3 id="section-10.4:-null-and-undefined"><a class="header-link" href="#section-10.4:-null-and-undefined"></a>Section 10.4: Null and Undefined</h3>
-<h3 id="section-10.5:-abstract-equality-(==)-6"><a class="header-link" href="#section-10.5:-abstract-equality-(==)-6"></a>Section 10.5: Abstract Equality (==) 6</h3>
-<h3 id="section-10.6:-logic-operators-with-booleans-6"><a class="header-link" href="#section-10.6:-logic-operators-with-booleans-6"></a>Section 10.6: Logic Operators with Booleans 6</h3>
-<h3 id="section-10.7:-automatic-type-conversions-6"><a class="header-link" href="#section-10.7:-automatic-type-conversions-6"></a>Section 10.7: Automatic Type Conversions 6</h3>
-<h3 id="section-10.8:-logic-operators-with-non-boolean-values-(boolean-coercion)"><a class="header-link" href="#section-10.8:-logic-operators-with-non-boolean-values-(boolean-coercion)"></a>Section 10.8: Logic Operators with Non-boolean values (boolean coercion)</h3>
-<h3 id="section-10.9:-empty-array"><a class="header-link" href="#section-10.9:-empty-array"></a>Section 10.9: Empty Array</h3>
-<h3 id="section-10.10:-equality-comparison-operations-6"><a class="header-link" href="#section-10.10:-equality-comparison-operations-6"></a>Section 10.10: Equality comparison operations 6</h3>
-<h3 id="section-10.11:-relational-operators-(<,-<=,>,->=)-7"><a class="header-link" href="#section-10.11:-relational-operators-(<,-<=,>,->=)-7"></a>Section 10.11: Relational operators (&lt;, &lt;=,&gt;, &gt;=) 7</h3>
-<h3 id="section-10.12:-inequality"><a class="header-link" href="#section-10.12:-inequality"></a>Section 10.12: Inequality</h3>
-<h3 id="section-10.13:-list-of-comparison-operators-7"><a class="header-link" href="#section-10.13:-list-of-comparison-operators-7"></a>Section 10.13: List of Comparison Operators 7</h3>
-<h3 id="section-10.14:-grouping-multiple-logic-statements-7"><a class="header-link" href="#section-10.14:-grouping-multiple-logic-statements-7"></a>Section 10.14: Grouping multiple logic statements 7</h3>
-<h3 id="section-10.15:-bit-fields-to-optimise-comparison-of-multi-state-data"><a class="header-link" href="#section-10.15:-bit-fields-to-optimise-comparison-of-multi-state-data"></a>Section 10.15: Bit fields to optimise comparison of multi state data</h3>
-<h2 id="chapter-11:-conditions"><a class="header-link" href="#chapter-11:-conditions"></a>Chapter 11: Conditions</h2>
-<h3 id="section-11.1:-ternary-operators"><a class="header-link" href="#section-11.1:-ternary-operators"></a>Section 11.1: Ternary operators</h3>
-<h3 id="section-11.2:-switch-statement-7"><a class="header-link" href="#section-11.2:-switch-statement-7"></a>Section 11.2: Switch statement 7</h3>
-<h3 id="section-11.3:-if-/-else-if-/-else-control"><a class="header-link" href="#section-11.3:-if-/-else-if-/-else-control"></a>Section 11.3: If / Else If / Else Control</h3>
-<h3 id="section-11.4:-strategy-7"><a class="header-link" href="#section-11.4:-strategy-7"></a>Section 11.4: Strategy 7</h3>
-<h3 id="section-11.5:-using-||-and-&&-short-circuiting"><a class="header-link" href="#section-11.5:-using-||-and-&&-short-circuiting"></a>Section 11.5: Using || and &amp;&amp; short circuiting</h3>
-<h2 id="chapter-12:-arrays-8"><a class="header-link" href="#chapter-12:-arrays-8"></a>Chapter 12: Arrays 8</h2>
-<h3 id="section-12.1:-converting-array-like-objects-to-arrays-8"><a class="header-link" href="#section-12.1:-converting-array-like-objects-to-arrays-8"></a>Section 12.1: Converting Array-like Objects to Arrays 8</h3>
-<h3 id="section-12.2:-reducing-values-8"><a class="header-link" href="#section-12.2:-reducing-values-8"></a>Section 12.2: Reducing values 8</h3>
-<h3 id="section-12.3:-mapping-values"><a class="header-link" href="#section-12.3:-mapping-values"></a>Section 12.3: Mapping values</h3>
-<h3 id="section-12.4:-filtering-object-arrays-8"><a class="header-link" href="#section-12.4:-filtering-object-arrays-8"></a>Section 12.4: Filtering Object Arrays 8</h3>
-<h3 id="section-12.5:-sorting-arrays"><a class="header-link" href="#section-12.5:-sorting-arrays"></a>Section 12.5: Sorting Arrays</h3>
-<h3 id="section-12.6:-iteration-8"><a class="header-link" href="#section-12.6:-iteration-8"></a>Section 12.6: Iteration 8</h3>
-<h3 id="section-12.7:-destructuring-an-array"><a class="header-link" href="#section-12.7:-destructuring-an-array"></a>Section 12.7: Destructuring an array</h3>
-<h3 id="section-12.8:-removing-duplicate-elements"><a class="header-link" href="#section-12.8:-removing-duplicate-elements"></a>Section 12.8: Removing duplicate elements</h3>
-<h3 id="section-12.9:-array-comparison-9"><a class="header-link" href="#section-12.9:-array-comparison-9"></a>Section 12.9: Array comparison 9</h3>
-<h3 id="section-12.10:-reversing-arrays"><a class="header-link" href="#section-12.10:-reversing-arrays"></a>Section 12.10: Reversing arrays</h3>
-<h3 id="section-12.11:-shallow-cloning-an-array-9"><a class="header-link" href="#section-12.11:-shallow-cloning-an-array-9"></a>Section 12.11: Shallow cloning an array 9</h3>
-<h3 id="section-12.12:-concatenating-arrays"><a class="header-link" href="#section-12.12:-concatenating-arrays"></a>Section 12.12: Concatenating Arrays</h3>
-<h3 id="section-12.13:-merge-two-array-as-key-value-pair"><a class="header-link" href="#section-12.13:-merge-two-array-as-key-value-pair"></a>Section 12.13: Merge two array as key value pair</h3>
-<h3 id="section-12.14:-array-spread-/-rest-9"><a class="header-link" href="#section-12.14:-array-spread-/-rest-9"></a>Section 12.14: Array spread / rest 9</h3>
-<h3 id="section-12.15:-filtering-values"><a class="header-link" href="#section-12.15:-filtering-values"></a>Section 12.15: Filtering values</h3>
-<h3 id="section-12.16:-searching-an-array-9"><a class="header-link" href="#section-12.16:-searching-an-array-9"></a>Section 12.16: Searching an Array 9</h3>
-<h3 id="section-12.17:-convert-a-string-to-an-array-10"><a class="header-link" href="#section-12.17:-convert-a-string-to-an-array-10"></a>Section 12.17: Convert a String to an Array 10</h3>
-<h3 id="section-12.18:-removing-items-from-an-array-10"><a class="header-link" href="#section-12.18:-removing-items-from-an-array-10"></a>Section 12.18: Removing items from an array 10</h3>
-<h3 id="section-12.19:-removing-all-elements0"><a class="header-link" href="#section-12.19:-removing-all-elements0"></a>Section 12.19: Removing all elements0</h3>
-<h3 id="section-12.20:-finding-the-minimum-or-maximum-element0"><a class="header-link" href="#section-12.20:-finding-the-minimum-or-maximum-element0"></a>Section 12.20: Finding the minimum or maximum element0</h3>
-<h3 id="section-12.21:-standard-array-initialization0"><a class="header-link" href="#section-12.21:-standard-array-initialization0"></a>Section 12.21: Standard array initialization0</h3>
-<h3 id="section-12.22:-joining-array-elements-in-a-string-10"><a class="header-link" href="#section-12.22:-joining-array-elements-in-a-string-10"></a>Section 12.22: Joining array elements in a string 10</h3>
-<h3 id="section-12.23:-removing/adding-elements-using-splice()-10"><a class="header-link" href="#section-12.23:-removing/adding-elements-using-splice()-10"></a>Section 12.23: Removing/Adding elements using splice() 10</h3>
-<h3 id="section-12.24:-the-entries()-method-10"><a class="header-link" href="#section-12.24:-the-entries()-method-10"></a>Section 12.24: The entries() method 10</h3>
-<h3 id="section-12.25:-remove-value-from-array0"><a class="header-link" href="#section-12.25:-remove-value-from-array0"></a>Section 12.25: Remove value from array0</h3>
-<h3 id="section-12.26:-flattening-arrays-10"><a class="header-link" href="#section-12.26:-flattening-arrays-10"></a>Section 12.26: Flattening Arrays 10</h3>
-<h3 id="section-12.27:-append-/-prepend-items-to-array-10"><a class="header-link" href="#section-12.27:-append-/-prepend-items-to-array-10"></a>Section 12.27: Append / Prepend items to Array 10</h3>
-<h3 id="section-12.28:-object-keys-and-values-to-array-10"><a class="header-link" href="#section-12.28:-object-keys-and-values-to-array-10"></a>Section 12.28: Object keys and values to array 10</h3>
-<h3 id="section-12.29:-logical-connective-of-values-10"><a class="header-link" href="#section-12.29:-logical-connective-of-values-10"></a>Section 12.29: Logical connective of values 10</h3>
-<h3 id="section-12.30:-checking-if-an-object-is-an-array0"><a class="header-link" href="#section-12.30:-checking-if-an-object-is-an-array0"></a>Section 12.30: Checking if an object is an Array0</h3>
-<h3 id="section-12.31:-insert-an-item-into-an-array-at-a-specific-index-10"><a class="header-link" href="#section-12.31:-insert-an-item-into-an-array-at-a-specific-index-10"></a>Section 12.31: Insert an item into an array at a specific index 10</h3>
-<h3 id="section-12.32:-sorting-multidimensional-array0"><a class="header-link" href="#section-12.32:-sorting-multidimensional-array0"></a>Section 12.32: Sorting multidimensional array0</h3>
-<h3 id="section-12.33:-test-all-array-items-for-equality-11"><a class="header-link" href="#section-12.33:-test-all-array-items-for-equality-11"></a>Section 12.33: Test all array items for equality 11</h3>
-<h3 id="section-12.34:-copy-part-of-an-array1"><a class="header-link" href="#section-12.34:-copy-part-of-an-array1"></a>Section 12.34: Copy part of an Array1</h3>
-<h2 id="chapter-13:-objects-11"><a class="header-link" href="#chapter-13:-objects-11"></a>Chapter 13: Objects 11</h2>
-<h3 id="section-13.1:-shallow-cloning1"><a class="header-link" href="#section-13.1:-shallow-cloning1"></a>Section 13.1: Shallow cloning1</h3>
-<h3 id="section-13.2:-object.freeze1"><a class="header-link" href="#section-13.2:-object.freeze1"></a>Section 13.2: Object.freeze1</h3>
-<h3 id="section-13.3:-object-cloning-11"><a class="header-link" href="#section-13.3:-object-cloning-11"></a>Section 13.3: Object cloning 11</h3>
-<h3 id="section-13.4:-object-properties-iteration-11"><a class="header-link" href="#section-13.4:-object-properties-iteration-11"></a>Section 13.4: Object properties iteration 11</h3>
-<h3 id="section-13.5:-object.assign1"><a class="header-link" href="#section-13.5:-object.assign1"></a>Section 13.5: Object.assign1</h3>
-<h3 id="section-13.6:-object-rest/spread-()-11"><a class="header-link" href="#section-13.6:-object-rest/spread-()-11"></a>Section 13.6: Object rest/spread () 11</h3>
-<h3 id="section-13.7:-object.defineproperty1"><a class="header-link" href="#section-13.7:-object.defineproperty1"></a>Section 13.7: Object.defineProperty1</h3>
-<h3 id="section-13.8:-accesor-properties-(get-and-set)1"><a class="header-link" href="#section-13.8:-accesor-properties-(get-and-set)1"></a>Section 13.8: Accesor properties (get and set)1</h3>
-<h3 id="section-13.9:-dynamic-/-variable-property-names-11"><a class="header-link" href="#section-13.9:-dynamic-/-variable-property-names-11"></a>Section 13.9: Dynamic / variable property names 11</h3>
-<h3 id="section-13.10:-arrays-are-objects-11"><a class="header-link" href="#section-13.10:-arrays-are-objects-11"></a>Section 13.10: Arrays are Objects 11</h3>
-<h3 id="section-13.11:-object.seal1"><a class="header-link" href="#section-13.11:-object.seal1"></a>Section 13.11: Object.seal1</h3>
-<h3 id="section-13.12:-convert-object's-values-to-array-12"><a class="header-link" href="#section-13.12:-convert-object's-values-to-array-12"></a>Section 13.12: Convert object&#39;s values to array 12</h3>
-<h3 id="section-13.13:-retrieving-properties-from-an-object-12"><a class="header-link" href="#section-13.13:-retrieving-properties-from-an-object-12"></a>Section 13.13: Retrieving properties from an object 12</h3>
-<h3 id="section-13.14:-read-only-property-12"><a class="header-link" href="#section-13.14:-read-only-property-12"></a>Section 13.14: Read-Only property 12</h3>
-<h3 id="section-13.15:-non-enumerable-property2"><a class="header-link" href="#section-13.15:-non-enumerable-property2"></a>Section 13.15: Non enumerable property2</h3>
-<h3 id="section-13.16:-lock-property-description-12"><a class="header-link" href="#section-13.16:-lock-property-description-12"></a>Section 13.16: Lock property description 12</h3>
-<h3 id="section-13.17:-object.getownpropertydescriptor-12"><a class="header-link" href="#section-13.17:-object.getownpropertydescriptor-12"></a>Section 13.17: Object.getOwnPropertyDescriptor 12</h3>
-<h3 id="section-13.18:-descriptors-and-named-properties2"><a class="header-link" href="#section-13.18:-descriptors-and-named-properties2"></a>Section 13.18: Descriptors and Named Properties2</h3>
-<h3 id="section-13.19:-object.keys-12"><a class="header-link" href="#section-13.19:-object.keys-12"></a>Section 13.19: Object.keys 12</h3>
-<h3 id="section-13.20:-properties-with-special-characters-or-reserved-words-12"><a class="header-link" href="#section-13.20:-properties-with-special-characters-or-reserved-words-12"></a>Section 13.20: Properties with special characters or reserved words 12</h3>
-<h3 id="section-13.21:-creating-an-iterable-object-12"><a class="header-link" href="#section-13.21:-creating-an-iterable-object-12"></a>Section 13.21: Creating an Iterable object 12</h3>
-<h3 id="section-13.22:-iterating-over-object-entries---object.entries()-12"><a class="header-link" href="#section-13.22:-iterating-over-object-entries---object.entries()-12"></a>Section 13.22: Iterating over Object entries - Object.entries() 12</h3>
-<h3 id="section-13.23:-object.values()-12"><a class="header-link" href="#section-13.23:-object.values()-12"></a>Section 13.23: Object.values() 12</h3>
-<h2 id="chapter-14:-arithmetic-(math)-12"><a class="header-link" href="#chapter-14:-arithmetic-(math)-12"></a>Chapter 14: Arithmetic (Math) 12</h2>
-<h3 id="section-14.1:-constants2"><a class="header-link" href="#section-14.1:-constants2"></a>Section 14.1: Constants2</h3>
-<h3 id="section-14.2:-remainder-/-modulus-(%)-12"><a class="header-link" href="#section-14.2:-remainder-/-modulus-(%)-12"></a>Section 14.2: Remainder / Modulus (%) 12</h3>
-<h3 id="section-14.3:-rounding3"><a class="header-link" href="#section-14.3:-rounding3"></a>Section 14.3: Rounding3</h3>
-<h3 id="section-14.4:-trigonometry-13"><a class="header-link" href="#section-14.4:-trigonometry-13"></a>Section 14.4: Trigonometry 13</h3>
-<h3 id="section-14.5:-bitwise-operators-13"><a class="header-link" href="#section-14.5:-bitwise-operators-13"></a>Section 14.5: Bitwise operators 13</h3>
-<h3 id="section-14.6:-incrementing-(++)-13"><a class="header-link" href="#section-14.6:-incrementing-(++)-13"></a>Section 14.6: Incrementing (++) 13</h3>
-<h3 id="section-14.7:-exponentiation-(math.pow()-or-**)-13"><a class="header-link" href="#section-14.7:-exponentiation-(math.pow()-or-**)-13"></a>Section 14.7: Exponentiation (Math.pow() or **) 13</h3>
-<h3 id="section-14.8:-random-integers-and-floats3"><a class="header-link" href="#section-14.8:-random-integers-and-floats3"></a>Section 14.8: Random Integers and Floats3</h3>
-<h3 id="section-14.9:-addition-(+)-13"><a class="header-link" href="#section-14.9:-addition-(+)-13"></a>Section 14.9: Addition (+) 13</h3>
-<h3 id="section-14.10:-little-/-big-endian-for-typed-arrays-when-using-bitwise-operators3"><a class="header-link" href="#section-14.10:-little-/-big-endian-for-typed-arrays-when-using-bitwise-operators3"></a>Section 14.10: Little / Big endian for typed arrays when using bitwise operators3</h3>
-<h3 id="section-14.11:-get-random-between-two-numbers-13"><a class="header-link" href="#section-14.11:-get-random-between-two-numbers-13"></a>Section 14.11: Get Random Between Two Numbers 13</h3>
-<h3 id="section-14.12:-simulating-events-with-dierent-probabilities-13"><a class="header-link" href="#section-14.12:-simulating-events-with-dierent-probabilities-13"></a>Section 14.12: Simulating events with dierent probabilities 13</h3>
-<h3 id="section-14.13:-subtraction-(-)-14"><a class="header-link" href="#section-14.13:-subtraction-(-)-14"></a>Section 14.13: Subtraction (-) 14</h3>
-<h3 id="section-14.14:-multiplication-(*)-14"><a class="header-link" href="#section-14.14:-multiplication-(*)-14"></a>Section 14.14: Multiplication (*) 14</h3>
-<h3 id="section-14.15:-getting-maximum-and-minimum-14"><a class="header-link" href="#section-14.15:-getting-maximum-and-minimum-14"></a>Section 14.15: Getting maximum and minimum 14</h3>
-<h3 id="section-14.16:-restrict-number-to-min/max-range-14"><a class="header-link" href="#section-14.16:-restrict-number-to-min/max-range-14"></a>Section 14.16: Restrict Number to Min/Max Range 14</h3>
-<h3 id="section-14.17:-ceiling-and-floor-14"><a class="header-link" href="#section-14.17:-ceiling-and-floor-14"></a>Section 14.17: Ceiling and Floor 14</h3>
-<h3 id="section-14.18:-getting-roots-of-a-number4"><a class="header-link" href="#section-14.18:-getting-roots-of-a-number4"></a>Section 14.18: Getting roots of a number4</h3>
-<h3 id="section-14.19:-random-with-gaussian-distribution4"><a class="header-link" href="#section-14.19:-random-with-gaussian-distribution4"></a>Section 14.19: Random with gaussian distribution4</h3>
-<h3 id="section-14.20:-math.atan2-to-find-direction-14"><a class="header-link" href="#section-14.20:-math.atan2-to-find-direction-14"></a>Section 14.20: Math.atan2 to find direction 14</h3>
-<h3 id="section-14.21:-sin-&-cos-to-create-a-vector-given-direction-&-dista-14"><a class="header-link" href="#section-14.21:-sin-&-cos-to-create-a-vector-given-direction-&-dista-14"></a>Section 14.21: Sin &amp; Cos to create a vector given direction &amp; dista 14</h3>
-<h3 id="section-14.22:-math.hypot-14"><a class="header-link" href="#section-14.22:-math.hypot-14"></a>Section 14.22: Math.hypot 14</h3>
-<h3 id="section-14.23:-periodic-functions-using-math.sin4"><a class="header-link" href="#section-14.23:-periodic-functions-using-math.sin4"></a>Section 14.23: Periodic functions using Math.sin4</h3>
-<h3 id="section-14.24:-division-(/)-14"><a class="header-link" href="#section-14.24:-division-(/)-14"></a>Section 14.24: Division (/) 14</h3>
-<h3 id="section-14.25:-decrementing-(--)-14"><a class="header-link" href="#section-14.25:-decrementing-(--)-14"></a>Section 14.25: Decrementing (--) 14</h3>
-<h2 id="chapter-15:-bitwise-operators4"><a class="header-link" href="#chapter-15:-bitwise-operators4"></a>Chapter 15: Bitwise operators4</h2>
-<h3 id="section-15.1:-bitwise-operators-14"><a class="header-link" href="#section-15.1:-bitwise-operators-14"></a>Section 15.1: Bitwise operators 14</h3>
-<h3 id="section-15.2:-shift-operators-15"><a class="header-link" href="#section-15.2:-shift-operators-15"></a>Section 15.2: Shift Operators 15</h3>
-<h2 id="chapter-16:-constructor-functions5"><a class="header-link" href="#chapter-16:-constructor-functions5"></a>Chapter 16: Constructor functions5</h2>
-<h3 id="section-16.1:-declaring-a-constructor-function-15"><a class="header-link" href="#section-16.1:-declaring-a-constructor-function-15"></a>Section 16.1: Declaring a constructor function 15</h3>
-<h2 id="chapter-17:-declarations-and-assignments-15"><a class="header-link" href="#chapter-17:-declarations-and-assignments-15"></a>Chapter 17: Declarations and Assignments 15</h2>
-<h3 id="section-17.1:-modifying-constants5"><a class="header-link" href="#section-17.1:-modifying-constants5"></a>Section 17.1: Modifying constants5</h3>
-<h3 id="section-17.2:-declaring-and-initializing-constants-15"><a class="header-link" href="#section-17.2:-declaring-and-initializing-constants-15"></a>Section 17.2: Declaring and initializing constants 15</h3>
-<h3 id="section-17.3:-declaration5"><a class="header-link" href="#section-17.3:-declaration5"></a>Section 17.3: Declaration5</h3>
-<h3 id="section-17.4:-undefined-15"><a class="header-link" href="#section-17.4:-undefined-15"></a>Section 17.4: Undefined 15</h3>
-<h3 id="section-17.5:-data-types5"><a class="header-link" href="#section-17.5:-data-types5"></a>Section 17.5: Data Types5</h3>
-<h3 id="section-17.6:-mathematic-operations-and-assignment-15"><a class="header-link" href="#section-17.6:-mathematic-operations-and-assignment-15"></a>Section 17.6: Mathematic operations and assignment 15</h3>
-<h3 id="section-17.7:-assignment5"><a class="header-link" href="#section-17.7:-assignment5"></a>Section 17.7: Assignment5</h3>
-<h2 id="chapter-18:-loops-15"><a class="header-link" href="#chapter-18:-loops-15"></a>Chapter 18: Loops 15</h2>
-<h3 id="section-18.1:-standard-"for"-loops5"><a class="header-link" href="#section-18.1:-standard-"for"-loops5"></a>Section 18.1: Standard &quot;for&quot; loops5</h3>
-<h3 id="section-18.2:-"for-of"-loop-15"><a class="header-link" href="#section-18.2:-"for-of"-loop-15"></a>Section 18.2: &quot;for of&quot; loop 15</h3>
-<h3 id="section-18.3:-"for-in"-loop-15"><a class="header-link" href="#section-18.3:-"for-in"-loop-15"></a>Section 18.3: &quot;for in&quot; loop 15</h3>
-<h3 id="section-18.4:-"while"-loops-15"><a class="header-link" href="#section-18.4:-"while"-loops-15"></a>Section 18.4: &quot;while&quot; Loops 15</h3>
-<h3 id="section-18.5:-"continue"-a-loop-16"><a class="header-link" href="#section-18.5:-"continue"-a-loop-16"></a>Section 18.5: &quot;continue&quot; a loop 16</h3>
-<h3 id="section-18.6:-break-specific-nested-loops-16"><a class="header-link" href="#section-18.6:-break-specific-nested-loops-16"></a>Section 18.6: Break specific nested loops 16</h3>
-<h3 id="section-18.7:-"do-while"-loop6"><a class="header-link" href="#section-18.7:-"do-while"-loop6"></a>Section 18.7: &quot;do while&quot; loop6</h3>
-<h3 id="section-18.8:-break-and-continue-labels-16"><a class="header-link" href="#section-18.8:-break-and-continue-labels-16"></a>Section 18.8: Break and continue labels 16</h3>
-<h2 id="chapter-19:-functions-16"><a class="header-link" href="#chapter-19:-functions-16"></a>Chapter 19: Functions 16</h2>
-<h3 id="section-19.1:-function-scoping6"><a class="header-link" href="#section-19.1:-function-scoping6"></a>Section 19.1: Function Scoping6</h3>
-<h3 id="section-19.2:-currying-16"><a class="header-link" href="#section-19.2:-currying-16"></a>Section 19.2: Currying 16</h3>
-<h3 id="section-19.3:-immediately-invoked-function-expressions6"><a class="header-link" href="#section-19.3:-immediately-invoked-function-expressions6"></a>Section 19.3: Immediately Invoked Function Expressions6</h3>
-<h3 id="section-19.4:-named-functions-16"><a class="header-link" href="#section-19.4:-named-functions-16"></a>Section 19.4: Named Functions 16</h3>
-<h3 id="section-19.5:-binding-`this`-and-arguments6"><a class="header-link" href="#section-19.5:-binding-`this`-and-arguments6"></a>Section 19.5: Binding <code>this</code> and arguments6</h3>
-<h3 id="section-19.6:-functions-with-an-unknown-number-of-arguments-(variadic-functions)7"><a class="header-link" href="#section-19.6:-functions-with-an-unknown-number-of-arguments-(variadic-functions)7"></a>Section 19.6: Functions with an Unknown Number of Arguments (variadic functions)7</h3>
-<h3 id="section-19.7:-anonymous-function-17"><a class="header-link" href="#section-19.7:-anonymous-function-17"></a>Section 19.7: Anonymous Function 17</h3>
-<h3 id="section-19.8:-default-parameters7"><a class="header-link" href="#section-19.8:-default-parameters7"></a>Section 19.8: Default parameters7</h3>
-<h3 id="section-19.9:-call-and-apply-17"><a class="header-link" href="#section-19.9:-call-and-apply-17"></a>Section 19.9: Call and apply 17</h3>
-<h3 id="section-19.10:-partial-application-17"><a class="header-link" href="#section-19.10:-partial-application-17"></a>Section 19.10: Partial Application 17</h3>
-<h3 id="section-19.11:-passing-arguments-by-reference-or-value-17"><a class="header-link" href="#section-19.11:-passing-arguments-by-reference-or-value-17"></a>Section 19.11: Passing arguments by reference or value 17</h3>
-<h3 id="section-19.12:-function-arguments,-"arguments"-object,-rest-and-spread-parameters-17"><a class="header-link" href="#section-19.12:-function-arguments,-"arguments"-object,-rest-and-spread-parameters-17"></a>Section 19.12: Function Arguments, &quot;arguments&quot; object, rest and spread parameters 17</h3>
-<h3 id="section-19.13:-function-composition-17"><a class="header-link" href="#section-19.13:-function-composition-17"></a>Section 19.13: Function Composition 17</h3>
-<h3 id="section-19.14:-get-the-name-of-a-function-object-18"><a class="header-link" href="#section-19.14:-get-the-name-of-a-function-object-18"></a>Section 19.14: Get the name of a function object 18</h3>
-<h3 id="section-19.15:-recursive-function-18"><a class="header-link" href="#section-19.15:-recursive-function-18"></a>Section 19.15: Recursive Function 18</h3>
-<h3 id="section-19.16:-using-the-return-statement8"><a class="header-link" href="#section-19.16:-using-the-return-statement8"></a>Section 19.16: Using the Return Statement8</h3>
-<h3 id="section-19.17:-functions-as-a-variable-18"><a class="header-link" href="#section-19.17:-functions-as-a-variable-18"></a>Section 19.17: Functions as a variable 18</h3>
-<h2 id="chapter-20:-functional-javascript-18"><a class="header-link" href="#chapter-20:-functional-javascript-18"></a>Chapter 20: Functional JavaScript 18</h2>
-<h3 id="section-20.1:-higher-order-functions8"><a class="header-link" href="#section-20.1:-higher-order-functions8"></a>Section 20.1: Higher-Order Functions8</h3>
-<h3 id="section-20.2:-identity-monad-18"><a class="header-link" href="#section-20.2:-identity-monad-18"></a>Section 20.2: Identity Monad 18</h3>
-<h3 id="section-20.3:-pure-functions-18"><a class="header-link" href="#section-20.3:-pure-functions-18"></a>Section 20.3: Pure Functions 18</h3>
-<h3 id="section-20.4:-accepting-functions-as-arguments8"><a class="header-link" href="#section-20.4:-accepting-functions-as-arguments8"></a>Section 20.4: Accepting Functions as Arguments8</h3>
-      </div>
-    </div>
+<span class="hljs-built_in">Number</span>.isNaN([<span class="hljs-literal">true</span>]);</code></pre>
+    <h3 id="section-3.3:-nan"><a class="header-link" href="#section-3.3:-nan"></a>Section 3.3: NaN</h3>
+    <ul class="list">
+     <li><code>NaN</code> stands for <h>Not Number</h>
+     </li>
+     <li>When a mathematical function or operation in JavaScript cannot return a specific <h>number</h>, it returns
+      the value <code>NaN</code> instead.</li>
+     <li>It is a property of the global object, and a <h>reference</h> to <code>Number.NaN</code>.</li>
+     <li>always, <code>typeof NaN</code> will return <h><code>number</code></h>
+     </li>
+     <li>Explain why: Don&#39;t check for NaN using the equality operator. See isNaN instead.</li>
+    </ul>
+    <hr>
+    <h3 id="section-3.4:-`undefined`-and-`null`"><a class="header-link"
+      href="#section-3.4:-`undefined`-and-`null`"></a>Section 3.4: <code>undefined</code> and <code>null</code>
+    </h3>
+    <p><b>The main differences:</b></p>
+    <ul class="list">
+     <li><code>undefined</code> is a global value that represents the absence of an assigned value.
+      <code>typeof undefined === &#39;undefined&#39;</code></li>
+     <li><code>null</code> is an object that indicates that a variable has been explicitly assigned &quot;no
+      value&quot;.
+      <code>`typeof null === &#39;object&#39;</code></li>
+    </ul>
+    <p><b>The following evaluate to <code>undefined</code>:</b></p>
+    <ul class="list">
+     <li>A variable when it is declared but not assigned a value (i.e. defined)
+      <code>let foo;
+       console.log(&#39;is undefined?&#39;, foo === undefined);</code>
+      // is undefined? true</li>
+     <li>Accessing the value of a property that doesn&#39;t exist
+      let foo = { a: &#39;a&#39; };
+      console.log(&#39;is undefined?&#39;, foo.b === undefined);
+      // is undefined? true</li>
+     <li>The return value of a function that doesn&#39;t return a value
+      function foo() { return; }
+      console.log(&#39;is undefined?&#39;, foo() === undefined);
+      // is undefined? true</li>
+     <li>The value of a function argument that is declared but has been omitted from the function call
+      function foo(param) {
+      console.log(&#39;is undefined?&#39;, param === undefined);
+      }
+      foo(&#39;a&#39;);
+      foo();
+      // is undefined? false
+      // is undefined? true</li>
+    </ul>
+    <h3 id="section-3.5:-infinity-and--infinity"><a class="header-link"
+      href="#section-3.5:-infinity-and--infinity"></a>Section 3.5: Infinity and -Infinity</h3>
+    <h3 id="section-3.6:-number-constants"><a class="header-link" href="#section-3.6:-number-constants"></a>Section
+     3.6: Number constants</h3>
+    <h3 id="section-3.7:-operations-that-return-nan"><a class="header-link"
+      href="#section-3.7:-operations-that-return-nan"></a>Section 3.7: Operations that return NaN</h3>
+    <h3 id="section-3.8:-math-library-functions-that-return-nan"><a class="header-link"
+      href="#section-3.8:-math-library-functions-that-return-nan"></a>Section 3.8: Math library functions that
+     return NaN</h3>
+    <h2 id="chapter-4:-comments"><a class="header-link" href="#chapter-4:-comments"></a>Chapter 4: Comments</h2>
+    <h3 id="section-4.1:-using-commench1_20-copy-2"><a class="header-link"
+      href="#section-4.1:-using-commench1_20-copy-2"></a>Section 4.1: Using Commench1_20 copy 2</h3>
+    <h3 id="section-5.1:-measuring-time---console.time()-2"><a class="header-link"
+      href="#section-5.1:-measuring-time---console.time()-2"></a>Section 5.1: Measuring time - console.time() 2
+    </h3>
+    <h3 id="section-5.2:-formatting-console-output-2"><a class="header-link"
+      href="#section-5.2:-formatting-console-output-2"></a>Section 5.2: Formatting console output 2</h3>
+    <h3 id="section-5.3:-printing-to-a-browser's-debugging-console-2"><a class="header-link"
+      href="#section-5.3:-printing-to-a-browser's-debugging-console-2"></a>Section 5.3: Printing to a
+     browser&#39;s debugging console 2</h3>
+    <h3 id="section-5.4:-including-a-stack-trace-when-logging---console.trace()-2"><a class="header-link"
+      href="#section-5.4:-including-a-stack-trace-when-logging---console.trace()-2"></a>Section 5.4: Including a
+     stack trace when logging - console.trace() 2</h3>
+    <h3 id="section-5.5:-tabulating-values---console.table()-2"><a class="header-link"
+      href="#section-5.5:-tabulating-values---console.table()-2"></a>Section 5.5: Tabulating values -
+     console.table() 2</h3>
+    <h3 id="section-5.6:-counting---console.count()-2"><a class="header-link"
+      href="#section-5.6:-counting---console.count()-2"></a>Section 5.6: Counting - console.count() 2</h3>
+    <h3 id="section-5.7:-clearing-the-console---console.clear()-3"><a class="header-link"
+      href="#section-5.7:-clearing-the-console---console.clear()-3"></a>Section 5.7: Clearing the console -
+     console.clear() 3</h3>
+    <h3 id="section-5.8:-displaying-objects-and-xml-interactively---console.dir(),-console.dirxml()-3"><a
+      class="header-link"
+      href="#section-5.8:-displaying-objects-and-xml-interactively---console.dir(),-console.dirxml()-3"></a>Section
+     5.8: Displaying objects and XML interactively - console.dir(), console.dirxml() 3</h3>
+    <h3 id="section-5.9:-debugging-with-assertions---console.assert()"><a class="header-link"
+      href="#section-5.9:-debugging-with-assertions---console.assert()"></a>Section 5.9: Debugging with assertions
+     - console.assert()</h3>
+    <h2 id="chapter-6:-datatypes-in-javascript-3"><a class="header-link"
+      href="#chapter-6:-datatypes-in-javascript-3"></a>Chapter 6: Datatypes in JavaScript 3</h2>
+    <h3 id="section-6.1:-typeof"><a class="header-link" href="#section-6.1:-typeof"></a>Section 6.1: typeof</h3>
+    <h3 id="section-6.2:-finding-an-object's-class-3"><a class="header-link"
+      href="#section-6.2:-finding-an-object's-class-3"></a>Section 6.2: Finding an object&#39;s class 3</h3>
+    <h3 id="section-6.3:-getting-object-type-by-constructor-name-3"><a class="header-link"
+      href="#section-6.3:-getting-object-type-by-constructor-name-3"></a>Section 6.3: Getting object type by
+     constructor name 3</h3>
+    <h2 id="chapter-7:-strings"><a class="header-link" href="#chapter-7:-strings"></a>Chapter 7: Strings</h2>
+    <h3 id="section-7.1:-basic-info-and-string-concatenation-3"><a class="header-link"
+      href="#section-7.1:-basic-info-and-string-concatenation-3"></a>Section 7.1: Basic Info and String
+     Concatenation 3</h3>
+    <h3 id="section-7.2:-reverse-string-3"><a class="header-link" href="#section-7.2:-reverse-string-3"></a>Section
+     7.2: Reverse String 3</h3>
+    <h3 id="section-7.3:-comparing-strings-lexicographically-3"><a class="header-link"
+      href="#section-7.3:-comparing-strings-lexicographically-3"></a>Section 7.3: Comparing Strings
+     Lexicographically 3</h3>
+    <h3 id="section-7.4:-access-character-at-index-in-string"><a class="header-link"
+      href="#section-7.4:-access-character-at-index-in-string"></a>Section 7.4: Access character at index in
+     string</h3>
+    <h3 id="section-7.5:-escaping-quotes-4"><a class="header-link" href="#section-7.5:-escaping-quotes-4"></a>Section
+     7.5: Escaping quotes 4</h3>
+    <h3 id="section-7.6:-word-counter-4"><a class="header-link" href="#section-7.6:-word-counter-4"></a>Section 7.6:
+     Word Counter 4</h3>
+    <h3 id="section-7.7:-trim-whitespace-4"><a class="header-link" href="#section-7.7:-trim-whitespace-4"></a>Section
+     7.7: Trim whitespace 4</h3>
+    <h3 id="section-7.8:-splitting-a-string-into-an-array-4"><a class="header-link"
+      href="#section-7.8:-splitting-a-string-into-an-array-4"></a>Section 7.8: Splitting a string into an array 4
+    </h3>
+    <h3 id="section-7.9:-strings-are-unicode-4"><a class="header-link"
+      href="#section-7.9:-strings-are-unicode-4"></a>Section 7.9: Strings are unicode 4</h3>
+    <h3 id="section-7.10:-detecting-a-string"><a class="header-link"
+      href="#section-7.10:-detecting-a-string"></a>Section 7.10: Detecting a string</h3>
+    <h3 id="section-7.11:-substrings-with-slice"><a class="header-link"
+      href="#section-7.11:-substrings-with-slice"></a>Section 7.11: Substrings with slice</h3>
+    <h3 id="section-7.12:-character-code-4"><a class="header-link" href="#section-7.12:-character-code-4"></a>Section
+     7.12: Character code 4</h3>
+    <h3 id="section-7.13:-string-representations-of-numbers"><a class="header-link"
+      href="#section-7.13:-string-representations-of-numbers"></a>Section 7.13: String Representations of Numbers
+    </h3>
+    <h3 id="section-7.14:-string-find-and-replace-functions-4"><a class="header-link"
+      href="#section-7.14:-string-find-and-replace-functions-4"></a>Section 7.14: String Find and Replace
+     Functions 4</h3>
+    <h3 id="section-7.15:-find-the-index-of-a-substring-inside-a-string-4"><a class="header-link"
+      href="#section-7.15:-find-the-index-of-a-substring-inside-a-string-4"></a>Section 7.15: Find the index of a
+     substring inside a string 4</h3>
+    <h3 id="section-7.16:-string-to-upper-case-4"><a class="header-link"
+      href="#section-7.16:-string-to-upper-case-4"></a>Section 7.16: String to Upper Case 4</h3>
+    <h3 id="section-7.17:-string-to-lower-case-4"><a class="header-link"
+      href="#section-7.17:-string-to-lower-case-4"></a>Section 7.17: String to Lower Case 4</h3>
+    <h3 id="section-7.18:-repeat-a-string-4"><a class="header-link" href="#section-7.18:-repeat-a-string-4"></a>Section
+     7.18: Repeat a String 4</h3>
+    <h2 id="chapter-8:-date-4"><a class="header-link" href="#chapter-8:-date-4"></a>Chapter 8: Date 4</h2>
+    <h3 id="section-8.1:-create-a-new-date-object-4"><a class="header-link"
+      href="#section-8.1:-create-a-new-date-object-4"></a>Section 8.1: Create a new Date object 4</h3>
+    <h3 id="section-8.2:-convert-to-a-string-format-4"><a class="header-link"
+      href="#section-8.2:-convert-to-a-string-format-4"></a>Section 8.2: Convert to a string format 4</h3>
+    <h3 id="section-8.3:-creating-a-date-from-utc-5"><a class="header-link"
+      href="#section-8.3:-creating-a-date-from-utc-5"></a>Section 8.3: Creating a Date from UTC 5</h3>
+    <h3 id="section-8.4:-formatting-a-javascript-date-5"><a class="header-link"
+      href="#section-8.4:-formatting-a-javascript-date-5"></a>Section 8.4: Formatting a JavaScript date 5</h3>
+    <h3 id="section-8.5:-get-the-number-of-milliseconds-elapsed-since-1-january-1970-00:00:00-utc-5"><a
+      class="header-link"
+      href="#section-8.5:-get-the-number-of-milliseconds-elapsed-since-1-january-1970-00:00:00-utc-5"></a>Section
+     8.5: Get the number of milliseconds elapsed since 1 January 1970 00:00:00 UTC 5</h3>
+    <h3 id="section-8.6:-get-the-current-time-and-date-5"><a class="header-link"
+      href="#section-8.6:-get-the-current-time-and-date-5"></a>Section 8.6: Get the current time and date 5</h3>
+    <h3 id="section-8.7:-increment-a-date-object-5"><a class="header-link"
+      href="#section-8.7:-increment-a-date-object-5"></a>Section 8.7: Increment a Date Object 5</h3>
+    <h3 id="section-8.8:-convert-to-json"><a class="header-link" href="#section-8.8:-convert-to-json"></a>Section
+     8.8: Convert to JSON</h3>
+    <h2 id="chapter-9:-date-comparison-5"><a class="header-link" href="#chapter-9:-date-comparison-5"></a>Chapter 9:
+     Date Comparison 5</h2>
+    <h3 id="section-9.1:-comparing-date-values-5"><a class="header-link"
+      href="#section-9.1:-comparing-date-values-5"></a>Section 9.1: Comparing Date values 5</h3>
+    <h3 id="section-9.2:-date-dierence-calculation-5"><a class="header-link"
+      href="#section-9.2:-date-dierence-calculation-5"></a>Section 9.2: Date Dierence Calculation 5</h3>
+    <h2 id="chapter-10:-comparison-operations"><a class="header-link"
+      href="#chapter-10:-comparison-operations"></a>Chapter 10: Comparison Operations</h2>
+    <h3 id="section-10.1:-abstract-equality-/-inequality-and-type-conversion-6"><a class="header-link"
+      href="#section-10.1:-abstract-equality-/-inequality-and-type-conversion-6"></a>Section 10.1: Abstract
+     equality / inequality and type conversion 6</h3>
+    <h3 id="section-10.2:-nan-property-of-the-global-object-6"><a class="header-link"
+      href="#section-10.2:-nan-property-of-the-global-object-6"></a>Section 10.2: NaN Property of the Global
+     Object 6</h3>
+    <h3 id="section-10.3:-short-circuiting-in-boolean-operators"><a class="header-link"
+      href="#section-10.3:-short-circuiting-in-boolean-operators"></a>Section 10.3: Short-circuiting in boolean
+     operators</h3>
+    <h3 id="section-10.4:-null-and-undefined"><a class="header-link"
+      href="#section-10.4:-null-and-undefined"></a>Section 10.4: Null and Undefined</h3>
+    <h3 id="section-10.5:-abstract-equality-(==)-6"><a class="header-link"
+      href="#section-10.5:-abstract-equality-(==)-6"></a>Section 10.5: Abstract Equality (==) 6</h3>
+    <h3 id="section-10.6:-logic-operators-with-booleans-6"><a class="header-link"
+      href="#section-10.6:-logic-operators-with-booleans-6"></a>Section 10.6: Logic Operators with Booleans 6</h3>
+    <h3 id="section-10.7:-automatic-type-conversions-6"><a class="header-link"
+      href="#section-10.7:-automatic-type-conversions-6"></a>Section 10.7: Automatic Type Conversions 6</h3>
+    <h3 id="section-10.8:-logic-operators-with-non-boolean-values-(boolean-coercion)"><a class="header-link"
+      href="#section-10.8:-logic-operators-with-non-boolean-values-(boolean-coercion)"></a>Section 10.8: Logic
+     Operators with Non-boolean values (boolean coercion)</h3>
+    <h3 id="section-10.9:-empty-array"><a class="header-link" href="#section-10.9:-empty-array"></a>Section 10.9:
+     Empty Array</h3>
+    <h3 id="section-10.10:-equality-comparison-operations-6"><a class="header-link"
+      href="#section-10.10:-equality-comparison-operations-6"></a>Section 10.10: Equality comparison operations 6
+    </h3>
+    <h3 id="section-10.11:-relational-operators-(<,-<=,>,->=)-7"><a class="header-link"
+      href="#section-10.11:-relational-operators-(<,-<=,>,->=)-7"></a>Section 10.11: Relational operators (&lt;,
+     &lt;=,&gt;, &gt;=) 7</h3>
+    <h3 id="section-10.12:-inequality"><a class="header-link" href="#section-10.12:-inequality"></a>Section 10.12:
+     Inequality</h3>
+    <h3 id="section-10.13:-list-of-comparison-operators-7"><a class="header-link"
+      href="#section-10.13:-list-of-comparison-operators-7"></a>Section 10.13: List of Comparison Operators 7</h3>
+    <h3 id="section-10.14:-grouping-multiple-logic-statements-7"><a class="header-link"
+      href="#section-10.14:-grouping-multiple-logic-statements-7"></a>Section 10.14: Grouping multiple logic
+     statements 7</h3>
+    <h3 id="section-10.15:-bit-fields-to-optimise-comparison-of-multi-state-data"><a class="header-link"
+      href="#section-10.15:-bit-fields-to-optimise-comparison-of-multi-state-data"></a>Section 10.15: Bit fields
+     to optimise comparison of multi state data</h3>
+    <h2 id="chapter-11:-conditions"><a class="header-link" href="#chapter-11:-conditions"></a>Chapter 11: Conditions
+    </h2>
+    <h3 id="section-11.1:-ternary-operators"><a class="header-link" href="#section-11.1:-ternary-operators"></a>Section
+     11.1: Ternary operators</h3>
+    <h3 id="section-11.2:-switch-statement-7"><a class="header-link"
+      href="#section-11.2:-switch-statement-7"></a>Section 11.2: Switch statement 7</h3>
+    <h3 id="section-11.3:-if-/-else-if-/-else-control"><a class="header-link"
+      href="#section-11.3:-if-/-else-if-/-else-control"></a>Section 11.3: If / Else If / Else Control</h3>
+    <h3 id="section-11.4:-strategy-7"><a class="header-link" href="#section-11.4:-strategy-7"></a>Section 11.4:
+     Strategy 7</h3>
+    <h3 id="section-11.5:-using-||-and-&&-short-circuiting"><a class="header-link"
+      href="#section-11.5:-using-||-and-&&-short-circuiting"></a>Section 11.5: Using || and &amp;&amp; short
+     circuiting</h3>
+    <h2 id="chapter-12:-arrays-8"><a class="header-link" href="#chapter-12:-arrays-8"></a>Chapter 12: Arrays 8</h2>
+    <h3 id="section-12.1:-converting-array-like-objects-to-arrays-8"><a class="header-link"
+      href="#section-12.1:-converting-array-like-objects-to-arrays-8"></a>Section 12.1: Converting Array-like
+     Objects to Arrays 8</h3>
+    <h3 id="section-12.2:-reducing-values-8"><a class="header-link" href="#section-12.2:-reducing-values-8"></a>Section
+     12.2: Reducing values 8</h3>
+    <h3 id="section-12.3:-mapping-values"><a class="header-link" href="#section-12.3:-mapping-values"></a>Section
+     12.3: Mapping values</h3>
+    <h3 id="section-12.4:-filtering-object-arrays-8"><a class="header-link"
+      href="#section-12.4:-filtering-object-arrays-8"></a>Section 12.4: Filtering Object Arrays 8</h3>
+    <h3 id="section-12.5:-sorting-arrays"><a class="header-link" href="#section-12.5:-sorting-arrays"></a>Section
+     12.5: Sorting Arrays</h3>
+    <h3 id="section-12.6:-iteration-8"><a class="header-link" href="#section-12.6:-iteration-8"></a>Section 12.6:
+     Iteration 8</h3>
+    <h3 id="section-12.7:-destructuring-an-array"><a class="header-link"
+      href="#section-12.7:-destructuring-an-array"></a>Section 12.7: Destructuring an array</h3>
+    <h3 id="section-12.8:-removing-duplicate-elements"><a class="header-link"
+      href="#section-12.8:-removing-duplicate-elements"></a>Section 12.8: Removing duplicate elements</h3>
+    <h3 id="section-12.9:-array-comparison-9"><a class="header-link"
+      href="#section-12.9:-array-comparison-9"></a>Section 12.9: Array comparison 9</h3>
+    <h3 id="section-12.10:-reversing-arrays"><a class="header-link" href="#section-12.10:-reversing-arrays"></a>Section
+     12.10: Reversing arrays</h3>
+    <h3 id="section-12.11:-shallow-cloning-an-array-9"><a class="header-link"
+      href="#section-12.11:-shallow-cloning-an-array-9"></a>Section 12.11: Shallow cloning an array 9</h3>
+    <h3 id="section-12.12:-concatenating-arrays"><a class="header-link"
+      href="#section-12.12:-concatenating-arrays"></a>Section 12.12: Concatenating Arrays</h3>
+    <h3 id="section-12.13:-merge-two-array-as-key-value-pair"><a class="header-link"
+      href="#section-12.13:-merge-two-array-as-key-value-pair"></a>Section 12.13: Merge two array as key value
+     pair</h3>
+    <h3 id="section-12.14:-array-spread-/-rest-9"><a class="header-link"
+      href="#section-12.14:-array-spread-/-rest-9"></a>Section 12.14: Array spread / rest 9</h3>
+    <h3 id="section-12.15:-filtering-values"><a class="header-link" href="#section-12.15:-filtering-values"></a>Section
+     12.15: Filtering values</h3>
+    <h3 id="section-12.16:-searching-an-array-9"><a class="header-link"
+      href="#section-12.16:-searching-an-array-9"></a>Section 12.16: Searching an Array 9</h3>
+    <h3 id="section-12.17:-convert-a-string-to-an-array-10"><a class="header-link"
+      href="#section-12.17:-convert-a-string-to-an-array-10"></a>Section 12.17: Convert a String to an Array 10
+    </h3>
+    <h3 id="section-12.18:-removing-items-from-an-array-10"><a class="header-link"
+      href="#section-12.18:-removing-items-from-an-array-10"></a>Section 12.18: Removing items from an array 10
+    </h3>
+    <h3 id="section-12.19:-removing-all-elements0"><a class="header-link"
+      href="#section-12.19:-removing-all-elements0"></a>Section 12.19: Removing all elements0</h3>
+    <h3 id="section-12.20:-finding-the-minimum-or-maximum-element0"><a class="header-link"
+      href="#section-12.20:-finding-the-minimum-or-maximum-element0"></a>Section 12.20: Finding the minimum or
+     maximum element0</h3>
+    <h3 id="section-12.21:-standard-array-initialization0"><a class="header-link"
+      href="#section-12.21:-standard-array-initialization0"></a>Section 12.21: Standard array initialization0</h3>
+    <h3 id="section-12.22:-joining-array-elements-in-a-string-10"><a class="header-link"
+      href="#section-12.22:-joining-array-elements-in-a-string-10"></a>Section 12.22: Joining array elements in a
+     string 10</h3>
+    <h3 id="section-12.23:-removing/adding-elements-using-splice()-10"><a class="header-link"
+      href="#section-12.23:-removing/adding-elements-using-splice()-10"></a>Section 12.23: Removing/Adding
+     elements using splice() 10</h3>
+    <h3 id="section-12.24:-the-entries()-method-10"><a class="header-link"
+      href="#section-12.24:-the-entries()-method-10"></a>Section 12.24: The entries() method 10</h3>
+    <h3 id="section-12.25:-remove-value-from-array0"><a class="header-link"
+      href="#section-12.25:-remove-value-from-array0"></a>Section 12.25: Remove value from array0</h3>
+    <h3 id="section-12.26:-flattening-arrays-10"><a class="header-link"
+      href="#section-12.26:-flattening-arrays-10"></a>Section 12.26: Flattening Arrays 10</h3>
+    <h3 id="section-12.27:-append-/-prepend-items-to-array-10"><a class="header-link"
+      href="#section-12.27:-append-/-prepend-items-to-array-10"></a>Section 12.27: Append / Prepend items to Array
+     10</h3>
+    <h3 id="section-12.28:-object-keys-and-values-to-array-10"><a class="header-link"
+      href="#section-12.28:-object-keys-and-values-to-array-10"></a>Section 12.28: Object keys and values to array
+     10</h3>
+    <h3 id="section-12.29:-logical-connective-of-values-10"><a class="header-link"
+      href="#section-12.29:-logical-connective-of-values-10"></a>Section 12.29: Logical connective of values 10
+    </h3>
+    <h3 id="section-12.30:-checking-if-an-object-is-an-array0"><a class="header-link"
+      href="#section-12.30:-checking-if-an-object-is-an-array0"></a>Section 12.30: Checking if an object is an
+     Array0</h3>
+    <h3 id="section-12.31:-insert-an-item-into-an-array-at-a-specific-index-10"><a class="header-link"
+      href="#section-12.31:-insert-an-item-into-an-array-at-a-specific-index-10"></a>Section 12.31: Insert an item
+     into an array at a specific index 10</h3>
+    <h3 id="section-12.32:-sorting-multidimensional-array0"><a class="header-link"
+      href="#section-12.32:-sorting-multidimensional-array0"></a>Section 12.32: Sorting multidimensional array0
+    </h3>
+    <h3 id="section-12.33:-test-all-array-items-for-equality-11"><a class="header-link"
+      href="#section-12.33:-test-all-array-items-for-equality-11"></a>Section 12.33: Test all array items for
+     equality 11</h3>
+    <h3 id="section-12.34:-copy-part-of-an-array1"><a class="header-link"
+      href="#section-12.34:-copy-part-of-an-array1"></a>Section 12.34: Copy part of an Array1</h3>
+    <h2 id="chapter-13:-objects-11"><a class="header-link" href="#chapter-13:-objects-11"></a>Chapter 13: Objects 11
+    </h2>
+    <h3 id="section-13.1:-shallow-cloning1"><a class="header-link" href="#section-13.1:-shallow-cloning1"></a>Section
+     13.1: Shallow cloning1</h3>
+    <h3 id="section-13.2:-object.freeze1"><a class="header-link" href="#section-13.2:-object.freeze1"></a>Section
+     13.2: Object.freeze1</h3>
+    <h3 id="section-13.3:-object-cloning-11"><a class="header-link" href="#section-13.3:-object-cloning-11"></a>Section
+     13.3: Object cloning 11</h3>
+    <h3 id="section-13.4:-object-properties-iteration-11"><a class="header-link"
+      href="#section-13.4:-object-properties-iteration-11"></a>Section 13.4: Object properties iteration 11</h3>
+    <h3 id="section-13.5:-object.assign1"><a class="header-link" href="#section-13.5:-object.assign1"></a>Section
+     13.5: Object.assign1</h3>
+    <h3 id="section-13.6:-object-rest/spread-()-11"><a class="header-link"
+      href="#section-13.6:-object-rest/spread-()-11"></a>Section 13.6: Object rest/spread () 11</h3>
+    <h3 id="section-13.7:-object.defineproperty1"><a class="header-link"
+      href="#section-13.7:-object.defineproperty1"></a>Section 13.7: Object.defineProperty1</h3>
+    <h3 id="section-13.8:-accesor-properties-(get-and-set)1"><a class="header-link"
+      href="#section-13.8:-accesor-properties-(get-and-set)1"></a>Section 13.8: Accesor properties (get and set)1
+    </h3>
+    <h3 id="section-13.9:-dynamic-/-variable-property-names-11"><a class="header-link"
+      href="#section-13.9:-dynamic-/-variable-property-names-11"></a>Section 13.9: Dynamic / variable property
+     names 11</h3>
+    <h3 id="section-13.10:-arrays-are-objects-11"><a class="header-link"
+      href="#section-13.10:-arrays-are-objects-11"></a>Section 13.10: Arrays are Objects 11</h3>
+    <h3 id="section-13.11:-object.seal1"><a class="header-link" href="#section-13.11:-object.seal1"></a>Section
+     13.11: Object.seal1</h3>
+    <h3 id="section-13.12:-convert-object's-values-to-array-12"><a class="header-link"
+      href="#section-13.12:-convert-object's-values-to-array-12"></a>Section 13.12: Convert object&#39;s values to
+     array 12</h3>
+    <h3 id="section-13.13:-retrieving-properties-from-an-object-12"><a class="header-link"
+      href="#section-13.13:-retrieving-properties-from-an-object-12"></a>Section 13.13: Retrieving properties from
+     an object 12</h3>
+    <h3 id="section-13.14:-read-only-property-12"><a class="header-link"
+      href="#section-13.14:-read-only-property-12"></a>Section 13.14: Read-Only property 12</h3>
+    <h3 id="section-13.15:-non-enumerable-property2"><a class="header-link"
+      href="#section-13.15:-non-enumerable-property2"></a>Section 13.15: Non enumerable property2</h3>
+    <h3 id="section-13.16:-lock-property-description-12"><a class="header-link"
+      href="#section-13.16:-lock-property-description-12"></a>Section 13.16: Lock property description 12</h3>
+    <h3 id="section-13.17:-object.getownpropertydescriptor-12"><a class="header-link"
+      href="#section-13.17:-object.getownpropertydescriptor-12"></a>Section 13.17: Object.getOwnPropertyDescriptor
+     12</h3>
+    <h3 id="section-13.18:-descriptors-and-named-properties2"><a class="header-link"
+      href="#section-13.18:-descriptors-and-named-properties2"></a>Section 13.18: Descriptors and Named
+     Properties2</h3>
+    <h3 id="section-13.19:-object.keys-12"><a class="header-link" href="#section-13.19:-object.keys-12"></a>Section
+     13.19: Object.keys 12</h3>
+    <h3 id="section-13.20:-properties-with-special-characters-or-reserved-words-12"><a class="header-link"
+      href="#section-13.20:-properties-with-special-characters-or-reserved-words-12"></a>Section 13.20: Properties
+     with special characters or reserved words 12</h3>
+    <h3 id="section-13.21:-creating-an-iterable-object-12"><a class="header-link"
+      href="#section-13.21:-creating-an-iterable-object-12"></a>Section 13.21: Creating an Iterable object 12</h3>
+    <h3 id="section-13.22:-iterating-over-object-entries---object.entries()-12"><a class="header-link"
+      href="#section-13.22:-iterating-over-object-entries---object.entries()-12"></a>Section 13.22: Iterating over
+     Object entries - Object.entries() 12</h3>
+    <h3 id="section-13.23:-object.values()-12"><a class="header-link"
+      href="#section-13.23:-object.values()-12"></a>Section 13.23: Object.values() 12</h3>
+    <h2 id="chapter-14:-arithmetic-(math)-12"><a class="header-link"
+      href="#chapter-14:-arithmetic-(math)-12"></a>Chapter 14: Arithmetic (Math) 12</h2>
+    <h3 id="section-14.1:-constants2"><a class="header-link" href="#section-14.1:-constants2"></a>Section 14.1:
+     Constants2</h3>
+    <h3 id="section-14.2:-remainder-/-modulus-(%)-12"><a class="header-link"
+      href="#section-14.2:-remainder-/-modulus-(%)-12"></a>Section 14.2: Remainder / Modulus (%) 12</h3>
+    <h3 id="section-14.3:-rounding3"><a class="header-link" href="#section-14.3:-rounding3"></a>Section 14.3:
+     Rounding3</h3>
+    <h3 id="section-14.4:-trigonometry-13"><a class="header-link" href="#section-14.4:-trigonometry-13"></a>Section
+     14.4: Trigonometry 13</h3>
+    <h3 id="section-14.5:-bitwise-operators-13"><a class="header-link"
+      href="#section-14.5:-bitwise-operators-13"></a>Section 14.5: Bitwise operators 13</h3>
+    <h3 id="section-14.6:-incrementing-(++)-13"><a class="header-link"
+      href="#section-14.6:-incrementing-(++)-13"></a>Section 14.6: Incrementing (++) 13</h3>
+    <h3 id="section-14.7:-exponentiation-(math.pow()-or-**)-13"><a class="header-link"
+      href="#section-14.7:-exponentiation-(math.pow()-or-**)-13"></a>Section 14.7: Exponentiation (Math.pow() or
+     **) 13</h3>
+    <h3 id="section-14.8:-random-integers-and-floats3"><a class="header-link"
+      href="#section-14.8:-random-integers-and-floats3"></a>Section 14.8: Random Integers and Floats3</h3>
+    <h3 id="section-14.9:-addition-(+)-13"><a class="header-link" href="#section-14.9:-addition-(+)-13"></a>Section
+     14.9: Addition (+) 13</h3>
+    <h3 id="section-14.10:-little-/-big-endian-for-typed-arrays-when-using-bitwise-operators3"><a class="header-link"
+      href="#section-14.10:-little-/-big-endian-for-typed-arrays-when-using-bitwise-operators3"></a>Section 14.10:
+     Little / Big endian for typed arrays when using bitwise operators3</h3>
+    <h3 id="section-14.11:-get-random-between-two-numbers-13"><a class="header-link"
+      href="#section-14.11:-get-random-between-two-numbers-13"></a>Section 14.11: Get Random Between Two Numbers
+     13</h3>
+    <h3 id="section-14.12:-simulating-events-with-dierent-probabilities-13"><a class="header-link"
+      href="#section-14.12:-simulating-events-with-dierent-probabilities-13"></a>Section 14.12: Simulating events
+     with dierent probabilities 13</h3>
+    <h3 id="section-14.13:-subtraction-(-)-14"><a class="header-link"
+      href="#section-14.13:-subtraction-(-)-14"></a>Section 14.13: Subtraction (-) 14</h3>
+    <h3 id="section-14.14:-multiplication-(*)-14"><a class="header-link"
+      href="#section-14.14:-multiplication-(*)-14"></a>Section 14.14: Multiplication (*) 14</h3>
+    <h3 id="section-14.15:-getting-maximum-and-minimum-14"><a class="header-link"
+      href="#section-14.15:-getting-maximum-and-minimum-14"></a>Section 14.15: Getting maximum and minimum 14</h3>
+    <h3 id="section-14.16:-restrict-number-to-min/max-range-14"><a class="header-link"
+      href="#section-14.16:-restrict-number-to-min/max-range-14"></a>Section 14.16: Restrict Number to Min/Max
+     Range 14</h3>
+    <h3 id="section-14.17:-ceiling-and-floor-14"><a class="header-link"
+      href="#section-14.17:-ceiling-and-floor-14"></a>Section 14.17: Ceiling and Floor 14</h3>
+    <h3 id="section-14.18:-getting-roots-of-a-number4"><a class="header-link"
+      href="#section-14.18:-getting-roots-of-a-number4"></a>Section 14.18: Getting roots of a number4</h3>
+    <h3 id="section-14.19:-random-with-gaussian-distribution4"><a class="header-link"
+      href="#section-14.19:-random-with-gaussian-distribution4"></a>Section 14.19: Random with gaussian
+     distribution4</h3>
+    <h3 id="section-14.20:-math.atan2-to-find-direction-14"><a class="header-link"
+      href="#section-14.20:-math.atan2-to-find-direction-14"></a>Section 14.20: Math.atan2 to find direction 14
+    </h3>
+    <h3 id="section-14.21:-sin-&-cos-to-create-a-vector-given-direction-&-dista-14"><a class="header-link"
+      href="#section-14.21:-sin-&-cos-to-create-a-vector-given-direction-&-dista-14"></a>Section 14.21: Sin &amp;
+     Cos to create a vector given direction &amp; dista 14</h3>
+    <h3 id="section-14.22:-math.hypot-14"><a class="header-link" href="#section-14.22:-math.hypot-14"></a>Section
+     14.22: Math.hypot 14</h3>
+    <h3 id="section-14.23:-periodic-functions-using-math.sin4"><a class="header-link"
+      href="#section-14.23:-periodic-functions-using-math.sin4"></a>Section 14.23: Periodic functions using
+     Math.sin4</h3>
+    <h3 id="section-14.24:-division-(/)-14"><a class="header-link" href="#section-14.24:-division-(/)-14"></a>Section
+     14.24: Division (/) 14</h3>
+    <h3 id="section-14.25:-decrementing-(--)-14"><a class="header-link"
+      href="#section-14.25:-decrementing-(--)-14"></a>Section 14.25: Decrementing (--) 14</h3>
+    <h2 id="chapter-15:-bitwise-operators4"><a class="header-link" href="#chapter-15:-bitwise-operators4"></a>Chapter
+     15: Bitwise operators4</h2>
+    <h3 id="section-15.1:-bitwise-operators-14"><a class="header-link"
+      href="#section-15.1:-bitwise-operators-14"></a>Section 15.1: Bitwise operators 14</h3>
+    <h3 id="section-15.2:-shift-operators-15"><a class="header-link"
+      href="#section-15.2:-shift-operators-15"></a>Section 15.2: Shift Operators 15</h3>
+    <h2 id="chapter-16:-constructor-functions5"><a class="header-link"
+      href="#chapter-16:-constructor-functions5"></a>Chapter 16: Constructor functions5</h2>
+    <h3 id="section-16.1:-declaring-a-constructor-function-15"><a class="header-link"
+      href="#section-16.1:-declaring-a-constructor-function-15"></a>Section 16.1: Declaring a constructor function
+     15</h3>
+    <h2 id="chapter-17:-declarations-and-assignments-15"><a class="header-link"
+      href="#chapter-17:-declarations-and-assignments-15"></a>Chapter 17: Declarations and Assignments 15</h2>
+    <h3 id="section-17.1:-modifying-constants5"><a class="header-link"
+      href="#section-17.1:-modifying-constants5"></a>Section 17.1: Modifying constants5</h3>
+    <h3 id="section-17.2:-declaring-and-initializing-constants-15"><a class="header-link"
+      href="#section-17.2:-declaring-and-initializing-constants-15"></a>Section 17.2: Declaring and initializing
+     constants 15</h3>
+    <h3 id="section-17.3:-declaration5"><a class="header-link" href="#section-17.3:-declaration5"></a>Section 17.3:
+     Declaration5</h3>
+    <h3 id="section-17.4:-undefined-15"><a class="header-link" href="#section-17.4:-undefined-15"></a>Section 17.4:
+     Undefined 15</h3>
+    <h3 id="section-17.5:-data-types5"><a class="header-link" href="#section-17.5:-data-types5"></a>Section 17.5:
+     Data Types5</h3>
+    <h3 id="section-17.6:-mathematic-operations-and-assignment-15"><a class="header-link"
+      href="#section-17.6:-mathematic-operations-and-assignment-15"></a>Section 17.6: Mathematic operations and
+     assignment 15</h3>
+    <h3 id="section-17.7:-assignment5"><a class="header-link" href="#section-17.7:-assignment5"></a>Section 17.7:
+     Assignment5</h3>
+    <h2 id="chapter-18:-loops-15"><a class="header-link" href="#chapter-18:-loops-15"></a>Chapter 18: Loops 15</h2>
+    <h3 id="section-18.1:-standard-" for"-loops5"><a class="header-link" href="#section-18.1:-standard-"
+      for"-loops5"></a>Section 18.1: Standard &quot;for&quot; loops5</h3>
+    <h3 id="section-18.2:-" for-of"-loop-15"><a class="header-link" href="#section-18.2:-" for-of"-loop-15"></a>Section
+     18.2: &quot;for of&quot; loop 15</h3>
+    <h3 id="section-18.3:-" for-in"-loop-15"><a class="header-link" href="#section-18.3:-" for-in"-loop-15"></a>Section
+     18.3: &quot;for in&quot; loop 15</h3>
+    <h3 id="section-18.4:-" while"-loops-15"><a class="header-link" href="#section-18.4:-" while"-loops-15"></a>Section
+     18.4: &quot;while&quot; Loops 15</h3>
+    <h3 id="section-18.5:-" continue"-a-loop-16"><a class="header-link" href="#section-18.5:-"
+      continue"-a-loop-16"></a>Section 18.5: &quot;continue&quot; a loop 16</h3>
+    <h3 id="section-18.6:-break-specific-nested-loops-16"><a class="header-link"
+      href="#section-18.6:-break-specific-nested-loops-16"></a>Section 18.6: Break specific nested loops 16</h3>
+    <h3 id="section-18.7:-" do-while"-loop6"><a class="header-link" href="#section-18.7:-" do-while"-loop6"></a>Section
+     18.7: &quot;do while&quot; loop6</h3>
+    <h3 id="section-18.8:-break-and-continue-labels-16"><a class="header-link"
+      href="#section-18.8:-break-and-continue-labels-16"></a>Section 18.8: Break and continue labels 16</h3>
+    <h2 id="chapter-19:-functions-16"><a class="header-link" href="#chapter-19:-functions-16"></a>Chapter 19:
+     Functions 16</h2>
+    <h3 id="section-19.1:-function-scoping6"><a class="header-link" href="#section-19.1:-function-scoping6"></a>Section
+     19.1: Function Scoping6</h3>
+    <h3 id="section-19.2:-currying-16"><a class="header-link" href="#section-19.2:-currying-16"></a>Section 19.2:
+     Currying 16</h3>
+    <h3 id="section-19.3:-immediately-invoked-function-expressions6"><a class="header-link"
+      href="#section-19.3:-immediately-invoked-function-expressions6"></a>Section 19.3: Immediately Invoked
+     Function Expressions6</h3>
+    <h3 id="section-19.4:-named-functions-16"><a class="header-link"
+      href="#section-19.4:-named-functions-16"></a>Section 19.4: Named Functions 16</h3>
+    <h3 id="section-19.5:-binding-`this`-and-arguments6"><a class="header-link"
+      href="#section-19.5:-binding-`this`-and-arguments6"></a>Section 19.5: Binding <code>this</code> and
+     arguments6</h3>
+    <h3 id="section-19.6:-functions-with-an-unknown-number-of-arguments-(variadic-functions)7"><a class="header-link"
+      href="#section-19.6:-functions-with-an-unknown-number-of-arguments-(variadic-functions)7"></a>Section 19.6:
+     Functions with an Unknown Number of Arguments (variadic functions)7</h3>
+    <h3 id="section-19.7:-anonymous-function-17"><a class="header-link"
+      href="#section-19.7:-anonymous-function-17"></a>Section 19.7: Anonymous Function 17</h3>
+    <h3 id="section-19.8:-default-parameters7"><a class="header-link"
+      href="#section-19.8:-default-parameters7"></a>Section 19.8: Default parameters7</h3>
+    <h3 id="section-19.9:-call-and-apply-17"><a class="header-link" href="#section-19.9:-call-and-apply-17"></a>Section
+     19.9: Call and apply 17</h3>
+    <h3 id="section-19.10:-partial-application-17"><a class="header-link"
+      href="#section-19.10:-partial-application-17"></a>Section 19.10: Partial Application 17</h3>
+    <h3 id="section-19.11:-passing-arguments-by-reference-or-value-17"><a class="header-link"
+      href="#section-19.11:-passing-arguments-by-reference-or-value-17"></a>Section 19.11: Passing arguments by
+     reference or value 17</h3>
+    <h3 id="section-19.12:-function-arguments,-" arguments"-object,-rest-and-spread-parameters-17"><a
+      class="header-link" href="#section-19.12:-function-arguments,-"
+      arguments"-object,-rest-and-spread-parameters-17"></a>Section 19.12: Function Arguments,
+     &quot;arguments&quot; object, rest and spread parameters 17</h3>
+    <h3 id="section-19.13:-function-composition-17"><a class="header-link"
+      href="#section-19.13:-function-composition-17"></a>Section 19.13: Function Composition 17</h3>
+    <h3 id="section-19.14:-get-the-name-of-a-function-object-18"><a class="header-link"
+      href="#section-19.14:-get-the-name-of-a-function-object-18"></a>Section 19.14: Get the name of a function
+     object 18</h3>
+    <h3 id="section-19.15:-recursive-function-18"><a class="header-link"
+      href="#section-19.15:-recursive-function-18"></a>Section 19.15: Recursive Function 18</h3>
+    <h3 id="section-19.16:-using-the-return-statement8"><a class="header-link"
+      href="#section-19.16:-using-the-return-statement8"></a>Section 19.16: Using the Return Statement8</h3>
+    <h3 id="section-19.17:-functions-as-a-variable-18"><a class="header-link"
+      href="#section-19.17:-functions-as-a-variable-18"></a>Section 19.17: Functions as a variable 18</h3>
+    <h2 id="chapter-20:-functional-javascript-18"><a class="header-link"
+      href="#chapter-20:-functional-javascript-18"></a>Chapter 20: Functional JavaScript 18</h2>
+    <h3 id="section-20.1:-higher-order-functions8"><a class="header-link"
+      href="#section-20.1:-higher-order-functions8"></a>Section 20.1: Higher-Order Functions8</h3>
+    <h3 id="section-20.2:-identity-monad-18"><a class="header-link" href="#section-20.2:-identity-monad-18"></a>Section
+     20.2: Identity Monad 18</h3>
+    <h3 id="section-20.3:-pure-functions-18"><a class="header-link" href="#section-20.3:-pure-functions-18"></a>Section
+     20.3: Pure Functions 18</h3>
+    <h3 id="section-20.4:-accepting-functions-as-arguments8"><a class="header-link"
+      href="#section-20.4:-accepting-functions-as-arguments8"></a>Section 20.4: Accepting Functions as Arguments8
+    </h3>
+   </div>
   </div>
+ </div>
+ <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+
 </body>
+
 </html>
