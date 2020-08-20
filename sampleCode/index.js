@@ -8,3 +8,9 @@ function strcmp(a,b){
   }
   return -1;
 }
+
+var arr = ["bananas", "cranberries", "apples"];
+arr.sort(function(a, b) {
+return a.localeCompare(b);
+ });
+console.log(arr); // [ "apples", "bananas", "cranberries" ]
