@@ -1,0 +1,329 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Javascript Arrays</title>
+<style type="text/css">
+    body {color: #000000; font-size: 10pt; font-family: "SansSerif", sans-serif; }
+li { list-style: none;  margin: 0; }
+p { margin: 0; }
+
+span.l { color: red; font-weight: bold; }
+
+a.mapnode:link,
+a.mapnode:visited,
+a.mapnode:active,
+a.mapnode:hover {
+    text-decoration: none; color: black;
+}
+a.mapnode:hover { background: #eeeee0; }
+
+</style>
+<!-- ^ Position is not set to relative / absolute here because of Mozilla -->
+</head>
+<body>
+<p><span style="font-size: 18pt; ">Javascript Arrays</span>
+<ul>
+<li><span style="font-size: 18pt; ">Array-Like Objects</span>
+<ul>
+<li><span style="color: #0033ff; font-size: 16pt; ">
+    <p>
+      <font color="#ff0000">what is array-like objects</font>
+    </p>
+  </span>
+<ul>
+<li><span style="color: #990000; font-size: 12pt; ">
+    <p>
+      <b>Object representations of Arrays with a length property.</b>
+    </p>
+  </span></li>
+</ul>
+</li>
+<li><span style="color: #0033ff; font-size: 16pt; ">
+    <p>
+      <font color="#ff0000">Example of user <b><i>array-like objects</i></b></font>
+    </p>
+  </span>
+<ul>
+<li><span style="color: #990000; font-size: 12pt; ">
+    <p>
+      <b>&#160;The <i><u>arguments</u></i>&#160;object passed to functions</b>
+    </p>
+  </span></li>
+</ul>
+</li>
+<li><span style="color: #0033ff; font-size: 16pt; ">
+    <p>
+      <font color="#ff0000">Common Examples</font>
+    </p>
+  </span>
+<ul>
+<li><span style="color: #990000; font-size: 12pt; ">
+    <p>
+      <font color="#0000c0"><b><i>HTMLCollection or NodeList - returned from document.getElementsByTagName 
+      OR document.querySelectorAll()</i></b></font>
+    </p>
+  </span></li>
+</ul>
+</li>
+<li><span style="color: #0033ff; font-size: 16pt; ">
+    <p>
+      <font color="#ff0000">The key difference between <b>Arrays </b>and <b>Array-Like</b>&#160;objects</font>
+    </p>
+  </span>
+<ul>
+<li><span style="color: #990000; font-size: 12pt; ">
+    <p>
+      <b><font color="#0000c0">Array-like </font></b><font color="#0000c0">objects inherit from <b>Object.prototype</b>&#160;instead 
+      of <b>Array.prototype</b>. <i>This means that <b>Array-like</b>&#160;Objects can't 
+      access common Array prototype methods like <b>forEach(), push(), map(), 
+      filter()</b>, and <b>slice()</b></i></font>
+    </p>
+  </span></li>
+</ul>
+</li>
+<li><span style="color: #00b439; font-size: 14pt; ">
+    <p>
+      <font color="#ff0000">Convert Array-Like Objects</font>
+    </p>
+    <p>
+      <font color="#ff0000">into Array objects.</font>
+    </p>
+  </span>
+<ul>
+<li><span style="color: #18898b; font-family: "Liberation Sans", sans-serif; font-weight: bold; ">
+    <p>
+      version &lt;= <b><i>ES5</i></b>
+    </p>
+  </span>
+<ul>
+<li><span style="color: #111111; ">
+    <p>
+      <b>Use Array.prototype.slice</b>
+    </p>
+  </span>
+<ul>
+<li><span style="font-size: 9pt; ">
+    <p>
+      <b>var arrayLike = { </b>
+    </p>
+    <p>
+      <b>0: 'Value 0', </b>
+    </p>
+    <p>
+      <b>1: 'Value 1', </b>
+    </p>
+    <p>
+      <b>length: 2 </b>
+    </p>
+    <p>
+      <b>}; </b>
+    </p>
+    <p>
+      <b><font color="#008000">var realArray = Array.prototype.slice.call(arrayLike); </font></b><font color="#008000">
+</font>    </p>
+    <p>
+      <b><font color="#008000">realArray = [].slice.call(arrayLike); // Shorter version</font></b>
+    </p>
+  </span></li>
+</ul>
+</li>
+<li><span style="color: #111111; ">
+    <p>
+      <b>Use <font color="#ff0000">Function.prototype.call</font>&#160;to call Array.prototype methods on 
+      Array-like objects directly, without converting them</b>
+    </p>
+  </span>
+<ul>
+<li><span style="font-size: 9pt; ">
+    <p>
+      <b><font color="#008000">Array.prototype.forEach.call(domList, function() { </font></b><font color="#008000">
+</font>    </p>
+    <p>
+      <b><font color="#008000">// Do stuff </font></b><font color="#008000">
+</font>    </p>
+    <p>
+      <b><font color="#008000">});</font></b>
+    </p>
+  </span></li>
+</ul>
+</li>
+<li>
+    <p>
+      <b>use [].method.bind( arrayLikeObject ) to borrow array methods and glom 
+      them on to your object</b>
+    </p>
+  
+<ul>
+<li><span style="color: #111111; ">
+    <p>
+      // Version &#8805; 5.1
+    </p>
+    <p>
+      var arrayLike = {
+    </p>
+    <p>
+      0: 'Value 0',
+    </p>
+    <p>
+      1: 'Value 1',
+    </p>
+    <p>
+      length: 2
+    </p>
+    <p>
+      };
+    </p>
+    <p>
+      <font color="#008000">[].forEach.bind(arrayLike)(function(val){ </font>
+    </p>
+    <p>
+      <font color="#008000">// Do stuff with val </font>
+    </p>
+    <p>
+      <font color="#008000">});</font>
+    </p>
+  </span></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><span style="color: #18898b; font-family: "Liberation Sans", sans-serif; font-weight: bold; ">
+    <p>
+      version &#8805; <b><i>ES6</i></b>
+    </p>
+  </span>
+<ul>
+<li><span style="color: #111111; ">
+    <p>
+      <b><i>Array.from</i></b>
+    </p>
+  </span>
+<ul>
+<li><span style="font-size: 9pt; ">
+    <p>
+      <b>const arrayLike = { </b>
+    </p>
+    <p>
+      <b>0: 'Value 0', </b>
+    </p>
+    <p>
+      <b>1: 'Value 1', </b>
+    </p>
+    <p>
+      <b>length: 2 </b>
+    </p>
+    <p>
+      <b>}; </b>
+    </p>
+    <p>
+      <b><font color="#008000">const realArray = Array.from(arrayLike); </font></b><font color="#008000">
+</font>    </p>
+    <p>
+      <b><font color="#008000">realArray.forEach(value =&gt; {/* Do something */});</font></b>
+    </p>
+  </span></li>
+</ul>
+</li>
+<li><span style="color: #111111; ">
+    <p>
+      <b><i>for...of</i></b>
+    </p>
+  </span>
+<ul>
+<li><span style="font-size: 9pt; ">
+    <p>
+      <b><font color="#008000">var realArray = []; </font></b><font color="#008000">
+</font>    </p>
+    <p>
+      <b><font color="#008000">for(const element of arrayLike) { </font></b><font color="#008000">
+</font>    </p>
+    <p>
+      <b><font color="#008000">realArray.append(element); </font></b><font color="#008000">
+</font>    </p>
+    <p>
+      <b><font color="#008000">}</font></b>
+    </p>
+  </span></li>
+</ul>
+</li>
+<li><span style="color: #111111; ">
+    <p>
+      <b><i>Spread operator </i>[...arrayLike]</b>
+    </p>
+  </span>
+<ul>
+<li>
+    <p>
+      With ES6, you can use spreads to separate individual elements into a 
+      comma-separated syntax:
+    </p>
+    <p>
+      <b><font color="#ff0000">let arr = [1, 2, 3, ...[4, 5, 6]]; </font></b>
+    </p>
+    <p>
+      <b><font color="#ff0000">&#160;// [1, 2, 3, 4, 5, 6] </font></b>
+    </p>
+    <p>
+      <b><font color="#ff0000">// in ES &lt; 6, 
+</font></b>    </p>
+    <p>
+      <b><font color="#ff0000">// the operations above are equivalent to </font></b>
+    </p>
+    <p>
+      <b><font color="#ff0000">arr = [1, 2, 3]; </font></b>
+    </p>
+    <p>
+      <b><font color="#ff0000">arr.push(4, 5, 6);</font></b>
+    </p>
+  </li>
+</ul>
+</li>
+<li><span style="color: #111111; ">
+    <p>
+      <b><i>Object.keys</i></b>
+    </p>
+  </span>
+<ul>
+<li><span style="font-size: 9pt; ">
+    <p>
+      <b><font color="#008000">var realArray = Object </font></b><font color="#008000">
+</font>    </p>
+    <p>
+      <b><font color="#008000">.keys(arrayLike) </font></b><font color="#008000">
+</font>    </p>
+    <p>
+      <b><font color="#008000">.map((key) =&gt; arrayLike[key]);</font></b>
+    </p>
+  </span></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><span style="color: #18898b; font-family: "Liberation Sans", sans-serif; font-weight: bold; ">
+    <p>
+      version &#8805; <b>ES7</b>
+    </p>
+  </span>
+<ul>
+<li><span style="color: #111111; ">
+    <p>
+      <b><i>Object.values</i></b>
+    </p>
+  </span>
+<ul>
+<li><span style="font-size: 9pt; ">
+    <p>
+      <b><font color="#008000">var realArray = Object.values(arrayLike);</font></b>
+    </p>
+  </span></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</body>
+</html>
