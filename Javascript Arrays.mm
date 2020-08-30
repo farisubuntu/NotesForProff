@@ -1,8 +1,8 @@
 <map version="freeplane 1.7.0">
 <!--To view this file, download free mind mapping software Freeplane from http://freeplane.sourceforge.net -->
-<node TEXT="Javascript Arrays" FOLDED="false" ID="ID_1027807873" CREATED="1598603789283" MODIFIED="1598743140776" STYLE="oval">
+<node TEXT="Chapter 12: Javascript Arrays" FOLDED="false" ID="ID_1027807873" CREATED="1598603789283" MODIFIED="1598744469811" STYLE="oval" VGAP_QUANTITY="0.0 pt">
 <font SIZE="18"/>
-<hook NAME="MapStyle" zoom="0.939">
+<hook NAME="MapStyle" zoom="0.705">
     <properties edgeColorConfiguration="#808080ff,#ff0000ff,#0000ffff,#00ff00ff,#ff00ffff,#00ffffff,#7c0000ff,#00007cff,#007c00ff,#7c007cff,#007c7cff,#7c7c00ff" fit_to_viewport="false"/>
 
 <map_styles>
@@ -64,8 +64,21 @@
 </stylenode>
 </map_styles>
 </hook>
-<hook NAME="AutomaticEdgeColor" COUNTER="4" RULE="ON_BRANCH_CREATION"/>
-<node TEXT="Array-Like Objects" LOCALIZED_STYLE_REF="AutomaticLayout.level.root" POSITION="right" ID="ID_295997094" CREATED="1598603803918" MODIFIED="1598743140775" VGAP_QUANTITY="0.0 pt" HGAP_QUANTITY="-117.99999606609357 pt" VSHIFT_QUANTITY="-77.24999769777068 pt">
+<hook NAME="AutomaticEdgeColor" COUNTER="8" RULE="ON_BRANCH_CREATION"/>
+<node LOCALIZED_STYLE_REF="AutomaticLayout.level.root" POSITION="right" ID="ID_295997094" CREATED="1598603803918" MODIFIED="1598744457473" VGAP_QUANTITY="0.0 pt" HGAP_QUANTITY="169.99999535083782 pt" VSHIFT_QUANTITY="-281.99999159574537 pt"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#008000">Section 12.1: Array-Like Objects</font>
+    </p>
+  </body>
+</html>
+
+</richcontent>
 <edge COLOR="#ff0000"/>
 <node LOCALIZED_STYLE_REF="AutomaticLayout.level,1" ID="ID_1793380485" CREATED="1598603830822" MODIFIED="1598737806656" HGAP_QUANTITY="12.500000044703482 pt" VSHIFT_QUANTITY="-17.99999946355821 pt"><richcontent TYPE="NODE">
 
@@ -189,7 +202,7 @@
 </richcontent>
 </node>
 </node>
-<node LOCALIZED_STYLE_REF="AutomaticLayout.level,2" ID="ID_1791810269" CREATED="1598604565786" MODIFIED="1598740691547" HGAP_QUANTITY="73.99999821186071 pt" VSHIFT_QUANTITY="33.74999899417165 pt"><richcontent TYPE="NODE">
+<node LOCALIZED_STYLE_REF="AutomaticLayout.level,2" FOLDED="true" ID="ID_1791810269" CREATED="1598604565786" MODIFIED="1598740691547" HGAP_QUANTITY="73.99999821186071 pt" VSHIFT_QUANTITY="33.74999899417165 pt"><richcontent TYPE="NODE">
 
 <html>
   <head>
@@ -591,6 +604,86 @@
 </node>
 </node>
 </node>
+<node TEXT="Modifying Items During Conversion&#xa;In ES6, while using Array.from, we can specify a map function that returns a mapped value for the new array being created." ID="ID_1445462109" CREATED="1598743782354" MODIFIED="1598743806746">
+<node ID="ID_658009520" CREATED="1598743809856" MODIFIED="1598743838665"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <b><font color="#0000c0">// Version &#8805; 6 </font></b>
+    </p>
+    <p>
+      <b><font color="#0000c0">Array.from(domList, element =&gt; element.tagName); // Creates an array of tagName's</font></b>
+    </p>
+  </body>
+</html>
+
+</richcontent>
+</node>
+</node>
+</node>
+<node LOCALIZED_STYLE_REF="AutomaticLayout.level.root" POSITION="left" ID="ID_219239782" CREATED="1598743854481" MODIFIED="1598744392566" HGAP_QUANTITY="-715.7499782517559 pt" VSHIFT_QUANTITY="-7.499999776482608 pt"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#008000">Section 12.2: Reducing values</font>
+    </p>
+  </body>
+</html>
+
+</richcontent>
+<edge COLOR="#7c0000"/>
+</node>
+<node LOCALIZED_STYLE_REF="AutomaticLayout.level.root" POSITION="right" ID="ID_826963221" CREATED="1598743854481" MODIFIED="1598744506299" HGAP_QUANTITY="184.24999492615473 pt" VSHIFT_QUANTITY="-169.49999494850653 pt"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#008000">Section 12.4: Filtering Object Arrays</font>
+    </p>
+  </body>
+</html>
+
+</richcontent>
+<edge COLOR="#7c0000"/>
+</node>
+<node TEXT="Section 12.3:&#xa;Mapping values" LOCALIZED_STYLE_REF="AutomaticLayout.level.root" POSITION="left" ID="ID_22370716" CREATED="1598743854481" MODIFIED="1598744389055" HGAP_QUANTITY="-714.9999782741078 pt" VSHIFT_QUANTITY="-217.4999935179951 pt">
+<edge COLOR="#7c0000"/>
+</node>
+<node TEXT="Section 12.6 Iterations" LOCALIZED_STYLE_REF="AutomaticLayout.level.root" POSITION="right" ID="ID_376660123" CREATED="1598743854481" MODIFIED="1598744544468" HGAP_QUANTITY="178.99999508261692 pt" VSHIFT_QUANTITY="8.249999754130855 pt">
+<edge COLOR="#7c0000"/>
+</node>
+<node LOCALIZED_STYLE_REF="AutomaticLayout.level.root" POSITION="left" ID="ID_1395805908" CREATED="1598743854481" MODIFIED="1598744522323" HGAP_QUANTITY="-704.499978587032 pt" VSHIFT_QUANTITY="-117.74999649077664 pt"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#008000">Section 12.5: Sorting Arrays</font>
+    </p>
+  </body>
+</html>
+
+</richcontent>
+<edge COLOR="#7c0000"/>
+</node>
+<node TEXT="Section 12.7: Destruction an array" POSITION="right" ID="ID_873432079" CREATED="1598744551736" MODIFIED="1598744577265">
+<edge COLOR="#00007c"/>
+</node>
+<node TEXT="Section 12.8: Removing Duplicate elements" POSITION="left" ID="ID_1156339496" CREATED="1598744580902" MODIFIED="1598744615547">
+<edge COLOR="#007c00"/>
 </node>
 </node>
 </map>
