@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>Javascript Arrays</title>
+<title>Chapter 12: Javascript Arrays</title>
 <style type="text/css">
     body {color: #000000; font-size: 10pt; font-family: "SansSerif", sans-serif; }
 li { list-style: none;  margin: 0; }
@@ -16,14 +16,142 @@ a.mapnode:hover {
     text-decoration: none; color: black;
 }
 a.mapnode:hover { background: #eeeee0; }
+span.foldopened, span.foldclosed  {
+    font-size: xx-small;
+    border-width: 1;
+    font-family: monospace;
+    padding: 0em 0.25em 0em 0.25em;
+    background: #e0e0e0;
+    cursor:pointer;
+}
+span.foldopened  {
+    color: white;
+    VISIBILITY: visible;
+}
+span.foldclosed {
+    color: #666666;
+    VISIBILITY: hidden;
+}
+span.foldspecial {
+    color: #666666;
+    font-size: xx-small;
+    border-style: none solid solid none;
+    border-color: #CCCCCC;
+    border-width: 1;
+    font-family: sans-serif;
+    padding: 0em 0.1em 0em 0.1em;
+    background: #e0e0e0;
+    cursor:pointer;
+}
 
 </style>
 <!-- ^ Position is not set to relative / absolute here because of Mozilla -->
 </head>
 <body>
-<p><span style="font-size: 18pt; ">Javascript Arrays</span>
+<script type="text/javascript">
+// Here we implement folding. It works fine with MSIE5.5, MSIE6.0 and
+// Mozilla 0.9.6.
+
+if (document.layers) {
+    //Netscape 4 specific code
+    pre = 'document.';
+    post = ''; }
+if (document.getElementById) {
+    //Netscape 6 specific code
+    pre = 'document.getElementById("';
+    post = '").style'; }
+if (document.all) {
+    //IE4+ specific code
+    pre = 'document.all.';
+    post = '.style'; }
+
+function layer_exists(layer) {
+    try {
+	eval(pre + layer + post);
+	return true; }
+    catch (error) {
+	return false; }}
+
+function show_layer(layer) {
+    eval(pre + layer + post).position = 'relative';
+    eval(pre + layer + post).visibility = 'visible'; }
+
+function hide_layer(layer) {
+    eval(pre + layer + post).visibility = 'hidden';
+    eval(pre + layer + post).position = 'absolute'; }
+
+function hide_folder(folder) {
+    hide_folding_layer(folder);
+    show_layer('show'+folder);
+
+    scrollBy(0,0); // This is a work around to make it work in Browsers (Explorer, Mozilla)
+}
+
+function show_folder(folder) {
+    // Precondition: all subfolders are folded
+
+    show_layer('hide'+folder);
+    hide_layer('show'+folder);
+    show_layer('fold'+folder);
+
+    scrollBy(0,0); // This is a work around to make it work in Browsers (Explorer, Mozilla)
+
+    var i;
+    for (i=1; layer_exists('fold'+folder+'_'+i); ++i) {
+	show_layer('show'+folder+'_'+i); }
+}
+function show_folder_completely(folder) {
+    // Precondition: all subfolders are folded
+
+    show_layer('hide'+folder);
+    hide_layer('show'+folder);
+    show_layer('fold'+folder);
+
+    scrollBy(0,0); // This is a work around to make it work in Browsers (Explorer, Mozilla)
+
+    var i;
+    for (i=1; layer_exists('fold'+folder+'_'+i); ++i) {
+	show_folder_completely(folder+'_'+i); }
+}
+
+
+
+function hide_folding_layer(folder) {
+    var i;
+    for (i=1; layer_exists('fold'+folder+'_'+i); ++i) {
+	hide_folding_layer(folder+'_'+i); }
+
+    hide_layer('hide'+folder);
+    hide_layer('show'+folder);
+    hide_layer('fold'+folder);
+
+    scrollBy(0,0); // This is a work around to make it work in Browsers (Explorer, Mozilla)
+}
+
+function fold_document() {
+    var i;
+    var folder = '1';
+    for (i=1; layer_exists('fold'+folder+'_'+i); ++i) {
+	hide_folder(folder+'_'+i); }
+}
+
+function unfold_document() {
+    var i;
+    var folder = '1';
+    for (i=1; layer_exists('fold'+folder+'_'+i); ++i) {
+	show_folder_completely(folder+'_'+i); }
+}
+
+</script>
+<SPAN class="foldspecial" onclick="unfold_document()">All +</SPAN>
+<SPAN class="foldspecial" onclick="fold_document()">All -</SPAN>
+<p><span style="font-size: 18pt; ">Chapter 12: Javascript Arrays</span>
 <ul>
-<li><span style="font-size: 18pt; ">Array-Like Objects</span>
+<li><span style="font-size: 18pt; ">
+    <p>
+      <font color="#008000">Section 12.1: Array-Like Objects</font>
+    </p>
+  </span>
 <ul>
 <li><span style="color: #0033ff; font-size: 16pt; ">
     <p>
@@ -59,8 +187,7 @@ a.mapnode:hover { background: #eeeee0; }
 <ul>
 <li><span style="color: #990000; font-size: 12pt; ">
     <p>
-      <font color="#0000c0"><b><i>HTMLCollection or NodeList - returned from document.getElementsByTagName 
-      OR document.querySelectorAll()</i></b></font>
+      <font color="#0000c0"><b><i>HTMLCollection or NodeList - returned from document.getElementsByTagName OR document.querySelectorAll()</i></b></font>
     </p>
   </span></li>
 </ul>
@@ -73,15 +200,13 @@ a.mapnode:hover { background: #eeeee0; }
 <ul>
 <li><span style="color: #990000; font-size: 12pt; ">
     <p>
-      <b><font color="#0000c0">Array-like </font></b><font color="#0000c0">objects inherit from <b>Object.prototype</b>&#160;instead 
-      of <b>Array.prototype</b>. <i>This means that <b>Array-like</b>&#160;Objects can't 
-      access common Array prototype methods like <b>forEach(), push(), map(), 
-      filter()</b>, and <b>slice()</b></i></font>
+      <b><font color="#0000c0">Array-like </font></b><font color="#0000c0">objects inherit from <b>Object.prototype</b>&#160;instead of <b>Array.prototype</b>. <i>This means that <b>Array-like</b>&#160;Objects can't access common Array prototype methods like <b>forEach(), push(), map(), filter()</b>, and <b>slice()</b></i></font>
     </p>
   </span></li>
 </ul>
 </li>
-<li><span style="color: #00b439; font-size: 14pt; ">
+<li><span id="show1_1" class="foldclosed" onClick="show_folder('1_1')" style="POSITION: absolute">+</span> <span id="hide1_1" class="foldopened" onClick="hide_folder('1_1')">-</span>
+<span style="color: #00b439; font-size: 14pt; ">
     <p>
       <font color="#ff0000">Convert Array-Like Objects</font>
     </p>
@@ -89,7 +214,7 @@ a.mapnode:hover { background: #eeeee0; }
       <font color="#ff0000">into Array objects.</font>
     </p>
   </span>
-<ul>
+<ul id="fold1_1" style="POSITION: relative; VISIBILITY: visible;">
 <li><span style="color: #18898b; font-family: "Liberation Sans", sans-serif; font-weight: bold; ">
     <p>
       version &lt;= <b><i>ES5</i></b>
@@ -119,8 +244,8 @@ a.mapnode:hover { background: #eeeee0; }
       <b>}; </b>
     </p>
     <p>
-      <b><font color="#008000">var realArray = Array.prototype.slice.call(arrayLike); </font></b><font color="#008000">
-</font>    </p>
+      <b><font color="#008000">var realArray = Array.prototype.slice.call(arrayLike); </font></b>
+    </p>
     <p>
       <b><font color="#008000">realArray = [].slice.call(arrayLike); // Shorter version</font></b>
     </p>
@@ -129,18 +254,17 @@ a.mapnode:hover { background: #eeeee0; }
 </li>
 <li><span style="color: #111111; ">
     <p>
-      <b>Use <font color="#ff0000">Function.prototype.call</font>&#160;to call Array.prototype methods on 
-      Array-like objects directly, without converting them</b>
+      <b>Use <font color="#ff0000">Function.prototype.call</font>&#160;to call Array.prototype methods on Array-like objects directly, without converting them</b>
     </p>
   </span>
 <ul>
 <li><span style="font-size: 9pt; ">
     <p>
-      <b><font color="#008000">Array.prototype.forEach.call(domList, function() { </font></b><font color="#008000">
-</font>    </p>
+      <b><font color="#008000">Array.prototype.forEach.call(domList, function() { </font></b>
+    </p>
     <p>
-      <b><font color="#008000">// Do stuff </font></b><font color="#008000">
-</font>    </p>
+      <b><font color="#008000">// Do stuff </font></b>
+    </p>
     <p>
       <b><font color="#008000">});</font></b>
     </p>
@@ -149,8 +273,7 @@ a.mapnode:hover { background: #eeeee0; }
 </li>
 <li>
     <p>
-      <b>use [].method.bind( arrayLikeObject ) to borrow array methods and glom 
-      them on to your object</b>
+      <b>use [].method.bind( arrayLikeObject ) to borrow array methods and glom them on to your object</b>
     </p>
   
 <ul>
@@ -216,8 +339,8 @@ a.mapnode:hover { background: #eeeee0; }
       <b>}; </b>
     </p>
     <p>
-      <b><font color="#008000">const realArray = Array.from(arrayLike); </font></b><font color="#008000">
-</font>    </p>
+      <b><font color="#008000">const realArray = Array.from(arrayLike); </font></b>
+    </p>
     <p>
       <b><font color="#008000">realArray.forEach(value =&gt; {/* Do something */});</font></b>
     </p>
@@ -232,14 +355,14 @@ a.mapnode:hover { background: #eeeee0; }
 <ul>
 <li><span style="font-size: 9pt; ">
     <p>
-      <b><font color="#008000">var realArray = []; </font></b><font color="#008000">
-</font>    </p>
+      <b><font color="#008000">var realArray = []; </font></b>
+    </p>
     <p>
-      <b><font color="#008000">for(const element of arrayLike) { </font></b><font color="#008000">
-</font>    </p>
+      <b><font color="#008000">for(const element of arrayLike) { </font></b>
+    </p>
     <p>
-      <b><font color="#008000">realArray.append(element); </font></b><font color="#008000">
-</font>    </p>
+      <b><font color="#008000">realArray.append(element); </font></b>
+    </p>
     <p>
       <b><font color="#008000">}</font></b>
     </p>
@@ -254,8 +377,7 @@ a.mapnode:hover { background: #eeeee0; }
 <ul>
 <li>
     <p>
-      With ES6, you can use spreads to separate individual elements into a 
-      comma-separated syntax:
+      With ES6, you can use spreads to separate individual elements into a comma-separated syntax:
     </p>
     <p>
       <b><font color="#ff0000">let arr = [1, 2, 3, ...[4, 5, 6]]; </font></b>
@@ -264,8 +386,8 @@ a.mapnode:hover { background: #eeeee0; }
       <b><font color="#ff0000">&#160;// [1, 2, 3, 4, 5, 6] </font></b>
     </p>
     <p>
-      <b><font color="#ff0000">// in ES &lt; 6, 
-</font></b>    </p>
+      <b><font color="#ff0000">// in ES &lt; 6, </font></b>
+    </p>
     <p>
       <b><font color="#ff0000">// the operations above are equivalent to </font></b>
     </p>
@@ -286,11 +408,11 @@ a.mapnode:hover { background: #eeeee0; }
 <ul>
 <li><span style="font-size: 9pt; ">
     <p>
-      <b><font color="#008000">var realArray = Object </font></b><font color="#008000">
-</font>    </p>
+      <b><font color="#008000">var realArray = Object </font></b>
+    </p>
     <p>
-      <b><font color="#008000">.keys(arrayLike) </font></b><font color="#008000">
-</font>    </p>
+      <b><font color="#008000">.keys(arrayLike) </font></b>
+    </p>
     <p>
       <b><font color="#008000">.map((key) =&gt; arrayLike[key]);</font></b>
     </p>
@@ -322,8 +444,42 @@ a.mapnode:hover { background: #eeeee0; }
 </li>
 </ul>
 </li>
+<li>Modifying Items During Conversion&#10;In ES6, while using Array.from, we can specify a map function that returns a mapped value for the new array being created.
+<ul>
+<li>
+    <p>
+      <b><font color="#0000c0">// Version &#8805; 6 </font></b>
+    </p>
+    <p>
+      <b><font color="#0000c0">Array.from(domList, element =&gt; element.tagName); // Creates an array of tagName's</font></b>
+    </p>
+  </li>
 </ul>
 </li>
 </ul>
+</li>
+<li><span style="font-size: 18pt; ">
+    <p>
+      <font color="#008000">Section 12.2: Reducing values</font>
+    </p>
+  </span></li>
+<li><span style="font-size: 18pt; ">
+    <p>
+      <font color="#008000">Section 12.4: Filtering Object Arrays</font>
+    </p>
+  </span></li>
+<li><span style="font-size: 18pt; ">Section 12.3:&#10;Mapping values</span></li>
+<li><span style="font-size: 18pt; ">Section 12.6 Iterations</span></li>
+<li><span style="font-size: 18pt; ">
+    <p>
+      <font color="#008000">Section 12.5: Sorting Arrays</font>
+    </p>
+  </span></li>
+<li>Section 12.7: Destruction an array</li>
+<li>Section 12.8: Removing Duplicate elements</li>
+</ul>
+<SCRIPT type="text/javascript">
+fold_document();
+</SCRIPT>
 </body>
 </html>

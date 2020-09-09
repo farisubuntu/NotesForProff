@@ -1,8 +1,8 @@
 <map version="freeplane 1.7.0">
 <!--To view this file, download free mind mapping software Freeplane from http://freeplane.sourceforge.net -->
-<node TEXT="Chapter 12: Javascript Arrays" FOLDED="false" ID="ID_1027807873" CREATED="1598603789283" MODIFIED="1598744469811" STYLE="oval" VGAP_QUANTITY="0.0 pt">
-<font SIZE="18"/>
-<hook NAME="MapStyle" zoom="0.705">
+<node TEXT="Chapter 12: Javascript Arrays" FOLDED="false" ID="ID_1027807873" CREATED="1598603789283" MODIFIED="1598816760029" STYLE="oval" VGAP_QUANTITY="0.0 pt">
+<font SIZE="16"/>
+<hook NAME="MapStyle" zoom="0.776">
     <properties edgeColorConfiguration="#808080ff,#ff0000ff,#0000ffff,#00ff00ff,#ff00ffff,#00ffffff,#7c0000ff,#00007cff,#007c00ff,#7c007cff,#007c7cff,#7c7c00ff" fit_to_viewport="false"/>
 
 <map_styles>
@@ -65,7 +65,7 @@
 </map_styles>
 </hook>
 <hook NAME="AutomaticEdgeColor" COUNTER="8" RULE="ON_BRANCH_CREATION"/>
-<node LOCALIZED_STYLE_REF="AutomaticLayout.level.root" POSITION="right" ID="ID_295997094" CREATED="1598603803918" MODIFIED="1598744457473" VGAP_QUANTITY="0.0 pt" HGAP_QUANTITY="169.99999535083782 pt" VSHIFT_QUANTITY="-281.99999159574537 pt"><richcontent TYPE="NODE">
+<node LOCALIZED_STYLE_REF="AutomaticLayout.level.root" POSITION="right" ID="ID_295997094" CREATED="1598603803918" MODIFIED="1598816760031" VGAP_QUANTITY="0.0 pt" HGAP_QUANTITY="169.99999535083782 pt" VSHIFT_QUANTITY="-281.99999159574537 pt"><richcontent TYPE="NODE">
 
 <html>
   <head>
@@ -77,10 +77,10 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 <edge COLOR="#ff0000"/>
-<node LOCALIZED_STYLE_REF="AutomaticLayout.level,1" ID="ID_1793380485" CREATED="1598603830822" MODIFIED="1598737806656" HGAP_QUANTITY="12.500000044703482 pt" VSHIFT_QUANTITY="-17.99999946355821 pt"><richcontent TYPE="NODE">
+<font SIZE="16"/>
+<node LOCALIZED_STYLE_REF="AutomaticLayout.level,1" ID="ID_1793380485" CREATED="1598603830822" MODIFIED="1598816760033" HGAP_QUANTITY="12.500000044703482 pt" VSHIFT_QUANTITY="-17.99999946355821 pt"><richcontent TYPE="NODE">
 
 <html>
   <head>
@@ -92,9 +92,9 @@
     </p>
   </body>
 </html>
-
 </richcontent>
-<node LOCALIZED_STYLE_REF="AutomaticLayout.level,3" ID="ID_2050344" CREATED="1598730728731" MODIFIED="1598740933874">
+<font SIZE="16"/>
+<node LOCALIZED_STYLE_REF="AutomaticLayout.level,3" ID="ID_2050344" CREATED="1598730728731" MODIFIED="1598816760036">
 <icon BUILTIN="idea"/>
 <richcontent TYPE="NODE">
 
@@ -108,11 +108,11 @@
     </p>
   </body>
 </html>
-
 </richcontent>
+<font SIZE="16"/>
 </node>
 </node>
-<node LOCALIZED_STYLE_REF="AutomaticLayout.level,1" ID="ID_591291573" CREATED="1598730777011" MODIFIED="1598737813332"><richcontent TYPE="NODE">
+<node LOCALIZED_STYLE_REF="AutomaticLayout.level,1" ID="ID_591291573" CREATED="1598730777011" MODIFIED="1598816760039"><richcontent TYPE="NODE">
 
 <html>
   <head>
@@ -124,9 +124,9 @@
     </p>
   </body>
 </html>
-
 </richcontent>
-<node LOCALIZED_STYLE_REF="AutomaticLayout.level,3" ID="ID_1601395023" CREATED="1598730895870" MODIFIED="1598739608839" HGAP_QUANTITY="16.249999932944775 pt" VSHIFT_QUANTITY="-14.999999552965178 pt"><richcontent TYPE="NODE">
+<font SIZE="16"/>
+<node LOCALIZED_STYLE_REF="AutomaticLayout.level,3" ID="ID_1601395023" CREATED="1598730895870" MODIFIED="1598816760041" HGAP_QUANTITY="16.249999932944775 pt" VSHIFT_QUANTITY="-14.999999552965178 pt"><richcontent TYPE="NODE">
 
 <html>
   <head>
@@ -138,11 +138,11 @@
     </p>
   </body>
 </html>
-
 </richcontent>
+<font SIZE="16"/>
 </node>
 </node>
-<node LOCALIZED_STYLE_REF="AutomaticLayout.level,1" ID="ID_1398819685" CREATED="1598730876524" MODIFIED="1598737817764" HGAP_QUANTITY="91.99999767541892 pt" VSHIFT_QUANTITY="19.49999941885473 pt"><richcontent TYPE="NODE">
+<node LOCALIZED_STYLE_REF="AutomaticLayout.level,1" ID="ID_1398819685" CREATED="1598730876524" MODIFIED="1598816760045" HGAP_QUANTITY="91.99999767541892 pt" VSHIFT_QUANTITY="19.49999941885473 pt"><richcontent TYPE="NODE">
 
 <html>
   <head>
@@ -154,9 +154,9 @@
     </p>
   </body>
 </html>
-
 </richcontent>
-<node LOCALIZED_STYLE_REF="AutomaticLayout.level,3" ID="ID_1880944845" CREATED="1598730928651" MODIFIED="1598737946173"><richcontent TYPE="NODE">
+<font SIZE="16"/>
+<node LOCALIZED_STYLE_REF="AutomaticLayout.level,3" ID="ID_1880944845" CREATED="1598730928651" MODIFIED="1598816760047"><richcontent TYPE="NODE">
 
 <html>
   <head>
@@ -168,11 +168,11 @@
     </p>
   </body>
 </html>
-
 </richcontent>
+<font SIZE="16"/>
 </node>
 </node>
-<node LOCALIZED_STYLE_REF="AutomaticLayout.level,1" ID="ID_1699981804" CREATED="1598603841902" MODIFIED="1598737832255" HGAP_QUANTITY="92.74999765306718 pt" VSHIFT_QUANTITY="74.24999778717763 pt"><richcontent TYPE="NODE">
+<node LOCALIZED_STYLE_REF="AutomaticLayout.level,1" ID="ID_1699981804" CREATED="1598603841902" MODIFIED="1598816760050" HGAP_QUANTITY="92.74999765306718 pt" VSHIFT_QUANTITY="74.24999778717763 pt"><richcontent TYPE="NODE">
 
 <html>
   <head>
@@ -184,9 +184,9 @@
     </p>
   </body>
 </html>
-
 </richcontent>
-<node LOCALIZED_STYLE_REF="AutomaticLayout.level,3" ID="ID_1256378776" CREATED="1598731621480" MODIFIED="1598737946175"><richcontent TYPE="NODE">
+<font SIZE="16"/>
+<node LOCALIZED_STYLE_REF="AutomaticLayout.level,3" ID="ID_1256378776" CREATED="1598731621480" MODIFIED="1598816760051"><richcontent TYPE="NODE">
 
 <html>
   <head>
@@ -198,11 +198,11 @@
     </p>
   </body>
 </html>
-
 </richcontent>
+<font SIZE="16"/>
 </node>
 </node>
-<node LOCALIZED_STYLE_REF="AutomaticLayout.level,2" FOLDED="true" ID="ID_1791810269" CREATED="1598604565786" MODIFIED="1598740691547" HGAP_QUANTITY="73.99999821186071 pt" VSHIFT_QUANTITY="33.74999899417165 pt"><richcontent TYPE="NODE">
+<node LOCALIZED_STYLE_REF="AutomaticLayout.level,2" FOLDED="true" ID="ID_1791810269" CREATED="1598604565786" MODIFIED="1598816760056" HGAP_QUANTITY="73.99999821186071 pt" VSHIFT_QUANTITY="33.74999899417165 pt"><richcontent TYPE="NODE">
 
 <html>
   <head>
@@ -217,8 +217,8 @@
     </p>
   </body>
 </html>
-
 </richcontent>
+<font SIZE="16"/>
 <node LOCALIZED_STYLE_REF="styles.topic" ID="ID_972752338" CREATED="1598721494691" MODIFIED="1598738440597" HGAP_QUANTITY="13.250000022351742 pt" VSHIFT_QUANTITY="18.749999441206477 pt"><richcontent TYPE="NODE">
 
 <html>
@@ -231,7 +231,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 <node LOCALIZED_STYLE_REF="AutomaticLayout.level,4" ID="ID_355840837" CREATED="1598736472083" MODIFIED="1598737981883" HGAP_QUANTITY="13.250000022351742 pt" VSHIFT_QUANTITY="-41.24999877065424 pt"><richcontent TYPE="NODE">
 
@@ -245,7 +244,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 <node LOCALIZED_STYLE_REF="defaultstyle.attributes" ID="ID_1375212673" CREATED="1598736637506" MODIFIED="1598739702584"><richcontent TYPE="NODE">
 
@@ -277,7 +275,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 </node>
 </node>
@@ -293,7 +290,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 <node LOCALIZED_STYLE_REF="defaultstyle.attributes" ID="ID_1952369828" CREATED="1598737744688" MODIFIED="1598739675092"><richcontent TYPE="NODE">
 
@@ -313,7 +309,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 </node>
 </node>
@@ -329,7 +324,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 <node LOCALIZED_STYLE_REF="AutomaticLayout.level,4" ID="ID_503283211" CREATED="1598739765905" MODIFIED="1598739900083"><richcontent TYPE="NODE">
 
@@ -367,7 +361,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 </node>
 </node>
@@ -384,7 +377,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 <node LOCALIZED_STYLE_REF="AutomaticLayout.level,4" ID="ID_1934839155" CREATED="1598732100397" MODIFIED="1598738352920" HGAP_QUANTITY="11.000000089406939 pt" VSHIFT_QUANTITY="137.99999588727962 pt"><richcontent TYPE="NODE">
 
@@ -398,7 +390,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 <node LOCALIZED_STYLE_REF="defaultstyle.attributes" ID="ID_1808912917" CREATED="1598736953683" MODIFIED="1598739655536"><richcontent TYPE="NODE">
 
@@ -430,7 +421,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 </node>
 </node>
@@ -446,7 +436,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 <node LOCALIZED_STYLE_REF="defaultstyle.attributes" ID="ID_809959301" CREATED="1598736877862" MODIFIED="1598739669279" HGAP_QUANTITY="58.24999868124728 pt" VSHIFT_QUANTITY="-31.49999906122686 pt"><richcontent TYPE="NODE">
 
@@ -469,7 +458,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 </node>
 </node>
@@ -485,7 +473,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 <node ID="ID_249856593" CREATED="1598741069870" MODIFIED="1598742914491"><richcontent TYPE="NODE">
 
@@ -517,7 +504,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 </node>
 </node>
@@ -533,7 +519,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 <node LOCALIZED_STYLE_REF="defaultstyle.attributes" ID="ID_802890771" CREATED="1598736583111" MODIFIED="1598739681234"><richcontent TYPE="NODE">
 
@@ -553,7 +538,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 </node>
 </node>
@@ -570,7 +554,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 <node LOCALIZED_STYLE_REF="AutomaticLayout.level,4" ID="ID_559339123" CREATED="1598736360430" MODIFIED="1598737981889"><richcontent TYPE="NODE">
 
@@ -584,7 +567,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 <node LOCALIZED_STYLE_REF="defaultstyle.attributes" ID="ID_546033727" CREATED="1598736398785" MODIFIED="1598739686805" HGAP_QUANTITY="20.74999979883433 pt" VSHIFT_QUANTITY="18.749999441206473 pt"><richcontent TYPE="NODE">
 
@@ -598,13 +580,13 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 </node>
 </node>
 </node>
 </node>
-<node TEXT="Modifying Items During Conversion&#xa;In ES6, while using Array.from, we can specify a map function that returns a mapped value for the new array being created." ID="ID_1445462109" CREATED="1598743782354" MODIFIED="1598743806746">
+<node TEXT="Modifying Items During Conversion&#xa;In ES6, while using Array.from, we can specify a map function that returns a mapped value for the new array being created." FOLDED="true" ID="ID_1445462109" CREATED="1598743782354" MODIFIED="1598816760021" HGAP_QUANTITY="41.74999917298558 pt" VSHIFT_QUANTITY="82.49999754130847 pt">
+<font SIZE="16"/>
 <node ID="ID_658009520" CREATED="1598743809856" MODIFIED="1598743838665"><richcontent TYPE="NODE">
 
 <html>
@@ -620,12 +602,11 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 </node>
 </node>
 </node>
-<node LOCALIZED_STYLE_REF="AutomaticLayout.level.root" POSITION="left" ID="ID_219239782" CREATED="1598743854481" MODIFIED="1598744392566" HGAP_QUANTITY="-715.7499782517559 pt" VSHIFT_QUANTITY="-7.499999776482608 pt"><richcontent TYPE="NODE">
+<node LOCALIZED_STYLE_REF="AutomaticLayout.level.root" POSITION="left" ID="ID_219239782" CREATED="1598743854481" MODIFIED="1598816760059" HGAP_QUANTITY="-715.7499782517559 pt" VSHIFT_QUANTITY="-7.499999776482608 pt"><richcontent TYPE="NODE">
 
 <html>
   <head>
@@ -637,11 +618,11 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 <edge COLOR="#7c0000"/>
+<font SIZE="16"/>
 </node>
-<node LOCALIZED_STYLE_REF="AutomaticLayout.level.root" POSITION="right" ID="ID_826963221" CREATED="1598743854481" MODIFIED="1598744506299" HGAP_QUANTITY="184.24999492615473 pt" VSHIFT_QUANTITY="-169.49999494850653 pt"><richcontent TYPE="NODE">
+<node LOCALIZED_STYLE_REF="AutomaticLayout.level.root" POSITION="right" ID="ID_826963221" CREATED="1598743854481" MODIFIED="1598816760060" HGAP_QUANTITY="184.24999492615473 pt" VSHIFT_QUANTITY="-169.49999494850653 pt"><richcontent TYPE="NODE">
 
 <html>
   <head>
@@ -653,17 +634,19 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 <edge COLOR="#7c0000"/>
+<font SIZE="16"/>
 </node>
-<node TEXT="Section 12.3:&#xa;Mapping values" LOCALIZED_STYLE_REF="AutomaticLayout.level.root" POSITION="left" ID="ID_22370716" CREATED="1598743854481" MODIFIED="1598744389055" HGAP_QUANTITY="-714.9999782741078 pt" VSHIFT_QUANTITY="-217.4999935179951 pt">
+<node TEXT="Section 12.3:&#xa;Mapping values" LOCALIZED_STYLE_REF="AutomaticLayout.level.root" POSITION="left" ID="ID_22370716" CREATED="1598743854481" MODIFIED="1598816760063" HGAP_QUANTITY="-714.9999782741078 pt" VSHIFT_QUANTITY="-217.4999935179951 pt">
 <edge COLOR="#7c0000"/>
+<font SIZE="16"/>
 </node>
-<node TEXT="Section 12.6 Iterations" LOCALIZED_STYLE_REF="AutomaticLayout.level.root" POSITION="right" ID="ID_376660123" CREATED="1598743854481" MODIFIED="1598744544468" HGAP_QUANTITY="178.99999508261692 pt" VSHIFT_QUANTITY="8.249999754130855 pt">
+<node TEXT="Section 12.6 Iterations" LOCALIZED_STYLE_REF="AutomaticLayout.level.root" POSITION="right" ID="ID_376660123" CREATED="1598743854481" MODIFIED="1598816760065" HGAP_QUANTITY="178.99999508261692 pt" VSHIFT_QUANTITY="8.249999754130855 pt">
 <edge COLOR="#7c0000"/>
+<font SIZE="16"/>
 </node>
-<node LOCALIZED_STYLE_REF="AutomaticLayout.level.root" POSITION="left" ID="ID_1395805908" CREATED="1598743854481" MODIFIED="1598744522323" HGAP_QUANTITY="-704.499978587032 pt" VSHIFT_QUANTITY="-117.74999649077664 pt"><richcontent TYPE="NODE">
+<node LOCALIZED_STYLE_REF="AutomaticLayout.level.root" POSITION="left" ID="ID_1395805908" CREATED="1598743854481" MODIFIED="1598816760066" HGAP_QUANTITY="-704.499978587032 pt" VSHIFT_QUANTITY="-117.74999649077664 pt"><richcontent TYPE="NODE">
 
 <html>
   <head>
@@ -675,15 +658,17 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 <edge COLOR="#7c0000"/>
+<font SIZE="16"/>
 </node>
-<node TEXT="Section 12.7: Destruction an array" POSITION="right" ID="ID_873432079" CREATED="1598744551736" MODIFIED="1598744577265">
+<node TEXT="Section 12.7: Destruction an array" POSITION="right" ID="ID_873432079" CREATED="1598744551736" MODIFIED="1598816760069">
 <edge COLOR="#00007c"/>
+<font SIZE="16"/>
 </node>
-<node TEXT="Section 12.8: Removing Duplicate elements" POSITION="left" ID="ID_1156339496" CREATED="1598744580902" MODIFIED="1598744615547">
+<node TEXT="Section 12.8: Removing Duplicate elements" POSITION="left" ID="ID_1156339496" CREATED="1598744580902" MODIFIED="1598816760070">
 <edge COLOR="#007c00"/>
+<font SIZE="16"/>
 </node>
 </node>
 </map>
