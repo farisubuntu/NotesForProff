@@ -1,0 +1,21 @@
+<?xml version="1.0" standalone="no"?>
+<xournal version="0.4.8.2016">
+<title>Xournal document - see http://math.mit.edu/~auroux/software/xournal/</title>
+<page width="596.00" height="843.00">
+<background type="pdf" domain="absolute" filename="/home/faris/Desktop/AppBreweryCornellNotesTemplate.pdf" pageno="1" />
+<layer>
+<text font="Sans" size="12.00" x="27.75" y="96.00" color="red">Helping Resources:	[ ]  JavascriptNotsForProffesionals		[ ] Sololearn		[ ]Udemy Boot-
+camp		[ ] HTMLNotesForProfessionals</text>
+<text font="Sans" size="12.00" x="89.25" y="24.00" color="red">Review Javascript</text>
+<text font="Sans" size="12.00" x="27.00" y="153.00" color="lightgreen">- null
+- Test for NaN using 
+isNaN()
+- </text>
+</layer>
+</page>
+<page width="596.00" height="843.00">
+<background type="pdf" pageno="2" />
+<layer>
+</layer>
+</page>
+</xournal>
