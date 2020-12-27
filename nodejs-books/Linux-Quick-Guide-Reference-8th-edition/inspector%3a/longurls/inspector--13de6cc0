@@ -1,0 +1,8 @@
+#ad_unit * {
+  display:none;
+}
+
+div,p,pre {
+  margin: inherit;
+  padding: inherit;
+}
