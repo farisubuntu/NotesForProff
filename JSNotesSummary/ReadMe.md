@@ -5,9 +5,17 @@
 
  `/JSNotesSummary/output_html_pages/...html`
 
+#### Other Utilities:
+
+- tool to generate snippets for vscode,sublime and atom IDEs: https://snippet-generator.app/
+- 
+
+
 ---
 
-#### this is the readme of markdown-styles:
+The following is the readme of markdown-styles:
+
+
 # markdown-styles
 
 Converts Markdown files to HTML, with over a dozen builtin themes.
@@ -16,21 +24,6 @@ Looking for something to generate a blog from Markdown files? Check out [ghost-r
 
 Looking to automatically render your Markdown site on `git push`? Check out [markdown-styles-lambda](https://github.com/mixu/markdown-styles-lambda)
 
-## Features
-
-- `v3.1.10` fixes an issue with single file inputs, thanks @josimard!
-- `v3.1.9` adds support for Chinese characters in heading link ids, thanks @weihong1028! Also includes a fix by @csandor for metadata with Windows line endings.
-- `v3.1.8` fixes an issue with links that consist of internal anchors, thanks @a7madgamal & @nazrhyn!
-- `v3.1.7` fixes an issue with paths on Windows and a default font protocol in mixu-page, thanks @hakkanicko and wirmar!
-- `v3.1.6` fixes a compatibility issue with Node 6, thanks @maximumstock!
-- `v3.1.5` updates some dependencies to add YAML syntax highlighting, thanks @omnibs!
-- `v3.1.4` added linkification for relative links to markdown files, e.g. `[link](./foo.md)` -> `<a href="./foo.html">link</a>`.
-- `v3.1.3` added a few additional properties to the programmatic API.
-- `v3.1.2` added default classes that allow you to [style headings in the table of contents](#table-of-contents). See [the changelog](./changelog.md) for changes made in older versions.
-- Includes 15+ ready-made CSS stylesheets for Markdown, see the bottom of the readme for screenshots.
-- Reuse the stylesheets or use the `generate-md` tool to convert a folder of Markdown files to HTML using one of the built-in layouts or a custom layout.
-- Completely static output is easy to host anywhere.
-- Metadata support: Each file can include additional metadata in a header section, such as the page title and author name which can then be used in the layout.
 
 ### Layout features
 
