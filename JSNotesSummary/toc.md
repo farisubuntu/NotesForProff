@@ -359,7 +359,7 @@
 
 ### Section 34.1: Accessing data attributes3
 
-## Chapter 35: JSON 23
+## Chapter 35: JSON
 
 ### Section 35.1: JSON versus JavaScript literals 23
 ### Section 35.2: Parsing with a reviver function 23
@@ -369,7 +369,7 @@
 ### Section 35.6: Parsing a simple JSON string 23
 ### Section 35.7: Cyclic object values3
 
-## Chapter 36: AJAX 24
+## Chapter 36: AJAX
 
 ### Section 36.1: Sending and Receiving JSON Data via POST4
 ### Section 36.2: Add an AJAX preloader 24
@@ -441,7 +441,7 @@
 ### Section 42.13: forEach with promises
 ### Section 42.14: Asynchronous API request
 
-## Chapter 43: Set7
+## Chapter 43: Set
 
 ### Section 43.1: Creating a Set
 ### Section 43.2: Adding a value to a Set
